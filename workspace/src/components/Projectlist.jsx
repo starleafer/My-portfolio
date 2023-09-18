@@ -6,10 +6,11 @@ function Projectlist() {
     <>
         <StyledProjectLIst>
             <div className='projectContainer'>
-                <div className='project'>The chat app</div>
-                <div className='project'>The webbshop</div>
-                <div className='project'>The movie app</div>
-                <div className='project'>Tic tac toe</div>
+                <h4>Selected works</h4>
+                <div className='project'>The chat app <p>&gt;</p></div>
+                <div className='project'>The webbshop <p>&gt;</p></div>
+                <div className='project'>The movie app <p>&gt;</p></div>
+                <div className='project'>Tic tac toe <p>&gt;</p></div>
             </div>
         </StyledProjectLIst>
     </>

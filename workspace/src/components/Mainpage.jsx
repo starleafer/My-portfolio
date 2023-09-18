@@ -4,7 +4,7 @@ import Projectlist from './Projectlist'
 function Mainpage() {
   return (
     <>
-        <h2>Selected works</h2>
+      <h1>You've found me!</h1>
         <Projectlist />
     
     </>
