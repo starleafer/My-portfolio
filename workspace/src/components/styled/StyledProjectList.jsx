@@ -10,12 +10,6 @@ export const StyledProjectLIst = styled.div`
     text-align: left;
     
   }
-
-  h4 {
-    width: 80%;
-    color: #3a406e;
-  }
-
   
   .project{
     display: flex;

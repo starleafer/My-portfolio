@@ -11,8 +11,6 @@ function Mainpage() {
   );
 }
 
-
-
 const Title = styled.h1`
   font-size: 8.5em;
   font-family: 'Fugaz One', sans-serif;
