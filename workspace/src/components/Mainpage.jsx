@@ -1,14 +1,26 @@
-import React from 'react'
-import Projectlist from './Projectlist'
+import React from 'react';
+import Projectlist from './Projectlist';
+import styled from 'styled-components';
 
 function Mainpage() {
   return (
-    <>
-        <h2>Selected works</h2>
-        <Projectlist />
-    
-    </>
-  )
+    <div id="body">
+      <Title>Emil Stjernlöf</Title>
+      <Projectlist />
+    </div>
+  );
 }
 
-export default Mainpage
+
+
+const Title = styled.h1`
+  font-size: 8.5em;
+  font-family: 'Fugaz One', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  color: white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--primary-color); 
+`;
+
+export default Mainpage;

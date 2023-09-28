@@ -1,4 +1,14 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Fugaz+One&family=Lilita+One&family=Pacifico&family=Quicksand:wght@300;400;500;600;700&family=Righteous&display=swap');
 
-  background-color: #122c34;
+:root {
+    --primary-color: #22333b;
+    --secondary-color: #ffeedb;
+    --yellowish: #f49f0a;
+    --dark: #101319;
+    --ocean: #00a6a6;
+    --redish: #b80c09;
 }
+
+/* #body{
+    background-color: #fff4e79c;
+} */
