@@ -2,14 +2,34 @@
 
 
 :root {
-    --primary-color: #22333b;
-    --secondary-color: #ffeedb;
-    --yellowish: #f49f0a;
+    /* --primary-color: #22333b; */
     --dark: #101319;
+    --bleach: #fdf6ed;
+    --dark-green: #1f8b40;
+    --yellowish: #f49f0a;
     --ocean: #00a6a6;
     --redish: #b80c09;
+    --greenish: #09b84c;
 }
 
-/* #body{
-    background-color: #fff4e79c;
-} */
+*{
+    cursor: none;
+}
+
+html{
+    background-color: var(--bleach);
+}
+
+.cursor{
+    background-color: var(--dark);
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    pointer-events: none;
+}
+
