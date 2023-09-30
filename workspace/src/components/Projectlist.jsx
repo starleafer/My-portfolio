@@ -8,7 +8,7 @@ function Projectlist() {
 
     const card = [
         { id: 1, title: "The chat app", path: 'chatapp', label: "React Native", backgroundColor: 'var(--yellowish)' },
-        { id: 2, title: "The webb shop", path: 'webbshop', label: "React.js", backgroundColor: 'var(--dark)' },
+        { id: 2, title: "The webb shop", path: 'webbshop', label: "React.js", backgroundColor: 'var(--greenish)' },
         { id: 3, title: "The movie app", path: 'movieapp', label: "React.js / React Native", backgroundColor: 'var(--ocean)' },
         { id: 4, title: "Tic tac toe", path: 'tictactoe', label: "React Native", backgroundColor: 'var(--redish)' },
     ]
@@ -42,13 +42,13 @@ const ProjectContainer = styled.div`
 
 
 const ListLabel = styled.h4`
-    font-family: 'Fugaz One', sans-serif;
-    font-size: 1.2em;
+    font-size: 1.3em;
     margin: 0;
     width: 80vw;
-    color: var(--dark);
-    /* -webkit-text-stroke-width: 0.5px;
-    -webkit-text-stroke-color: #504f4f;  */
+    /* color: #b1aaaa; */
+    color: var(--bleach);
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #504f4f; 
 `
 
 export default Projectlist
