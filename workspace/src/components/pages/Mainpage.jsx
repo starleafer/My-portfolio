@@ -14,7 +14,7 @@ function Mainpage() {
 const Title = styled.h1`
   font-size: 8.5em;
   font-family: 'Fugaz One', sans-serif;
-  font-weight: 600;
+  font-weight: 500;
   text-align: center;
   color: var(--bleach);
   -webkit-text-stroke-width: 1px;

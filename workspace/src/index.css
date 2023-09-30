@@ -2,19 +2,22 @@
 
 :root {
     /* --primary-color: #22333b; */
-    --dark: #101319;
+    --dark: #1b1f2e;
     --bleach: #fdf6ed;
-    --dark-green: #1f8b40;
+    --dark-green: #26403C;
     --yellowish: #f49f0a;
     --ocean: #00a6a6;
-    --redish: #b80c09;
-    --greenish: #09b84c;
+    --redish: #f73e3e;
+    --creamy: #f3b88474;
+    --blueish:  #12398d;
+    --neon-green: #0ac753;
+    --deep-purple: #242038; 
+    
 }
 
 *{
     cursor: none;
     font-family: 'Fugaz One', sans-serif;
-
 }
 
 body{
@@ -35,14 +38,7 @@ body{
     pointer-events: none;
 }
 
-.cursor-custom {
-    border: 2.5px solid red;
-    height: 20px;
-    width: 20px;
-    border-radius: 50%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    transform: translate(-50%, -50%);
-    pointer-events: none; 
+
+.cursor:hover {
+    border-color: var(--bleach);
   }

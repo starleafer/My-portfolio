@@ -7,10 +7,10 @@ import Card from './Card';
 function Projectlist() {
 
     const card = [
-        { id: 1, title: "The chat app", path: 'chatapp', label: "React Native", backgroundColor: 'var(--yellowish)' },
-        { id: 2, title: "The webb shop", path: 'webbshop', label: "React.js", backgroundColor: 'var(--greenish)' },
-        { id: 3, title: "The movie app", path: 'movieapp', label: "React.js / React Native", backgroundColor: 'var(--ocean)' },
-        { id: 4, title: "Tic tac toe", path: 'tictactoe', label: "React Native", backgroundColor: 'var(--redish)' },
+        { id: 1, title: "The chat app", path: 'chatapp', label: "React Native", color: 'var(--neon-green)', backgroundColor: 'var(--deep-purple)' },
+        { id: 2, title: "Tic tac toe", path: 'tictactoe', label: "React Native", color:'var(--blueish)', backgroundColor: 'var(--redish)' },
+        { id: 3, title: "The webb shop", path: 'webbshop', label: "React.js", color: 'bisque', backgroundColor: 'var(--dark-green)' },
+        { id: 4, title: "The movie app", path: 'movieapp', label: "React.js / React Native", color:'var(--redish)', backgroundColor: 'var(--dark)' },
     ]
 
     return (
@@ -24,6 +24,7 @@ function Projectlist() {
                         path={card.path}
                         title={card.title}
                         label={card.label}
+                        color={card.color}
                         backgroundColor={card.backgroundColor}
                     />
                 ))}
