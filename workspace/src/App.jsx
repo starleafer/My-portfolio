@@ -10,6 +10,7 @@ import TicTacToe from './components/pages/TicTacToe';
 import '../src/index.css'
 import _ from 'lodash';
 import Sidebar from './components/Sidebar';
+import Cleaning from './components/pages/Cleaning';
 
 function App() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -42,6 +43,7 @@ function App() {
       <Content>
         <Routes>
           <Route path="/" element={<Mainpage />} />
+          <Route path="/cleaning" element={<Cleaning />} />
           <Route path="/chatapp" element={<ChatApp />} />
           <Route path="/webbshop" element={<WebbShop />} />
           <Route path="/movieapp" element={<MovieApp />} />

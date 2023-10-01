@@ -8,16 +8,16 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
 
-    const handleMouseEnter = () => {
-      cursor.style.borderColor = "var(--bleach)";
-    };
+    // const handleMouseEnter = () => {
+    //   cursor.style.borderColor = "white";
+    // };
 
-    const handleMouseLeave = () => {
-      cursor.style.borderColor = "var(--dark)";
-    };
+    // const handleMouseLeave = () => {
+    //   cursor.style.borderColor = "var(--dark)";
+    // };
 
     if (isHovered) {
-      cursor.style.borderColor = "var(--bleach)";
+      cursor.style.borderColor = "white";
     }
 
     return () => {
@@ -41,13 +41,17 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   );
 }
 
+
+
 const StyledCard = styled.div`
-  width: 80vw;
-  height: 8vh;
+  width: 10vw;
+  height: 40vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  /* align-items: center; */
   padding: 0 20px;
   font-size: 1.5em;
+  font-weight: 700;
   color: var(--dark);
   border: 3px solid var(--dark);
   border-radius: 15px;
@@ -57,7 +61,9 @@ const StyledCard = styled.div`
   &:hover {
     color: white;
     font-size: 1.7em;
-    margin-right: -50px;
+    margin-bottom: 25px ;
+    height: 42vh;
+    width: 11vw;
 
     .hovered {
       border-color: white;
@@ -68,13 +74,15 @@ const StyledCard = styled.div`
 
 const Title = styled.div`
   flex: 1;    
+  margin: 5px;
 `;
 
 const Label = styled.div`
-  border: 2px solid transparent;
+  /* border: 2px solid transparent; */
+  margin: 10px;
   color: #bbbbbb;
   border-radius: 15px;
-  padding: 1vh;
+  text-align: right;
 `;
 
 export default Card;

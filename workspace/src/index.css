@@ -1,28 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Fugaz+One&family=Lilita+One&family=Pacifico&family=Quicksand:wght@300;400;500;600;700&family=Righteous&family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Fugaz+One&family=Jost:wght@300&family=Lilita+One&family=Outfit:wght@300&family=Poiret+One&family=Quicksand:wght@300;400;500;600;700&family=Righteous&family=Rubik+Mono+One&display=swap');
 
 :root {
     /* --primary-color: #22333b; */
     --dark: #1b1f2e;
-    --bleach: #fdf6ed;
-    --dark-green: #26403C;
-    --yellowish: #f49f0a;
+    --greenish: #497770;
+    --yellowish: #f5ca80;
     --ocean: #00a6a6;
-    --redish: #f73e3e;
+    --redish: #eeb7b7;
     --creamy: #f3b88474;
     --blueish:  #12398d;
     --neon-green: #0ac753;
-    --deep-purple: #242038; 
+    --light-purple: #665aa7; 
+    --test: #c2b8f5;
     
 }
 
 *{
     cursor: none;
-    font-family: 'Fugaz One', sans-serif;
+    font-family: 'Poiret One', sans-serif;
 }
 
 body{
     margin: 0;
-    background-color: var(--bleach);
+    background-color: white;
 }
 
 .cursor{
@@ -40,5 +40,5 @@ body{
 
 
 .cursor:hover {
-    border-color: var(--bleach);
+    border-color: white;
   }
