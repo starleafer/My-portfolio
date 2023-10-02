@@ -7,6 +7,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
 
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
 
     // const handleMouseEnter = () => {
     //   cursor.style.borderColor = "white";
@@ -18,29 +19,42 @@ function Card({ id, path, title, label, color, backgroundColor }) {
 
     if (isHovered) {
       cursor.style.borderColor = "white";
+      cursorDot.style.borderColor = "white";
+      cursorDot.style.backgroundColor = "white";
     }
 
     return () => {
       cursor.style.borderColor = "var(--dark)";
+      cursorDot.style.borderColor = "var(--dark)";
+      cursorDot.style.backgroundColor = "var(--dark)";
     };
   }, [isHovered]);
 
   return (
-    <Link to={`/${path}`} style={{ textDecoration: 'none' }}>
-      <StyledCard
-        key={id}
-        onMouseEnter={() => setIsHovered(id)}
-        onMouseLeave={() => setIsHovered(null)}
-        className={isHovered === id ? "hovered" : ""}
-        style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
-      >
-        <Title>{title}</Title>
-        <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
-      </StyledCard>
-    </Link>
+    <Body>
+      <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'>
+        <StyledCard
+          key={id}
+          onMouseEnter={() => setIsHovered(id)}
+          onMouseLeave={() => setIsHovered(null)}
+          className={isHovered === id ? "hovered" : ""}
+          style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
+        >
+          <Title>{title}</Title>
+          <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
+        </StyledCard>
+      </Link>
+      <Shadow className={isHovered ? "hovered" : ""} />
+    </Body>
   );
 }
 
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  `
 
 
 const StyledCard = styled.div`
@@ -57,25 +71,23 @@ const StyledCard = styled.div`
   border-radius: 15px;
   transition: 0.3s; 
   font-family: 'Fugaz One', sans-serif;
-
+  
   &:hover {
     color: white;
-    font-size: 1.7em;
-    margin-bottom: 25px ;
-    height: 42vh;
-    width: 11vw;
-
+    margin-bottom: 3vw;
+    
     .hovered {
       border-color: white;
       color: white;
     }
   }
-`;
+  `;
 
 const Title = styled.div`
   flex: 1;    
   margin: 5px;
-`;
+  `;
+
 
 const Label = styled.div`
   /* border: 2px solid transparent; */
@@ -83,6 +95,20 @@ const Label = styled.div`
   color: #bbbbbb;
   border-radius: 15px;
   text-align: right;
+  `;
+
+const Shadow = styled.div`
+  width: 10vw;
+  height: 2vh;
+  border-radius: 50%;
+  background-color: #d8d8d8;
+  border: 2px solid transparent;
+  transition: transform 0.3s, width 0.3s;
+
+  &.hovered {
+    width: 8vw;
+    transform: scale(0.8);
+  }
 `;
 
 export default Card;

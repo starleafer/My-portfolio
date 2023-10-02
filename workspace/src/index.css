@@ -25,20 +25,52 @@ body{
     background-color: white;
 }
 
-.cursor{
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+.cursor {
     border: 2.5px solid var(--dark);
     height: 32px;
     width: 32px;
-    border-radius: 50%;
+    border-radius:50px;
     position: fixed;
     top: 0;
     left: 0;
     transform: translate(-50%, -50%);
     z-index: 1;
     pointer-events: none;
-}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ 
+  }
+  
+  .cursor-dot {
+    width: 4px;
+    height: 4px;
+    border: 2.5px solid var(--dark);
+    background-color: var(--dark);
+    border-radius: 50%;
+    position: absolute;
+  }
+  
 
-
-.cursor:hover {
+.cursor:hover,
+.cursor-dot:hover {
     border-color: white;
+  }
+
+  .link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    position: relative;
+    height: 47vh;;
   }

@@ -55,7 +55,9 @@ function App() {
           animate="default"
           initial={false}
           transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
-        />
+        >
+          <div className="cursor-dot" />
+        </motion.div>
       </Content>
     </AppContainer>
   );

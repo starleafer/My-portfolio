@@ -46,7 +46,7 @@ const ProjectContainer = styled.div`
 
 const ListLabel = styled.h4`
     font-size: 1.3em;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     width: 80vw;
     /* color: #b1aaaa; */
     color: white;

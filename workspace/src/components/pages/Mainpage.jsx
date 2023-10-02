@@ -28,19 +28,19 @@ const TitlesContainer = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 8.5em;
+  font-size: 8vw;
   font-weight: 500;
   text-align: center;
-  margin: 0.5em 0.5em 0.5em 0;
+  margin: 0.5em 0.2em 0.5em 0;
   color: white;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark); 
 `;
 
 const SmallTitle = styled.h2`
-  font-size: 2em;
+  font-size: 1.6vw;
   font-weight: 500;
-  margin: 2em 0 0 0;
+  margin: 3em 0 0 0;
   color: #bbbbbb;
   -webkit-text-stroke-width: 1px;
   /* -webkit-text-stroke-color: var(--dark);  */
