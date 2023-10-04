@@ -5,15 +5,15 @@ import styled, { keyframes } from 'styled-components';
 function Card({ id, path, title, label, color, backgroundColor }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
-  
+
   const handleClick = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     setIsClicked(true);
 
     setTimeout(() => {
       setIsClicked(false);
       window.location.href = `/${path}`;
-    }, 1500); 
+    }, 1700);
   };
 
   useEffect(() => {
@@ -35,6 +35,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
 
   return (
     <Body>
+      {isClicked && <Circle style={{ backgroundColor: isHovered === id ? backgroundColor : "" }} />}
       <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'>
         <StyledCard
           key={id}
@@ -54,7 +55,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
 }
 
 
-  const slide = keyframes`
+const slide = keyframes`
     0% {
       left: -22vw;
     }
@@ -62,6 +63,17 @@ function Card({ id, path, title, label, color, backgroundColor }) {
       left: 100%;
     }
   `;
+
+const CircleAnimation = keyframes`
+0% {
+  transform: scale(0);
+  opacity: 1;
+}
+100% {
+  transform: scale(10);
+  opacity: 1;
+}
+`;
 
 const Body = styled.div`
   display: flex;
@@ -145,5 +157,16 @@ const Shadow = styled.div`
   }
 `;
 
+const Circle = styled.div`
+  position: absolute;
+  width: 70%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: transparent;
+  animation: ${CircleAnimation} 3s ease-out 1s;
+  transform-origin: center;
+  z-index: 9999;
+  transform: scale(0);
+`;
 
 export default Card;
