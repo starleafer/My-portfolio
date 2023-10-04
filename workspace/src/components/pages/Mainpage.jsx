@@ -14,7 +14,6 @@ function Mainpage() {
   );
 }
 
-
 const Container = styled.div`
   display: flex;
   align-items: flex-start;
@@ -43,7 +42,6 @@ const SmallTitle = styled.h2`
   margin: 3em 0 0 0;
   color: #bbbbbb;
   -webkit-text-stroke-width: 1px;
-  /* -webkit-text-stroke-color: var(--dark);  */
 `
 
 export default Mainpage;

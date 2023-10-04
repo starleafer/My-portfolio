@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 function Card({ id, path, title, label, color, backgroundColor }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  
+  const handleClick = (event) => {
+    event.preventDefault(); 
+    setIsClicked(true);
+
+    setTimeout(() => {
+      setIsClicked(false);
+      window.location.href = `/${path}`;
+    }, 1500); 
+  };
 
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
     const cursorDot = document.querySelector('.cursor-dot');
-
-    // const handleMouseEnter = () => {
-    //   cursor.style.borderColor = "white";
-    // };
-
-    // const handleMouseLeave = () => {
-    //   cursor.style.borderColor = "var(--dark)";
-    // };
 
     if (isHovered) {
       cursor.style.borderColor = "white";
@@ -35,9 +38,10 @@ function Card({ id, path, title, label, color, backgroundColor }) {
       <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'>
         <StyledCard
           key={id}
+          onClick={handleClick}
           onMouseEnter={() => setIsHovered(id)}
           onMouseLeave={() => setIsHovered(null)}
-          className={isHovered === id ? "hovered" : ""}
+          className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
           style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
         >
           <Title>{title}</Title>
@@ -48,6 +52,16 @@ function Card({ id, path, title, label, color, backgroundColor }) {
     </Body>
   );
 }
+
+
+  const slide = keyframes`
+    0% {
+      left: -22vw;
+    }
+    100% {
+      left: 100%;
+    }
+  `;
 
 const Body = styled.div`
   display: flex;
@@ -62,19 +76,41 @@ const StyledCard = styled.div`
   height: 40vh;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   padding: 0 20px;
   font-size: 1.5em;
   font-weight: 700;
   color: var(--dark);
   border: 3px solid var(--dark);
   border-radius: 15px;
-  transition: 0.3s; 
-  font-family: 'Fugaz One', sans-serif;
+  position: relative;
+  overflow: hidden;
+  transition: transform 1s; 
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    height: 40vw;
+    width: 10vw;
+    transform: skewX(-30deg);
+    opacity: 0; 
+  }
+
+  &:after {
+    width: 3vw;
+  }
+
+  &.clicked::before,
+  &.clicked::after {
+    animation: ${slide} 0.4s forwards;
+    opacity: 1; 
+  }
   
   &:hover {
     color: white;
-    margin-bottom: 3vw;
+    transform: translateY(-1.5vw);
+    transition: transform 0.3s;
     
     .hovered {
       border-color: white;
@@ -88,9 +124,7 @@ const Title = styled.div`
   margin: 5px;
   `;
 
-
 const Label = styled.div`
-  /* border: 2px solid transparent; */
   margin: 10px;
   color: #bbbbbb;
   border-radius: 15px;
@@ -103,12 +137,13 @@ const Shadow = styled.div`
   border-radius: 50%;
   background-color: #d8d8d8;
   border: 2px solid transparent;
-  transition: transform 0.3s, width 0.3s;
+  transition: transform 0.3s, width 0.8s;
 
   &.hovered {
     width: 8vw;
     transform: scale(0.8);
   }
 `;
+
 
 export default Card;

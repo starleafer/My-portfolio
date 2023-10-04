@@ -60,7 +60,6 @@ body{
     position: absolute;
   }
   
-
 .cursor:hover,
 .cursor-dot:hover {
     border-color: white;
@@ -74,3 +73,4 @@ body{
     position: relative;
     height: 47vh;;
   }
+
