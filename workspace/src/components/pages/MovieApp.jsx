@@ -1,17 +1,19 @@
 import React from 'react'
 import styled from 'styled-components';
+import { motion as m } from 'framer-motion';
 
 function MovieApp() {
   return (
-    <Body>
-      <Container>MovieApp</Container>
-      </Body>
+    <Body></Body>
   )
 }
 
-const Body = styled.div`
-  background-color: var(--dark);
-  height: 100vh;
+const Body = styled(m.div)`
+background-color: var(--dark);
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
 `
 const Container = styled.div`
   width: 70vw;

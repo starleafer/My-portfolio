@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
-import { motion } from 'framer-motion'
+import { motion as m } from 'framer-motion'
 import styled from 'styled-components';
 import Mainpage from './components/pages/Mainpage'
 import ChatApp from './components/pages/ChatApp';
@@ -11,17 +11,36 @@ import '../src/index.css'
 import _ from 'lodash';
 import Sidebar from './components/Sidebar';
 import Cleaning from './components/pages/Cleaning';
+import { AnimatePresence } from 'framer-motion';
+import AboutMe from './components/pages/AboutMe';
+import Buttons from './components/Buttons';
 
-function App() {
+function App({ router }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+  function saveMousePosition(x, y) {
+    sessionStorage.setItem('mousePosition', JSON.stringify({ x, y }));
+  }
+
+  function getSavedMousePosition() {
+    const savedPosition = sessionStorage.getItem('mousePosition');
+    return savedPosition ? JSON.parse(savedPosition) : null;
+  }
   useEffect(() => {
-    const mouseMove = e => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
+    const savedPosition = getSavedMousePosition();
+
+    if (savedPosition) {
+      setMousePosition(savedPosition);
     }
+
+    const mouseMove = e => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      setMousePosition({ x, y });
+      saveMousePosition(x, y);
+    }
+
 
     window.addEventListener("mousemove", mouseMove);
 
@@ -39,17 +58,39 @@ function App() {
 
   return (
     <AppContainer>
-      <Sidebar />
       <Content>
         <Routes>
-          <Route path="/" element={<Mainpage />} />
-          <Route path="/cleaning" element={<Cleaning />} />
-          <Route path="/chatapp" element={<ChatApp />} />
-          <Route path="/webbshop" element={<WebbShop />} />
-          <Route path="/movieapp" element={<MovieApp />} />
-          <Route path="/tictactoe" element={<TicTacToe />} />
+          <Route path="/" element={
+           <>
+              <Buttons />
+              <AnimatePresence>
+                <Mainpage key={router.pathname} />
+              </AnimatePresence>
+            </>
+          } />
+          <Route path="/cleaning" element={
+           <>
+              <Buttons />
+              <AnimatePresence>
+                <Cleaning key={router.pathname} />
+              </AnimatePresence>
+            </>
+          } />
+          <Route path="/webbshop" element={
+            <>
+              <Buttons />
+              <AnimatePresence>
+                <WebbShop key={router.pathname} />
+              </AnimatePresence>
+            </>
+          } />
+          <Route path="/chatapp" element={<><Buttons /><ChatApp /></>} />
+          {/* <Route path="/webbshop" element={<><Buttons /><WebbShop /></>} /> */}
+          <Route path="/movieapp" element={<><Buttons /><MovieApp /></>} />
+          <Route path="/tictactoe" element={<><Buttons /><TicTacToe /></>} />
+          <Route path="/about" element={<><Buttons /><AboutMe /></>} />
         </Routes>
-        <motion.div
+        <m.div
           className='cursor'
           variants={variants}
           animate="default"
@@ -57,7 +98,7 @@ function App() {
           transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
         >
           <div className="cursor-dot" />
-        </motion.div>
+        </m.div>
       </Content>
     </AppContainer>
   );
@@ -66,6 +107,7 @@ function App() {
 const AppContainer = styled.div`
   display: flex;
   height: 100vh;
+  position: relative;
 `;
 
 const Content = styled.div`

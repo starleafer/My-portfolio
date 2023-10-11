@@ -10,10 +10,15 @@ function Card({ id, path, title, label, color, backgroundColor }) {
     event.preventDefault();
     setIsClicked(true);
 
+    const rect = event.target.getBoundingClientRect();
+    const x = rect.left + rect.width / 2;
+    const y = rect.top + rect.height / 2;
+
+    
     setTimeout(() => {
       setIsClicked(false);
       window.location.href = `/${path}`;
-    }, 1700);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -157,7 +162,7 @@ const Shadow = styled.div`
   }
 `;
 
-const Circle = styled.div`
+  const Circle = styled.div`
   position: absolute;
   width: 70%;
   height: 100%;
@@ -167,6 +172,6 @@ const Circle = styled.div`
   transform-origin: center;
   z-index: 9999;
   transform: scale(0);
-`;
+`;  
 
 export default Card;

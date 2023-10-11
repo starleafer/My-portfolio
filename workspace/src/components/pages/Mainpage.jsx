@@ -1,29 +1,42 @@
 import React from 'react';
 import Projectlist from '../Projectlist';
 import styled from 'styled-components';
+import { motion as m } from 'framer-motion'
 
 function Mainpage() {
   return (
-    <Container>
-      <TitlesContainer>
-        <Title>Emil Stjernlöf</Title> 
-        <SmallTitle>/ Front end developer in development</SmallTitle>
-      </TitlesContainer>
-      <Projectlist />
-    </Container>
+      <>
+        <Container
+          // className='AppContainer'
+          // initial={{ y: '100%'}}
+          // animate={{ y: '0%' }}
+          // transition={{ duration: 0.75, ease: "easeOut" }}
+          // exit={{ opacity: 1 }}
+        >
+          <TitlesContainer>
+            <Title>Emil Stjernlöf</Title>
+            <SmallTitle>/ Front end developer in development</SmallTitle>
+          </TitlesContainer>
+          <Projectlist />
+        </Container>
+      </>
+
   );
 }
 
-const Container = styled.div`
+const Container = styled(m.div)`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex-direction: column;
-  margin-left: 3vw;;
+  position: relative;
 `
 const TitlesContainer = styled.div`
   display: flex;
-  justify-content: center;
+  height: 30vh;
+  width: 80vw;
+  margin-top: 5vh;
   align-items: center;
+  justify-content: center;
 `
 
 const Title = styled.h1`
@@ -37,10 +50,10 @@ const Title = styled.h1`
 `;
 
 const SmallTitle = styled.h2`
-  font-size: 1.6vw;
+  font-size: 1.45vw;
   font-weight: 500;
   margin: 3em 0 0 0;
-  color: #bbbbbb;
+  color: #cacaca;
   -webkit-text-stroke-width: 1px;
 `
 

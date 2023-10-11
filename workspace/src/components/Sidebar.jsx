@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
+import { motion as m } from 'framer-motion'
 
 function Sidebar() {
   const location = useLocation();
@@ -39,7 +40,13 @@ function Sidebar() {
   }, [location.pathname])
 
   return (
-    <Container className={sidebarclass}>
+    <Container 
+    className={sidebarclass}
+    initial={{ y: "100%" }}
+    animate={{ y: "0%" }}
+    transition={{ duration: 0.75, ease: "easeOut" }}
+    exit={{ opacity: 1 }}
+    >
         <AvatarContainer className={sidebarclass} />
         <SidebarContents className={sidebarclass}>
         <Link to={`/`} style={{ textDecoration: 'none' }}>
@@ -52,40 +59,42 @@ function Sidebar() {
   )
 }
 
-const Container = styled.div`
+const Container = styled(m.div)`
     display: flex;
     flex-direction: column;
     width: 10vw;
     border: solid black;
     border-width: 0 1px 0 0;
     align-items: center;
+    background-color: transparent;
+    
 
     &.chatapp {
-        background-color: var(--light-purple);
+        /* background-color: var(--light-purple); */
         color: var(--neon-green);
         border-color: var(--neon-green)
     }
 
     &.tictactoe {
-        background-color: var(--redish);
+        /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
     }
 
     &.webbshop{
-        background-color: var(--greenish);
+        /* background-color: var(--greenish); */
         color: bisque;
         border-color: bisque;
     }
 
     &.movieapp{
-        background-color: var(--dark);
+        /* background-color: var(--dark); */
         color: var(--redish);
         border-color: var(--reddish);
     }
 
     &.cleaning{
-        background-color: var(--yellowish);
+        /* background-color: var(--yellowish); */
     }
 `
 const AvatarContainer = styled.div`
@@ -96,31 +105,31 @@ const AvatarContainer = styled.div`
     margin-top: 2vh;
 
     &.chatapp {
-        background-color: var(--light-purple);
+        /* background-color: var(--light-purple); */
         color: var(--neon-green);
         border-color: var(--neon-green)
     }
 
     &.tictactoe {
-        background-color: var(--redish);
+        /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
     }
 
     &.webbshop{
-        background-color: var(--greenish);
+        /* background-color: var(--greenish); */
         color: bisque;
         border-color: bisque;
     }
 
     &.movieapp{
-        background-color: var(--dark);
+        /* background-color: var(--dark); */
         color: var(--redish);
         border-color: var(--reddish);
     }
 
     &.cleaning{
-        background-color: var(--yellowish);
+        /* background-color: var(--yellowish); */
     }
 `
 
@@ -134,30 +143,30 @@ const SidebarContents = styled.div`
     margin-top: 3vw;
 
     &.chatapp {
-        background-color: var(--light-purple);
+        /* background-color: var(--light-purple); */
         color: var(--neon-green);
     }
 
     &.tictactoe {
-        background-color: var(--redish);
+        /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
     }
 
     &.webbshop{
-        background-color: var(--greenish);
+        /* background-color: var(--greenish); */
         color: bisque;
         border-color: bisque;
     }
 
     &.movieapp{
-        background-color: var(--dark);
+        /* background-color: var(--dark); */
         color: var(--redish);
         border-color: var(--reddish);
     }
 
     &.cleaning{
-        background-color: var(--yellowish);
+        /* background-color: var(--yellowish); */
     }
 `
 const Content = styled.div`
@@ -167,30 +176,30 @@ const Content = styled.div`
     transition: 0.3s; 
 
     &.chatapp {
-        background-color: var(--light-purple);
+        /* background-color: var(--light-purple); */
         color: var(--neon-green);
     }
 
     &.tictactoe {
-        background-color: var(--redish);
+        /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
     }
 
     &.webbshop{
-        background-color: var(--greenish);
+        /* background-color: var(--greenish); */
         color: bisque;
         border-color: bisque;
     }
 
     &.movieapp{
-        background-color: var(--dark);
+        /* background-color: var(--dark); */
         color: var(--redish);
         border-color: var(--reddish);
     }
 
     &.cleaning{
-        background-color: var(--yellowish);
+        /* background-color: var(--yellowish); */
     }
 
     &:hover {

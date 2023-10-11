@@ -3,19 +3,20 @@ import { StyledProjectLIst } from './styled/StyledProjectList'
 import styled from 'styled-components'
 import ChatApp from './pages/ChatApp';
 import Card from './Card';
+import Sidebar from './Sidebar';
 
 function Projectlist() {
 
     const card = [
         { id: 1, title: "The webb shop", path: 'webbshop', label: "React.js", color: 'bisque', backgroundColor: 'var(--greenish)' },
-        { id: 2, title: "Tic tac toe", path: 'tictactoe', label: "React Native", color:'var(--blueish)', backgroundColor: 'var(--redish)' },
-        { id: 3, title: "Cleaning company", path: 'cleaning', label: "React.js", color:'var(--dark)', backgroundColor: 'var(--yellowish)' },
+        { id: 2, title: "Tic tac toe", path: 'tictactoe', label: "React Native", color: 'var(--blueish)', backgroundColor: 'var(--redish)' },
+        { id: 3, title: "Cleaning company", path: 'cleaning', label: "React.js", color: 'var(--dark)', backgroundColor: 'var(--yellowish)' },
         { id: 4, title: "The chat app", path: 'chatapp', label: "React Native", color: 'var(--neon-green)', backgroundColor: 'var(--light-purple)' },
-        { id: 5, title: "The movie app", path: 'movieapp', label: "React.js / React Native", color:'var(--redish)', backgroundColor: 'var(--dark)' },
+        { id: 5, title: "The movie app", path: 'movieapp', label: "React.js / React Native", color: 'var(--redish)', backgroundColor: 'var(--dark)' },
     ]
 
     return (
-        <StyledProjectLIst>
+        <StyledProjectList>
             <ListLabel>// Some projects</ListLabel>
             <ProjectContainer>
                 {card.map(card => (
@@ -30,9 +31,17 @@ function Projectlist() {
                     />
                 ))}
             </ProjectContainer>
-        </StyledProjectLIst>
+        </StyledProjectList>
     )
 }
+
+const StyledProjectList = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+`
 
 const ProjectContainer = styled.div`
     height: 43vh;
@@ -47,8 +56,7 @@ const ProjectContainer = styled.div`
 const ListLabel = styled.h4`
     font-size: 1.3em;
     margin-bottom: 40px;
-    width: 80vw;
-    /* color: #b1aaaa; */
+    align-self: flex-start; 
     color: white;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #504f4f; 
