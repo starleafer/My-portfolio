@@ -108,6 +108,8 @@ const AppContainer = styled.div`
   display: flex;
   height: 100vh;
   position: relative;
+  overflow: hidden;
+
 `;
 
 const Content = styled.div`

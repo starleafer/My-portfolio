@@ -5,21 +5,23 @@ import styled, { keyframes } from 'styled-components';
 function Card({ id, path, title, label, color, backgroundColor }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [showCircle, setShowCircle] = useState(false);
+
 
   const handleClick = (event) => {
     event.preventDefault();
     setIsClicked(true);
-
-    const rect = event.target.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-
-    
+    setShowCircle(true);
+    console.log(id);
     setTimeout(() => {
       setIsClicked(false);
-      window.location.href = `/${path}`;
-    }, 3000);
+      setTimeout(() => {
+        window.location.href = `/${path}`;
+      }); 
+    }, 1300);
   };
+
+
 
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
@@ -29,9 +31,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
       cursor.style.borderColor = "white";
       cursorDot.style.borderColor = "white";
       cursorDot.style.backgroundColor = "white";
-    }
-
-    return () => {
+    } else {
       cursor.style.borderColor = "var(--dark)";
       cursorDot.style.borderColor = "var(--dark)";
       cursorDot.style.backgroundColor = "var(--dark)";
@@ -40,7 +40,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
 
   return (
     <Body>
-      {isClicked && <Circle style={{ backgroundColor: isHovered === id ? backgroundColor : "" }} />}
+      {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
       <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'>
         <StyledCard
           key={id}
@@ -75,7 +75,7 @@ const CircleAnimation = keyframes`
   opacity: 1;
 }
 100% {
-  transform: scale(10);
+  transform: scale(3);
   opacity: 1;
 }
 `;
@@ -162,16 +162,16 @@ const Shadow = styled.div`
   }
 `;
 
-  const Circle = styled.div`
+const Circle = styled.div`
   position: absolute;
   width: 70%;
   height: 100%;
   border-radius: 50%;
   background-color: transparent;
-  animation: ${CircleAnimation} 3s ease-out 1s;
+  animation: ${CircleAnimation} 1.5s ease-in-out forwards; 
   transform-origin: center;
   z-index: 9999;
-  transform: scale(0);
-`;  
+  opacity: 1; /* Ensure circle is visible during animation */
+`;
 
 export default Card;
