@@ -13,13 +13,21 @@ function Card({ id, path, title, label, color, backgroundColor }) {
     setIsClicked(true);
     setShowCircle(true);
     console.log(id);
-    setTimeout(() => {
+  
+    const circleAnimationTimeout = setTimeout(() => {
       setIsClicked(false);
-      setTimeout(() => {
-        window.location.href = `/${path}`;
-      }); 
     }, 1300);
+  
+    const redirectTimeout = setTimeout(() => {
+      window.location.href = `/${path}`;
+    }, 1200); 
+  
+    return () => {
+      clearTimeout(circleAnimationTimeout);
+      clearTimeout(redirectTimeout);
+    };
   };
+  
 
 
 
@@ -41,7 +49,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   return (
     <Body>
       {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
-      <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'>
+      {/* <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'> */}
         <StyledCard
           key={id}
           onClick={handleClick}
@@ -53,7 +61,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
           <Title>{title}</Title>
           <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
         </StyledCard>
-      </Link>
+      {/* </Link> */}
       <Shadow className={isHovered ? "hovered" : ""} />
     </Body>
   );
@@ -168,10 +176,10 @@ const Circle = styled.div`
   height: 100%;
   border-radius: 50%;
   background-color: transparent;
-  animation: ${CircleAnimation} 1.5s ease-in-out forwards; 
+  animation: ${CircleAnimation} 1s ease-in-out forwards; 
   transform-origin: center;
   z-index: 9999;
-  opacity: 1; /* Ensure circle is visible during animation */
+  opacity: 1; 
 `;
 
 export default Card;
