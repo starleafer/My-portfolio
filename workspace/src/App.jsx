@@ -56,13 +56,37 @@ function App({ router }) {
     },
   }
 
+  const buttonVariants = {
+    hidden: { 
+      opacity: 0,
+      transition: { 
+        duration: 0.5,
+        delay: 1 
+      }
+    },
+    visible: { 
+      opacity: 1,
+      transition: { 
+        duration: 0.5,
+        delay: 1 
+      }
+    }
+  };
+  
+
   return (
     <AppContainer>
       <Content>
         <Routes>
           <Route path="/" element={
            <>
+           <m.div 
+      initial="hidden" 
+      animate="visible" 
+      variants={buttonVariants}
+    >
               <Buttons />
+              </m.div>
               <AnimatePresence>
                 <Mainpage key={router.pathname} />
               </AnimatePresence>

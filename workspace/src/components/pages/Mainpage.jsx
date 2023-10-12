@@ -7,11 +7,10 @@ function Mainpage() {
   return (
       <>
         <Container
-          // className='AppContainer'
-          // initial={{ y: '100%'}}
-          // animate={{ y: '0%' }}
-          // transition={{ duration: 0.75, ease: "easeOut" }}
-          // exit={{ opacity: 1 }}
+          initial={{ x: '10%', opacity: 0 }}
+          animate={{ x: '0%', opacity: 1 }}
+          transition={{ duration: 0.75, ease: "easeOut" }}
+          exit={{ opacity: 1 }}
         >
           <TitlesContainer>
             <Title>Emil Stjernlöf</Title>
