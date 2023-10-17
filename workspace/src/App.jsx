@@ -87,41 +87,13 @@ function App({ router }) {
     <AppContainer>
       <Content>
         <Routes>
-          <Route path="/" element={
-           <>
-           <m.div 
-      initial="hidden" 
-      animate="visible" 
-      variants={buttonVariants}
-    >
-              <Buttons />
-              </m.div>
-              <AnimatePresence>
-                <Mainpage key={router.pathname} />
-              </AnimatePresence>
-            </>
-          } />
-          <Route path="/cleaning" element={
-           <>
-              <Buttons />
-              <AnimatePresence>
-                <Cleaning key={router.pathname} />
-              </AnimatePresence>
-            </>
-          } />
-          <Route path="/webbshop" element={
-            <>
-              <Buttons />
-              <AnimatePresence>
-                <WebbShop key={router.pathname} />
-              </AnimatePresence>
-            </>
-          } />
-          <Route path="/chatapp" element={<><Buttons /><ChatApp /></>} />
-          {/* <Route path="/webbshop" element={<><Buttons /><WebbShop /></>} /> */}
-          <Route path="/movieapp" element={<><Buttons /><MovieApp /></>} />
-          <Route path="/tictactoe" element={<><Buttons /><TicTacToe /></>} />
-          <Route path="/about" element={<><Buttons /><AboutMe /></>} />
+          <Route path="/" element={ <><Buttons /><Mainpage  /></>} />
+          <Route path="/cleaning" element={ <><Buttons /> <Cleaning  /></> } />
+          <Route path="/chatapp" element={ <><Buttons /> <ChatApp /></> } />
+          <Route path="/webbshop" element={ <><Buttons /> <WebbShop /></> } />
+          <Route path="/movieapp" element={ <><Buttons /> <MovieApp /></> } />
+          <Route path="/tictactoe" element={ <><Buttons /> <TicTacToe /></> } />
+          <Route path="/about" element={ <><Buttons /><AboutMe /></> } />
         </Routes>
         <m.div
           className={`cursor ${whiteCursor === 'active' ? 'whiteCursor' : ''}`}

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
+import { useButtonContext } from '../context/ButtonContext';
 
 function Card({ id, path, title, label, color, backgroundColor }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
-
+  const { setButtonFade } = useButtonContext();
 
   const handleClick = (event) => {
     event.preventDefault();
     setIsClicked(true);
     setShowCircle(true);
+    setButtonFade(true);
     console.log(id);
   
     const circleAnimationTimeout = setTimeout(() => {
@@ -28,9 +30,6 @@ function Card({ id, path, title, label, color, backgroundColor }) {
     };
   };
   
-
-
-
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
     const cursorDot = document.querySelector('.cursor-dot');
@@ -67,7 +66,6 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   );
 }
 
-
 const slide = keyframes`
     0% {
       left: -22vw;
@@ -94,7 +92,6 @@ const Body = styled.div`
   justify-content: center;
   align-items: center;
   `
-
 
 const StyledCard = styled.div`
   width: 10vw;
@@ -160,13 +157,14 @@ const Shadow = styled.div`
   width: 10vw;
   height: 2vh;
   border-radius: 50%;
+  margin-top: 40px;
   background-color: #d8d8d8;
   border: 2px solid transparent;
   transition: transform 0.3s, width 0.8s;
 
   &.hovered {
     width: 8vw;
-    transform: scale(0.8);
+    transform: scale(0.9);
   }
 `;
 

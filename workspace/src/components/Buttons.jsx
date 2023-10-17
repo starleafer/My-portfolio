@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
+import { useButtonContext } from '../context/ButtonContext';
 
 function Buttons() {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [fadeOut, setFadeOut] = useState(false);
+  const { buttonFade } = useButtonContext();
 
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
@@ -22,6 +24,23 @@ function Buttons() {
     setCopySuccessMessage(`Email copied!`);
   }
 
+  const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      transition: {
+        duration: 0.5,
+        delay: 1
+      }
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        delay: 1
+      }
+    }
+  };
+
   let worksclass = "";
   let aboutclass = "";
   let lightmode = "";
@@ -32,18 +51,30 @@ function Buttons() {
     aboutclass = "about";
   }
 
-  if(location.pathname === "/movieapp") {
+  if (location.pathname === "/movieapp") {
     lightmode = "lightmode";
   }
 
+
   useEffect(() => {
-    setFadeOut(false); 
+    setFadeOut(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (buttonFade) {
+      setFadeOut(true);
+    }
+  }, [buttonFade]);
+
   return (
-    <ButtonContainer style={{ opacity: fadeOut ? 0 : 1 }}>
+    <ButtonContainer
+      className={fadeOut ? 'fade-out' : ''}
+      initial="hidden"
+      animate="visible"
+      variants={buttonVariants}
+    >
       <Link to={`/`} style={{ textDecoration: "none" }}>
-      <StyledButton className={`${worksclass} ${lightmode}`}>
+        <StyledButton className={`${worksclass} ${lightmode}`}>
           Works
         </StyledButton>
       </Link>
@@ -53,7 +84,7 @@ function Buttons() {
         </StyledButton>
       </Link>
       <Contact>
-      <StyledButton onClick={copyEmail} className={`clicked ${lightmode}`}>
+        <StyledButton onClick={copyEmail} className={`clicked ${lightmode}`}>
           Contact
         </StyledButton>
         {copySuccessMessage && <CopyAlert>{copySuccessMessage}</CopyAlert>}
@@ -73,7 +104,25 @@ const slide = keyframes`
     }
   `;
 
-const ButtonContainer = styled.div`
+const fadein = keyframes`
+0% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
+`;
+
+const fadeout = keyframes`
+0% {
+  opacity: 1;
+}
+100% {
+  opacity: 0;
+}
+`;
+
+const ButtonContainer = styled(m.div)`
   height: 93.8vh;
   display: flex;
   flex-direction: column;
@@ -88,6 +137,15 @@ const ButtonContainer = styled.div`
   :last-child {
     margin-top: auto;
   }
+  
+  &.fade-in {
+    animation: ${fadein} 0.3s forwards;
+  }
+
+  &.fade-out {
+    animation: ${fadeout} 0.3s forwards;
+  }
+
 `;
 
 const StyledButton = styled(m.button)`
