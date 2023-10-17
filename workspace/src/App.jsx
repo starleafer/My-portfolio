@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
 import { motion as m } from 'framer-motion'
 import styled from 'styled-components';
@@ -17,6 +17,8 @@ import Buttons from './components/Buttons';
 
 function App({ router }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const location = useLocation();
+
 
   function saveMousePosition(x, y) {
     sessionStorage.setItem('mousePosition', JSON.stringify({ x, y }));
@@ -72,6 +74,13 @@ function App({ router }) {
       }
     }
   };
+
+
+   let whiteCursor = ''
+   let whiteCursorDot = ''
+   whiteCursor = location.pathname === '/movieapp' ? 'active' : '';
+   whiteCursorDot = location.pathname === '/movieapp' ? 'active' : '';
+
   
 
   return (
@@ -115,13 +124,13 @@ function App({ router }) {
           <Route path="/about" element={<><Buttons /><AboutMe /></>} />
         </Routes>
         <m.div
-          className='cursor'
+          className={`cursor ${whiteCursor === 'active' ? 'whiteCursor' : ''}`}
           variants={variants}
           animate="default"
           initial={false}
           transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
         >
-          <div className="cursor-dot" />
+          <div className={`cursor-dot ${whiteCursorDot === 'active' ? 'whiteCursorDot' : ''}`} />
         </m.div>
       </Content>
     </AppContainer>

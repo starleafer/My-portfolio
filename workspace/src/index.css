@@ -61,6 +61,16 @@ body {
   position: absolute;
 }
 
+.whiteCursor {
+  border-color: white;
+  color: white;
+}
+
+.whiteCursorDot {
+  border-color: white;
+  background-color: white;
+}
+
 .cursor:hover,
 .cursor-dot:hover {
   border-color: white;

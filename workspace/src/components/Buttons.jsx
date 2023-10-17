@@ -5,6 +5,7 @@ import { motion as m } from "framer-motion";
 
 function Buttons() {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
+  const [fadeOut, setFadeOut] = useState(false);
 
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
@@ -23,6 +24,7 @@ function Buttons() {
 
   let worksclass = "";
   let aboutclass = "";
+  let lightmode = "";
 
   if (location.pathname === "/") {
     worksclass = "mainpage";
@@ -30,20 +32,28 @@ function Buttons() {
     aboutclass = "about";
   }
 
+  if(location.pathname === "/movieapp") {
+    lightmode = "lightmode";
+  }
+
+  useEffect(() => {
+    setFadeOut(false); 
+  }, [location.pathname]);
+
   return (
-    <ButtonContainer>
+    <ButtonContainer style={{ opacity: fadeOut ? 0 : 1 }}>
       <Link to={`/`} style={{ textDecoration: "none" }}>
-        <StyledButton className={worksclass}>
+      <StyledButton className={`${worksclass} ${lightmode}`}>
           Works
         </StyledButton>
       </Link>
       <Link to={`/about`} style={{ textDecoration: "none" }}>
-        <StyledButton className={aboutclass}>
+        <StyledButton className={`${aboutclass} ${lightmode}`}>
           About
         </StyledButton>
       </Link>
       <Contact>
-        <StyledButton onClick={copyEmail} className="clicked">
+      <StyledButton onClick={copyEmail} className={`clicked ${lightmode}`}>
           Contact
         </StyledButton>
         {copySuccessMessage && <CopyAlert>{copySuccessMessage}</CopyAlert>}
@@ -97,6 +107,11 @@ const StyledButton = styled(m.button)`
 
   &.about {
     box-shadow: 6px 8px var(--dark);
+  }
+
+  &.lightmode {
+    color: #fff;
+    border-color: #fff;
   }
 
   &:hover {
