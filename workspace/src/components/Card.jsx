@@ -22,7 +22,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   
     const redirectTimeout = setTimeout(() => {
       window.location.href = `/${path}`;
-    }, 1200); 
+    }, 600); 
   
     return () => {
       clearTimeout(circleAnimationTimeout);
@@ -174,7 +174,7 @@ const Circle = styled.div`
   height: 100%;
   border-radius: 50%;
   background-color: transparent;
-  animation: ${CircleAnimation} 1s ease-in-out forwards; 
+  animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
   transform-origin: center;
   z-index: 9999;
   opacity: 1; 
