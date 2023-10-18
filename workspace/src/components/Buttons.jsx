@@ -85,22 +85,28 @@ function Buttons() {
         <StyledButton onClick={copyEmail} className={`clicked ${lightmode}`}>
           Contact
         </StyledButton>
-        {copySuccessMessage && <CopyAlert>{copySuccessMessage}</CopyAlert>}
+        {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
       </Contact>
     </ButtonContainer>
   );
 }
 
-const slide = keyframes`
-    0% {
-      left: 0vw;
-      opacity: 0;
-    }
-    100% {
-      left: 20%;
-      opacity: 1;
-    }
-  `;
+const slideAndFadeOut = keyframes`
+  0% {
+    left: 0vw;
+    opacity: 0;
+  }
+  20% {
+    left: 2vw;
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+`;
 
 const fadein = keyframes`
 0% {
@@ -185,7 +191,7 @@ const Contact = styled.div`
 `;
 const CopyAlert = styled.div`
   position: absolute;
-  left: 7vw;
+  left: 2vw;
   width: 6vw;
   height: 4vh;
   display: flex;
@@ -194,13 +200,14 @@ const CopyAlert = styled.div`
   font-weight: 800;
   font-size: 1.3em;
   border-radius: 10px;
-  background-color: var(--blueish);
-  color: #fff;
+  background-color: #54a051;
+  color: #000;
   transform: translateX(100%);
   transition: transform 0.3s;
+ 
 
   &.clicked {
-    animation: ${slide} 0.4s forwards;
+    animation: ${slideAndFadeOut} 1.5s forwards;
   }
 `;
 
