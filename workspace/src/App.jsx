@@ -111,7 +111,7 @@ function App({ router }) {
 
 const AppContainer = styled.div`
   display: flex;
-  height: 100vh;
+  /* height: 100%; */
   position: relative;
   overflow: hidden;
 
@@ -119,6 +119,7 @@ const AppContainer = styled.div`
 
 const Content = styled.div`
   flex-grow: 1;
+  /* height: 100%; */
 `;
 
 export default App

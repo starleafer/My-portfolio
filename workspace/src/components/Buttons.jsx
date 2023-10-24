@@ -134,7 +134,7 @@ const ButtonContainer = styled(m.div)`
   background-color: transparent;
   gap: 2.5vh;
   padding: 3vh 1vw 3vh 1vw;
-  position: absolute;
+  position: fixed;
   left: 0;
   z-index: 1;
 

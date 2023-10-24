@@ -24,6 +24,7 @@ body {
   background-color: white;
 }
 
+
 @keyframes rotate {
   0% {
     transform: rotate(0deg);
@@ -98,3 +99,8 @@ body {
   background-color: var(--greenish);
   color: #fff;
 }
+
+.page-links {
+  height: 3vh;
+}
+

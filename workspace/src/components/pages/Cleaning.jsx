@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion as m } from 'framer-motion';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function Cleaning() {
 
@@ -9,13 +12,22 @@ function Cleaning() {
       <Content>
         <InfoContainer>
           <Info>
-            <h1>DustBusters</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt hic ratione tempora ipsum libero ipsam optio vero cupiditate ullam natus repellat fugiat dignissimos, distinctio quo! Voluptatum ipsam veritatis laboriosam aspernatur.</p>
+            <h1 style={{ fontSize: '40px' }}>DustBusters</h1>
+            <h2>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</h2>
           </Info>
-          <Info>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse, suscipit! Accusamus eum est atque dolor, vel harum provident? Sint quibusdam tempora rerum! Id, voluptatibus illum.</Info>
-          <Info>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium nihil, possimus non ad consequuntur quo, qui animi necessitatibus nostrum iste accusantium fuga doloremque placeat dignissimos provident tempora porro tempore deleniti quisquam labore ducimus. Nulla, nesciunt?</Info>
+          <Links>
+            <Link to="https://dustbusters-207c6.web.app/" target="_blank" style={{ textDecoration: 'none', color: 'var(--dark)' }}>
+              <Info>
+                <Icon src='db.png' />
+                To the page!
+              </Info>
+            </Link>
+            <Link to="https://github.com/jonaelghid3y/DustBusters" target="_blank" style={{ textDecoration: 'none', color: 'var(--dark)' }}><Info><FontAwesomeIcon icon={faGithub} /> To the code!</Info></Link>
+          </Links>
         </InfoContainer>
         <ImageContainer>
+          <Image src='1.png' alt='bild' />
+          <Image src='2.png' alt='bild' />
         </ImageContainer>
       </Content>
     </Body>
@@ -32,41 +44,66 @@ const fadein = keyframes`
 `;
 
 const Body = styled(m.div)`
+  /* height: 100%; */
   background-color: var(--yellowish);
 `
 
 const Content = styled.div`
-  height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 70px;
+  margin-left: 50px;
   animation: ${fadein} 0.8s forwards;
+
 `
 
 const InfoContainer = styled.article`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  border: 1px black solid;
-  height: 80vh;
-  width: 30vw;
+  /* height: 50vh; */
+  width: 70vw;
+  gap: 10vw;
+`
+
+const Links = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25vw;
+  gap: 1vw;
 `
 const Info = styled.section`
-  border: 1px solid white;
-  height: 18vh;
-  margin-top: 50px;
-  width: 80%;
-  font-size: 21px;
-  font-weight: 700;
+  /* margin-top: 4vh; */
+  text-align: left;
+  width: 90%;
+  font-size: 1.3em;
+  font-weight: 600;
 `
 
 const ImageContainer = styled.div`
   display: flex;
-  border: 1px black solid;
-  height: 80vh;
-  width: 45vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  /* border: 1px black solid; */
+  /* height: 90vh; */
+  width: 75vw;
 `
+
+const Image = styled.img`
+  width: 100%;
+  /* height: 70vh; */
+  /* border: 1px solid black; */
+`
+
+const Icon = styled.img`
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+`
+
 // const Container = styled.div`
 //   width: 70vw;
 //   height: 80vh;

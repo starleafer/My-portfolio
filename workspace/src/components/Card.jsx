@@ -91,9 +91,11 @@ const Body = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
   `
 
 const StyledCard = styled.div`
+
   width: 10vw;
   height: 40vh;
   display: flex;
@@ -155,7 +157,7 @@ const Label = styled.div`
 
 const Shadow = styled.div`
   width: 10vw;
-  height: 2vh;
+  height: 2.1vh;
   border-radius: 50%;
   margin-top: 40px;
   background-color: #d8d8d8;

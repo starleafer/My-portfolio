@@ -40,11 +40,10 @@ const StyledProjectList = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 `
 
 const ProjectContainer = styled.div`
-    height: 43vh;
+    height:57.7vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
