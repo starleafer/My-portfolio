@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
 function Cleaning() {
+  const [hoveredLink, setHoveredLink] = useState(null);
 
   return (
     <Body>
@@ -16,13 +17,31 @@ function Cleaning() {
             <h2>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</h2>
           </Info>
           <Links>
-            <Link to="https://dustbusters-207c6.web.app/" target="_blank" style={{ textDecoration: 'none', color: 'var(--dark)' }}>
-              <Info>
-                <Icon src='db.png' />
-                To the page!
-              </Info>
+            <Link
+              to="https://dustbusters-207c6.web.app/"
+              target="_blank"
+              style={{ textDecoration: 'none' }}
+              onMouseEnter={() => setHoveredLink(1)}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+              <InfoLinks hoveredLink={hoveredLink === 1}>
+                {/* <Icon src='db.png' /> */}
+                <DB>DB</DB>
+                To the page
+              </InfoLinks>
             </Link>
-            <Link to="https://github.com/jonaelghid3y/DustBusters" target="_blank" style={{ textDecoration: 'none', color: 'var(--dark)' }}><Info><FontAwesomeIcon icon={faGithub} /> To the code!</Info></Link>
+            <Link
+              to="https://github.com/jonaelghid3y/DustBusters"
+              target="_blank"
+              style={{ textDecoration: 'none' }}
+              onMouseEnter={() => setHoveredLink(2)}
+              onMouseLeave={() => setHoveredLink(null)}
+            >
+              <InfoLinks hoveredLink={hoveredLink === 2}>
+                <FontAwesomeIcon icon={faGithub} style={{ marginRight: '5px' }} />
+                To the code
+              </InfoLinks>
+            </Link>
           </Links>
         </InfoContainer>
         <ImageContainer>
@@ -43,6 +62,15 @@ const fadein = keyframes`
 }
 `;
 
+const slide = keyframes`
+    0% {
+      left: 0vw;
+    }
+    100% {
+      left: 11vw;
+    }
+  `;
+
 const Body = styled(m.div)`
   /* height: 100%; */
   background-color: var(--yellowish);
@@ -55,7 +83,6 @@ const Content = styled.div`
   gap: 70px;
   margin-left: 50px;
   animation: ${fadein} 0.8s forwards;
-
 `
 
 const InfoContainer = styled.article`
@@ -73,12 +100,36 @@ const Links = styled.div`
   width: 25vw;
   gap: 1vw;
 `
+
+
 const Info = styled.section`
-  /* margin-top: 4vh; */
   text-align: left;
   width: 90%;
   font-size: 1.3em;
   font-weight: 600;
+`
+
+
+const InfoLinks = styled.div`
+  display: flex;
+  position: relative; 
+  align-items: center;
+  justify-content: center;
+  padding: 1vh;
+  width: 9vw;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: var(--dark);
+  background-color: var(--yellowish);
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+
+  &:hover {
+    background-color: var(--dark);
+    color: var(--yellowish)
+  }
+  
 `
 
 const ImageContainer = styled.div`
@@ -87,32 +138,29 @@ const ImageContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  /* border: 1px black solid; */
-  /* height: 90vh; */
   width: 75vw;
 `
 
 const Image = styled.img`
   width: 100%;
-  /* height: 70vh; */
-  /* border: 1px solid black; */
+  border-radius: 10px;
+`
+
+const DB = styled.p`
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+  border-radius: 50%;
+  border: 1px solid var(--dark)
 `
 
 const Icon = styled.img`
-  width: 23px;
-  height: 23px;
+  width: 22px;
+  height: 22px;
+  margin-right: 5px; 
   border-radius: 50%;
 `
-
-// const Container = styled.div`
-//   width: 70vw;
-//   height: 80vh;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border: 2px solid var(--dark);
-//   color: var(--dark);
-//   border-radius: 15px;
-// `
 
 export default Cleaning
