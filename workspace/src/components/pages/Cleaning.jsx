@@ -116,7 +116,7 @@ const InfoLinks = styled.div`
   align-items: center;
   justify-content: center;
   padding: 1vh;
-  width: 9vw;
+  min-width: 8vw;
   font-size: 1.5em;
   font-weight: 600;
   color: var(--dark);
@@ -147,20 +147,22 @@ const Image = styled.img`
 `
 
 const DB = styled.p`
+  display: flex;
   height: 30px;
   width: 30px;
-  font-size: 20px;
-  text-align: center;
-  margin: 0;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin: 0 5px 0 0;
   border-radius: 50%;
   border: 1px solid var(--dark)
 `
 
-const Icon = styled.img`
+/* const Icon = styled.img`
   width: 22px;
   height: 22px;
   margin-right: 5px; 
   border-radius: 50%;
-`
+` */
 
 export default Cleaning
