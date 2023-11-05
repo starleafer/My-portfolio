@@ -22,8 +22,8 @@
 body {
   margin: 0;
   background-color: white;
+  /* overflow: hidden; */
 }
-
 
 @keyframes rotate {
   0% {

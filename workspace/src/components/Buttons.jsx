@@ -192,16 +192,17 @@ const Contact = styled.div`
 const CopyAlert = styled.div`
   position: absolute;
   left: 2vw;
-  width: 6vw;
-  height: 4vh;
+  width: 110px;
+  height: 40px;
+  padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: 800;
-  font-size: 1.3em;
+  font-size: 1.1em;
   border-radius: 10px;
   background-color: #54a051;
-  color: #000;
+  color: #fff;
   transform: translateX(100%);
   transition: transform 0.3s;
  

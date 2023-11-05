@@ -114,7 +114,6 @@ const AppContainer = styled.div`
   /* height: 100%; */
   position: relative;
   overflow: hidden;
-
 `;
 
 const Content = styled.div`
