@@ -47,6 +47,9 @@ function Cleaning() {
         <ImageContainer>
           <Image src='1.png' alt='bild' />
           <Image src='2.png' alt='bild' />
+          <Image src='dbBook.png' alt='bild' />
+          <Image src='dbReviews.png' alt='bild' />
+          <Image src='dbLogin.png' alt='bild' />
         </ImageContainer>
       </Content>
     </Body>
@@ -134,6 +137,7 @@ const InfoLinks = styled.div`
 
 const ImageContainer = styled.div`
   display: flex;
+  margin-bottom: 10vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
