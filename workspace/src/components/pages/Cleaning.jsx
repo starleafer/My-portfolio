@@ -4,6 +4,7 @@ import { motion as m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 function Cleaning() {
   const [hoveredLink, setHoveredLink] = useState(null);
@@ -14,7 +15,7 @@ function Cleaning() {
         <InfoContainer>
           <Info>
             <h1 style={{ fontSize: '40px' }}>DustBusters</h1>
-            <h2>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</h2>
+            <h2 style={{ fontFamily: 'Roboto Flex', fontWeight: '500', fontSize: '25px'}}>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</h2>
           </Info>
           <Links>
             <Link
@@ -25,9 +26,8 @@ function Cleaning() {
               onMouseLeave={() => setHoveredLink(null)}
             >
               <InfoLinks hoveredLink={hoveredLink === 1}>
-                {/* <Icon src='db.png' /> */}
-                <DB>DB</DB>
-                To the page
+              To the page
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} style={{ fontSize: '18px' }} />
               </InfoLinks>
             </Link>
             <Link
@@ -38,8 +38,8 @@ function Cleaning() {
               onMouseLeave={() => setHoveredLink(null)}
             >
               <InfoLinks hoveredLink={hoveredLink === 2}>
-                <FontAwesomeIcon icon={faGithub} style={{ marginRight: '5px' }} />
                 To the code
+                <FontAwesomeIcon icon={faGithub} style={{ marginRight: '5px' }} />
               </InfoLinks>
             </Link>
           </Links>
@@ -90,16 +90,18 @@ const Content = styled.div`
 
 const InfoContainer = styled.article`
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   /* height: 50vh; */
   width: 70vw;
   gap: 10vw;
-`
+  `
 
 const Links = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: flex-end; */
+  margin-bottom: 20px;
+  align-items: flex-start;
   width: 25vw;
   gap: 1vw;
 `
@@ -118,19 +120,21 @@ const InfoLinks = styled.div`
   position: relative; 
   align-items: center;
   justify-content: center;
-  padding: 1vh;
-  min-width: 8vw;
+  font-family: 'Roboto Flex';
+  /* padding: 1vh; */
+  gap: 5px;
+  /* min-width: 8vw; */
   font-size: 1.5em;
-  font-weight: 600;
+  /* font-weight: 600; */
   color: var(--dark);
   background-color: var(--yellowish);
-  border: 1px solid black;
+  /* border: 1px solid black; */
   border-radius: 10px;
   overflow: hidden;
 
   &:hover {
-    background-color: var(--dark);
-    color: var(--yellowish)
+    /* background-color: var(--dark); */
+    color: #fff;
   }
   
 `
@@ -149,24 +153,5 @@ const Image = styled.img`
   width: 100%;
   border-radius: 10px;
 `
-
-const DB = styled.p`
-  display: flex;
-  height: 30px;
-  width: 30px;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin: 0 5px 0 0;
-  border-radius: 50%;
-  border: 1px solid var(--dark)
-`
-
-/* const Icon = styled.img`
-  width: 22px;
-  height: 22px;
-  margin-right: 5px; 
-  border-radius: 50%;
-` */
 
 export default Cleaning
