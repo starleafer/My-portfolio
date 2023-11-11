@@ -14,8 +14,8 @@ function Cleaning() {
       <Content>
         <InfoContainer>
           <Info>
-            <h1 style={{ fontSize: '40px' }}>DustBusters</h1>
-            <h2 style={{ fontFamily: 'Roboto Flex', fontWeight: '500', fontSize: '25px'}}>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</h2>
+            <PageTitle>DustBusters</PageTitle>
+            <PageDescription>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</PageDescription>
           </Info>
           <Links>
             <Link
@@ -26,8 +26,8 @@ function Cleaning() {
               onMouseLeave={() => setHoveredLink(null)}
             >
               <InfoLinks hoveredLink={hoveredLink === 1}>
-              To the page
-                <FontAwesomeIcon icon={faArrowUpRightFromSquare} style={{ fontSize: '18px' }} />
+                To the page
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare}  />
               </InfoLinks>
             </Link>
             <Link
@@ -65,22 +65,20 @@ const fadein = keyframes`
 }
 `;
 
-const slide = keyframes`
-    0% {
-      left: 0vw;
-    }
-    100% {
-      left: 11vw;
-    }
-  `;
+// const slide = keyframes`
+//     0% {
+//       left: 0vw;
+//     }
+//     100% {
+//       left: 11vw;
+//     }
+//   `;
 
 const Body = styled(m.div)`
-  /* height: 100%; */
   width: 100%;
   background-color: var(--yellowish);
-  overflow-y: auto; /* Add this line to enable vertical scrolling */
+  overflow-y: auto; 
 `;
-
 
 const Content = styled.div`
   display: flex;
@@ -93,6 +91,8 @@ const Content = styled.div`
 
   @media (max-width: 768px) {
       margin-left: 0;
+      gap: 20px;
+
   }
 `
 
@@ -101,24 +101,72 @@ const InfoContainer = styled.article`
   align-items: flex-end;
   width: 70vw;
   gap: 10vw;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0;
+
+  }
   `
+
+const Info = styled.section`
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  font-size: 1.3em;
+  font-weight: 600;
+
+`
+
+const PageTitle = styled.h1`
+font-size: 3.6rem;
+
+@media (max-width: 768px) {
+    font-size: 1.6rem;
+    margin: 25px 0 0 0 ;
+  }
+`
+
+const PageDescription = styled.h2`
+  font-family: Roboto Flex;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+`
 
 const Links = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
   align-items: flex-start;
-  width: 25vw;
+  width: 100%;
   gap: 1vw;
+
+  @media (max-width: 768px) {
+    flex-direction: row;
+    width: 70vw;
+    font-size: 0.4rem;
+    margin-top: 1rem;
+    /* justify-content: space-evenly; */
+    align-items: center;
+
+    :last-child {
+
+    @media (max-width: 768px) {
+      margin: 0;
+      margin-left: auto;
+  }
+  }
+}
+
+@media (max-width: 375px) {  
+    
+}
 `
 
 
-const Info = styled.section`
-  text-align: left;
-  width: 90%;
-  font-size: 1.3em;
-  font-weight: 600;
-`
 
 const InfoLinks = styled.div`
   display: flex;
