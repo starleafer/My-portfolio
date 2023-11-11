@@ -76,8 +76,11 @@ const slide = keyframes`
 
 const Body = styled(m.div)`
   /* height: 100%; */
+  width: 100%;
   background-color: var(--yellowish);
-`
+  overflow-y: auto; /* Add this line to enable vertical scrolling */
+`;
+
 
 const Content = styled.div`
   display: flex;
@@ -85,7 +88,12 @@ const Content = styled.div`
   align-items: center;
   gap: 70px;
   margin-left: 50px;
+  margin-top: 100px;
   animation: ${fadein} 0.8s forwards;
+
+  @media (max-width: 768px) {
+      margin-left: 0;
+  }
 `
 
 const InfoContainer = styled.article`

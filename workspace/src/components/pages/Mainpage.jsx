@@ -3,7 +3,7 @@ import Projectlist from '../Projectlist';
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion'
 
-function Mainpage() {
+function Mainpage({path}) {
   return (
         <Container
           initial={{ x: '10%', opacity: 0 }}

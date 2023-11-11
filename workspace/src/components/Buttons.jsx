@@ -4,11 +4,21 @@ import styled, { keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useButtonContext } from '../context/ButtonContext';
 
-function Buttons() {
+function Buttons({path}) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const { buttonFade } = useButtonContext();
+
+  let color = ""
+  let backGroundColor = ""
+
+  if (path === "/cleaning") {color = 'var(--dark)', backGroundColor = 'var(--yellowish)'}
+  if (path === "/chatapp") {color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)'}
+  if (path === "/webbshop") {color = 'bisque', backGroundColor = 'var(--greenish)'}
+  if (path === "/movieapp") {color = 'var(--redish)', backGroundColor = 'var(--dark)'}
+  if (path === "/tictactoe") {color = 'var(--blueish)', backGroundColor = 'var(--redish)'}
+
 
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
@@ -75,6 +85,8 @@ function Buttons() {
       initial="hidden"
       animate="visible"
       variants={buttonVariants}
+      color={color} // Pass the color as a prop
+      backGroundColor={backGroundColor} // Pass the background color as a prop
     >
       <Link to={`/`} style={{ textDecoration: "none" }}>
         <StyledButton className={`${worksclass} ${lightmode}`}>
@@ -153,7 +165,8 @@ const ButtonContainer = styled(m.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: transparent;
+  background-color: ${props => props.backGroundColor}; 
+  color: ${props => props.color}; 
   gap: 2.5vh;
   padding: 3vh 1vw 3vh 1vw;
   position: fixed;
@@ -161,11 +174,13 @@ const ButtonContainer = styled(m.div)`
   z-index: 1;
 
   @media (max-width: 768px) {
+    position: fixed;
     flex-direction: row; 
     align-items: flex-start;
     height: 5vh;
-    width: 87vw;
+    width: 88vw;
     padding: 16px 6vw;
+    z-index: 1;
   }
 
   :last-child {

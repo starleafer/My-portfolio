@@ -118,7 +118,7 @@ const StyledCard = styled.div`
     transition: transform 0.3s;
     
     .hovered {
-      border-color: white;
+      /* border-color: white; */
       color: white;
     }
   }
@@ -148,31 +148,32 @@ const StyledCard = styled.div`
     font-size: 1em;
 
     &:hover {
-      color: var(--dark);
+      color: var(--dark) !important;
+      background-color: transparent !important;
       transform: none;
       
-      .hovered {
+      /* .hovered {
         border-color: var(--dark);
+        background-color: transparent;
+
         color: var(--dark);
-      }
+      } */
     }
   }
 
   @media (max-width: 375px) {
-    /* width: 78vw;  */
 
     &:hover {
-      color: var(--dark);
+      color: var(--dark) !important;
+      background-color: transparent !important;
       transform: none;
-      
-      .hovered {
+
+      /* .hovered {
         border-color: var(--dark);
         color: var(--dark);
-      }
+      } */
     }
   }
-
-
 
 
 /* 
@@ -210,7 +211,18 @@ const Label = styled.div`
   color: #bbbbbb;
   border-radius: 15px;
   text-align: right;
-  `;
+
+    @media (max-width: 768) {
+    &.nohover {
+      color: #bbbbbb !important;
+    }
+  }
+    @media (max-width: 375px) {
+    &.nohover {
+      color: #bbbbbb !important;
+    }
+  }
+`;
 
 const Shadow = styled.div`
   width: 10vw;

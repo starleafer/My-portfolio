@@ -81,19 +81,27 @@ function App({ router }) {
   whiteCursor = location.pathname === '/movieapp' ? 'active' : '';
   whiteCursorDot = location.pathname === '/movieapp' ? 'active' : '';
 
+  const home = "/"
+  const cleaning = "/cleaning"
+  const chatapp = "/chatapp"
+  const webbshop = "/webbshop"
+  const movieapp = "/movieapp"
+  const tictactoe = "/tictactoe"
+  const about = "/about"
+
 
 
   return (
     <AppContainer>
       <Content>
         <Routes>
-          <Route path="/" element={<RouteContainer><Buttons /><Mainpage /></RouteContainer>} />
-          <Route path="/cleaning" element={<RouteContainer><Buttons /><Cleaning /></RouteContainer>} />
-          <Route path="/chatapp" element={<RouteContainer><Buttons /><ChatApp /></RouteContainer>} />
-          <Route path="/webbshop" element={<RouteContainer><Buttons /><WebbShop /></RouteContainer>} />
-          <Route path="/movieapp" element={<RouteContainer><Buttons /><MovieApp /></RouteContainer>} />
-          <Route path="/tictactoe" element={<RouteContainer><Buttons /><TicTacToe /></RouteContainer>} />
-          <Route path="/about" element={<RouteContainer><Buttons /><AboutMe /></RouteContainer>} />
+          <Route path={home} element={<RouteContainer><Buttons path={home} /><Mainpage /></RouteContainer>} />
+          <Route path={cleaning} element={<RouteContainer><Buttons path={cleaning} /><Cleaning /></RouteContainer>} />
+          <Route path={chatapp} element={<RouteContainer><Buttons path={chatapp} /><ChatApp /></RouteContainer>} />
+          <Route path={webbshop} element={<RouteContainer><Buttons path={webbshop} /><WebbShop /></RouteContainer>} />
+          <Route path={movieapp} element={<RouteContainer><Buttons path={movieapp} /><MovieApp /></RouteContainer>} />
+          <Route path={tictactoe} element={<RouteContainer><Buttons path={tictactoe} /><TicTacToe /></RouteContainer>} />
+          <Route path={about} element={<RouteContainer><Buttons path={about}/><AboutMe /></RouteContainer>} />
         </Routes>
 
         <m.div
@@ -132,8 +140,5 @@ const RouteContainer = styled.div`
      align-items: flex-start;
   }
 `
-
-
-
 
 export default App
