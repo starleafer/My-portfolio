@@ -159,7 +159,7 @@ const ButtonContainer = styled(m.div)`
     flex-direction: row; 
     align-items: flex-start;
     height: 5vh;
-    width: 88vw;
+    width: 87vw;
     padding: 16px 6vw;
 
   }
@@ -205,6 +205,8 @@ const StyledButton = styled(m.button)`
 
   @media (max-width: 768px) {
     font-size: 0.9em;
+    height: 3.5vh;
+
   }
 
   &.mainpage,
@@ -212,7 +214,9 @@ const StyledButton = styled(m.button)`
   box-shadow: 6px 8px var(--dark);
 
   @media (max-width: 768px) {
-    box-shadow: 2px 4px var(--dark);
+    box-shadow: none;
+    background-color: var(--dark);
+    color: #fff;
   }
 }
 

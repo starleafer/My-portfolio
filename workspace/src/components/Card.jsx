@@ -15,21 +15,21 @@ function Card({ id, path, title, label, color, backgroundColor }) {
     setShowCircle(true);
     setButtonFade(true);
     console.log(id);
-  
+
     const circleAnimationTimeout = setTimeout(() => {
       setIsClicked(false);
     }, 1300);
-  
+
     const redirectTimeout = setTimeout(() => {
       window.location.href = `/${path}`;
-    }, 600); 
-  
+    }, 600);
+
     return () => {
       clearTimeout(circleAnimationTimeout);
       clearTimeout(redirectTimeout);
     };
   };
-  
+
   useEffect(() => {
     const cursor = document.querySelector('.cursor');
     const cursorDot = document.querySelector('.cursor-dot');
@@ -48,17 +48,17 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   return (
     <Body>
       {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
-        <StyledCard
-          key={id}
-          onClick={handleClick}
-          onMouseEnter={() => setIsHovered(id)}
-          onMouseLeave={() => setIsHovered(null)}
-          className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
-          style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
-        >
-          <Title>{title}</Title>
-          <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
-        </StyledCard>
+      <StyledCard
+        key={id}
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(id)}
+        onMouseLeave={() => setIsHovered(null)}
+        className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
+        style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
+      >
+        <Title>{title}</Title>
+        <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
+      </StyledCard>
       <Shadow className={isHovered ? "hovered" : ""} />
     </Body>
   );
@@ -112,6 +112,17 @@ const StyledCard = styled.div`
   overflow: hidden;
   transition: transform 1s; 
 
+  &:hover {
+    color: white;
+    transform: translateY(-1.5vw);
+    transition: transform 0.3s;
+    
+    .hovered {
+      border-color: white;
+      color: white;
+    }
+  }
+
   @media (max-width: 1200px) {
     border-width: 2px;
     width: 8vw;
@@ -135,10 +146,30 @@ const StyledCard = styled.div`
     border-radius: 5px;
     flex-direction: row;
     font-size: 1em;
+
+    &:hover {
+      color: var(--dark);
+      transform: none;
+      
+      .hovered {
+        border-color: var(--dark);
+        color: var(--dark);
+      }
+    }
   }
 
   @media (max-width: 375px) {
-    width: 78vw;
+    width: 78vw; 
+    
+    &:hover {
+      color: var(--dark);
+      transform: none;
+      
+      .hovered {
+        border-color: var(--dark);
+        color: var(--dark);
+      }
+    }
   }
 
 
@@ -166,16 +197,7 @@ const StyledCard = styled.div`
     opacity: 1; 
   } */
   
-  &:hover {
-    color: white;
-    transform: translateY(-1.5vw);
-    transition: transform 0.3s;
-    
-    .hovered {
-      border-color: white;
-      color: white;
-    }
-  }
+ 
   `;
 
 const Title = styled.div`
