@@ -37,9 +37,13 @@ function Projectlist() {
 
 const StyledProjectList = styled.div`
     display: flex;
+    width: 80vw;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+
+    @media (max-width: 768px) {
+    width: 90vw;
+  }
 `
 
 const ProjectContainer = styled.div`
@@ -49,11 +53,17 @@ const ProjectContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     gap: 40px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+  }
 `
 
 const ListLabel = styled.h4`
-    font-size: 1.3em;
-    margin-bottom: 55px;
+    font-size: 1.5vw;
+    margin-bottom: 10px;
     align-self: flex-start; 
     color: white;
     -webkit-text-stroke-width: 1px;

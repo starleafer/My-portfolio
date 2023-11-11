@@ -59,42 +59,43 @@ function App({ router }) {
   }
 
   const buttonVariants = {
-    hidden: { 
+    hidden: {
       opacity: 0,
-      transition: { 
+      transition: {
         duration: 0.5,
-        delay: 1 
+        delay: 1
       }
     },
-    visible: { 
+    visible: {
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.5,
-        delay: 1 
+        delay: 1
       }
     }
   };
 
 
-   let whiteCursor = ''
-   let whiteCursorDot = ''
-   whiteCursor = location.pathname === '/movieapp' ? 'active' : '';
-   whiteCursorDot = location.pathname === '/movieapp' ? 'active' : '';
+  let whiteCursor = ''
+  let whiteCursorDot = ''
+  whiteCursor = location.pathname === '/movieapp' ? 'active' : '';
+  whiteCursorDot = location.pathname === '/movieapp' ? 'active' : '';
 
-  
+
 
   return (
     <AppContainer>
       <Content>
         <Routes>
-          <Route path="/" element={ <><Buttons /><Mainpage  /></>} />
-          <Route path="/cleaning" element={ <><Buttons /> <Cleaning  /></> } />
-          <Route path="/chatapp" element={ <><Buttons /> <ChatApp /></> } />
-          <Route path="/webbshop" element={ <><Buttons /> <WebbShop /></> } />
-          <Route path="/movieapp" element={ <><Buttons /> <MovieApp /></> } />
-          <Route path="/tictactoe" element={ <><Buttons /> <TicTacToe /></> } />
-          <Route path="/about" element={ <><Buttons /><AboutMe /></> } />
+          <Route path="/" element={<RouteContainer><Buttons /><Mainpage /></RouteContainer>} />
+          <Route path="/cleaning" element={<RouteContainer><Buttons /><Cleaning /></RouteContainer>} />
+          <Route path="/chatapp" element={<RouteContainer><Buttons /><ChatApp /></RouteContainer>} />
+          <Route path="/webbshop" element={<RouteContainer><Buttons /><WebbShop /></RouteContainer>} />
+          <Route path="/movieapp" element={<RouteContainer><Buttons /><MovieApp /></RouteContainer>} />
+          <Route path="/tictactoe" element={<RouteContainer><Buttons /><TicTacToe /></RouteContainer>} />
+          <Route path="/about" element={<RouteContainer><Buttons /><AboutMe /></RouteContainer>} />
         </Routes>
+
         <m.div
           className={`cursor ${whiteCursor === 'active' ? 'whiteCursor' : ''}`}
           variants={variants}
@@ -114,11 +115,25 @@ const AppContainer = styled.div`
   /* height: 100%; */
   position: relative;
   overflow: hidden;
-`;
+  `;
 
 const Content = styled.div`
-  flex-grow: 1;
-  /* height: 100%; */
-`;
+    flex-grow: 1;
+    /* height: 100%; */
+    `;
+const RouteContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+
+  @media (max-width: 768px) {
+     flex-direction: column;
+     font-size: 0.7em;
+     align-items: flex-start;
+  }
+`
+
+
+
 
 export default App

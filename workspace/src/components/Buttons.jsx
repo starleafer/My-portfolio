@@ -108,6 +108,23 @@ const slideAndFadeOut = keyframes`
   }
 `;
 
+// const slideAndFadeOutMobile = keyframes`
+//   0% {
+//     right: 80vw;
+//     opacity: 0;
+//   }
+//   20% {
+//     right: 85vw;
+//     opacity: 1;
+//   }
+//   70% {
+//     opacity: 1;
+//   }
+//   100% {
+//     opacity: 0;
+//   }
+// `;
+
 const fadein = keyframes`
 0% {
   opacity: 0;
@@ -138,8 +155,22 @@ const ButtonContainer = styled(m.div)`
   left: 0;
   z-index: 1;
 
+  @media (max-width: 768px) {
+    flex-direction: row; 
+    align-items: flex-start;
+    height: 5vh;
+    width: 88vw;
+    padding: 16px 6vw;
+
+  }
+
   :last-child {
     margin-top: auto;
+
+    @media (max-width: 768px) {
+      margin: 0 7px 0 0;
+      margin-left: auto;
+  }
   }
   
   &.fade-in {
@@ -153,7 +184,8 @@ const ButtonContainer = styled(m.div)`
 `;
 
 const StyledButton = styled(m.button)`
-  width: 5vw;
+  /* width: 5vw; */
+  min-width: 5vw;
   height: 4vh;
   border-radius: 10px;
   border: 1px solid black;
@@ -163,13 +195,26 @@ const StyledButton = styled(m.button)`
   transition: transform 0.5s, box-shadow 0.3s;
   z-index: 1;
 
-  &.mainpage {
-    box-shadow: 6px 8px var(--dark);
+  @media (max-width: 1200px) {
+    font-size: 0.9em;
   }
 
-  &.about {
-    box-shadow: 6px 8px var(--dark);
+  @media (max-width: 965px) {
+    font-size: 0.9em;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.9em;
+  }
+
+  &.mainpage,
+  &.about {
+  box-shadow: 6px 8px var(--dark);
+
+  @media (max-width: 768px) {
+    box-shadow: 2px 4px var(--dark);
+  }
+}
 
   &.lightmode {
     color: #fff;
@@ -184,10 +229,13 @@ const StyledButton = styled(m.button)`
 
 const Contact = styled.div`
   display: flex;
+  min-width: 5vw;
   flex-direction: row;
   gap: 15px;
   justify-content: center;
   align-items: center;
+
+  
 `;
 const CopyAlert = styled.div`
   position: absolute;
@@ -205,10 +253,24 @@ const CopyAlert = styled.div`
   color: #fff;
   transform: translateX(100%);
   transition: transform 0.3s;
+
+  @media (max-width: 768px) {
+   width: 60px;
+   height: 20px;
+   font-size: 0.8em;
+   padding: 1px;
+  }
  
 
   &.clicked {
     animation: ${slideAndFadeOut} 1.5s forwards;
+
+    @media (max-width: 768px) {
+      animation: ${slideAndFadeOut} 1.5s forwards;
+
+      transform: translateX(-100%); // Updated line for mobile
+
+    }
   }
 `;
 

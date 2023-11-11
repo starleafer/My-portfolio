@@ -91,7 +91,6 @@ const Content = styled.div`
 const InfoContainer = styled.article`
   display: flex;
   align-items: flex-end;
-  /* height: 50vh; */
   width: 70vw;
   gap: 10vw;
   `
@@ -99,7 +98,6 @@ const InfoContainer = styled.article`
 const Links = styled.div`
   display: flex;
   flex-direction: column;
-  /* justify-content: flex-end; */
   margin-bottom: 20px;
   align-items: flex-start;
   width: 25vw;
@@ -114,26 +112,20 @@ const Info = styled.section`
   font-weight: 600;
 `
 
-
 const InfoLinks = styled.div`
   display: flex;
   position: relative; 
   align-items: center;
   justify-content: center;
   font-family: 'Roboto Flex';
-  /* padding: 1vh; */
   gap: 5px;
-  /* min-width: 8vw; */
   font-size: 1.5em;
-  /* font-weight: 600; */
   color: var(--dark);
   background-color: var(--yellowish);
-  /* border: 1px solid black; */
   border-radius: 10px;
   overflow: hidden;
 
   &:hover {
-    /* background-color: var(--dark); */
     color: #fff;
   }
   

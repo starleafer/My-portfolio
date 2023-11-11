@@ -48,7 +48,6 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   return (
     <Body>
       {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
-      {/* <Link to={`/${path}`} style={{ textDecoration: 'none' }} className='link'> */}
         <StyledCard
           key={id}
           onClick={handleClick}
@@ -60,7 +59,6 @@ function Card({ id, path, title, label, color, backgroundColor }) {
           <Title>{title}</Title>
           <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
         </StyledCard>
-      {/* </Link> */}
       <Shadow className={isHovered ? "hovered" : ""} />
     </Body>
   );
@@ -91,17 +89,21 @@ const Body = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  margin-bottom: 15px;
+  /* height: 100%; */
+
+  @media (max-width: 768px) {
+    /* justify-content: flex-start; */
+  }
   `
 
 const StyledCard = styled.div`
-
   width: 10vw;
   height: 40vh;
   display: flex;
   flex-direction: column;
   padding: 0 20px;
-  font-size: 1.5em;
+  font-size: 1.5vw;
   font-weight: 700;
   color: var(--dark);
   border: 3px solid var(--dark);
@@ -110,6 +112,39 @@ const StyledCard = styled.div`
   overflow: hidden;
   transition: transform 1s; 
 
+  @media (max-width: 1200px) {
+    border-width: 2px;
+    width: 8vw;
+    height: 30vh;
+  }
+
+  @media (max-width: 965px) {
+    border-width: 1px;
+    width: 7vw;
+    padding: 0 10px;
+    font-size: 1.2vw;
+    border-radius: 10px;
+
+  }
+
+  @media (max-width: 768px) {
+    border-width: 1px;
+    height: 5vh;
+    width: 82vw;
+    align-items: center;
+    border-radius: 5px;
+    flex-direction: row;
+    font-size: 1em;
+  }
+
+  @media (max-width: 375px) {
+    width: 78vw;
+  }
+
+
+
+
+/* 
   &::before,
   &::after {
     content: '';
@@ -123,13 +158,13 @@ const StyledCard = styled.div`
 
   &:after {
     width: 3vw;
-  }
+  } 
 
-  &.clicked::before,
+   &.clicked::before,
   &.clicked::after {
     animation: ${slide} 0.4s forwards;
     opacity: 1; 
-  }
+  } */
   
   &:hover {
     color: white;
@@ -164,6 +199,14 @@ const Shadow = styled.div`
   border: 2px solid transparent;
   transition: transform 0.3s, width 0.8s;
 
+  @media (max-width: 965px) {
+    width: 8vw;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   &.hovered {
     width: 8vw;
     transform: scale(0.9);
@@ -180,6 +223,10 @@ const Circle = styled.div`
   transform-origin: center;
   z-index: 9999;
   opacity: 1; 
+
+  @media (max-width: 768px) {
+    border-radius: 15px;
+  }
 `;
 
 export default Card;
