@@ -141,7 +141,7 @@ const StyledCard = styled.div`
   @media (max-width: 768px) {
     border-width: 1px;
     height: 5vh;
-    width: 82vw;
+    width: 85vw;
     align-items: center;
     border-radius: 5px;
     flex-direction: row;
@@ -159,8 +159,8 @@ const StyledCard = styled.div`
   }
 
   @media (max-width: 375px) {
-    width: 78vw; 
-    
+    /* width: 78vw;  */
+
     &:hover {
       color: var(--dark);
       transform: none;

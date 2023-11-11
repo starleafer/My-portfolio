@@ -6,6 +6,7 @@ import { useButtonContext } from '../context/ButtonContext';
 
 function Buttons() {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
+  const [isContactActive, setIsContactActive] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const { buttonFade } = useButtonContext();
 
@@ -22,6 +23,10 @@ function Buttons() {
   function copyEmail() {
     navigator.clipboard.writeText(email);
     setCopySuccessMessage(`Email copied!`);
+    setIsContactActive(true); 
+    setTimeout(() => {
+      setIsContactActive(false);
+    }, 200);
   }
 
   const buttonVariants = {
@@ -81,8 +86,8 @@ function Buttons() {
           About
         </StyledButton>
       </Link>
-      <Contact>
-        <StyledButton onClick={copyEmail} className={`clicked ${lightmode}`}>
+      <Contact className={isContactActive ? 'active' : ''}>
+        <StyledButton onClick={() => { copyEmail(); setIsContactActive(true); }} className={`clicked ${lightmode}`}>
           Contact
         </StyledButton>
         {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
@@ -108,22 +113,22 @@ const slideAndFadeOut = keyframes`
   }
 `;
 
-// const slideAndFadeOutMobile = keyframes`
-//   0% {
-//     right: 80vw;
-//     opacity: 0;
-//   }
-//   20% {
-//     right: 85vw;
-//     opacity: 1;
-//   }
-//   70% {
-//     opacity: 1;
-//   }
-//   100% {
-//     opacity: 0;
-//   }
-// `;
+const slideAndFadeOutMobile = keyframes`
+  0% {
+    left: -16vw;
+    opacity: 0;
+  }
+  20% {
+    opacity: 0;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    right: 10%; 
+    opacity: 0;
+  }
+`;
 
 const fadein = keyframes`
 0% {
@@ -161,14 +166,13 @@ const ButtonContainer = styled(m.div)`
     height: 5vh;
     width: 87vw;
     padding: 16px 6vw;
-
   }
 
   :last-child {
     margin-top: auto;
 
     @media (max-width: 768px) {
-      margin: 0 7px 0 0;
+      margin: 0;
       margin-left: auto;
   }
   }
@@ -180,11 +184,9 @@ const ButtonContainer = styled(m.div)`
   &.fade-out {
     animation: ${fadeout} 0.3s forwards;
   }
-
 `;
 
 const StyledButton = styled(m.button)`
-  /* width: 5vw; */
   min-width: 5vw;
   height: 4vh;
   border-radius: 10px;
@@ -203,23 +205,6 @@ const StyledButton = styled(m.button)`
     font-size: 0.9em;
   }
 
-  @media (max-width: 768px) {
-    font-size: 0.9em;
-    height: 3.5vh;
-
-  }
-
-  &.mainpage,
-  &.about {
-  box-shadow: 6px 8px var(--dark);
-
-  @media (max-width: 768px) {
-    box-shadow: none;
-    background-color: var(--dark);
-    color: #fff;
-  }
-}
-
   &.lightmode {
     color: #fff;
     border-color: #fff;
@@ -229,16 +214,48 @@ const StyledButton = styled(m.button)`
     background-color: var(--dark);
     color: #fff;
   }
+
+  @media (max-width: 768px) {
+    font-size: 0.9em;
+    height: 3.5vh;
+
+    &:hover {
+      background-color: transparent;
+      color: inherit;
+    }
+  }
+
+  &.mainpage,
+  &.about {
+  box-shadow: 6px 8px var(--dark);
+
+  @media (max-width: 768px) {
+    box-shadow: none;
+    font-size: 0.9em;
+    height: 3.5vh;
+    background-color: var(--dark);
+    color: #fff;
+  }
+}
 `;
 
 const Contact = styled.div`
   display: flex;
   min-width: 5vw;
   flex-direction: row;
-  gap: 15px;
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 768px) {
+    &.active {
+      background-color: var(--dark);
+      color: #fff;
+      border-radius: 10px;
+    }
+  }
+
+  @media (max-width: 375px) {    
+  }
   
 `;
 const CopyAlert = styled.div`
@@ -256,24 +273,31 @@ const CopyAlert = styled.div`
   background-color: #54a051;
   color: #fff;
   transform: translateX(100%);
-  transition: transform 0.3s;
-
-  @media (max-width: 768px) {
-   width: 60px;
-   height: 20px;
-   font-size: 0.8em;
-   padding: 1px;
-  }
- 
+  transition: transform 0.3s; 
 
   &.clicked {
     animation: ${slideAndFadeOut} 1.5s forwards;
-
+    
     @media (max-width: 768px) {
-      animation: ${slideAndFadeOut} 1.5s forwards;
-
-      transform: translateX(-100%); // Updated line for mobile
-
+      
+      animation: ${slideAndFadeOutMobile} 1.5s forwards;
+      width: 60px;
+      height: 3.3vh;
+      font-size: 0.8em;
+      padding: 1px;
+      transform: translateX(-60%);
+      right: 0;
+    }
+    
+    @media (max-width: 375px) {
+      
+      animation: ${slideAndFadeOutMobile} 1.5s forwards;
+      width: 60px;
+      height: 3.3vh;
+      font-size: 0.8em;
+      padding: 1px;
+      transform: translateX(-80%);
+      right: 0;
     }
   }
 `;
