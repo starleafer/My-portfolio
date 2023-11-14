@@ -5,7 +5,8 @@ import { motion as m } from 'framer-motion';
 function ChatApp() {
 
   return (
-    <Body></Body>
+    <Body>
+    </Body>
   )
 }
 

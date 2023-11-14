@@ -6,7 +6,6 @@ function WebbShop() {
 
   
   return (
-    <Container>
       <Body
         // className='AppContainer'
         // initial={{ y: "100%" }}
@@ -16,16 +15,8 @@ function WebbShop() {
       >
         
       </Body>
-    </Container>
   );
 }
-
-const Container = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-`;
 
 const Body = styled(m.div)`
   background-color: var(--greenish);

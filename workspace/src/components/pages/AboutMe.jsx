@@ -76,8 +76,9 @@ const Content = styled.div`
 `;
 
 const Text = styled.p`
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1.1rem;
+  font-family: Roboto Flex;
 `;
 
 const Dark = styled(m.div)`
