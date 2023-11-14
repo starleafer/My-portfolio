@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import styled, { keyframes } from 'styled-components';
 import { useButtonContext } from '../context/ButtonContext';
+import { useNavigate } from 'react-router-dom';
+
 
 function Card({ id, path, title, label, color, backgroundColor }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
   const { setButtonFade } = useButtonContext();
+  const navigate = useNavigate(); 
 
-  const handleClick = (event) => {
-    event.preventDefault();
+  const handleClick = () => {
     setIsClicked(true);
     setShowCircle(true);
     setButtonFade(true);
@@ -18,17 +19,15 @@ function Card({ id, path, title, label, color, backgroundColor }) {
 
     const circleAnimationTimeout = setTimeout(() => {
       setIsClicked(false);
+      navigate(`/${path}`);
+      setButtonFade(false)
     }, 1300);
-
-    const redirectTimeout = setTimeout(() => {
-      window.location.href = `/${path}`;
-    }, 600);
 
     return () => {
       clearTimeout(circleAnimationTimeout);
-      clearTimeout(redirectTimeout);
     };
-  };
+  }
+  
 
   useEffect(() => {
     const cursor = document.querySelector('.cursor');

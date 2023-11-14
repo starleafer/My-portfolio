@@ -86,7 +86,7 @@ const Content = styled.div`
   align-items: center;
   gap: 70px;
   margin-left: 50px;
-  margin-top: 100px;
+  margin-top: 50px;
   animation: ${fadein} 0.8s forwards;
 
   @media (max-width: 768px) {

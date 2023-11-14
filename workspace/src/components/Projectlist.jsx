@@ -17,7 +17,7 @@ function Projectlist() {
 
     return (
         <StyledProjectList>
-            <ListLabel>// Some projects</ListLabel>
+            <ListLabel>/ Pick a project</ListLabel>
             <ProjectContainer>
                 {card.map(card => (
                     <Card

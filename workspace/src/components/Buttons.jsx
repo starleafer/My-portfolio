@@ -4,7 +4,7 @@ import styled, { keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useButtonContext } from '../context/ButtonContext';
 
-function Buttons({path}) {
+function Buttons({ path }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
@@ -13,11 +13,11 @@ function Buttons({path}) {
   let color = ""
   let backGroundColor = ""
 
-  if (path === "/cleaning") {color = 'var(--dark)', backGroundColor = 'var(--yellowish)'}
-  if (path === "/chatapp") {color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)'}
-  if (path === "/webbshop") {color = 'bisque', backGroundColor = 'var(--greenish)'}
-  if (path === "/movieapp") {color = 'var(--redish)', backGroundColor = 'var(--dark)'}
-  if (path === "/tictactoe") {color = 'var(--blueish)', backGroundColor = 'var(--redish)'}
+  if (path === "/cleaning") { color = 'var(--dark)', backGroundColor = 'var(--yellowish)' }
+  if (path === "/chatapp") { color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)' }
+  if (path === "/webbshop") { color = 'bisque', backGroundColor = 'var(--greenish)' }
+  if (path === "/movieapp") { color = 'var(--redish)', backGroundColor = 'var(--dark)' }
+  if (path === "/tictactoe") { color = 'var(--blueish)', backGroundColor = 'var(--redish)' }
 
 
   const location = useLocation();
@@ -33,7 +33,7 @@ function Buttons({path}) {
   function copyEmail() {
     navigator.clipboard.writeText(email);
     setCopySuccessMessage(`Email copied!`);
-    setIsContactActive(true); 
+    setIsContactActive(true);
     setTimeout(() => {
       setIsContactActive(false);
     }, 200);
@@ -68,7 +68,6 @@ function Buttons({path}) {
     lightmode = "lightmode";
   }
 
-
   useEffect(() => {
     setFadeOut(false);
   }, [location.pathname]);
@@ -81,12 +80,12 @@ function Buttons({path}) {
 
   return (
     <ButtonContainer
-      className={fadeOut ? 'fade-out' : ''}
+      className={`fade-${fadeOut ? 'out' : 'in'}`}
       initial="hidden"
       animate="visible"
       variants={buttonVariants}
-      color={color} // Pass the color as a prop
-      backGroundColor={backGroundColor} // Pass the background color as a prop
+      color={color}
+      backGroundColor={backGroundColor}
     >
       <Link to={`/`} style={{ textDecoration: "none" }}>
         <StyledButton className={`${worksclass} ${lightmode}`}>
