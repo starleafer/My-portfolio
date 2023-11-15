@@ -201,7 +201,6 @@ const ImageContainer = styled.div`
 const MobileImage = styled.img`
   width: 15.2%;
   border-radius: 10px;
-  border: 1px solid #eeb7b714;
 `
 
 const Browser = styled.div`
@@ -213,7 +212,7 @@ const Browser = styled.div`
 const BrowserImage = styled.img`
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #eeb7b714;
+  border: 1px solid #201c1cab;
 `;
 
 export default MovieApp
