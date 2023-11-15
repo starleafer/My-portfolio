@@ -420,7 +420,7 @@ const BrowserHeader = styled.h3`
 
 const Browser = styled.div`
   display: flex;
-  width: 100%;
+  width: 85%;
   flex-direction: column;
   align-items: center;
   padding-bottom: 4vh;
@@ -428,7 +428,7 @@ const Browser = styled.div`
 
   @media (max-width: 1440px) {
   align-items: flex-start;
-  width: 85%;
+  /* width: 85%; */
 }
 
 @media (max-width: 768px) {
