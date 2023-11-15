@@ -136,7 +136,7 @@ const slideAndFadeOutMobile = keyframes`
     opacity: 1;
   }
   100% {
-    right: 10%; 
+    right: 15%; 
     opacity: 0;
   }
 `;
@@ -230,7 +230,7 @@ const StyledButton = styled(m.button)`
   }
 
   @media (max-width: 768px) {
-    font-size: 0.9em;
+    font-size: 1.5em;
     height: 3.5vh;
 
     &:hover {
@@ -239,13 +239,17 @@ const StyledButton = styled(m.button)`
     }
   }
 
+  @media (max-width: 375px) {
+    font-size: 1.2em;
+  }
+
   &.mainpage,
   &.about {
   box-shadow: 6px 8px var(--dark);
 
   @media (max-width: 768px) {
     box-shadow: none;
-    font-size: 0.9em;
+    font-size: 1.2em;
     height: 3.5vh;
     background-color: var(--dark);
     color: #fff;
@@ -268,8 +272,6 @@ const Contact = styled.div`
     }
   }
 
-  @media (max-width: 375px) {    
-  }
   
 `;
 const CopyAlert = styled.div`
@@ -283,6 +285,7 @@ const CopyAlert = styled.div`
   justify-content: center;
   font-weight: 800;
   font-size: 1.1em;
+  font-family: 'Roboto Flex';
   border-radius: 10px;
   background-color: #54a051;
   color: #fff;
@@ -295,9 +298,9 @@ const CopyAlert = styled.div`
     @media (max-width: 768px) {
       
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
-      width: 60px;
-      height: 3.3vh;
-      font-size: 0.8em;
+      height: 3.5vh;
+      width: 13vw;
+      font-size: 2vw;
       padding: 1px;
       transform: translateX(-60%);
       right: 0;
@@ -306,9 +309,8 @@ const CopyAlert = styled.div`
     @media (max-width: 375px) {
       
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
-      width: 60px;
-      height: 3.3vh;
-      font-size: 0.8em;
+      width: 21vw;
+      font-size: 1em;
       padding: 1px;
       transform: translateX(-80%);
       right: 0;
