@@ -3,6 +3,7 @@
 :root {
   /* --primary-color: #22333b; */
   --dark: #1b1f2e;
+  --darker: #0f111a;
   --greenish: #497770;
   --yellowish: #f5ca80;
   --ocean: #00a6a6;
@@ -102,5 +103,15 @@ body {
 
 .page-links {
   height: 3vh;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark);
+  /* border-radius: 50%; */
 }
 

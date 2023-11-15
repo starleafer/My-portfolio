@@ -12,7 +12,7 @@ function Projectlist() {
         { id: 2, title: "Tic tac toe", path: 'tictactoe', label: "React Native", color: 'var(--blueish)', backgroundColor: 'var(--redish)' },
         { id: 3, title: "The webb shop", path: 'webbshop', label: "React.js", color: 'bisque', backgroundColor: 'var(--greenish)' },
         { id: 4, title: "The chat app", path: 'chatapp', label: "React Native", color: 'var(--neon-green)', backgroundColor: 'var(--light-purple)' },
-        { id: 5, title: "The movie app", path: 'movieapp', label: "React.js / React Native", color: 'var(--redish)', backgroundColor: 'var(--dark)' },
+        { id: 5, title: "The movie app", path: 'movieapp', label: "React.js / React Native", color: 'var(--redish)', backgroundColor: 'var(--darker)' },
     ]
 
     return (
@@ -63,11 +63,10 @@ const ProjectContainer = styled.div`
 
 const ListLabel = styled.h4`
     font-size: 1.5vw;
+    font-weight: 900;
     margin-bottom: 10px;
     align-self: flex-start; 
-    color: white;
-    -webkit-text-stroke-width: 1px;
-    -webkit-text-stroke-color: #504f4f; 
-`
+    color: var(--dark);
+    `
 
 export default Projectlist

@@ -45,11 +45,11 @@ function Cleaning() {
           </Links>
         </InfoContainer>
         <ImageContainer>
-          <Image src='1.png' alt='bild' />
-          <Image src='2.png' alt='bild' />
-          <Image src='dbBook.png' alt='bild' />
-          <Image src='dbReviews.png' alt='bild' />
-          <Image src='dbLogin.png' alt='bild' />
+          <Image src='dustbusters/1.png' alt='bild' />
+          <Image src='dustbusters/2.png' alt='bild' />
+          <Image src='dustbusters/dbBook.png' alt='bild' />
+          <Image src='dustbusters/dbReviews.png' alt='bild' />
+          <Image src='dustbusters/dbLogin.png' alt='bild' />
         </ImageContainer>
       </Content>
     </Body>
@@ -92,7 +92,6 @@ const Content = styled.div`
   @media (max-width: 768px) {
       margin-left: 0;
       gap: 20px;
-
   }
 `
 
@@ -127,7 +126,7 @@ font-size: 3.6rem;
   }
 `
 
-const PageDescription = styled.h2`
+const PageDescription = styled.h3`
   font-family: Roboto Flex;
   font-weight: 500;
 
@@ -165,8 +164,6 @@ const Links = styled.div`
     
 }
 `
-
-
 
 const InfoLinks = styled.div`
   display: flex;

@@ -16,7 +16,7 @@ function Buttons({ path }) {
   if (path === "/cleaning") { color = 'var(--dark)', backGroundColor = 'var(--yellowish)' }
   if (path === "/chatapp") { color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)' }
   if (path === "/webbshop") { color = 'bisque', backGroundColor = 'var(--greenish)' }
-  if (path === "/movieapp") { color = 'var(--redish)', backGroundColor = 'var(--dark)' }
+  if (path === "/movieapp") { color = 'var(--redish)', backGroundColor = 'var(--darker)' }
   if (path === "/tictactoe") { color = 'var(--blueish)', backGroundColor = 'var(--redish)' }
 
 
@@ -220,8 +220,8 @@ const StyledButton = styled(m.button)`
   }
 
   &.lightmode {
-    color: #fff;
-    border-color: #fff;
+    color: var(--redish);
+    border-color: var(--redish);
   }
 
   &:hover {
