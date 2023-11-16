@@ -3,21 +3,34 @@ import { Link, useLocation } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useButtonContext } from '../context/ButtonContext';
+import { useCardContext } from '../context/CardContext';
 
-function Buttons({ path }) {
+function Buttons({ props }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const { buttonFade } = useButtonContext();
+  const { card } = useCardContext();
 
-  let color = ""
-  let backGroundColor = ""
+  const currentPath = window.location.pathname.replace('/', '');
+  const currentCard = card.find(item => item.path === currentPath) || card[0];
+  const color = currentCard.color;
+  const backgroundColor = currentCard.backgroundColor;
 
-  if (path === "/cleaning") { color = 'var(--dark)', backGroundColor = 'var(--yellowish)' }
-  if (path === "/chatapp") { color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)' }
-  if (path === "/webbshop") { color = 'bisque', backGroundColor = 'var(--greenish)' }
-  if (path === "/movieapp") { color = 'var(--redish)', backGroundColor = 'var(--darker)' }
-  if (path === "/tictactoe") { color = 'var(--blueish)', backGroundColor = 'var(--redish)' }
+
+  console.log(currentPath)
+  // const currentIndex = card.findIndex(item => item.path === currentPath);
+  // const { color } = currentCard;
+
+
+  // let color = ""
+  // let backGroundColor = ""
+
+  // if (path === "/cleaning") { color = 'var(--dark)', backGroundColor = 'var(--yellowish)' }
+  // if (path === "/chatapp") { color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)' }
+  // if (path === "/webbshop") { color = 'bisque', backGroundColor = 'var(--greenish)' }
+  // if (path === "/movieapp") { color = 'var(--redish)', backGroundColor = 'var(--darker)' }
+  // if (path === "/tictactoe") { color = 'var(--blueish)', backGroundColor = 'var(--redish)' }
 
 
   const location = useLocation();
@@ -84,21 +97,39 @@ function Buttons({ path }) {
       initial="hidden"
       animate="visible"
       variants={buttonVariants}
-      color={color}
-      backGroundColor={backGroundColor}
     >
       <Link to={`/`} style={{ textDecoration: "none" }}>
-        <StyledButton className={`${worksclass} ${lightmode}`}>
-          Works
+        <StyledButton 
+          path={currentPath} 
+          style={{ borderColor: color }} 
+
+          color={color} 
+          backgroundColor={backgroundColor} 
+          className={`${worksclass} ${lightmode}`}
+          >
+          Home
         </StyledButton>
       </Link>
       <Link to={`/about`} style={{ textDecoration: "none" }}>
-        <StyledButton className={`${aboutclass} ${lightmode}`}>
+        <StyledButton 
+          path={currentPath}
+          style={{ borderColor: color }} 
+          color={color} 
+          backgroundColor={backgroundColor} 
+          className={`${aboutclass} ${lightmode}`}
+          >
           About
         </StyledButton>
       </Link>
       <Contact className={isContactActive ? 'active' : ''}>
-        <StyledButton onClick={() => { copyEmail(); setIsContactActive(true); }} className={`clicked ${lightmode}`}>
+        <StyledButton 
+          path={currentPath} 
+          style={{ borderColor: color }} 
+          color={color} 
+          backgroundColor={backgroundColor}
+          onClick={() => { copyEmail(); setIsContactActive(true); }} 
+          className={`clicked ${lightmode}`}
+          >
           Contact
         </StyledButton>
         {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
@@ -164,8 +195,7 @@ const ButtonContainer = styled(m.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${props => props.backGroundColor}; 
-  color: ${props => props.color}; 
+  background-color: transparent;  
   gap: 2.5vh;
   padding: 3vh 1vw 3vh 1vw;
   position: fixed;
@@ -207,6 +237,7 @@ const StyledButton = styled(m.button)`
   border: 1px solid black;
   font-size: 1.2em;
   font-weight: 600;
+  color: ${props => props.color};
   background-color: transparent;
   transition: transform 0.5s, box-shadow 0.3s;
   z-index: 1;
@@ -225,8 +256,9 @@ const StyledButton = styled(m.button)`
   }
 
   &:hover {
-    background-color: var(--dark);
-    color: #fff;
+    background-color: ${props => props.color || 'default-hover-color'};
+    color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {
