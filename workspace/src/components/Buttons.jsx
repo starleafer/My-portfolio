@@ -197,7 +197,7 @@ const ButtonContainer = styled(m.div)`
   align-items: center;
   background-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
   gap: 2.5vh;
-  padding: 3vh 1vw 3vh 1vw;
+  padding: 3vh 1vw;
   position: fixed;
   left: 0;
   z-index: 1;
@@ -231,11 +231,11 @@ const ButtonContainer = styled(m.div)`
 `;
 
 const StyledButton = styled(m.button)`
-  min-width: 5vw;
+  min-width: 6vw;
   height: 4vh;
   border-radius: 10px;
   border: 1px solid black;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 600;
   color: ${props => props.color};
   background-color: transparent;
@@ -262,7 +262,7 @@ const StyledButton = styled(m.button)`
   }
 
   @media (max-width: 768px) {
-    font-size: 1.5em;
+    font-size: 1.1em;
     height: 3.5vh;
 
     &:hover {

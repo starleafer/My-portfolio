@@ -81,6 +81,15 @@ const fadeInShadow = keyframes`
 }
 `;
 
+const fadeOutShadow = keyframes`
+  0% {
+    box-shadow: 1vw 1vw var(--dark);
+  }
+  100% {
+    box-shadow: 0 0 0 var(--dark);
+  }
+`;
+
 const CircleAnimation = keyframes`
 0% {
   transform: scale(0);
@@ -131,6 +140,10 @@ const StyledCard = styled.div`
       /* border-color: white; */
       color: white;
     }
+  }
+
+  &:not(:hover) {
+    animation: ${fadeOutShadow} 0.8s ease forwards;
   }
 
   @media (max-width: 1200px) {
