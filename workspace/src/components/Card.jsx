@@ -58,7 +58,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
         <Title>{title}</Title>
         <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
       </StyledCard>
-      <Shadow className={isHovered ? "hovered" : ""} />
+      {/* <Shadow className={isHovered ? "hovered" : ""} /> */}
     </Body>
   );
 }
@@ -71,6 +71,15 @@ const slide = keyframes`
       left: 100%;
     }
   `;
+
+const fadeInShadow = keyframes`
+0% {
+  box-shadow: 0 0 0 var(--dark);
+}
+100% {
+  box-shadow: 1vw 1vw var(--dark);
+}
+`;
 
 const CircleAnimation = keyframes`
 0% {
@@ -115,6 +124,8 @@ const StyledCard = styled.div`
     color: white;
     transform: translateY(-1.5vw);
     transition: transform 0.3s;
+    animation: ${fadeInShadow} 0.5s ease forwards;
+
     
     .hovered {
       /* border-color: white; */
