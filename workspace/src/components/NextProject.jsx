@@ -4,7 +4,7 @@ import { useCardContext } from '../context/CardContext';
 import { useTransitionContext } from '../context/TransitionContext';
 import { useNavigate } from 'react-router-dom';
 
-function NextProject() {
+function NextProject({ props }) {
     const { card } = useCardContext();
     const { runTransition, setRunTransition } = useTransitionContext();
     const navigate = useNavigate();
@@ -12,7 +12,8 @@ function NextProject() {
     const currentPath = window.location.pathname.replace('/', '');
     const currentCard = card.find(item => item.path === currentPath) || card[0];
     const currentIndex = card.findIndex(item => item.path === currentPath);
-    const { color } = currentCard;
+    const color = currentCard.color;
+    const backgroundColor = currentCard.backgroundColor;
 
     const handleClick = () => {
         setRunTransition(true); 
@@ -36,8 +37,11 @@ function NextProject() {
     return (
         <Container>
             <NextButton
-                onClick={handleClick}
-                style={{ color: color, borderColor: color }}>
+              onClick={handleClick}
+              style={{ color: color, borderColor: color }}
+              color={color} 
+              backgroundColor={backgroundColor} 
+              >
                 Next Project <Arrow>&gt;</Arrow>
             </NextButton>
         </Container>
@@ -76,8 +80,9 @@ const NextButton = styled.button`
   font-weight: 600;
   
   &:hover {
-    color: #fff !important;
-    border-color: #fff !important;
+    background-color: ${props => props.color || 'default-hover-color'};
+    color: ${props => props.backgroundColor || 'default-hover-color'} !important;
+    cursor: pointer;
   }
 
   @media (max-width: 768px) {

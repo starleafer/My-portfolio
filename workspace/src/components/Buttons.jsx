@@ -102,7 +102,6 @@ function Buttons({ props }) {
         <StyledButton 
           path={currentPath} 
           style={{ borderColor: color }} 
-
           color={color} 
           backgroundColor={backgroundColor} 
           className={`${worksclass} ${lightmode}`}
