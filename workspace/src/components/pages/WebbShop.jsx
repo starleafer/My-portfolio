@@ -1,20 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion';
+import NextProject from '../NextProject';
+import { useTransitionContext } from '../../context/TransitionContext';
+import TransitionScreen from '../TransitionScreen';
 
 function WebbShop() {
+  const { runTransition } = useTransitionContext();
 
   
   return (
-      <Body
-        // className='AppContainer'
-        // initial={{ y: "100%" }}
-        // animate={{ y: "0%" }}
-        // transition={{ duration: 0.75, ease: "easeOut" }}
-        // exit={{ opacity: 1 }}
-      >
+    <>
+      <Body>
+        <NextProject />
         
       </Body>
+      {
+      runTransition === true
+      ? <TransitionScreen />
+      : ""
+    }
+    </>
   );
 }
 

@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion';
+import NextProject from '../NextProject';
+import TransitionScreen from '../TransitionScreen';
+import { useTransitionContext } from '../../context/TransitionContext';
 
 function ChatApp() {
+  const { runTransition } = useTransitionContext();
 
   return (
-    <Body>
-    </Body>
+    <>
+      <Body>
+        <NextProject />
+      </Body>
+      {
+      runTransition === true
+      ? <TransitionScreen />
+      : ""
+    }
+    </>
   )
 }
 
 const Body = styled(m.div)`
   background-color: var(--light-purple);
   height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
 `
 // const Container = styled.div`
 //   width: 70vw;

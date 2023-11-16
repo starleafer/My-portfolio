@@ -2,13 +2,23 @@ import React from 'react'
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion'
 import NextProject from '../NextProject';
+import TransitionScreen from '../TransitionScreen';
+import { useTransitionContext } from '../../context/TransitionContext';
 
 function TicTacToe() {
-  return (
+  const { runTransition } = useTransitionContext();
 
-    <Body>
-      <NextProject />
-    </Body>
+  return (
+    <>
+      <Body>
+        <NextProject />
+      </Body>
+      {
+      runTransition === true
+      ? <TransitionScreen />
+      : ""
+    }
+    </>
   )
 }
 
