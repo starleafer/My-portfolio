@@ -25,6 +25,9 @@ function TicTacToe() {
 
 
 const Body = styled(m.div)`
+display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--redish);
   height: 100vh;
   width: 100%

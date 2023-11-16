@@ -25,6 +25,9 @@ function WebbShop() {
 }
 
 const Body = styled(m.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--greenish);
   height: 100vh;
   width: 100%

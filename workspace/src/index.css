@@ -105,6 +105,10 @@ body {
   height: 3vh;
 }
 
+.dustbusters {
+  font-family: 'Roboto Flex';
+  font-weight: 800;
+}
 .scrollCleaning {
   ::-webkit-scrollbar {
     width: 5px;

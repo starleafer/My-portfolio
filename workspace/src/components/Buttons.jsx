@@ -221,9 +221,9 @@ const ButtonContainer = styled(m.div)`
   }
   }
   
-  /* &.fade-in {
-    animation: ${fadein} forwards;
-  } */
+  &.fade-in {
+    animation: ${fadein} 0.1s forwards;
+  }
 
   &.fade-out {
     animation: ${fadeout} 0.3s forwards;

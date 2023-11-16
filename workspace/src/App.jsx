@@ -1,87 +1,23 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import React, { useState, useEffect } from 'react'
-import { motion as m } from 'framer-motion'
 import styled from 'styled-components';
 import Mainpage from './components/pages/Mainpage'
 import ChatApp from './components/pages/ChatApp';
 import WebbShop from './components/pages/WebbShop';
 import MovieApp from './components/pages/MovieApp';
 import TicTacToe from './components/pages/TicTacToe';
-import '../src/index.css'
-import _ from 'lodash';
 import Cleaning from './components/pages/Cleaning';
 import AboutMe from './components/pages/AboutMe';
 import Buttons from './components/Buttons';
-import NextProject from './components/NextProject';
 import { CardProvider } from './context/CardContext';
 import { TransitionProvider } from './context/TransitionContext';
-import CustomScrollbar from './components/CustomScrollbar';
+import '../src/index.css'
+import _ from 'lodash';
 
-function App({ router }) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+function App({ router, props }) {
+  const [bgColor, setBgColor ] = useState('')
   const location = useLocation();
-
-
-  function saveMousePosition(x, y) {
-    sessionStorage.setItem('mousePosition', JSON.stringify({ x, y }));
-  }
-
-  function getSavedMousePosition() {
-    const savedPosition = sessionStorage.getItem('mousePosition');
-    return savedPosition ? JSON.parse(savedPosition) : null;
-  }
-  useEffect(() => {
-    const savedPosition = getSavedMousePosition();
-
-    if (savedPosition) {
-      setMousePosition(savedPosition);
-    }
-
-    const mouseMove = e => {
-      const x = e.clientX;
-      const y = e.clientY;
-
-      setMousePosition({ x, y });
-      saveMousePosition(x, y);
-    }
-
-
-    window.addEventListener("mousemove", mouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", mouseMove);
-    };
-  }, []);
-
-  // const variants = {
-  //   default: {
-  //     x: mousePosition.x - 16,
-  //     y: mousePosition.y - 16,
-  //   },
-  // }
-
-  // const buttonVariants = {
-  //   hidden: {
-  //     opacity: 0,
-  //     transition: {
-  //       duration: 0.5,
-  //       delay: 1
-  //     }
-  //   },
-  //   visible: {
-  //     opacity: 1,
-  //     transition: {
-  //       duration: 0.5,
-  //       delay: 1
-  //     }
-  //   }
-  // };
-
-
-  // let redCursor = ''
-  // let redCursorDot = ''
-  // redCursor = location.pathname === '/movieapp' ? 'active' : '';
-  // redCursorDot = location.pathname === '/movieapp' ? 'active' : '';
 
   const home = "/"
   const cleaning = "/cleaning"
@@ -91,12 +27,37 @@ function App({ router }) {
   const tictactoe = "/tictactoe"
   const about = "/about"
 
+  useEffect(() => {
+    let pathColor = '';
+  
+    switch (location.pathname) {
+      case '/cleaning':
+        pathColor = 'var(--yellowish)';
+        break;
+      case '/tictactoe':
+        pathColor = 'var(--redish)';
+        break;
+      case '/webbshop':
+        pathColor = 'var(--greenish)';
+        break;
+      case '/chatapp':
+        pathColor = 'var(--light-purple)';
+        break;
+      case '/movieapp':
+        pathColor = 'var(--darker)';
+        break;
 
+      default:
+        pathColor = '';
+    }
+  
+    setBgColor(pathColor);
+  }, [location.pathname]);
 
   return (
     <CardProvider>
         <TransitionProvider>
-          <AppContainer>
+        <AppContainer color={bgColor}>
             <Content>
               <Routes>
                 <Route path={home} element={
@@ -147,16 +108,6 @@ function App({ router }) {
                   </RouteContainer>
                 } />
               </Routes>
-
-              {/* <m.div
-              className={`cursor ${redCursor === 'active' ? 'redCursor' : ''}`}
-              variants={variants}
-              animate="default"
-              initial={false}
-              transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
-              >
-              <div className={`cursor-dot ${redCursorDot === 'active' ? 'redCursorDot' : ''}`} />
-            </m.div> */}
             </Content>
           </AppContainer>
         </TransitionProvider>
@@ -169,6 +120,8 @@ const AppContainer = styled.div`
   /* height: 100%; */
   position: relative;
   overflow: hidden;
+  background-color: ${props => props.color};
+
   `;
 
 const Content = styled.div`

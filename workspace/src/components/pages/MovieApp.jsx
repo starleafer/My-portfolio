@@ -15,9 +15,7 @@ function MovieApp() {
     <Body>
       <Content>
         <InfoSection>
-          {/* <Header> */}
           <PageTitle>Movie Night</PageTitle>
-          {/* </Header> */}
           <Info>
             <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
               Movie Night seamlessly integrates with the OMDb API, allowing users to access a wealth of information about a diverse range of movies. From classic films to the latest releases, users can explore details such as title, release date, genre, cast, runtime, ratings, and more.
@@ -124,7 +122,6 @@ const glow = keyframes`
   }
 `;
 
-
 const Body = styled(m.div)`
   position: relative;
   display: flex;
@@ -155,21 +152,12 @@ const Content = styled.div`
   padding: 100px 0 30px 0;
   gap: 5vh; 
   animation: ${fadein} 0.8s forwards;
-  /* border: 1px solid blue; */
-
-  @media (max-width: 1440px) {
-    /* align-items: flex-start; */
-  }
 
   @media (max-width: 1024px) {
     width: 85%;
     padding-top: 50px;
     margin: 0 10px 0 0;
     gap: 20px;
-  }
-
-  @media (max-width: 768px) {
-    /* align-items: center; */
   }
   `
 
@@ -192,15 +180,6 @@ const InfoSection = styled.div`
   margin: 0;
 }
 `
-// const Header = styled.div`
-// display: flex;
-// /* justify-content: center; */
-// border: 1px solid red;
-
-// @media (max-width: 1024px) {
-//     width: 95%;
-//   }
-// `
 
 const Info = styled.section`
   display: flex;
@@ -245,12 +224,12 @@ color: var(--redish);
 }
 
 @media (max-width: 965px) {
-    font-size: 2.5vw;
-  }
+  font-size: 2.5vw;
+}
 
 @media (max-width: 768px) {
   font-size: 1.8em;
-  }
+}
 
 @media (max-width: 425px) {
   font-size: 1.8em;
@@ -278,16 +257,10 @@ const LinkGroup = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: flex-start; */
   /* border: 1px solid red; */
-
-  @media (max-width: 768px) {
-    /* flex-direction: row; */
-  }
 
   @media (max-width: 425px) {
    width: 100%;
-   /* align-items: flex-end; */
    flex-direction: row-reverse;
    align-items: center;
    justify-content: center;
@@ -309,7 +282,6 @@ const Github = styled.div`
   }
   @media (max-width: 1024px) {
     font-size: 1vw;
-    /* width: 15vw; */
   }
   @media (max-width: 965px) {
     font-size: 0.8vw;
@@ -324,10 +296,7 @@ const Github = styled.div`
 
 @media (max-width: 425px) {
   width: 100%;
-  /* justify-content: space-between; */
 }
-
-
 `
 const LinkContainer = styled.div`
   display: flex;
@@ -340,15 +309,15 @@ const LinkContainer = styled.div`
 
   @media (max-width: 1024px) {
     align-items: center;
-
   }
+
   @media (max-width: 425px) {
     flex-direction: row;
     width: 100%;
     justify-content: flex-start;
     margin: 0;
-}
-  `
+  }
+`
 
 const InfoLinks = styled.div`
   display: flex;
@@ -385,7 +354,6 @@ const InfoLinks = styled.div`
       width: 17vw;
       padding: 2vw;
       margin-left: 2vw;
-      /* flex-direction: row; */
     }
   }
 `
@@ -403,9 +371,7 @@ const Native = styled.div`
   display: flex;
   width: 85%;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
-  /* align-self: flex-start; */
   /* border: 1px  solid green; */
 
 @media (max-width: 1440px) {
@@ -419,19 +385,10 @@ const Native = styled.div`
 `
 
 const ImageContainer = styled.div`
-  /* display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  margin-bottom: 10vh;
-  gap: 2vw; 
-  width: 85%; */
-
   display: grid;
-  grid-template-columns: repeat(3, 1fr);  /* 3 columns */
-  grid-template-rows: repeat(2, 1fr);     /* 2 rows */
+  grid-template-columns: repeat(3, 1fr);  
+  grid-template-rows: repeat(2, 1fr);    
   gap: 2vw; 
-
-
   min-width: 50%;
   margin: 0;
   /* border: 1px solid cyan; */
@@ -453,7 +410,6 @@ const ImageContainer = styled.div`
   grid-template-rows: repeat(2, 1fr); 
   }
 `
-
 
 const MobileImage = styled.img`
   width: 100%;
@@ -479,14 +435,12 @@ const Browser = styled.div`
 
   @media (max-width: 1440px) {
   align-items: flex-start;
-  /* width: 85%; */
-}
+  }
 
-@media (max-width: 768px) {
-  align-items: center;
-  width: 100%;
-
-}
+  @media (max-width: 768px) {
+    align-items: center;
+    width: 100%;
+  }
 `
 
 const BrowserImage = styled.img`

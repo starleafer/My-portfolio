@@ -17,11 +17,14 @@ function Cleaning() {
     <>
     <Body>
       <Content>
-        <NextProject />
         <InfoContainer>
           <Info>
-            <PageTitle>DustBusters</PageTitle>
-            <PageDescription>Provides all types of cleaning services that you may or may not need! All functional booking, log in and review capabilities.</PageDescription>
+            <PageTitle>Dust Busters</PageTitle>
+        <NextProject />
+            <PageDescription>Welcome to <span className='dustbusters'>Dust Busters</span>, a Firebase-hosted website blending front-end creativity with a robust back-end, featuring CRUD logic. The React-based front-end ensures an intuitive user experience, while the dynamic back-end empowers users with seamless booking, secure log-in, and interactive review functionalities. 
+            <br />
+            <br />
+            Firebase's streamlined hosting guarantees swift and secure deployment, making Dust Busters a dynamic and reliable online destination.</PageDescription>
           </Info>
           <Links>
             <Link
@@ -77,15 +80,6 @@ const fadein = keyframes`
   opacity: 1;
 }
 `;
-
-// const slide = keyframes`
-//     0% {
-//       left: 0vw;
-//     }
-//     100% {
-//       left: 11vw;
-//     }
-//   `;
 
 const Body = styled(m.div)`
   width: 100%;
