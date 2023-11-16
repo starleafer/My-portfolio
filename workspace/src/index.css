@@ -105,13 +105,56 @@ body {
   height: 3vh;
 }
 
-::-webkit-scrollbar {
-  width: 7px;
-  background: transparent;
+.scrollCleaning {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--dark);
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: var(--dark);
-  /* border-radius: 50%; */
+.scrollChatApp {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--neon-green);
+  }
+  ;
 }
 
+.scrollWebbShop {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: bisque;
+  }
+}
+
+.scrollMovies {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--redish);
+  }
+
+.scrollTictac {
+  ::-webkit-scrollbar {
+    width: 5px;
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--blueish);
+  }
+}
+
+
+
+}

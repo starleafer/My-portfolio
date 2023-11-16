@@ -30,9 +30,9 @@ function NextProject({ props }) {
         };
     };
 
-    useEffect(() => {
-        console.log("runTransition changed:", runTransition);
-    }, [runTransition]);
+    // useEffect(() => {
+    //     console.log("runTransition changed:", runTransition);
+    // }, [runTransition]);
     
     return (
         <Container>
@@ -90,7 +90,7 @@ const NextButton = styled.button`
     font-size: 1.3vw;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
     font-size: 2vw;
     width: 19vw;
     padding: 2vw;

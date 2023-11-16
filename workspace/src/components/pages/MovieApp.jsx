@@ -210,6 +210,7 @@ const Info = styled.section`
   gap: 5vw;
   font-size: 1.1em;
   font-weight: 600;
+  /* border: 1px solid green; */
 
   @media (max-width: 1440px) {
     font-size: 1vw;
@@ -225,7 +226,7 @@ const Info = styled.section`
     font-size: 1.7vw;
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
   font-size: 2.9vw;
   flex-direction: column;
   align-items: flex-start;
@@ -251,7 +252,7 @@ color: var(--redish);
   font-size: 1.8em;
   }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
   font-size: 1.8em;
 }
 `
@@ -268,7 +269,7 @@ const PageDescription = styled.h3`
     width: 50vw;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
     font-size: 1.1em;
     width: 100%;
   }
@@ -284,7 +285,7 @@ const LinkGroup = styled.div`
     /* flex-direction: row; */
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
    width: 100%;
    /* align-items: flex-end; */
    flex-direction: row-reverse;
@@ -321,7 +322,7 @@ const Github = styled.div`
     border: none; 
 }
 
-@media (max-width: 375px) {
+@media (max-width: 425px) {
   width: 100%;
   /* justify-content: space-between; */
 }
@@ -341,8 +342,9 @@ const LinkContainer = styled.div`
     align-items: center;
 
   }
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
     flex-direction: row;
+    width: 100%;
     justify-content: flex-start;
     margin: 0;
 }
@@ -378,7 +380,7 @@ const InfoLinks = styled.div`
       color: var(--darker);
     }
 
-    @media (max-width: 375px) {
+    @media (max-width: 425px) {
       font-size: 2vw;
       width: 17vw;
       padding: 2vw;

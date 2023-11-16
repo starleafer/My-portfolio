@@ -15,6 +15,7 @@ import Buttons from './components/Buttons';
 import NextProject from './components/NextProject';
 import { CardProvider } from './context/CardContext';
 import { TransitionProvider } from './context/TransitionContext';
+import CustomScrollbar from './components/CustomScrollbar';
 
 function App({ router }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -94,73 +95,71 @@ function App({ router }) {
 
   return (
     <CardProvider>
-      <TransitionProvider>
-        <AppContainer>
-          <Content>
-            <Routes>
-              <Route path={home} element={
-                <RouteContainer>
-                  <Buttons path={home} />
-                  <Mainpage />
-                </RouteContainer>
-              } />
+        <TransitionProvider>
+          <AppContainer>
+            <Content>
+              <Routes>
+                <Route path={home} element={
+                  <RouteContainer>
+                    <Buttons path={home} />
+                    <Mainpage />
+                  </RouteContainer>
+                } />
+                <Route path={cleaning} element={
+                  <RouteContainer className='scrollCleaning'>
+                    <Buttons path={cleaning} />
+                    <Cleaning />
+                  </RouteContainer>
+                } />
 
-              <Route path={cleaning} element={
-                <RouteContainer>
-                  <Buttons path={cleaning} />
-                  <Cleaning />
-                </RouteContainer>
-                
-              } />
+                <Route path={chatapp} element={
+                  <RouteContainer className='scrollChatApp'>
+                    <Buttons path={chatapp} />
+                    <ChatApp />
+                  </RouteContainer>
+                } />
 
-              <Route path={chatapp} element={
-                <RouteContainer>
-                  <Buttons path={chatapp} />
-                  <ChatApp />
-                </RouteContainer>
-              } />
+                <Route path={webbshop} element={
+                  <RouteContainer className='scrollWebbShop'>
+                    <Buttons path={webbshop} />
+                    <WebbShop />
+                  </RouteContainer>
+                } />
 
-              <Route path={webbshop} element={
-                <RouteContainer>
-                  <Buttons path={webbshop} />
-                  <WebbShop />
-                </RouteContainer>
-              } />
+                <Route path={movieapp} element={
+                  <RouteContainer className='scrollMovies'>
+                    <Buttons path={movieapp} />
+                    <MovieApp />
+                  </RouteContainer>
+                } />
 
-              <Route path={movieapp} element={
-                <RouteContainer>
-                  <Buttons path={movieapp} />
-                  <MovieApp />
-                </RouteContainer>
-              } />
+                <Route path={tictactoe} element={
+                  <RouteContainer>
+                    <Buttons path={tictactoe} />
+                    <TicTacToe />
+                  </RouteContainer>
+                } />
 
-              <Route path={tictactoe} element={
-                <RouteContainer>
-                  <Buttons path={tictactoe} />
-                  <TicTacToe />
-                </RouteContainer>
-              } />
+                <Route path={about} element={
+                  <RouteContainer className='scrollTictac'>
+                    <Buttons path={about} />
+                    <AboutMe />
+                  </RouteContainer>
+                } />
+              </Routes>
 
-              <Route path={about} element={
-                <RouteContainer>
-                  <Buttons path={about} />
-                  <AboutMe />
-                </RouteContainer>
-              } />
-            </Routes>
-
-            {/* <m.div
+              {/* <m.div
               className={`cursor ${redCursor === 'active' ? 'redCursor' : ''}`}
               variants={variants}
               animate="default"
               initial={false}
               transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
-            >
+              >
               <div className={`cursor-dot ${redCursorDot === 'active' ? 'redCursorDot' : ''}`} />
             </m.div> */}
-          </Content>
-        </AppContainer>
-      </TransitionProvider>
+            </Content>
+          </AppContainer>
+        </TransitionProvider>
     </CardProvider>
   );
 }
@@ -176,6 +175,7 @@ const Content = styled.div`
     flex-grow: 1;
     /* height: 100%; */
     `;
+
 const RouteContainer = styled.div`
   display: flex;
   flex-direction: row;
@@ -187,5 +187,6 @@ const RouteContainer = styled.div`
      align-items: flex-start;
   }
 `
+
 
 export default App

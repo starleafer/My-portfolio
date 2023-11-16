@@ -18,7 +18,6 @@ function Buttons({ props }) {
   const backgroundColor = currentCard.backgroundColor;
 
 
-  console.log(currentPath)
   // const currentIndex = card.findIndex(item => item.path === currentPath);
   // const { color } = currentCard;
 
@@ -97,6 +96,8 @@ function Buttons({ props }) {
       initial="hidden"
       animate="visible"
       variants={buttonVariants}
+      path={currentPath} 
+      backgroundColor={backgroundColor}  
     >
       <Link to={`/`} style={{ textDecoration: "none" }}>
         <StyledButton 
@@ -194,7 +195,7 @@ const ButtonContainer = styled(m.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: transparent;  
+  background-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
   gap: 2.5vh;
   padding: 3vh 1vw 3vh 1vw;
   position: fixed;
@@ -220,9 +221,9 @@ const ButtonContainer = styled(m.div)`
   }
   }
   
-  &.fade-in {
-    animation: ${fadein} 0.3s forwards;
-  }
+  /* &.fade-in {
+    animation: ${fadein} forwards;
+  } */
 
   &.fade-out {
     animation: ${fadeout} 0.3s forwards;
