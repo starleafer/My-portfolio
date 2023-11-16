@@ -9,11 +9,11 @@ import MovieApp from './components/pages/MovieApp';
 import TicTacToe from './components/pages/TicTacToe';
 import '../src/index.css'
 import _ from 'lodash';
-import Sidebar from './components/Sidebar';
 import Cleaning from './components/pages/Cleaning';
-import { AnimatePresence } from 'framer-motion';
 import AboutMe from './components/pages/AboutMe';
 import Buttons from './components/Buttons';
+import NextProject from './components/NextProject';
+import { CardProvider } from './context/CardContext';
 
 function App({ router }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -92,16 +92,59 @@ function App({ router }) {
 
 
   return (
+    <CardProvider>
     <AppContainer>
       <Content>
         <Routes>
-          <Route path={home} element={<RouteContainer><Buttons path={home} /><Mainpage /></RouteContainer>} />
-          <Route path={cleaning} element={<RouteContainer><Buttons path={cleaning} /><Cleaning /></RouteContainer>} />
-          <Route path={chatapp} element={<RouteContainer><Buttons path={chatapp} /><ChatApp /></RouteContainer>} />
-          <Route path={webbshop} element={<RouteContainer><Buttons path={webbshop} /><WebbShop /></RouteContainer>} />
-          <Route path={movieapp} element={<RouteContainer><Buttons path={movieapp} /><MovieApp /></RouteContainer>} />
-          <Route path={tictactoe} element={<RouteContainer><Buttons path={tictactoe} /><TicTacToe /></RouteContainer>} />
-          <Route path={about} element={<RouteContainer><Buttons path={about}/><AboutMe /></RouteContainer>} />
+          <Route path={home} element={
+            <RouteContainer>
+              <Buttons path={home} />
+              <Mainpage />
+            </RouteContainer>
+          } />
+
+          <Route path={cleaning} element={
+            <RouteContainer>
+              <Buttons path={cleaning} />
+              <Cleaning />
+            </RouteContainer>
+            
+          } />
+
+          <Route path={chatapp} element={
+            <RouteContainer>
+              <Buttons path={chatapp} />
+              <ChatApp />
+            </RouteContainer>
+          } />
+
+          <Route path={webbshop} element={
+            <RouteContainer>
+              <Buttons path={webbshop} />
+              <WebbShop />
+            </RouteContainer>
+          } />
+
+          <Route path={movieapp} element={
+            <RouteContainer>
+              <Buttons path={movieapp} />
+              <MovieApp />
+            </RouteContainer>
+          } />
+
+          <Route path={tictactoe} element={
+            <RouteContainer>
+              <Buttons path={tictactoe} />
+              <TicTacToe />
+            </RouteContainer>
+          } />
+
+          <Route path={about} element={
+            <RouteContainer>
+              <Buttons path={about} />
+              <AboutMe />
+            </RouteContainer>
+          } />
         </Routes>
 
         <m.div
@@ -115,6 +158,7 @@ function App({ router }) {
         </m.div>
       </Content>
     </AppContainer>
+    </CardProvider>
   );
 }
 

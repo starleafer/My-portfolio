@@ -4,13 +4,16 @@ import { motion as m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import NextProject from '../NextProject';
 
 function MovieApp() {
   return (
     <Body>
       <Content>
         <InfoSection>
+          {/* <Header> */}
           <PageTitle>Movie Night</PageTitle>
+          {/* </Header> */}
           <Info>
             <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
               Movie Night seamlessly integrates with the OMDb API, allowing users to access a wealth of information about a diverse range of movies. From classic films to the latest releases, users can explore details such as title, release date, genre, cast, runtime, ratings, and more.
@@ -18,50 +21,54 @@ function MovieApp() {
               <br />
               Thanks to the use of both React and React Native, the app is accessible across multiple platforms. Users can enjoy a consistent and responsive experience whether they are using the web version (built with React) or the mobile app (built with React Native) on their smartphones and tablets.
             </PageDescription>
-            <Github>
-              {window.innerWidth <= 768
-                ? null
-                : <FontAwesomeIcon icon={faGithub} style={{ fontSize: '2vw', marginRight: '5px', color: 'var(--redish)' }} />
-              }
-              <LinkContainer>
-                <Link
-                  to="https://github.com/starleafer/https---github.com-starleafer-Movie-App-Native"
-                  target="_blank"
-                  style={{ textDecoration: 'none' }}
-                  onMouseEnter={() => setHoveredLink(2)}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <InfoLinks>
-                    {window.innerWidth <= 768 && (
-                      <FontAwesomeIcon
-                        icon={faGithub}
-                        className="icon"
-                        style={{ marginRight: '5px', color: 'var(--redish)' }}
-                      />
-                    )}
-                    Native code
-                  </InfoLinks>
-                </Link>
-                <Link
-                  to="https://github.com/starleafer/The-movie-app"
-                  target="_blank"
-                  style={{ textDecoration: 'none' }}
-                  onMouseEnter={() => setHoveredLink(2)}
-                  onMouseLeave={() => setHoveredLink(null)}
-                >
-                  <InfoLinks>
-                    {window.innerWidth <= 768 && (
-                      <FontAwesomeIcon
-                        icon={faGithub}
-                        className="icon"
-                        style={{ marginRight: '5px', color: 'var(--redish)' }}
-                      />
-                    )}
-                    Browser code
-                  </InfoLinks>
-                </Link>
-              </LinkContainer>
-            </Github>
+            <LinkGroup>
+              <NextProject />
+
+              <Github>
+                {window.innerWidth <= 768
+                  ? null
+                  : <FontAwesomeIcon icon={faGithub} style={{ fontSize: '1.5vw', marginRight: '5px', color: 'var(--redish)' }} />
+                }
+                <LinkContainer>
+                  <Link
+                    to="https://github.com/starleafer/https---github.com-starleafer-Movie-App-Native"
+                    target="_blank"
+                    style={{ textDecoration: 'none' }}
+                    onMouseEnter={() => setHoveredLink(2)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    <InfoLinks>
+                      {window.innerWidth <= 768 && (
+                        <FontAwesomeIcon
+                          icon={faGithub}
+                          className="icon"
+                          style={{ marginRight: '5px', color: 'var(--redish)' }}
+                        />
+                      )}
+                      Native code
+                    </InfoLinks>
+                  </Link>
+                  <Link
+                    to="https://github.com/starleafer/The-movie-app"
+                    target="_blank"
+                    style={{ textDecoration: 'none' }}
+                    onMouseEnter={() => setHoveredLink(2)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    <InfoLinks>
+                      {window.innerWidth <= 768 && (
+                        <FontAwesomeIcon
+                          icon={faGithub}
+                          className="icon"
+                          style={{ marginRight: '5px', color: 'var(--redish)' }}
+                        />
+                      )}
+                      Browser code
+                    </InfoLinks>
+                  </Link>
+                </LinkContainer>
+              </Github>
+            </LinkGroup>
           </Info>
         </InfoSection>
         <Native>
@@ -83,6 +90,7 @@ function MovieApp() {
             <BrowserImage src='movieapp/browserSerier.png' alt='browser search' />
           </ImageContainer>
         </Browser>
+        <NextProject />
       </Content>
     </Body>
   )
@@ -109,6 +117,7 @@ const glow = keyframes`
 
 const Body = styled(m.div)`
   display: flex;
+  flex-direction: column;
   width: 100%;
   background-color: var(--darker);
   overflow-y: auto; 
@@ -123,7 +132,8 @@ const Body = styled(m.div)`
   @media (max-width: 768px) {
     margin: 50px 0 0 0;
     padding: 0;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
   }
 `;
 
@@ -131,25 +141,24 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 100px;
+  padding: 100px 0 30px 0;
   gap: 5vh; 
   animation: ${fadein} 0.8s forwards;
   /* border: 1px solid blue; */
 
   @media (max-width: 1440px) {
-    align-items: flex-start;
+    /* align-items: flex-start; */
   }
 
   @media (max-width: 1024px) {
     width: 85%;
-    align-items: flex-start;
     padding-top: 50px;
     margin: 0 10px 0 0;
     gap: 20px;
   }
 
   @media (max-width: 768px) {
-    align-items: center;
+    /* align-items: center; */
   }
   `
 
@@ -171,32 +180,38 @@ const InfoSection = styled.div`
   width: 100%;
   margin: 0;
 }
+`
+// const Header = styled.div`
+// display: flex;
+// /* justify-content: center; */
+// border: 1px solid red;
 
-
-  `
+// @media (max-width: 1024px) {
+//     width: 95%;
+//   }
+// `
 
 const Info = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 95%;
+  width: 100%;
   gap: 5vw;
   font-size: 1.1em;
   font-weight: 600;
-  /* border: 1px solid white; */
 
   @media (max-width: 1440px) {
     font-size: 1vw;
-    width: 90%;
+    width: 100%;
 
   }
   @media (max-width: 1024px) {
     width: 95%;
+    padding-top: 3vh;
   }
 
   @media (max-width: 768px) {
     font-size: 1.7vw;
-    /* flex-direction: column; */
 }
 
 @media (max-width: 375px) {
@@ -206,16 +221,14 @@ const Info = styled.section`
 }
 `
 
-
 const PageTitle = styled.h1`
 font-size: 5vw;
+width: 80%;
 align-self: flex-start;
 animation: ${glow} 2s infinite alternate; 
 color: var(--redish);
 
-
 @media (max-width: 1024px) {
-  /* font-size: 2rem; */
   margin: 1.5vh 0;
 }
 
@@ -224,11 +237,11 @@ color: var(--redish);
   }
 
 @media (max-width: 768px) {
-     font-size: 3.5vw;
+  font-size: 1.8em;
   }
 
 @media (max-width: 375px) {
-  font-size: 1.6em;
+  font-size: 1.8em;
 }
 `
 const PageDescription = styled.h3`
@@ -236,7 +249,8 @@ const PageDescription = styled.h3`
   font-weight: 500;
   width: 55vw;
   color: var(--redish);
-  /* font-size: 1.2em; Use a relative unit */
+  align-self: flex-start;
+  font-size: 1.2vw; 
 
   @media (max-width: 768px) {
     font-size: 1.1em;
@@ -247,15 +261,33 @@ const PageDescription = styled.h3`
     font-size: 1.1em;
     width: 100%;
   }
- 
   `
+const LinkGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: flex-start; */
+  /* border: 1px solid red; */
+
+  @media (max-width: 768px) {
+    /* flex-direction: row; */
+  }
+
+  @media (max-width: 375px) {
+   width: 100%;
+   /* align-items: flex-end; */
+   flex-direction: row-reverse;
+   align-items: center;
+   justify-content: center;
+  }  
+`
 
 const Github = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1vw;
-  width: 10vw;
+  padding: 2vh 0;
+  width: 9vw;
   border-radius: 15px;
   border: 4px dotted var(--redish);
 
@@ -265,7 +297,7 @@ const Github = styled.div`
   }
   @media (max-width: 1024px) {
     font-size: 1vw;
-    width: 15vw;
+    /* width: 15vw; */
   }
   @media (max-width: 965px) {
     font-size: 0.8vw;
@@ -292,12 +324,16 @@ const LinkContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: 10px;
-  /* border: 1px solid purple; */
-  
+  /* border: 1px solid orange; */
+
+  @media (max-width: 1024px) {
+    align-items: center;
+
+  }
   @media (max-width: 375px) {
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 0;
 }
   `
 
@@ -308,18 +344,21 @@ const InfoLinks = styled.div`
   justify-content: center;
   font-family: 'Roboto Flex';
   margin: 10px 0;
-  font-size: 1.3em;
+  font-size: 1vw;
+  text-decoration: underline;
   color: var(--redish);
   border-radius: 10px;
   overflow: hidden;
+  /* border: 1px solid purple; */
+
 
   &:hover {
     color: #fff;
   }
 
   @media (max-width: 768px) {
-    border: 1px solid var(--redish);
-    font-size: 2em;
+    border: 1px dotted var(--redish);
+    font-size: 1.3vw;
     width: 12vw;
     padding: 1vw;
 
@@ -329,10 +368,10 @@ const InfoLinks = styled.div`
     }
 
     @media (max-width: 375px) {
-      font-size: 2.9vw;
-      width: 23vw;
+      font-size: 2vw;
+      width: 17vw;
       padding: 2vw;
-
+      margin-left: 2vw;
       /* flex-direction: row; */
     }
   }
@@ -423,7 +462,6 @@ const Browser = styled.div`
   width: 85%;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 4vh;
   /* border: 1px solid green; */
 
   @media (max-width: 1440px) {

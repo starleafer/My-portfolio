@@ -1,11 +1,13 @@
 import React from 'react'
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion'
+import NextProject from '../NextProject';
 
 function TicTacToe() {
   return (
 
     <Body>
+      <NextProject />
     </Body>
   )
 }

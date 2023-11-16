@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import NextProject from '../NextProject';
 
 function Cleaning() {
   const [hoveredLink, setHoveredLink] = useState(null);
@@ -51,6 +52,7 @@ function Cleaning() {
           <Image src='dustbusters/dbReviews.png' alt='bild' />
           <Image src='dustbusters/dbLogin.png' alt='bild' />
         </ImageContainer>
+        <NextProject />
       </Content>
     </Body>
   )
@@ -186,7 +188,7 @@ const InfoLinks = styled.div`
 
 const ImageContainer = styled.div`
   display: flex;
-  margin-bottom: 10vh;
+  margin-bottom: 3vh;
   flex-direction: column;
   justify-content: center;
   align-items: center;
