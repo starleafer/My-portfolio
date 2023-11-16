@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import NextProject from '../NextProject';
+import { useTransitionContext } from '../../context/TransitionContext';
+import TransitionScreen from '../TransitionScreen';
 
 function MovieApp() {
+  const { runTransition } = useTransitionContext();
   return (
+    <>
     <Body>
       <Content>
         <InfoSection>
@@ -36,15 +40,15 @@ function MovieApp() {
                     style={{ textDecoration: 'none' }}
                     onMouseEnter={() => setHoveredLink(2)}
                     onMouseLeave={() => setHoveredLink(null)}
-                  >
+                    >
                     <InfoLinks>
                       {window.innerWidth <= 768 && (
                         <FontAwesomeIcon
-                          icon={faGithub}
-                          className="icon"
-                          style={{ marginRight: '5px', color: 'var(--redish)' }}
+                        icon={faGithub}
+                        className="icon"
+                        style={{ marginRight: '5px', color: 'var(--redish)' }}
                         />
-                      )}
+                        )}
                       Native code
                     </InfoLinks>
                   </Link>
@@ -54,15 +58,15 @@ function MovieApp() {
                     style={{ textDecoration: 'none' }}
                     onMouseEnter={() => setHoveredLink(2)}
                     onMouseLeave={() => setHoveredLink(null)}
-                  >
+                    >
                     <InfoLinks>
                       {window.innerWidth <= 768 && (
                         <FontAwesomeIcon
-                          icon={faGithub}
-                          className="icon"
-                          style={{ marginRight: '5px', color: 'var(--redish)' }}
+                        icon={faGithub}
+                        className="icon"
+                        style={{ marginRight: '5px', color: 'var(--redish)' }}
                         />
-                      )}
+                        )}
                       Browser code
                     </InfoLinks>
                   </Link>
@@ -93,6 +97,12 @@ function MovieApp() {
         <NextProject />
       </Content>
     </Body>
+    {
+      runTransition === true
+      ? <TransitionScreen />
+      : ""
+    }
+    </>
   )
 }
 
@@ -116,6 +126,7 @@ const glow = keyframes`
 
 
 const Body = styled(m.div)`
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;

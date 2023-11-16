@@ -14,6 +14,7 @@ import AboutMe from './components/pages/AboutMe';
 import Buttons from './components/Buttons';
 import NextProject from './components/NextProject';
 import { CardProvider } from './context/CardContext';
+import { TransitionProvider } from './context/TransitionContext';
 
 function App({ router }) {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -51,35 +52,35 @@ function App({ router }) {
     };
   }, []);
 
-  const variants = {
-    default: {
-      x: mousePosition.x - 16,
-      y: mousePosition.y - 16,
-    },
-  }
+  // const variants = {
+  //   default: {
+  //     x: mousePosition.x - 16,
+  //     y: mousePosition.y - 16,
+  //   },
+  // }
 
-  const buttonVariants = {
-    hidden: {
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-        delay: 1
-      }
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-        delay: 1
-      }
-    }
-  };
+  // const buttonVariants = {
+  //   hidden: {
+  //     opacity: 0,
+  //     transition: {
+  //       duration: 0.5,
+  //       delay: 1
+  //     }
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       duration: 0.5,
+  //       delay: 1
+  //     }
+  //   }
+  // };
 
 
-  let whiteCursor = ''
-  let whiteCursorDot = ''
-  whiteCursor = location.pathname === '/movieapp' ? 'active' : '';
-  whiteCursorDot = location.pathname === '/movieapp' ? 'active' : '';
+  // let redCursor = ''
+  // let redCursorDot = ''
+  // redCursor = location.pathname === '/movieapp' ? 'active' : '';
+  // redCursorDot = location.pathname === '/movieapp' ? 'active' : '';
 
   const home = "/"
   const cleaning = "/cleaning"
@@ -93,71 +94,73 @@ function App({ router }) {
 
   return (
     <CardProvider>
-    <AppContainer>
-      <Content>
-        <Routes>
-          <Route path={home} element={
-            <RouteContainer>
-              <Buttons path={home} />
-              <Mainpage />
-            </RouteContainer>
-          } />
+      <TransitionProvider>
+        <AppContainer>
+          <Content>
+            <Routes>
+              <Route path={home} element={
+                <RouteContainer>
+                  <Buttons path={home} />
+                  <Mainpage />
+                </RouteContainer>
+              } />
 
-          <Route path={cleaning} element={
-            <RouteContainer>
-              <Buttons path={cleaning} />
-              <Cleaning />
-            </RouteContainer>
-            
-          } />
+              <Route path={cleaning} element={
+                <RouteContainer>
+                  <Buttons path={cleaning} />
+                  <Cleaning />
+                </RouteContainer>
+                
+              } />
 
-          <Route path={chatapp} element={
-            <RouteContainer>
-              <Buttons path={chatapp} />
-              <ChatApp />
-            </RouteContainer>
-          } />
+              <Route path={chatapp} element={
+                <RouteContainer>
+                  <Buttons path={chatapp} />
+                  <ChatApp />
+                </RouteContainer>
+              } />
 
-          <Route path={webbshop} element={
-            <RouteContainer>
-              <Buttons path={webbshop} />
-              <WebbShop />
-            </RouteContainer>
-          } />
+              <Route path={webbshop} element={
+                <RouteContainer>
+                  <Buttons path={webbshop} />
+                  <WebbShop />
+                </RouteContainer>
+              } />
 
-          <Route path={movieapp} element={
-            <RouteContainer>
-              <Buttons path={movieapp} />
-              <MovieApp />
-            </RouteContainer>
-          } />
+              <Route path={movieapp} element={
+                <RouteContainer>
+                  <Buttons path={movieapp} />
+                  <MovieApp />
+                </RouteContainer>
+              } />
 
-          <Route path={tictactoe} element={
-            <RouteContainer>
-              <Buttons path={tictactoe} />
-              <TicTacToe />
-            </RouteContainer>
-          } />
+              <Route path={tictactoe} element={
+                <RouteContainer>
+                  <Buttons path={tictactoe} />
+                  <TicTacToe />
+                </RouteContainer>
+              } />
 
-          <Route path={about} element={
-            <RouteContainer>
-              <Buttons path={about} />
-              <AboutMe />
-            </RouteContainer>
-          } />
-        </Routes>
+              <Route path={about} element={
+                <RouteContainer>
+                  <Buttons path={about} />
+                  <AboutMe />
+                </RouteContainer>
+              } />
+            </Routes>
 
-        <m.div
-          className={`cursor ${whiteCursor === 'active' ? 'whiteCursor' : ''}`}
-          variants={variants}
-          animate="default"
-          initial={false}
-          transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
-        >
-          <div className={`cursor-dot ${whiteCursorDot === 'active' ? 'whiteCursorDot' : ''}`} />
-        </m.div>
-      </Content>
-    </AppContainer>
+            {/* <m.div
+              className={`cursor ${redCursor === 'active' ? 'redCursor' : ''}`}
+              variants={variants}
+              animate="default"
+              initial={false}
+              transition={{ duration: 0.1, ease: 'linear', fill: 'forwards' }}
+            >
+              <div className={`cursor-dot ${redCursorDot === 'active' ? 'redCursorDot' : ''}`} />
+            </m.div> */}
+          </Content>
+        </AppContainer>
+      </TransitionProvider>
     </CardProvider>
   );
 }

@@ -16,7 +16,7 @@
 }
 
 * {
-  cursor: none;
+  /* cursor: none; */
   font-family: 'Poiret One', sans-serif;
 }
 
@@ -61,14 +61,14 @@ body {
   position: absolute;
 }
 
-.whiteCursor {
-  border-color: white;
-  color: white;
+.redCursor {
+  border-color: var(--redish);
+  color: var(--redish);
 }
 
-.whiteCursorDot {
-  border-color: white;
-  background-color: white;
+.redCursorDot {
+  border-color: var(--redish);
+  background-color: var(--redish);
 }
 
 .cursor:hover,
