@@ -148,17 +148,16 @@ const StyledCard = styled.div`
 
   @media (max-width: 1200px) {
     border-width: 2px;
-    width: 8vw;
-    height: 30vh;
+    width: 9vw;
+    max-height: 35vh;
   }
 
   @media (max-width: 965px) {
-    border-width: 1px;
+    /* border-width: 1px;
     width: 7vw;
     padding: 0 10px;
     font-size: 1.2vw;
-    border-radius: 10px;
-
+    border-radius: 10px; */
   }
 
   @media (max-width: 768px) {
@@ -184,7 +183,9 @@ const StyledCard = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 425px) {
+
+    width: 75vw;
 
     &:hover {
       color: var(--dark) !important;

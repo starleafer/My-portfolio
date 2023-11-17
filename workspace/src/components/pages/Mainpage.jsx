@@ -13,7 +13,7 @@ function Mainpage({path}) {
         >
           <TitlesContainer>
             <Title>Emil Stjernlöf</Title>
-            <SmallTitle>/ Front end developer in development</SmallTitle>
+            {/* <SmallTitle> = {`{FrontendDeveloperInDevelopment}`}</SmallTitle> */}
           </TitlesContainer>
           <Projectlist />
         </Container>
@@ -42,10 +42,15 @@ const TitlesContainer = styled.div`
   display: flex;
   width: 80vw;
   align-items: end;
+  flex-wrap: wrap;
+
+  @media (max-width: 768px) {
+  /* align-items: center; */
+  }
 `
 
 const Title = styled.h1`
-  font-size: 8vw;
+  font-size: 9em;
   font-weight: 500;
   text-align: center;
   margin: 0.5em 0.2em 0 0;
@@ -53,19 +58,40 @@ const Title = styled.h1`
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark); 
 
+  @media (max-width: 1440px) {
+    font-size: 8em;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 5.7em;
+  }
+
   @media (max-width: 768px) {
     font-size: 2.7em;
-
   }
 `;
 
 const SmallTitle = styled.h2`
   /* border: 1px solid black; */
-  font-size: 1.45vw;
+  font-size: 1.4em;
   font-weight: 500;
-  margin: 3em 0 1em 0;
+  margin-bottom: 1em;
   color: #cacaca;
   -webkit-text-stroke-width: 1px;
+
+  @media (max-width: 1024px) {
+    font-size: 1em;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 0.3em;
+  }
+
+  @media (max-width: 425px) {
+    margin-top: 0;
+    font-size: 0.8em;
+
+  }
 `
 
 export default Mainpage;

@@ -231,7 +231,7 @@ const ButtonContainer = styled(m.div)`
 `;
 
 const StyledButton = styled(m.button)`
-  min-width: 6vw;
+  min-width: 5vw;
   height: 4vh;
   border-radius: 10px;
   border: 1px solid black;

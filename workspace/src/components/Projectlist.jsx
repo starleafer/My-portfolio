@@ -10,8 +10,8 @@ function Projectlist() {
     const { card } = useCardContext();
 
     if (!card) {
-        return console.log('Context is undefined'); 
-      }
+        return console.log('Context is undefined');
+    }
 
     // const card = [
     //     { id: 1, title: "Cleaning company", path: 'cleaning', label: "React.js", color: 'var(--dark)', backgroundColor: 'var(--yellowish)' },
@@ -55,12 +55,17 @@ const StyledProjectList = styled.div`
 `
 
 const ProjectContainer = styled.div`
-    height:57.7vh;
+    height:50vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 40px;
+    gap: 2vw;
+
+    @media (max-width: 1024px) {
+        height: 45vh;
+;
+  }
 
     @media (max-width: 768px) {
         flex-direction: column;
@@ -70,11 +75,15 @@ const ProjectContainer = styled.div`
 `
 
 const ListLabel = styled.h4`
-    font-size: 1.5vw;
+    font-size: 1.5em;
     font-weight: 900;
     margin-bottom: 10px;
     align-self: flex-start; 
     color: var(--dark);
+
+    @media (max-width: 1024px) {
+        font-size: 1.2em;
+  }
     `
 
 export default Projectlist
