@@ -53,15 +53,15 @@ export default NextProject;
 
 const Container = styled.div`
   display: flex;
-  width: 85%;
+  width: 95%;
   justify-content: flex-end;
   align-items: center;
-  margin: 0 0 4vh 0;
+  margin: 0;
 
   @media (max-width: 768px) {
-    justify-content: center;
+    justify-content: flex-end;
     margin: 0;
-    width: auto;
+    width: 40%;
   }
 `;
 
@@ -75,7 +75,7 @@ const NextButton = styled.button`
   background-color: transparent;
   font-family: 'Roboto Flex';
   border-radius: 10px;
-  padding: 1vw;
+  padding: 10px;
   font-size: 1vw;
   font-weight: 600;
   
@@ -92,8 +92,9 @@ const NextButton = styled.button`
 
   @media (max-width: 425px) {
     font-size: 2vw;
-    width: 19vw;
-    padding: 2vw;
+    width: 20vw;
+    padding: 1.7vw;
+    font-size: 2.2vw;
   } 
 `;
 

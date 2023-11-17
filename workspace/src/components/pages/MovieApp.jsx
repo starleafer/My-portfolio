@@ -1,105 +1,52 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import { motion as m } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import NextProject from '../NextProject';
-import { useTransitionContext } from '../../context/TransitionContext';
-import TransitionScreen from '../TransitionScreen';
+import PageBody from '../PageBody';
 
 function MovieApp() {
-  const { runTransition } = useTransitionContext();
+  const [ isNative, setIsNative ] = useState(true)
+  const [ isBrowser, setIsBrowser ] = useState(true)
+
+  const title = "Movie Night"
+
+  const PageDescription1 = "Movie Night seamlessly integrates with the OMDb API, allowing users to access a wealth of information about a diverse range of movies. From classic films to the latest releases, users can explore details such as title, release date, genre, cast, runtime, ratings, and more."
+
+  const PageDescription2 = "Thanks to the use of both React and React Native, the app is accessible across multiple platforms. Users can enjoy a consistent and responsive experience whether they are using the web version (built with React) or the mobile app (built with React Native) on their smartphones and tablets."
+
+  const nativeRepo = "https://github.com/starleafer/https---github.com-starleafer-Movie-App-Native"
+
+  const browserRepo = "https://github.com/starleafer/The-movie-app"
+
+
+  const nativeImages = [
+    <MobileImage key="1" src='movieapp/login.jpg' />,
+    <MobileImage key="2" src='movieapp/movielist.jpg' />,
+    <MobileImage key="3" src='movieapp/movieinfo.jpg' />,
+    <MobileImage key="4" src='movieapp/search.jpg' />,
+    <MobileImage key="5" src='movieapp/drawer.jpg' />,
+    <MobileImage key="6" src='movieapp/mypage.jpg' />,
+  ];
+
+  const browserImages = [
+    <BrowserImage key="1" src='movieapp/browserSearch.png' alt='browser search' />,
+    <BrowserImage key="2" src='movieapp/browserPager.png' alt='browser pager' />,
+    <BrowserImage key="3" src='movieapp/browserSerier.png' alt='browser series' />,
+  ];
+
+
   return (
     <>
-    <Body>
-      <Content>
-        <InfoSection>
-          <PageTitle>Movie Night</PageTitle>
-          <Info>
-            <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
-              Movie Night seamlessly integrates with the OMDb API, allowing users to access a wealth of information about a diverse range of movies. From classic films to the latest releases, users can explore details such as title, release date, genre, cast, runtime, ratings, and more.
-              <br />
-              <br />
-              Thanks to the use of both React and React Native, the app is accessible across multiple platforms. Users can enjoy a consistent and responsive experience whether they are using the web version (built with React) or the mobile app (built with React Native) on their smartphones and tablets.
-            </PageDescription>
-            <LinkGroup>
-              <NextProject />
-
-              <Github>
-                {window.innerWidth <= 768
-                  ? null
-                  : <FontAwesomeIcon icon={faGithub} style={{ fontSize: '1.5vw', marginRight: '5px', color: 'var(--redish)' }} />
-                }
-                <LinkContainer>
-                  <Link
-                    to="https://github.com/starleafer/https---github.com-starleafer-Movie-App-Native"
-                    target="_blank"
-                    style={{ textDecoration: 'none' }}
-                    onMouseEnter={() => setHoveredLink(2)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                    >
-                    <InfoLinks>
-                      {window.innerWidth <= 768 && (
-                        <FontAwesomeIcon
-                        icon={faGithub}
-                        className="icon"
-                        style={{ marginRight: '5px', color: 'var(--redish)' }}
-                        />
-                        )}
-                      Native code
-                    </InfoLinks>
-                  </Link>
-                  <Link
-                    to="https://github.com/starleafer/The-movie-app"
-                    target="_blank"
-                    style={{ textDecoration: 'none' }}
-                    onMouseEnter={() => setHoveredLink(2)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                    >
-                    <InfoLinks>
-                      {window.innerWidth <= 768 && (
-                        <FontAwesomeIcon
-                        icon={faGithub}
-                        className="icon"
-                        style={{ marginRight: '5px', color: 'var(--redish)' }}
-                        />
-                        )}
-                      Browser code
-                    </InfoLinks>
-                  </Link>
-                </LinkContainer>
-              </Github>
-            </LinkGroup>
-          </Info>
-        </InfoSection>
-        <Native>
-          <NativeHeader>React Native</NativeHeader>
-          <ImageContainer>
-            <MobileImage src='movieapp/login.jpg' />
-            <MobileImage src='movieapp/movielist.jpg' />
-            <MobileImage src='movieapp/movieinfo.jpg' />
-            <MobileImage src='movieapp/search.jpg' />
-            <MobileImage src='movieapp/drawer.jpg' />
-            <MobileImage src='movieapp/mypage.jpg' />
-          </ImageContainer>
-        </Native>
-        <Browser>
-          <BrowserHeader>React</BrowserHeader>
-          <ImageContainer style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-            <BrowserImage src='movieapp/browserSearch.png' alt='browser search' />
-            <BrowserImage src='movieapp/browserPager.png' alt='browser search' />
-            <BrowserImage src='movieapp/browserSerier.png' alt='browser search' />
-          </ImageContainer>
-        </Browser>
-        <NextProject />
-      </Content>
-    </Body>
-    {
-      runTransition === true
-      ? <TransitionScreen />
-      : ""
-    }
+    <PageBody
+       title={title}
+       PageDescription1={PageDescription1}
+       PageDescription2={PageDescription2}
+       nativeRepo={nativeRepo}
+       browserRepo={browserRepo}
+       nativeImages={nativeImages}
+       browserImages={browserImages}
+       isNative={isNative}
+       isBrowser={isBrowser}
+    />
     </>
   )
 }
