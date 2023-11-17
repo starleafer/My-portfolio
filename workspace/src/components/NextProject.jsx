@@ -57,11 +57,12 @@ const Container = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin: 0;
+  /* border: 1px solid blue; */
 
   @media (max-width: 768px) {
     justify-content: flex-end;
     margin: 0;
-    width: 40%;
+    width: 100%;
   }
 `;
 

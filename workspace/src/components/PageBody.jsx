@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { keyframes } from "styled-components";
-import { motion as m } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
@@ -8,6 +7,7 @@ import NextProject from './NextProject';
 import { useTransitionContext } from '../context/TransitionContext';
 import TransitionScreen from './TransitionScreen';
 import { useCardContext } from '../context/CardContext';
+import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 function PageBody({
   title,
@@ -21,12 +21,78 @@ function PageBody({
   isNative,
   isBrowser
 }) {
+
   const { runTransition } = useTransitionContext();
   const { card } = useCardContext();
+
+  const links = [nativeRepo, browserRepo, website].filter(link => link);
+  const numColumns = links.length;
 
   const currentPath = window.location.pathname.replace('/', '');
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const color = currentCard.color;
+
+  const renderNativeLink = isNative && (
+    <Link
+      to={nativeRepo}
+      target="_blank"
+      style={{ textDecoration: 'none', color: color }}
+      onMouseEnter={() => setHoveredLink(2)}
+      onMouseLeave={() => setHoveredLink(null)}
+    >
+      <InfoLinks>
+        {window.innerWidth >= 768 && (
+          <FontAwesomeIcon
+            icon={faGithub}
+            className="icon"
+            style={{ marginRight: '0.5vw' }}
+          />
+        )}
+        Native code
+      </InfoLinks>
+    </Link>
+  );
+
+  const renderBrowserLink = isBrowser && (
+    <Link
+      to={browserRepo}
+      target="_blank"
+      style={{ textDecoration: 'none', color: color }}
+      onMouseEnter={() => setHoveredLink(2)}
+      onMouseLeave={() => setHoveredLink(null)}
+    >
+      <InfoLinks>
+        {window.innerWidth >= 768 && (
+          <FontAwesomeIcon
+            icon={faGithub}
+            className="icon"
+            style={{ marginRight: '0.5vw' }}
+          />
+        )}
+        Browser code
+      </InfoLinks>
+    </Link>
+  );
+
+  const renderWebsiteLink = website && (
+    <Link
+      to={website}
+      target="_blank"
+      style={{ textDecoration: 'none', color: color }}
+      onMouseEnter={() => setHoveredLink(3)}
+      onMouseLeave={() => setHoveredLink(null)}
+    >
+      <InfoLinks>
+        {window.innerWidth >= 768 && (
+          <FontAwesomeIcon
+            icon={faArrowUpRightFromSquare}
+            style={{ marginRight: '0.5vw' }}
+          />
+        )}
+        The webpage
+      </InfoLinks>
+    </Link>
+  );
 
   return (
     <>
@@ -42,51 +108,10 @@ function PageBody({
             </PageDescription>
             <LinkGroup>
               <Github>
-                <LinkContainer>
-                  {/* {window.innerWidth <= 768
-                      ? null
-                      : <FontAwesomeIcon icon={faGithub} style={{ fontSize: '1.5vw', marginRight: '5px', color: 'var(--redish)' }} />
-                    } */}
-                  <Link
-                    to={nativeRepo}
-                    target="_blank"
-                    style={{ textDecoration: 'none', color: color }}
-                    onMouseEnter={() => setHoveredLink(2)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                  >
-                    {isNative && (
-                      <InfoLinks>
-                        {window.innerWidth >= 768 && (
-                          <FontAwesomeIcon
-                            icon={faGithub}
-                            className="icon"
-                            style={{ marginRight: '0.5vw' }}
-                          />
-                        )}
-                        Native code
-                      </InfoLinks>
-                    )}
-                  </Link>
-                  <Link
-                    to={browserRepo}
-                    target="_blank"
-                    style={{ textDecoration: 'none', color: color }}
-                    onMouseEnter={() => setHoveredLink(2)}
-                    onMouseLeave={() => setHoveredLink(null)}
-                  >
-                    {isBrowser && (
-                      <InfoLinks>
-                        {window.innerWidth >= 768 && (
-                          <FontAwesomeIcon
-                            icon={faGithub}
-                            className="icon"
-                            style={{ marginRight: '0.5vw'}}
-                          />
-                        )}
-                        Browser code
-                      </InfoLinks>
-                    )}
-                  </Link>
+                <LinkContainer numColumns={numColumns}>
+                  {renderNativeLink}
+                  {renderBrowserLink}
+                  {renderWebsiteLink}
                 </LinkContainer>
               </Github>
               <NextProject />
@@ -274,7 +299,7 @@ const LinkGroup = styled.div`
   align-items: flex-end;
   /* border: 1px solid red; */
 
-  @media (max-width: 756px) {
+  @media (max-width: 768px) {
    align-items: center;
    justify-content: space-between;
   }  
@@ -286,13 +311,16 @@ const LinkGroup = styled.div`
    margin-top: 10px;
   }  
 `
+
 const Github = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     /* padding: 2vh 0; */
-    width: 25vw;
+    padding-right: 0.5vw;
+    width: 40%;
+    min-width: 28vw;
     border-radius: 15px;
     border: 4px dotted ${props => props.color};
   
@@ -311,17 +339,18 @@ const Github = styled.div`
   
     @media (max-width: 768px) {
       /* width: 20vw; */
-      width: 100%;
+      /* width: 100%; */
       border: none; 
   }
   
   @media (max-width: 425px) {
-    width: 100%;
+    width: 60%;
   }
   `
 
 const LinkContainer = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(${props => props.numColumns}, 1fr);
   width: 100%;
   padding: 0.3vw;
   /* flex-direction: column; */
@@ -334,8 +363,8 @@ const LinkContainer = styled.div`
   }
   
   @media (max-width: 768px) {
-    /* width: 100%; */
-    justify-content: flex-start;
+    width: 100%;
+
   }
   
   @media (max-width: 425px) {
