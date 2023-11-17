@@ -7,6 +7,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import NextProject from './NextProject';
 import { useTransitionContext } from '../context/TransitionContext';
 import TransitionScreen from './TransitionScreen';
+import { useCardContext } from '../context/CardContext';
 
 function PageBody({
   title,
@@ -14,98 +15,107 @@ function PageBody({
   PageDescription2,
   nativeRepo,
   browserRepo,
+  website,
   nativeImages,
   browserImages,
   isNative,
   isBrowser
 }) {
   const { runTransition } = useTransitionContext();
+  const { card } = useCardContext();
+
+  const currentPath = window.location.pathname.replace('/', '');
+  const currentCard = card.find(item => item.path === currentPath) || card[0];
+  const color = currentCard.color;
+
   return (
     <>
-      <Body>
-        <Content>
-          <InfoSection>
-            <PageTitle>{title}</PageTitle>
-            <Info>
-              <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
-                {PageDescription1}
-                <br />
-                <br />
-                {PageDescription2}
-              </PageDescription>
-              <LinkGroup>
-                <Github>
-                  <LinkContainer>
-                    {/* {window.innerWidth <= 768
+      <Content color={color}>
+        <InfoSection>
+          {title}
+          <Info>
+            <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
+              {PageDescription1}
+              <br />
+              <br />
+              {PageDescription2}
+            </PageDescription>
+            <LinkGroup>
+              <Github>
+                <LinkContainer>
+                  {/* {window.innerWidth <= 768
                       ? null
                       : <FontAwesomeIcon icon={faGithub} style={{ fontSize: '1.5vw', marginRight: '5px', color: 'var(--redish)' }} />
                     } */}
-                    <Link
-                      to={nativeRepo}
-                      target="_blank"
-                      style={{ textDecoration: 'none' }}
-                      onMouseEnter={() => setHoveredLink(2)}
-                      onMouseLeave={() => setHoveredLink(null)}
-                    >
-                      {isNative && (
-                        <InfoLinks>
-                          {window.innerWidth >= 768 && (
-                            <FontAwesomeIcon
-                              icon={faGithub}
-                              className="icon"
-                              style={{ marginRight: '0.5vw', color: 'var(--redish)' }}
-                            />
-                          )}
-                          Native code
-                        </InfoLinks>
-                      )}
-                    </Link>
-                    <Link
-                      to={browserRepo}
-                      target="_blank"
-                      style={{ textDecoration: 'none' }}
-                      onMouseEnter={() => setHoveredLink(2)}
-                      onMouseLeave={() => setHoveredLink(null)}
-                    >
-                      {isBrowser && (
-                        <InfoLinks>
-                          {window.innerWidth >= 768 && (
-                            <FontAwesomeIcon
-                              icon={faGithub}
-                              className="icon"
-                              style={{ marginRight: '0.5vw', color: 'var(--redish)' }}
-                            />
-                          )}
-                          Browser code
-                        </InfoLinks>
-                      )}
-                    </Link>
-                  </LinkContainer>
-                </Github>
-                <NextProject />
-              </LinkGroup>
-            </Info>
-          </InfoSection>
-          {isNative ? (
-            <Native>
-              <NativeHeader>React Native</NativeHeader>
-              <ImageContainer>
-                {nativeImages.map(image => image)}
-              </ImageContainer>
-            </Native>
-          ) : null}
+                  <Link
+                    to={nativeRepo}
+                    target="_blank"
+                    style={{ textDecoration: 'none', color: color }}
+                    onMouseEnter={() => setHoveredLink(2)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {isNative && (
+                      <InfoLinks>
+                        {window.innerWidth >= 768 && (
+                          <FontAwesomeIcon
+                            icon={faGithub}
+                            className="icon"
+                            style={{ marginRight: '0.5vw' }}
+                          />
+                        )}
+                        Native code
+                      </InfoLinks>
+                    )}
+                  </Link>
+                  <Link
+                    to={browserRepo}
+                    target="_blank"
+                    style={{ textDecoration: 'none', color: color }}
+                    onMouseEnter={() => setHoveredLink(2)}
+                    onMouseLeave={() => setHoveredLink(null)}
+                  >
+                    {isBrowser && (
+                      <InfoLinks>
+                        {window.innerWidth >= 768 && (
+                          <FontAwesomeIcon
+                            icon={faGithub}
+                            className="icon"
+                            style={{ marginRight: '0.5vw'}}
+                          />
+                        )}
+                        Browser code
+                      </InfoLinks>
+                    )}
+                  </Link>
+                </LinkContainer>
+              </Github>
+              <NextProject />
+            </LinkGroup>
+          </Info>
+        </InfoSection>
+        {isNative ? (
+          <Native>
+            <NativeHeader>React Native</NativeHeader>
+            <ImageContainer>
+              {nativeImages.map(image => (
+                <MobileImage key={image.id} src={image.src} />
+              ))}
+            </ImageContainer>
+          </Native>
+        ) : null}
 
-          {isBrowser ? (
-            <Browser>
-              <BrowserHeader>React</BrowserHeader>
-              <ImageContainer style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                {browserImages.map(image => image)}
-              </ImageContainer>
-            </Browser>
-          ) : null}
-          <NextProject />
-        </Content>
-      </Body>
+        {isBrowser ? (
+          <Browser>
+            <BrowserHeader>React</BrowserHeader>
+            <ImageContainer style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
+              {browserImages.map(image => (
+                <BrowserImage key={image.id} src={image.src} alt={image.alt} />
+              ))}
+            </ImageContainer>
+          </Browser>
+        ) : null}
+        <NextProject />
+      </Content>
       {
         runTransition === true
           ? <TransitionScreen />
@@ -133,31 +143,6 @@ const glow = keyframes`
   }
 `;
 
-const Body = styled(m.div)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--darker);
-  overflow-y: auto; 
-  padding: 0 8vw;
-  /* border: 1px solid red; */
-
-  @media (max-width: 1024px) {
-    gap: 5vh; 
-    /* margin: 0 200px 0 0;   */
-    padding: 0 2vw 0 18vw;
-
-  }
-
-  @media (max-width: 768px) {
-    margin: 50px 0 0 0;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: center;
-  }
-`;
-
 const Content = styled.div`
   display: flex;
   flex-direction: column;
@@ -165,9 +150,17 @@ const Content = styled.div`
   padding: 100px 0 100px 0;
   gap: 5vh; 
   animation: ${fadein} 0.8s forwards;
+  color: ${props => props.color};
   /* border: 1px solid orange; */
 
   @media (max-width: 1024px) {
+    width: 95%;
+    padding-top: 50px;
+    margin: 0 10px 0 0;
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
     width: 85%;
     padding-top: 50px;
     margin: 0 10px 0 0;
@@ -228,34 +221,33 @@ const Info = styled.section`
 }
 `
 
-const PageTitle = styled.h1`
-font-size: 5vw;
-width: 80%;
-align-self: flex-start;
-animation: ${glow} 2s infinite alternate; 
-color: var(--redish);
+// const PageTitle = styled.h1`
+// font-size: 5vw;
+// width: 80%;
+// align-self: flex-start;
+// animation: ${glow} 2s infinite alternate; 
 
-@media (max-width: 1024px) {
-  margin: 1.5vh 0;
-}
+// @media (max-width: 1024px) {
+//   margin: 1.5vh 0;
+// }
 
-@media (max-width: 965px) {
-  font-size: 3.5vw;
-}
+// @media (max-width: 965px) {
+//   font-size: 3.5vw;
+// }
 
-@media (max-width: 768px) {
-  font-size: 1.8em;
-}
+// @media (max-width: 768px) {
+//   font-size: 1.8em;
+// }
 
-@media (max-width: 425px) {
-  font-size: 1.8em;
-}
-`
+// @media (max-width: 425px) {
+//   font-size: 1.8em;
+// }
+// `
+
 const PageDescription = styled.h3`
   font-family: Roboto Flex;
   font-weight: 500;
   width: 55vw;
-  color: var(--redish);
   align-self: flex-start;
   font-size: 1.2vw; 
   /* border: 1px solid blue; */
@@ -302,7 +294,7 @@ const Github = styled.div`
     /* padding: 2vh 0; */
     width: 25vw;
     border-radius: 15px;
-    border: 4px dotted var(--redish);
+    border: 4px dotted ${props => props.color};
   
     @media (max-width: 1440px) {
       font-size: 1vw;
@@ -314,7 +306,7 @@ const Github = styled.div`
     @media (max-width: 965px) {
       font-size: 0.8vw;
       /* width: 10vw; */
-      border: 2px dotted var(--redish);
+      border: 2px dotted ${props => props.color};
     }
   
     @media (max-width: 768px) {
@@ -362,7 +354,7 @@ const InfoLinks = styled.div`
   font-family: 'Roboto Flex';
   margin: 10px 0;
   font-size: 1.1vw;
-  color: var(--redish);
+  color: ${props => props.color};
   overflow: hidden;
   border-radius: 10px;
   /* border: 1px solid purple; */
@@ -373,7 +365,7 @@ const InfoLinks = styled.div`
   }
 
   @media (max-width: 768px) {
-    border: 1px dotted var(--redish);
+    border: 1px dotted ${props => props.color};
     font-size: 1.2vw;
     width: 12vw;
     padding: 10px;
@@ -397,7 +389,7 @@ const InfoLinks = styled.div`
 const NativeHeader = styled.h3`
   width: 100%;
   font-weight: 700;
-  color: var(--redish);
+  color: ${props => props.color};
   @media (max-width: 768px) {
     width: 100%;
     font-size: 2vw;
@@ -460,7 +452,7 @@ const MobileImage = styled.img`
 const BrowserHeader = styled.h3`
     width: 100%;
     font-weight: 700;
-    color: var(--redish);
+    color: ${props => props.color};
     @media (max-width: 768px) {
       width: 100%;
       font-size: 2vw;
