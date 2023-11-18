@@ -2,16 +2,19 @@ import React, { useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import { motion as m } from 'framer-motion';
 import PageBody from '../PageBody';
+import TransitionScreen from '../TransitionScreen';
+import { useTransitionContext } from '../../context/TransitionContext';
 
 function MovieApp() {
   const [isNative, setIsNative] = useState(true)
   const [isBrowser, setIsBrowser] = useState(true)
+  const { runTransition } = useTransitionContext();
 
   const title = "Movie Night"
 
-  const PageDescription1 = "Movie Night seamlessly integrates with the OMDb API, allowing users to access a wealth of information about a diverse range of movies. From classic films to the latest releases, users can explore details such as title, release date, genre, cast, runtime, ratings, and more."
+  const PageDescription1 = "Welcome to Movie Night, where we've got your movie cravings covered effortlessly with the OMDb API. Dive into a treasure trove of movie details, spanning from classic gems to the latest blockbusters. Get the info on titles, release dates, genres, casts, runtimes, ratings, and more."
 
-  const PageDescription2 = "Thanks to the use of both React and React Native, the app is accessible across multiple platforms. Users can enjoy a consistent and responsive experience whether they are using the web version (built with React) or the mobile app (built with React Native) on their smartphones and tablets."
+  const PageDescription2 = "The magic doesn't stop there! With the power-packed combo of React and React Native, Movie Night ensures a seamless experience across different platforms. Whether you're chilling on the web version (courtesy of React) or enjoying the mobile app (crafted with React Native) on your smartphones and tablets, movie exploration has never been this effortless. Time to let the movie marathon begin! 🎥🍿"
 
   const nativeRepo = "https://github.com/starleafer/https---github.com-starleafer-Movie-App-Native"
 
@@ -49,6 +52,11 @@ function MovieApp() {
           isBrowser={isBrowser}
         />
       </Body>
+      {
+      runTransition === true
+      ? <TransitionScreen />
+      : ""
+    }
     </>
   )
 }

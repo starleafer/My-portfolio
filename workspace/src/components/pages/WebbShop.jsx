@@ -2,14 +2,19 @@ import React, { useState } from 'react'
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion';
 import PageBody from '../PageBody';
+import { useTransitionContext } from '../../context/TransitionContext';
+import TransitionScreen from '../TransitionScreen';
 
 function WebbShop() {
   const [isNative, setIsNative] = useState(false)
   const [isBrowser, setIsBrowser] = useState(true)
+  const { runTransition } = useTransitionContext();
 
   const title = "Sole Soul"
 
-  const PageDescription1 = "This webshop relies on a CRUD (Create, Read, Update, Delete) API, simplifying product management tasks for administrators. With effortless deployment through Railway, the API enables efficient addition, updating, retrieval, and removal of product listings, enhancing overall project scalability and maintenance."
+  const PageDescription1 = `Greetings, shoe enthusiasts! Step into Sole Soul, where our dynamic webshop, built on the powerful CRUD (Create, Read, Update, Delete) API, transforms the admin and customer experience. This React-based app, fueled by Railway's magic, smoothly empowers our webshop, ensuring effortless product management. Welcome to a new era of streamlined and efficient online shopping!`
+
+  const PageDescription2 = `Adding new styles, updating our collection, retrieving your favorite picks, and removing items—all done seamlessly. It's like having a reliable assistant for our admins, boosting the project's scalability and making maintenance a walk in the park. At Sole Soul, we're all about making your shoe-shopping journey simple and stylish! 🌟👞`
 
   const browserRepo = "https://github.com/tobionesies/gruppuppgift-webshop-let"
 
@@ -30,12 +35,18 @@ function WebbShop() {
         <PageBody
           title={<PageTitle>{title}</PageTitle>}
           PageDescription1={PageDescription1}
+          PageDescription2={PageDescription2}
           browserRepo={browserRepo}
           browserImages={browserImages}
           isNative={isNative}
           isBrowser={isBrowser}
         />
       </Body>
+      {
+      runTransition === true
+      ? <TransitionScreen />
+      : ""
+    }
     </>
   );
 }

@@ -201,6 +201,7 @@ const ButtonContainer = styled(m.div)`
   position: fixed;
   left: 0;
   z-index: 1;
+  /* border: 1px solid green; */
 
   @media (max-width: 768px) {
     position: fixed;

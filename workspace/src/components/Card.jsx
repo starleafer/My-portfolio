@@ -107,12 +107,7 @@ const Body = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
-  /* height: 100%; */
-
-  @media (max-width: 768px) {
-    /* justify-content: flex-start; */
-  }
-  `
+`
 
 const StyledCard = styled.div`
   width: 10vw;
@@ -137,7 +132,6 @@ const StyledCard = styled.div`
 
     
     .hovered {
-      /* border-color: white; */
       color: white;
     }
   }
@@ -152,13 +146,6 @@ const StyledCard = styled.div`
     max-height: 35vh;
   }
 
-  @media (max-width: 965px) {
-    /* border-width: 1px;
-    width: 7vw;
-    padding: 0 10px;
-    font-size: 1.2vw;
-    border-radius: 10px; */
-  }
 
   @media (max-width: 768px) {
     border-width: 1px;

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from "styled-components";
 import { motion as m } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import NextProject from '../NextProject';
+// import { Link } from 'react-router-dom';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faGithub } from '@fortawesome/free-brands-svg-icons';
+// import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+// import NextProject from '../NextProject';
 import { useTransitionContext } from '../../context/TransitionContext';
 import TransitionScreen from '../TransitionScreen';
 import PageBody from '../PageBody';
@@ -13,12 +13,15 @@ import PageBody from '../PageBody';
 function Cleaning() {
   const [ isNative, setIsNative ] = useState(false)
   const [ isBrowser, setIsBrowser ] = useState(true)
+  const { runTransition } = useTransitionContext();
 
   const title = "Dust Busters"
 
-  const PageDescription1 = `Welcome to "Dust Busters", a Firebase-hosted website blending front-end creativity with a robust back-end, featuring CRUD logic. The React-based front-end ensures an intuitive user experience, while the dynamic back-end empowers users with seamless booking, secure log-in, and interactive review functionalities.`;
+  const PageDescription1 = "Embark on a journey with Dust Busters, an exceptional online platform meticulously hosted on Firebase. This website combines innovative front-end design with a robust back-end infrastructure, complemented by CRUD logic.";
 
-  const PageDescription2 = "Firebase's streamlined hosting guarantees swift and secure deployment, making Dust Busters a dynamic and reliable online destination."
+  const PageDescription2 = "Envision a React-based front-end that simplifies your experience, whether you're navigating bookings, securely logging in, or leaving insightful reviews. It's akin to having a highly efficient superhero dedicated to cleaning services, right at your fingertips."
+
+  const PageDescription3 = "Benefiting from Firebase's enchanting hosting capabilities, our site operates with unparalleled efficiency. Swift, secure, and poised for action, Dust Busters stands as your premier destination for a dynamic and reliable online experience. Streamlined cleanup, tailored to perfection! 🚀✨"
 
   const browserRepo = "https://github.com/starleafer/The-movie-app"
 
@@ -39,6 +42,7 @@ function Cleaning() {
           title={<PageTitle>{title}</PageTitle>}
           PageDescription1={PageDescription1}
           PageDescription2={PageDescription2}
+          PageDescription3={PageDescription3}
           browserRepo={browserRepo}
           website={website}
           browserImages={browserImages}
@@ -46,59 +50,11 @@ function Cleaning() {
           isBrowser={isBrowser}
         />
       </Body>
-      {/* <Body>
-      <Content>
-        <InfoContainer>
-          <Info>
-            <PageTitle>Dust Busters</PageTitle>
-        <NextProject />
-            <PageDescription>Welcome to <span className='dustbusters'>Dust Busters</span>, a Firebase-hosted website blending front-end creativity with a robust back-end, featuring CRUD logic. The React-based front-end ensures an intuitive user experience, while the dynamic back-end empowers users with seamless booking, secure log-in, and interactive review functionalities. 
-            <br />
-            <br />
-            Firebase's streamlined hosting guarantees swift and secure deployment, making Dust Busters a dynamic and reliable online destination.</PageDescription>
-          </Info>
-          <Links>
-            <Link
-              to="https://dustbusters-207c6.web.app/"
-              target="_blank"
-              style={{ textDecoration: 'none' }}
-              onMouseEnter={() => setHoveredLink(1)}
-              onMouseLeave={() => setHoveredLink(null)}
-            >
-              <InfoLinks hoveredLink={hoveredLink === 1}>
-                To the page
-                <FontAwesomeIcon icon={faArrowUpRightFromSquare}  />
-              </InfoLinks>
-            </Link>
-            <Link
-              to="https://github.com/jonaelghid3y/DustBusters"
-              target="_blank"
-              style={{ textDecoration: 'none' }}
-              onMouseEnter={() => setHoveredLink(2)}
-              onMouseLeave={() => setHoveredLink(null)}
-            >
-              <InfoLinks hoveredLink={hoveredLink === 2}>
-                To the code
-                <FontAwesomeIcon icon={faGithub} style={{ marginRight: '5px' }} />
-              </InfoLinks>
-            </Link>
-          </Links>
-        </InfoContainer>
-        <ImageContainer>
-          <Image src='dustbusters/1.png' alt='bild' />
-          <Image src='dustbusters/2.png' alt='bild' />
-          <Image src='dustbusters/dbBook.png' alt='bild' />
-          <Image src='dustbusters/dbReviews.png' alt='bild' />
-          <Image src='dustbusters/dbLogin.png' alt='bild' />
-        </ImageContainer>
-        <NextProject />
-      </Content>
-    </Body>
-    {
+      {
       runTransition === true
       ? <TransitionScreen />
       : ""
-    } */}
+    }
     </>
   )
 }

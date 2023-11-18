@@ -13,6 +13,7 @@ function PageBody({
   title,
   PageDescription1,
   PageDescription2,
+  PageDescription3,
   nativeRepo,
   browserRepo,
   website,
@@ -109,7 +110,15 @@ function PageBody({
                   {PageDescription2}
                 </>
               ) : null}
+              {PageDescription3 ? (
+                <>
+                  <br />
+                  <br />
+                  {PageDescription3}
+                </>
+              ) : null}
             </PageDescription>
+            
             <LinkGroup>
               <Github>
                 <LinkContainer numColumns={numColumns}>
@@ -145,11 +154,6 @@ function PageBody({
         ) : null}
         <NextProject />
       </Content>
-      {
-        runTransition === true
-          ? <TransitionScreen />
-          : ""
-      }
     </>
   )
 }

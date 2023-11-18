@@ -16,7 +16,7 @@ import _ from 'lodash';
 
 
 function App({ router, props }) {
-  const [bgColor, setBgColor ] = useState('')
+  const [bgColor, setBgColor] = useState('')
   const location = useLocation();
 
   const home = "/"
@@ -29,7 +29,7 @@ function App({ router, props }) {
 
   useEffect(() => {
     let pathColor = '';
-  
+
     switch (location.pathname) {
       case '/cleaning':
         pathColor = 'var(--yellowish)';
@@ -50,67 +50,67 @@ function App({ router, props }) {
       default:
         pathColor = '';
     }
-  
+
     setBgColor(pathColor);
   }, [location.pathname]);
 
   return (
     <CardProvider>
+      <AppContainer color={bgColor}>
         <TransitionProvider>
-        <AppContainer color={bgColor}>
-            <Content>
-              <Routes>
-                <Route path={home} element={
-                  <RouteContainer>
-                    <Buttons path={home} />
-                    <Mainpage />
-                  </RouteContainer>
-                } />
-                <Route path={cleaning} element={
-                  <RouteContainer className='scrollCleaning'>
-                    <Buttons path={cleaning} />
-                    <Cleaning />
-                  </RouteContainer>
-                } />
+          <Content>
+            <Routes>
+              <Route path={home} element={
+                <RouteContainer>
+                  <Buttons path={home} />
+                  <Mainpage />
+                </RouteContainer>
+              } />
+              <Route path={cleaning} element={
+                <RouteContainer className='scrollCleaning'>
+                  <Buttons path={cleaning} />
+                  <Cleaning />
+                </RouteContainer>
+              } />
+              
+              <Route path={chatapp} element={
+                <RouteContainer className='scrollChatApp'>
+                  <Buttons path={chatapp} />
+                  <ChatApp />
+                </RouteContainer>
+              } />
 
-                <Route path={chatapp} element={
-                  <RouteContainer className='scrollChatApp'>
-                    <Buttons path={chatapp} />
-                    <ChatApp />
-                  </RouteContainer>
-                } />
+              <Route path={webbshop} element={
+                <RouteContainer className='scrollWebbShop'>
+                  <Buttons path={webbshop} />
+                  <WebbShop />
+                </RouteContainer>
+              } />
 
-                <Route path={webbshop} element={
-                  <RouteContainer className='scrollWebbShop'>
-                    <Buttons path={webbshop} />
-                    <WebbShop />
-                  </RouteContainer>
-                } />
+              <Route path={movieapp} element={
+                <RouteContainer className='scrollMovies'>
+                  <Buttons path={movieapp} />
+                  <MovieApp />
+                </RouteContainer>
+              } />
 
-                <Route path={movieapp} element={
-                  <RouteContainer className='scrollMovies'>
-                    <Buttons path={movieapp} />
-                    <MovieApp />
-                  </RouteContainer>
-                } />
+              <Route path={tictactoe} element={
+                <RouteContainer>
+                  <Buttons path={tictactoe} />
+                  <TicTacToe />
+                </RouteContainer>
+              } />
 
-                <Route path={tictactoe} element={
-                  <RouteContainer>
-                    <Buttons path={tictactoe} />
-                    <TicTacToe />
-                  </RouteContainer>
-                } />
-
-                <Route path={about} element={
-                  <RouteContainer className='scrollTictac'>
-                    <Buttons path={about} />
-                    <AboutMe />
-                  </RouteContainer>
-                } />
-              </Routes>
-            </Content>
-          </AppContainer>
+              <Route path={about} element={
+                <RouteContainer className='scrollTictac'>
+                  <Buttons path={about} />
+                  <AboutMe />
+                </RouteContainer>
+              } />
+            </Routes>
+          </Content>
         </TransitionProvider>
+      </AppContainer>
     </CardProvider>
   );
 }
