@@ -100,8 +100,9 @@ const NextButton = styled.button`
 `;
 
 const Arrow = styled.span`
-  font-size: 1.2em;
-  margin: 0.1vh 0 0 0.5em; 
+  font-size: 1.5vw;
+  margin-left: 0.5em; 
+  padding-top: 3%;
 `;
 
 

@@ -105,10 +105,6 @@ const Body = styled(m.div)`
     margin: 1.5vh 0;
   }
   
-  @media (max-width: 965px) {
-    font-size: 2.5vw;
-  }
-  
   @media (max-width: 768px) {
     font-size: 1.8em;
   }

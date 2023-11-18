@@ -102,9 +102,13 @@ function PageBody({
           <Info>
             <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
               {PageDescription1}
-              <br />
-              <br />
-              {PageDescription2}
+              {PageDescription2 ? (
+                <>
+                  <br />
+                  <br />
+                  {PageDescription2}
+                </>
+              ) : null}
             </PageDescription>
             <LinkGroup>
               <Github>
@@ -120,7 +124,7 @@ function PageBody({
         </InfoSection>
         {isNative ? (
           <Native>
-            <NativeHeader>React Native</NativeHeader>
+            {isBrowser ? <NativeHeader>React Native</NativeHeader> : ""}
             <ImageContainer>
               {nativeImages.map(image => (
                 <MobileImage key={image.id} src={image.src} />
@@ -131,7 +135,7 @@ function PageBody({
 
         {isBrowser ? (
           <Browser>
-            <BrowserHeader>React</BrowserHeader>
+            {isNative ? <BrowserHeader>React</BrowserHeader> : ""}
             <ImageContainer style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
               {browserImages.map(image => (
                 <BrowserImage key={image.id} src={image.src} alt={image.alt} />
@@ -198,10 +202,6 @@ const InfoSection = styled.div`
   min-width: 60%;
   /* border: 1px solid pink; */
   
-  @media (max-width: 1440px) {
-    /* width: 100%; */
-    /* margin-right: 5vw;  */
-  }
   @media (max-width: 1024px) {
     width: 100%;
   }
@@ -231,7 +231,6 @@ const Info = styled.section`
 
   }
   @media (max-width: 1024px) {
-    /* width: 95%; */
     padding-top: 3vh;
   }
 
@@ -245,29 +244,6 @@ const Info = styled.section`
   align-items: flex-start;
 }
 `
-
-// const PageTitle = styled.h1`
-// font-size: 5vw;
-// width: 80%;
-// align-self: flex-start;
-// animation: ${glow} 2s infinite alternate; 
-
-// @media (max-width: 1024px) {
-//   margin: 1.5vh 0;
-// }
-
-// @media (max-width: 965px) {
-//   font-size: 3.5vw;
-// }
-
-// @media (max-width: 768px) {
-//   font-size: 1.8em;
-// }
-
-// @media (max-width: 425px) {
-//   font-size: 1.8em;
-// }
-// `
 
 const PageDescription = styled.h3`
   font-family: Roboto Flex;
@@ -295,7 +271,6 @@ const PageDescription = styled.h3`
 const LinkGroup = styled.div`
   display: flex;
   width: 100%;
-  /* flex-direction: column; */
   align-items: flex-end;
   /* border: 1px solid red; */
 
@@ -313,67 +288,54 @@ const LinkGroup = styled.div`
 `
 
 const Github = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    /* padding: 2vh 0; */
-    padding-right: 0.5vw;
-    width: 40%;
-    min-width: 28vw;
-    border-radius: 15px;
-    border: 4px dotted ${props => props.color};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-right: 0.5vw;
+  width: 40%;
+  min-width: 20vw;
+  border-radius: 15px;
+  border: 4px dotted ${props => props.color};
   
     @media (max-width: 1440px) {
       font-size: 1vw;
-      /* width: 10vw; */
     }
+
     @media (max-width: 1024px) {
       font-size: 1vw;
     }
+
     @media (max-width: 965px) {
       font-size: 0.8vw;
-      /* width: 10vw; */
       border: 2px dotted ${props => props.color};
     }
   
     @media (max-width: 768px) {
-      /* width: 20vw; */
-      /* width: 100%; */
+      width: 100%;
       border: none; 
-  }
+    }
   
-  @media (max-width: 425px) {
+    @media (max-width: 425px) {
     width: 60%;
-  }
-  `
+    }
+`
 
 const LinkContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${props => props.numColumns}, 1fr);
   width: 100%;
   padding: 0.3vw;
-  /* flex-direction: column; */
   align-items: center;
   justify-content: space-evenly;
   /* border: 1px solid orange; */
   
-  @media (max-width: 1024px) {
-    /* align-items: center; */
-  }
-  
-  @media (max-width: 768px) {
-    width: 100%;
-
-  }
-  
   @media (max-width: 425px) {
     flex-direction: row;
-    width: 100%;
     justify-content: flex-start;
     margin: 0;
   }
-  `
+`
 
 const InfoLinks = styled.div`
   display: flex;
@@ -396,7 +358,7 @@ const InfoLinks = styled.div`
   @media (max-width: 768px) {
     border: 1px dotted ${props => props.color};
     font-size: 1.2vw;
-    width: 12vw;
+    /* width: 12vw; */
     padding: 10px;
     margin: 0 10px 0 0;
 
@@ -411,7 +373,6 @@ const InfoLinks = styled.div`
       padding: 2vw;
       font-size: 2.2vw;
 
-      /* margin-left: 2vw; */
     }
   }
 `
@@ -419,11 +380,11 @@ const NativeHeader = styled.h3`
   width: 100%;
   font-weight: 700;
   color: ${props => props.color};
+
   @media (max-width: 768px) {
     width: 100%;
     font-size: 2vw;
-}
-
+  }
 `
 const Native = styled.div`
   display: flex;
@@ -432,18 +393,18 @@ const Native = styled.div`
   align-items: center;
   /* border: 1px  solid green; */
 
-@media (max-width: 1440px) {
-  align-items: flex-start;
-}
+  @media (max-width: 1440px) {
+    align-items: flex-start;
+  }
 
-@media (max-width: 1024px) {
-  width: 100%;
-}
+  @media (max-width: 1024px) {
+    width: 100%;
+  }
 
-@media (max-width: 768px) {
-  width: 100%;
-  align-items: center;
-}
+  @media (max-width: 768px) {
+    width: 100%;
+    align-items: center;
+  }
 `
 
 const ImageContainer = styled.div`
@@ -456,20 +417,20 @@ const ImageContainer = styled.div`
   /* border: 1px solid cyan; */
 
   @media (max-width: 1440px) {
-  justify-content: flex-start;
-}
+    justify-content: flex-start;
+  }
 
-@media (max-width: 768px) {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: repeat(2, 1fr);    
-  gap: 2vw; 
+  @media (max-width: 768px) {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(2, 1fr);    
+    gap: 2vw; 
   }
 
   @media (max-width: 375px) {
-  grid-template-columns: repeat(2, 1fr); 
-  grid-template-rows: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
   }
 `
 
@@ -482,6 +443,7 @@ const BrowserHeader = styled.h3`
     width: 100%;
     font-weight: 700;
     color: ${props => props.color};
+
     @media (max-width: 768px) {
       width: 100%;
       font-size: 2vw;
@@ -496,7 +458,7 @@ const Browser = styled.div`
   /* border: 1px solid green; */
 
   @media (max-width: 1440px) {
-  align-items: flex-start;
+    align-items: flex-start;
   }
 
   @media (max-width: 768px) {
