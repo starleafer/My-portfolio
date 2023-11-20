@@ -21,7 +21,7 @@ function Card({ id, path, title, label, color, backgroundColor }) {
       setIsClicked(false);
       navigate(`/${path}`);
       setButtonFade(false)
-    }, 1300);
+    }, 800);
 
     return () => {
       clearTimeout(circleAnimationTimeout);

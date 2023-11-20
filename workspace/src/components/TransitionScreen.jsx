@@ -39,6 +39,6 @@ const Transition = styled(m.div)`
     position: absolute;
     height: 100vh;
     width: 100%;
-    animation: ${transitionRight} 1s ease-in-out forwards; 
+    animation: ${transitionRight} 0.7s ease-in-out forwards; 
     z-index: 1000; 
 `

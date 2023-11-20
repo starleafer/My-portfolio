@@ -23,7 +23,7 @@ function NextProject({ props }) {
         const transitionTimeout = setTimeout(() => {
           setRunTransition(false)
           navigate(`/${nextPath}`);
-        }, 1300)
+        }, 800)
         
         return () => {
           clearTimeout(transitionTimeout);

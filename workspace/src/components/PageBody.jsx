@@ -474,7 +474,7 @@ const Browser = styled.div`
 const BrowserImage = styled.img`
   width: 100%;
   border-radius: 10px;
-  border: 1px solid #201c1cab;
+  /* border: 1px solid #201c1cab; */
 `;
 
 export default PageBody
