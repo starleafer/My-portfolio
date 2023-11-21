@@ -17,21 +17,6 @@ function Buttons({ props }) {
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
 
-
-  // const currentIndex = card.findIndex(item => item.path === currentPath);
-  // const { color } = currentCard;
-
-
-  // let color = ""
-  // let backGroundColor = ""
-
-  // if (path === "/cleaning") { color = 'var(--dark)', backGroundColor = 'var(--yellowish)' }
-  // if (path === "/chatapp") { color = 'var(--neon-green)', backGroundColor = 'var(--light-purple)' }
-  // if (path === "/webbshop") { color = 'bisque', backGroundColor = 'var(--greenish)' }
-  // if (path === "/movieapp") { color = 'var(--redish)', backGroundColor = 'var(--darker)' }
-  // if (path === "/tictactoe") { color = 'var(--blueish)', backGroundColor = 'var(--redish)' }
-
-
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
 

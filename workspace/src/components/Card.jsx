@@ -27,22 +27,6 @@ function Card({ id, path, title, label, color, backgroundColor }) {
       clearTimeout(circleAnimationTimeout);
     };
   }
-  
-
-  // useEffect(() => {
-  //   const cursor = document.querySelector('.cursor');
-  //   const cursorDot = document.querySelector('.cursor-dot');
-
-  //   if (isHovered) {
-  //     cursor.style.borderColor = "white";
-  //     cursorDot.style.borderColor = "white";
-  //     cursorDot.style.backgroundColor = "white";
-  //   } else {
-  //     cursor.style.borderColor = "var(--dark)";
-  //     cursorDot.style.borderColor = "var(--dark)";
-  //     cursorDot.style.backgroundColor = "var(--dark)";
-  //   };
-  // }, [isHovered]);
 
   return (
     <Body>

@@ -13,10 +13,12 @@ import { CardProvider } from './context/CardContext';
 import { TransitionProvider } from './context/TransitionContext';
 import '../src/index.css'
 import _ from 'lodash';
+import Splash from './components/Splash';
 
 
 function App({ router, props }) {
   const [bgColor, setBgColor] = useState('')
+  const [showSplash, setShowSplash] = useState(true)
   const location = useLocation();
 
   const home = "/"
@@ -54,8 +56,17 @@ function App({ router, props }) {
     setBgColor(pathColor);
   }, [location.pathname]);
 
+  useEffect(() => {
+    const timeoutId = setTimeout(() => setShowSplash(false), 3200);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
-    <CardProvider>
+    <>
+    {showSplash ? 
+      <Splash />
+      :
+    <CardProvider> 
       <AppContainer color={bgColor}>
         <TransitionProvider>
           <Content>
@@ -112,6 +123,8 @@ function App({ router, props }) {
         </TransitionProvider>
       </AppContainer>
     </CardProvider>
+    }
+    </>
   );
 }
 
