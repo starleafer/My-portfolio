@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import Projectlist from '../Projectlist';
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion'

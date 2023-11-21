@@ -175,6 +175,15 @@ const fadeout = keyframes`
 }
 `;
 
+const fadeOutShadow = keyframes`
+  0% {
+    box-shadow: 0vw 0vw var(--dark);
+  }
+  100% {
+    box-shadow: 0.5vw 0.5vw var(--dark);
+  }
+`;
+
 const ButtonContainer = styled(m.div)`
   height: 93.8vh;
   display: flex;
@@ -244,6 +253,7 @@ const StyledButton = styled(m.button)`
   &:hover {
     background-color: ${props => props.color || 'default-hover-color'};
     color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
+    border-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor} !important;
     cursor: pointer;
   }
 
@@ -251,10 +261,6 @@ const StyledButton = styled(m.button)`
     font-size: 1.1em;
     height: 3.5vh;
 
-    &:hover {
-      background-color: transparent;
-      color: inherit;
-    }
   }
 
   @media (max-width: 375px) {
@@ -263,16 +269,10 @@ const StyledButton = styled(m.button)`
 
   &.mainpage,
   &.about {
-  box-shadow: 6px 8px var(--dark);
-
-  @media (max-width: 768px) {
-    box-shadow: none;
-    font-size: 1.2em;
-    height: 3.5vh;
-    background-color: var(--dark);
-    color: #fff;
+  transform: translateY(-0.3vw) translateX(-0.3vw);
+  animation: ${fadeOutShadow} 0.8s ease forwards;
   }
-}
+
 `;
 
 const Contact = styled.div`
