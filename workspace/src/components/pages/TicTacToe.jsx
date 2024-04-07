@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import { motion as m } from 'framer-motion'
-import NextProject from '../NextProject';
+import PageNavigationButton from '../PageNavigationButton';
 import TransitionScreen from '../TransitionScreen';
 import { useTransitionContext } from '../../context/TransitionContext';
 
@@ -11,7 +11,7 @@ function TicTacToe() {
   return (
     <>
       <Body>
-        <NextProject />
+        <PageNavigationButton />
       </Body>
       {
       runTransition === true

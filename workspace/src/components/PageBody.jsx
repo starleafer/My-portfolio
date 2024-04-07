@@ -3,11 +3,11 @@ import styled, { keyframes } from "styled-components";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import NextProject from './NextProject';
 import { useTransitionContext } from '../context/TransitionContext';
 import TransitionScreen from './TransitionScreen';
 import { useCardContext } from '../context/CardContext';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import PageNavigationButton from './PageNavigationButton';
 
 function PageBody({
   title,
@@ -20,7 +20,7 @@ function PageBody({
   nativeImages,
   browserImages,
   isNative,
-  isBrowser
+  isBrowser,
 }) {
 
   const { runTransition } = useTransitionContext();
@@ -127,7 +127,7 @@ function PageBody({
                   {renderWebsiteLink}
                 </LinkContainer>
               </Github>
-              <NextProject />
+              <PageNavigationButton />
             </LinkGroup>
           </Info>
         </InfoSection>
@@ -152,7 +152,7 @@ function PageBody({
             </ImageContainer>
           </Browser>
         ) : null}
-        <NextProject />
+        <PageNavigationButton />
       </Content>
     </>
   )

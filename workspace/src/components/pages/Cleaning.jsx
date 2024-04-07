@@ -5,7 +5,6 @@ import { motion as m } from 'framer-motion';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faGithub } from '@fortawesome/free-brands-svg-icons';
 // import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-// import NextProject from '../NextProject';
 import { useTransitionContext } from '../../context/TransitionContext';
 import TransitionScreen from '../TransitionScreen';
 import PageBody from '../PageBody';

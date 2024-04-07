@@ -43,13 +43,11 @@ function ChatApp() {
           nativeImages={nativeImages}
           isNative={isNative}
           isBrowser={isBrowser}
+          previousPage
+          nextPage
         />
       </Body>
-      {
-      runTransition === true
-      ? <TransitionScreen />
-      : ""
-    }
+      <TransitionScreen />
     </>
   )
 }
