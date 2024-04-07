@@ -14,6 +14,8 @@
   --light-purple: #564d8d;
   --test: #c2b8f5;
   --more-red: #eb7d7d;
+
+  --thumb: 7px;
 }
 
 * {
@@ -106,55 +108,42 @@ body {
   height: 3vh;
 }
 
-.dustbusters {
-  font-family: 'Roboto Flex';
-  font-weight: 800;
-}
+.scrollChatApp,
+.scrollWebbShop,
+.scrollMovies,
+.scrollTictac,
 .scrollCleaning {
   ::-webkit-scrollbar {
     width: 7px;
     background: transparent;
   }
+}
+
+.scrollCleaning {
   ::-webkit-scrollbar-thumb {
     background: var(--dark);
   }
 }
 
 .scrollChatApp {
-  ::-webkit-scrollbar {
-    width: 7px;
-    background: transparent;
-  }
   ::-webkit-scrollbar-thumb {
     background: var(--neon-green);
   }
-  ;
 }
 
 .scrollWebbShop {
-  ::-webkit-scrollbar {
-    width: 7px;
-    background: transparent;
-  }
   ::-webkit-scrollbar-thumb {
     background: bisque;
   }
 }
 
 .scrollMovies {
-  ::-webkit-scrollbar {
-    width: 7px;
-    background: transparent;
-  }
   ::-webkit-scrollbar-thumb {
     background: var(--redish);
   }
+}
 
 .scrollTictac {
-  ::-webkit-scrollbar {
-    width: 7px;
-    background: transparent;
-  }
   ::-webkit-scrollbar-thumb {
     background: var(--blueish);
   }
@@ -162,4 +151,3 @@ body {
 
 
 
-}
