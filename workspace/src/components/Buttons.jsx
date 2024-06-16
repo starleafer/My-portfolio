@@ -227,13 +227,16 @@ const ButtonContainer = styled(m.div)`
 const StyledButton = styled(m.button)`
   min-width: 5vw;
   height: 4vh;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 1px solid black;
   font-size: 1em;
   font-weight: 600;
   color: ${props => props.color};
   background-color: transparent;
-  transition: transform 0.5s, box-shadow 0.3s;
+  background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% center;
+  transition: transform 0.5s, box-shadow 0.3s, background-position 0.5s;
   z-index: 1;
 
   @media (max-width: 1200px) {
@@ -250,11 +253,12 @@ const StyledButton = styled(m.button)`
   }
 
   &:hover {
-    background-color: ${props => props.color || 'default-hover-color'};
     color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
-    border-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor} !important;
     cursor: pointer;
+    background-position: 0% center; 
   }
+
+
 
   @media (max-width: 768px) {
     font-size: 1.1em;
@@ -271,7 +275,6 @@ const StyledButton = styled(m.button)`
   transform: translateY(-0.3vw) translateX(-0.3vw);
   animation: ${fadeOutShadow} 0.8s ease forwards;
   }
-
 `;
 
 const Contact = styled.div`

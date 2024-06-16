@@ -108,9 +108,14 @@ const NavigationButton = styled.button`
   padding: 10px;
   font-size: 1vw;
   font-weight: 600;
+  background-color: transparent;
+  background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% center;
+  transition: transform 0.5s, box-shadow 0.3s, background-position 0.5s;
   
   &:hover {
-    background-color: ${props => props.color || 'default-hover-color'};
+    background-position: 0% center; 
     color: ${props => props.backgroundColor || 'default-hover-color'} !important;
     cursor: pointer;
   }

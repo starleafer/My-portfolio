@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components'
 import Card from './Card';
 import { CardProvider, useCardContext } from '../context/CardContext';
+import {motion} from 'framer-motion'
 
 function Projectlist() {
     const { card } = useCardContext();
@@ -10,21 +11,45 @@ function Projectlist() {
         return console.log('Context is undefined');
     }
 
+    const cardVariants = {
+        offscreen: {
+            x: 100,
+            opacity: 0
+        },
+        onscreen: i => ({
+            x: 0,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                bounce: 0.4,
+                delay: i * 0.1
+            }
+        })
+    };
+
     return (
         <CardProvider>
             <StyledProjectList>
-                <ListLabel>/ Pick a project</ListLabel>
+                <ListLabel>/My Projects</ListLabel>
                 <ProjectContainer>
-                    {card.map(item => (
-                        <Card
+                {card.map((item, index) => (
+                        <motion.div
                             key={item.id}
-                            id={item.id}
-                            path={item.path}
-                            title={item.title}
-                            label={item.label}
-                            color={item.color}
-                            backgroundColor={item.backgroundColor}
-                        />
+                            variants={cardVariants}
+                            initial="offscreen"
+                            animate="onscreen"
+                            custom={index} // Pass index as custom prop for delay calculation
+                        >
+                            <Card
+                                key={item.id}
+                                id={item.id}
+                                path={item.path}
+                                title={item.title}
+                                label={item.label}
+                                color={item.color}
+                                backgroundColor={item.backgroundColor}
+                            />
+                        </motion.div>
                     ))}
                 </ProjectContainer>
             </StyledProjectList>

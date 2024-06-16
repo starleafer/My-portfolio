@@ -5,31 +5,27 @@ import { motion as m } from 'framer-motion'
 
 function Mainpage({path}) {
   return (
-        <Container
-          initial={{ x: '10%', opacity: 0 }}
-          animate={{ x: '0%', opacity: 1 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          exit={{ opacity: 1 }}
-        >
-          <TitlesContainer>
-            <Title>Emil Stjernlöf</Title>
-            {/* <SmallTitle> = {`{FrontendDeveloperInDevelopment}`}</SmallTitle> */}
-          </TitlesContainer>
-          <Projectlist />
-        </Container>
-
+    <Container>
+      <TitlesContainer
+        initial={{ x: '10%', opacity: 0 }}
+        animate={{ x: '0%', opacity: 1 }}
+        transition={{ duration: 0.75, ease: "easeOut" }}
+        exit={{ opacity: 1 }}
+      >
+        <Title>Emil Stjernlöf</Title>
+      </TitlesContainer>
+      <Projectlist />
+    </Container>
   );
 }
 
-const Container = styled(m.div)`
+const Container = styled.div`
   display: flex;
   min-width: 90vw;
-  /* max-width: 90vw; */
   align-items: center;
   flex-direction: column;
   position: relative;
   margin-left: auto;
-  /* border: 2px solid green; */
 
   @media (max-width: 768px) {
     margin: 10vh 0 0 5vw;
@@ -38,7 +34,7 @@ const Container = styled(m.div)`
   }
   `
 
-const TitlesContainer = styled.div`
+const TitlesContainer = styled(m.div)`
   display: flex;
   width: 80vw;
   align-items: end;

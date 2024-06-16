@@ -113,7 +113,6 @@ const StyledCard = styled.div`
     transform: translateY(-1.5vw);
     transition: transform 0.3s;
     animation: ${fadeInShadow} 0.5s ease forwards;
-
     
     .hovered {
       color: white;

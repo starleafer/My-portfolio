@@ -2,6 +2,7 @@ import React from "react";
 import Buttons from "../Buttons";
 import styled from "styled-components";
 import { motion as m } from "framer-motion";
+import ProfilePic from "../../assets/ProfilePic.jpg";
 
 function AboutMe() {
   return (
@@ -43,7 +44,7 @@ function AboutMe() {
         transition={{ duration: 0.75, ease: [0.4, 0.3, 0.2, 1] }}
         exit={{ opacity: 1 }}
       >
-        <Image src="profilepic.jpg" alt="profile picture"></Image>
+        <Image src={ProfilePic} alt="profile picture"></Image>
         <ImageFrame></ImageFrame>
       </Dark>
     </Body>
@@ -94,18 +95,18 @@ const Dark = styled(m.div)`
 const Image = styled.img`
   position: relative;
   height: 55vh;
-  min-width: 40vh;
+  min-width: 35vh;
   border-radius: 15px;
   background-color: #fff;
-  filter: grayscale(40%);
+  /* filter: grayscale(50%); */
   z-index: 1;
 `;
 const ImageFrame = styled.div`
   position: absolute;
   height: 55vh;
   top: 25vh;
-  left: 12vw;
-  min-width: 40vh;
+  left: 13vw;
+  min-width: 35vh;
   border: 1px solid white;
   border-radius: 15px;
 `;
