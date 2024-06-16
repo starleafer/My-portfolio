@@ -42,7 +42,6 @@ function Card({ id, path, title, label, color, backgroundColor }) {
         <Title>{title}</Title>
         <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
       </StyledCard>
-      {/* <Shadow className={isHovered ? "hovered" : ""} /> */}
     </Body>
   );
 }
@@ -144,12 +143,6 @@ const StyledCard = styled.div`
       background-color: transparent !important;
       transform: none;
       
-      /* .hovered {
-        border-color: var(--dark);
-        background-color: transparent;
-
-        color: var(--dark);
-      } */
     }
   }
 

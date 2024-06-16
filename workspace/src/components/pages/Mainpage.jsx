@@ -1,9 +1,32 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import Projectlist from '../Projectlist';
-import styled from 'styled-components';
 import { motion as m } from 'framer-motion'
+import styled, { keyframes } from 'styled-components';
 
-function Mainpage({path}) {
+function Mainpage({ props}) {
+
+  const [hoverColor, setHoverColor] = useState('');
+
+  const colors = [
+    '--dark: #1b1f2e',
+    '--greenish: #497770',
+    '--yellowish: #f5ca80',
+    '--ocean: #00a6a6',
+    '--redish: #eeb7b7',
+    '--creamy: #f3b88474',
+    '--blueish: #12398d',
+    '--neon-green: #0ac753',
+    '--light-purple: #564d8d',
+    '--silver-light: #f7f7f7e8',
+    '--test: #c2b8f5',
+    '--more-red: #eb7d7d',
+  ].map(color => color.split(': ')[1]);
+
+  const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+
+
+  const name = "Emil Stjernlöf";
+
   return (
     <Container>
       <TitlesContainer
@@ -12,12 +35,33 @@ function Mainpage({path}) {
         transition={{ duration: 0.75, ease: "easeOut" }}
         exit={{ opacity: 1 }}
       >
-        <Title>Emil Stjernlöf</Title>
+        <Title>
+          {name.split('').map((letter, index) => 
+            letter === ' ' ? 
+            <span key={index}> </span> : 
+            <TitleLetters 
+              key={index} 
+              hoverColor={hoverColor}
+              onMouseEnter={() => setHoverColor(getRandomColor())}
+            >
+              {letter}
+            </TitleLetters>
+          )}
+        </Title>
       </TitlesContainer>
       <Projectlist />
     </Container>
   );
 }
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -25,7 +69,8 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   position: relative;
-  margin-left: auto;
+  margin: 5vh 0 0 auto;
+
 
   @media (max-width: 768px) {
     margin: 10vh 0 0 5vw;
@@ -46,7 +91,6 @@ const TitlesContainer = styled(m.div)`
 `
 
 const Title = styled.h1`
-  font-size: 9em;
   font-weight: 500;
   text-align: center;
   margin: 0.5em 0.2em 0 0;
@@ -67,27 +111,41 @@ const Title = styled.h1`
   }
 `;
 
-const SmallTitle = styled.h2`
-  /* border: 1px solid black; */
-  font-size: 1.4em;
+const TitleLetters = styled.span`
+font-size: 6.5em;
   font-weight: 500;
-  margin-bottom: 1em;
-  color: #cacaca;
-  -webkit-text-stroke-width: 1px;
+  color: white;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: var(--dark); 
+  background-color: transparent; /* Ensure background is transparent initially */
+  transition: color 0.2s ease, background-color 0.1s ease; /* Apply transition to color and background-color */
 
-  @media (max-width: 1024px) {
-    font-size: 1em;
-  }
-
-  @media (max-width: 768px) {
-    margin-bottom: 0.3em;
-  }
-
-  @media (max-width: 425px) {
-    margin-top: 0;
-    font-size: 0.8em;
-
+  &:hover {
+    color: ${props => props.hoverColor || 'white'};
   }
 `
+
+// const SmallTitle = styled.h2`
+//   /* border: 1px solid black; */
+//   font-size: 1.4em;
+//   font-weight: 500;
+//   margin-bottom: 1em;
+//   color: #cacaca;
+//   -webkit-text-stroke-width: 1px;
+
+//   @media (max-width: 1024px) {
+//     font-size: 1em;
+//   }
+
+//   @media (max-width: 768px) {
+//     margin-bottom: 0.3em;
+//   }
+
+//   @media (max-width: 425px) {
+//     margin-top: 0;
+//     font-size: 0.8em;
+
+//   }
+// `
 
 export default Mainpage;

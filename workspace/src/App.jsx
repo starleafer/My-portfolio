@@ -63,66 +63,66 @@ function App({ router, props }) {
 
   return (
     <>
-    {showSplash ? 
+      {showSplash ? 
       <Splash />
       :
-    <CardProvider> 
-      <AppContainer color={bgColor}>
-        <TransitionProvider>
-          <Content>
-            <Routes>
-              <Route path={home} element={
-                <RouteContainer>
-                  <Buttons path={home} />
-                  <Mainpage />
-                </RouteContainer>
-              } />
-              <Route path={cleaning} element={
-                <RouteContainer className='scrollCleaning'>
-                  <Buttons path={cleaning} />
-                  <Cleaning />
-                </RouteContainer>
-              } />
-              
-              <Route path={chatapp} element={
-                <RouteContainer className='scrollChatApp'>
-                  <Buttons path={chatapp} />
-                  <ChatApp />
-                </RouteContainer>
-              } />
+      <CardProvider>
+        <AppContainer color={bgColor}>
+          <TransitionProvider>
+            <Content>
+              <Routes>
+                <Route path={home} element={
+                  <RouteContainer>
+                    <Buttons path={home} />
+                    <Mainpage />
+                  </RouteContainer>
+                } />
+                <Route path={cleaning} element={
+                  <RouteContainer className='scrollCleaning'>
+                    <Buttons path={cleaning} />
+                    <Cleaning />
+                  </RouteContainer>
+                } />
 
-              <Route path={webbshop} element={
-                <RouteContainer className='scrollWebbShop'>
-                  <Buttons path={webbshop} />
-                  <WebbShop />
-                </RouteContainer>
-              } />
+                <Route path={chatapp} element={
+                  <RouteContainer className='scrollChatApp'>
+                    <Buttons path={chatapp} />
+                    <ChatApp />
+                  </RouteContainer>
+                } />
 
-              <Route path={movieapp} element={
-                <RouteContainer className='scrollMovies'>
-                  <Buttons path={movieapp} />
-                  <MovieApp />
-                </RouteContainer>
-              } />
+                <Route path={webbshop} element={
+                  <RouteContainer className='scrollWebbShop'>
+                    <Buttons path={webbshop} />
+                    <WebbShop />
+                  </RouteContainer>
+                } />
 
-              <Route path={tictactoe} element={
-                <RouteContainer>
-                  <Buttons path={tictactoe} />
-                  <TicTacToe />
-                </RouteContainer>
-              } />
+                <Route path={movieapp} element={
+                  <RouteContainer className='scrollMovies'>
+                    <Buttons path={movieapp} />
+                    <MovieApp />
+                  </RouteContainer>
+                } />
 
-              <Route path={about} element={
-                <RouteContainer className='scrollTictac'>
-                  <Buttons path={about} />
-                  <AboutMe />
-                </RouteContainer>
-              } />
-            </Routes>
-          </Content>
-        </TransitionProvider>
-      </AppContainer>
-    </CardProvider>
+                <Route path={tictactoe} element={
+                  <RouteContainer>
+                    <Buttons path={tictactoe} />
+                    <TicTacToe />
+                  </RouteContainer>
+                } />
+
+                <Route path={about} element={
+                  <RouteContainer className='scrollTictac'>
+                    <Buttons path={about} />
+                    <AboutMe />
+                  </RouteContainer>
+                } />
+              </Routes>
+            </Content>
+          </TransitionProvider>
+        </AppContainer>
+      </CardProvider>
     }
     </>
   );
