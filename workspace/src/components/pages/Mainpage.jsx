@@ -63,6 +63,24 @@ const fadeIn = keyframes`
   }
 `;
 
+const fadeInShadow = keyframes`
+0% {
+  text-shadow: 0 0 0 var(--dark);
+}
+100% {
+  text-shadow: 0.7vw 0.7vw var(--dark);
+}
+`;
+
+const fadeOutShadow = keyframes`
+  0% {
+    text-shadow: 0.7vw 0.7vw var(--dark);
+  }
+  100% {
+    text-shadow: 0 0 0 var(--dark);
+  }
+`;
+
 const Container = styled.div`
   display: flex;
   min-width: 90vw;
@@ -112,17 +130,30 @@ const Title = styled.h1`
 `;
 
 const TitleLetters = styled.span`
+  display: inline-block; /* Ensure transform applies */
+
 font-size: 6.5em;
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark); 
-  background-color: transparent; /* Ensure background is transparent initially */
-  transition: color 0.2s ease, background-color 0.1s ease; /* Apply transition to color and background-color */
+  background-color: transparent; 
+  transition: color 0.2s ease, background-color 0.1s ease, transform 0.3s ease; 
 
   &:hover {
     color: ${props => props.hoverColor || 'white'};
+    transform: translateY(-0.7vw) translateX(-0.7vw);
+    animation: ${fadeInShadow} 0.5s ease forwards;
+    
+    .hovered {
+      color: white;
+    }
   }
+
+  &:not(:hover) {
+    animation: ${fadeOutShadow} 0.8s ease forwards;
+  }
+
 `
 
 // const SmallTitle = styled.h2`
