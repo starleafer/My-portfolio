@@ -34,6 +34,9 @@ function Card({ id, path, title, label, color, backgroundColor }) {
       <StyledCard
         key={id}
         onClick={handleClick}
+        onKeyDown={(e) => e.key === 'Enter' && handleClick()} 
+        onFocus={() => setIsHovered(id)}
+        onBlur={() => setIsHovered(null)}
         onMouseEnter={() => setIsHovered(id)}
         onMouseLeave={() => setIsHovered(null)}
         className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
@@ -92,7 +95,9 @@ const Body = styled.div`
   margin-bottom: 15px;
 `
 
-const StyledCard = styled.div`
+const StyledCard = styled.div.attrs({
+  tabIndex: 0, 
+})`
   width: 10vw;
   height: 40vh;
   display: flex;
@@ -120,6 +125,13 @@ const StyledCard = styled.div`
 
   &:not(:hover) {
     animation: ${fadeOutShadow} 0.8s ease forwards;
+  }
+
+  &:focus {
+    outline: none;
+    transform: translateY(-1.5vw);
+    transition: transform 0.3s;
+    animation: ${fadeInShadow} 0.5s ease forwards;
   }
 
   @media (max-width: 1200px) {
@@ -208,29 +220,6 @@ const Label = styled.div`
     &.nohover {
       color: #bbbbbb !important;
     }
-  }
-`;
-
-const Shadow = styled.div`
-  width: 10vw;
-  height: 2.1vh;
-  border-radius: 50%;
-  margin-top: 40px;
-  background-color: #d8d8d8;
-  border: 2px solid transparent;
-  transition: transform 0.3s, width 0.8s;
-
-  @media (max-width: 965px) {
-    width: 8vw;
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-
-  &.hovered {
-    width: 8vw;
-    transform: scale(0.9);
   }
 `;
 
