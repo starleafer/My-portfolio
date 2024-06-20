@@ -38,26 +38,20 @@ function AboutMe() {
           </Text>
         </Content>
       </Light>
-      <Dark
-        initial={{ x: "100%" }}
-        animate={{ x: "0%" }}
-        transition={{ duration: 0.75, ease: [0.4, 0.3, 0.2, 1] }}
-        exit={{ opacity: 1 }}
-      >
+      {/* <ImageContainer> */}
         <Image src={ProfilePic} alt="profile picture"></Image>
-        <ImageFrame></ImageFrame>
-      </Dark>
+        {/* <ImageFrame></ImageFrame> */}
+      {/* </ImageContainer> */}
     </Body>
   );
 }
-
 
 const Body = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  /* justify-content: center; */
 `;
 
 const Light = styled.div`
@@ -82,15 +76,15 @@ const Text = styled.p`
   font-family: Roboto Flex;
 `;
 
-const Dark = styled(m.div)`
-  display: flex;
-  height: 100vh;
-  width: 40vw;
-  color: #fff;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--dark);
-`;
+// const ImageContainer = styled.div`
+//   position: relative;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100vh;
+//   width: 40vw;
+//   border: 1px solid black;
+// `;
 
 const Image = styled.img`
   position: relative;

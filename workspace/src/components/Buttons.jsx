@@ -81,40 +81,45 @@ function Buttons({ props }) {
       initial="hidden"
       animate="visible"
       variants={buttonVariants}
-      path={currentPath} 
-      backgroundColor={backgroundColor}  
+      path={currentPath}
+      backgroundColor={backgroundColor}
     >
-      <Link to={`/`} style={{ textDecoration: "none" }}>
-        <StyledButton 
-          path={currentPath} 
-          style={{ borderColor: color }} 
-          color={color} 
-          backgroundColor={backgroundColor} 
-          className={`${worksclass} ${lightmode}`}
-          >
-          Home
-        </StyledButton>
-      </Link>
-      <Link to={`/about`} style={{ textDecoration: "none" }}>
-        <StyledButton 
-          path={currentPath}
-          style={{ borderColor: color }} 
-          color={color} 
-          backgroundColor={backgroundColor} 
-          className={`${aboutclass} ${lightmode}`}
-          >
-          About
-        </StyledButton>
-      </Link>
+      {
+        location.pathname !== "/" ?
+          <>
+            <Link to={`/`} style={{ textDecoration: "none" }}>
+              <StyledButton
+                path={currentPath}
+                style={{ borderColor: color }}
+                color={color}
+                backgroundColor={backgroundColor}
+                className={`${worksclass} ${lightmode}`}
+              >
+                Home
+              </StyledButton>
+            </Link>
+            <Link to={`/about`} style={{ textDecoration: "none" }}>
+              <StyledButton
+                path={currentPath}
+                style={{ borderColor: color }}
+                color={color}
+                backgroundColor={backgroundColor}
+                className={`${aboutclass} ${lightmode}`}
+              >
+                About
+              </StyledButton>
+            </Link>
+          </>
+          : null}
       <Contact className={isContactActive ? 'active' : ''}>
-        <StyledButton 
-          path={currentPath} 
-          style={{ borderColor: color }} 
-          color={color} 
+        <StyledButton
+          path={currentPath}
+          style={{ borderColor: color }}
+          color={color}
           backgroundColor={backgroundColor}
-          onClick={() => { copyEmail(); setIsContactActive(true); }} 
+          onClick={() => { copyEmail(); setIsContactActive(true); }}
           className={`clicked ${lightmode}`}
-          >
+        >
           Contact
         </StyledButton>
         {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}

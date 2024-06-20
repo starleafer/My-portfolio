@@ -130,7 +130,7 @@ function App({ router, props }) {
 
 const AppContainer = styled.div`
   display: flex;
-  /* height: 100%; */
+  height: 100vh;
   position: relative;
   overflow: hidden;
   background-color: ${props => props.color};
@@ -139,13 +139,14 @@ const AppContainer = styled.div`
 
 const Content = styled.div`
     flex-grow: 1;
-    /* height: 100%; */
+    height: 100%;
     `;
 
 const RouteContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  height: 100%;
+
 
   @media (max-width: 768px) {
      flex-direction: column;
