@@ -117,7 +117,6 @@ const NavigationButton = styled.button`
   &:hover {
     background-position: 0% center; 
     color: ${props => props.backgroundColor || 'default-hover-color'} !important;
-    cursor: pointer;
   }
 
   @media (max-width: 768px) {

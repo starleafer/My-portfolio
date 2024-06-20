@@ -259,7 +259,6 @@ const StyledButton = styled(m.button)`
 
   &:hover {
     color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
-    cursor: pointer;
     background-position: 0% center; 
   }
 
