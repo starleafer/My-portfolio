@@ -57,7 +57,7 @@ function App({ router, props }) {
         break;
       case "/movieapp":
         pathColor = "var(--darker)";
-        secondaryColor = "var(--reddish)";
+        secondaryColor = "var(--redish)";
         break;
 
       default:

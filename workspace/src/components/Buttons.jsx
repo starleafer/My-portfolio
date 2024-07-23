@@ -259,10 +259,8 @@ const StyledButton = styled(m.button)`
 
   &:hover {
     color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
-    background-position: 0% center; 
+    background-position: 0% center;   
   }
-
-
 
   @media (max-width: 768px) {
     font-size: 1.1em;

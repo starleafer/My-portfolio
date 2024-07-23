@@ -50,10 +50,6 @@ function PageNavigationButton() {
     };
   };
 
-  // useEffect(() => {
-  //     console.log("runTransition changed:", runTransition);
-  // }, [runTransition]);
-
   return (
     <Container>
       <NavigationButton
@@ -79,6 +75,23 @@ function PageNavigationButton() {
 
 export default PageNavigationButton;
 
+const fadeInShadow = keyframes`
+0% {
+  box-shadow: 0 0 0 var(--dark);
+}
+100% {
+  box-shadow: 0.5vw 0.5vw var(--dark);
+}
+`;
+
+const fadeOutShadow = keyframes`
+  0% {
+    box-shadow: 0.5vw 0.5vw var(--dark);
+  }
+  100% {
+    box-shadow: 0 0 0 var(--dark);
+  }
+`;
 
 const Container = styled.div`
   display: flex;
@@ -112,11 +125,23 @@ const NavigationButton = styled.button`
   background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: 100% center;
-  transition: transform 0.5s, box-shadow 0.3s, background-position 0.5s;
-  
+  transition: transform 1s; 
+      
   &:hover {
-    background-position: 0% center; 
-    color: ${props => props.backgroundColor || 'default-hover-color'} !important;
+    transform: translateY(-1vw);
+    transition: transform 0.3s;
+    animation: ${fadeInShadow} 0.5s ease forwards;
+  }
+
+  &:not(:hover) {
+    animation: ${fadeOutShadow} 0.8s ease forwards;
+  }
+
+  &:focus {
+    outline: none;
+    transform: translateY(-1vw);
+    transition: transform 0.3s;
+    animation: ${fadeInShadow} 0.5s ease forwards;
   }
 
   @media (max-width: 768px) {

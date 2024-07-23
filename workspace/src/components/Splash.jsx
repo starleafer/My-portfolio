@@ -14,33 +14,6 @@ const Splash = () => {
 
 export default Splash
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
-
-const fadeInShadow = keyframes`
-0% {
-  box-shadow: 0 0 0 var(--dark);
-}
-100% {
-  box-shadow: 1vw 1vw var(--dark);
-}
-`;
-
-const slide = keyframes`
-    0% {
-      left: -22vw;
-    }
-    100% {
-      left: 140%;
-    }
-  `;
-
 const Container = styled.div`
   display: flex;
   height: 100vh;
@@ -50,12 +23,15 @@ const Container = styled.div`
   flex-direction: column;
   position: relative;
   margin-left: auto;
-  animation: ${fadeIn} 0.5s ease forwards;
+  transition: 1s;
+
+  @starting-style {
+    opacity: 0;
+  }
 
   @media (max-width: 768px) {
     margin: 10vh 0 0 5vw;
     align-items: flex-start;
-
   }
   `
 
@@ -78,8 +54,12 @@ const ES = styled.div`
   border: 3px solid var(--dark);
   border-radius: 15px;
   transform: translateY(-1.5vw);
-  transition: transform 0.3s;
-  animation: ${fadeInShadow} 0.5s ease forwards 1s;
+  transition: 0.5s 1.2s;
+  box-shadow: 1vw 1vw var(--dark);
+
+  @starting-style {
+    box-shadow: 0 0 0 var(--dark);
+  }
 
   @media (max-width: 425px) {
     font-size: 30vw;
@@ -91,17 +71,21 @@ const ES = styled.div`
     position: absolute;
     background-color: #f7f7f7e8;
     right: 500px;
+    left: 140%;
     height: 40vw;
     width: 10vw;
     transform: skewX(-30deg);
     opacity: 0; 
-    animation: ${slide} 0.6s forwards 0.5s; 
+    transition: 0.6s 0.5s; 
     opacity: 1; 
+
+    @starting-style {
+      left: -22vw;
+    }
   }
 
   &:after {
     width: 3vw;
   }
-
 `
-  ;
+  

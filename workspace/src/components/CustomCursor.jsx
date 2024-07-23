@@ -14,13 +14,13 @@ function CustomCursor({color}) {
     },
   };
 
-  const cursorRef = useRef(); // Create a ref for the cursor
+  const cursorRef = useRef(); 
 
   useEffect(() => {
     const mouseMove = (e) => {
       if (cursorRef.current) {
-        cursorRef.current.style.left = `${e.clientX - 16}px`; // Add 10 pixels to the x-coordinate
-        cursorRef.current.style.top = `${e.clientY - 16}px`; // Add 10 pixels to the y-coordinate
+        cursorRef.current.style.left = `${e.clientX - 16}px`; 
+        cursorRef.current.style.top = `${e.clientY - 16}px`; 
       }
     };
     window.addEventListener("mousemove", mouseMove);

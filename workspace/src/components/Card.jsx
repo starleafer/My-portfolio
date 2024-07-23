@@ -166,38 +166,8 @@ const StyledCard = styled.div.attrs({
       color: var(--dark) !important;
       background-color: transparent !important;
       transform: none;
-
-      /* .hovered {
-        border-color: var(--dark);
-        color: var(--dark);
-      } */
     }
   }
-
-
-/* 
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.3);
-    height: 40vw;
-    width: 10vw;
-    transform: skewX(-30deg);
-    opacity: 0; 
-  }
-
-  &:after {
-    width: 3vw;
-  } 
-
-   &.clicked::before,
-  &.clicked::after {
-    animation: ${slide} 0.4s forwards;
-    opacity: 1; 
-  } */
-  
- 
   `;
 
 const Title = styled.div`
