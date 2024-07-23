@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { useCardContext } from '../context/CardContext';
 import { useTransitionContext } from '../context/TransitionContext';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,9 @@ function PageNavigationButton() {
   const currentIndex = card.findIndex(item => item.path === currentPath);
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
+  const shadow = currentCard.shadow;
+
+  console.log(shadow);
 
   const handlePreviousClick = () => {
     setRunTransition(true);
@@ -56,6 +59,7 @@ function PageNavigationButton() {
         onClick={handlePreviousClick}
         style={{ color: color, borderColor: color }}
         color={color}
+        shadow={shadow}
         backgroundColor={backgroundColor}
       >
         <Arrow left>&lt;</Arrow>Previous Project
@@ -64,6 +68,8 @@ function PageNavigationButton() {
         onClick={handleNextClick}
         style={{ color: color, borderColor: color }}
         color={color}
+        shadow={shadow}
+
         backgroundColor={backgroundColor}
       >
         Next Project <Arrow>&gt;</Arrow>
@@ -75,28 +81,10 @@ function PageNavigationButton() {
 
 export default PageNavigationButton;
 
-const fadeInShadow = keyframes`
-0% {
-  box-shadow: 0 0 0 var(--dark);
-}
-100% {
-  box-shadow: 0.5vw 0.5vw var(--dark);
-}
-`;
-
-const fadeOutShadow = keyframes`
-  0% {
-    box-shadow: 0.5vw 0.5vw var(--dark);
-  }
-  100% {
-    box-shadow: 0 0 0 var(--dark);
-  }
-`;
-
 const Container = styled.div`
   display: flex;
   width: 95%;
-  gap: 1vw;
+  gap: 2vw;
   justify-content: flex-end;
   align-items: center;
   margin: 0;
@@ -125,24 +113,46 @@ const NavigationButton = styled.button`
   background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: 100% center;
-  transition: transform 1s; 
-      
-  &:hover {
-    transform: translateY(-1vw);
-    transition: transform 0.3s;
-    animation: ${fadeInShadow} 0.5s ease forwards;
-  }
+  transition: transform 1s;
 
-  &:not(:hover) {
-    animation: ${fadeOutShadow} 0.8s ease forwards;
-  }
+  ${props => {
+    const fadeInShadow = keyframes`
+      0% {
+        box-shadow: 0 0 0 transparent;
+      }
+      100% {
+        box-shadow: 0.5vw 0.5vw 0 ${props.shadow || 'var(--dark)'};
+      }
+    `;
 
-  &:focus {
-    outline: none;
-    transform: translateY(-1vw);
-    transition: transform 0.3s;
-    animation: ${fadeInShadow} 0.5s ease forwards;
-  }
+    const fadeOutShadow = keyframes`
+      0% {
+        box-shadow: 0.5vw 0.5vw 0 ${props.shadow || 'var(--dark)'};
+      }
+      100% {
+        box-shadow: 0 0 0 ;
+      }
+    `;
+
+    return css`
+      &:hover {
+        transform: translateY(-1vw);
+        transition: transform 0.3s;
+        animation: ${fadeInShadow} 0.5s ease forwards;
+      }
+
+      &:not(:hover) {
+        animation: ${fadeOutShadow} 0.8s ;
+      }
+
+      &:focus {
+        outline: none;
+        transform: translateY(-1vw);
+        transition: transform 0.3s;
+        animation: ${fadeInShadow} 0.5s ease forwards;
+      }
+    `;
+  }}
 
   @media (max-width: 768px) {
     width: 14vw;
@@ -154,7 +164,7 @@ const NavigationButton = styled.button`
     width: 20vw;
     padding: 1.7vw;
     font-size: 2.2vw;
-  } 
+  }
 `;
 
 const Arrow = styled.span`

@@ -23,7 +23,6 @@ function PageBody({
   isBrowser,
 }) {
 
-  const { runTransition } = useTransitionContext();
   const { card } = useCardContext();
 
   const links = [nativeRepo, browserRepo, website].filter(link => link);
@@ -70,7 +69,7 @@ function PageBody({
             style={{ marginRight: '0.5vw' }}
           />
         )}
-        Browser code
+        Browse code
       </InfoLinks>
     </Link>
   );
