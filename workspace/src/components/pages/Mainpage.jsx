@@ -5,7 +5,7 @@ import styled, { keyframes } from 'styled-components';
 import ProfilePic from "../../assets/ProfilePic.jpg";
 import AboutMe from '../pages/AboutMe';
 
-function Mainpage({ props }) {
+function Mainpage({ setCursorHoverColor, setIsHovering  }) {
 
   const [hoverColor, setHoverColor] = useState('');
 
@@ -51,7 +51,7 @@ function Mainpage({ props }) {
             )}
           </Title>
         </TitlesContainer>
-        <Projectlist />
+        <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHovering={setIsHovering} />
       </SectionOne>
       <SectionTwo>
         <AboutMe />

@@ -1,3 +1,4 @@
+'use client';
 import { Routes, Route, useLocation } from "react-router-dom";
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
@@ -14,12 +15,20 @@ import { TransitionProvider } from "./context/TransitionContext";
 import "../src/index.css";
 import _ from "lodash";
 import Splash from "./components/Splash";
-import CustomCursor from "./components/CustomCursor";
+import { motion } from 'framer-motion';
+import useMousePosition from './utils/useMousePosition';
 
 function App({ router, props }) {
   const [bgColor, setBgColor] = useState("");
   const [secondary, setSecondary] = useState("");
   const [showSplash, setShowSplash] = useState(true);
+
+  const [isHovering, setIsHovering] = useState(false);
+  const [cursorHoverColor, setCursorHoverColor] = useState(""); 
+
+  const { x, y } = useMousePosition();
+  const size = isHovering ? 80 : 40;
+
   const location = useLocation();
 
   const home = "/";
@@ -79,17 +88,24 @@ function App({ router, props }) {
         <Splash />
       ) : (
         <CardProvider>
+          <Cursor
+            style={{ backgroundColor: cursorHoverColor }} 
+            animate={{
+              WebkitMaskPosition: `${x - (size / 2)}px ${y - (size / 2)}px`,
+              WebkitMaskSize: `${size}px`,
+            }}
+            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
+          />
           <AppContainer color={bgColor}>
             <TransitionProvider>
               <Content>
-                <CustomCursor color={secondary}/>
                 <Routes>
                   <Route
                     path={home}
                     element={
                       <RouteContainer>
                         <Buttons path={home} />
-                        <Mainpage />
+                        <Mainpage setCursorHoverColor={setCursorHoverColor} setIsHovering={setIsHovering} />
                       </RouteContainer>
                     }
                   />
@@ -187,6 +203,26 @@ const RouteContainer = styled.div`
   }
 `;
 
+const Cursor = styled(motion.div)`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw; // Ensure the mask covers the entire viewport width
+  height: 100vh; // Ensure the mask covers the entire viewport height
+  mask-image: url('/mask.svg'); // Use absolute path
+  mask-size: contain; // Ensure the mask image retains its aspect ratio
+  mask-position: center; // Center the mask image
+  mask-repeat: no-repeat; // Prevent the mask image from repeating
+  background: var(--dark);
+  -webkit-mask-image: url('/mask.svg'); // For WebKit browsers
+  -webkit-mask-size: contain;
+  -webkit-mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  pointer-events: none; // Ensure the cursor does not interfere with other elements
+  z-index: 9999; // Ensure the cursor is on top of other elements
+
+
+`;
 
 
 export default App;

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -31,6 +31,7 @@ function PageBody({
   const currentPath = window.location.pathname.replace('/', '');
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const color = currentCard.color;
+
 
   const renderNativeLink = isNative && (
     <Link
@@ -97,27 +98,29 @@ function PageBody({
   return (
     <>
       <Content color={color}>
+           
         <InfoSection>
           {title}
           <Info>
             <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
               {PageDescription1}
-              {PageDescription2 ? (
-                <>
-                  <br />
-                  <br />
-                  {PageDescription2}
-                </>
-              ) : null}
-              {PageDescription3 ? (
-                <>
-                  <br />
-                  <br />
-                  {PageDescription3}
-                </>
-              ) : null}
+
+                {PageDescription2 ? (
+                  <>
+                    <br />
+                    <br />
+                    {PageDescription2}
+                  </>
+                ) : null}
+                {PageDescription3 ? (
+                  <>
+                    <br />
+                    <br />
+                    {PageDescription3}
+                  </>
+                ) : null}
             </PageDescription>
-            
+
             <LinkGroup>
               <Github>
                 <LinkContainer numColumns={numColumns}>
@@ -174,6 +177,7 @@ const glow = keyframes`
     text-shadow: 0 0 8px var(--redish), 0 0 10px var(--redish), 0 0 12px var(--redish);
   }
 `;
+
 
 const Content = styled.div`
   display: flex;

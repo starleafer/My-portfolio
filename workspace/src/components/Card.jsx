@@ -5,17 +5,19 @@ import { useNavigate } from 'react-router-dom';
 import AnimatedCard from './card-animations/AnimatedCard';
 
 
-function Card({ id, path, title, label, color, backgroundColor, image }) {
+function Card({ id, path, title, label, color, backgroundColor, setCursorHoverColor, setIsHovering  }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
   const { setButtonFade } = useButtonContext();
   const navigate = useNavigate();
 
+
   const handleClick = () => {
     setIsClicked(true);
     setShowCircle(true);
     setButtonFade(true);
+    setIsHovering(false);
     console.log(id);
 
     const circleAnimationTimeout = setTimeout(() => {
@@ -39,8 +41,8 @@ function Card({ id, path, title, label, color, backgroundColor, image }) {
           onKeyDown={(e) => e.key === 'Enter' && handleClick()}
           onFocus={() => setIsHovered(id)}
           onBlur={() => setIsHovered(null)}
-          onMouseEnter={() => setIsHovered(id)}
-          onMouseLeave={() => setIsHovered(null)}
+          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHovering(true) }} // Update hover color
+          onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHovering(false) }} // Reset hover color
           className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
           style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
         >

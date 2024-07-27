@@ -154,5 +154,10 @@ body {
   }
 }
 
+.mask {
+  position: absolute;
+  mask-image: url('/workspace/src/utils/useMousePosition.js');
+  color: salmon;
 
+}
 
