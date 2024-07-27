@@ -70,7 +70,7 @@ const StyledProjectList = styled.div`
     `
 
 const ProjectContainer = styled.div`
-    height: 10vh;
+    height: 50vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;

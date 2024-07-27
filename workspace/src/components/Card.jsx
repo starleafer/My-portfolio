@@ -120,7 +120,7 @@ const StyledCard = styled.div.attrs({
   height: 40vh;
   display: flex;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   /* padding: 0 20px; */
   font-size: 1.5vw;
   font-weight: 700;
@@ -199,7 +199,7 @@ const StyledCard = styled.div.attrs({
 const Title = styled.div`
   flex: 1;
   margin: 5px;
-  margin-left: 20px;
+  margin-left: 10px;
 
   &.fade-in {
     animation: ${fadeIn} 0.5s forwards;
@@ -239,7 +239,7 @@ const Label = styled.div`
 const Circle = styled.div`
   position: absolute;
   width: 70%;
-  height: 100%;
+  height: 80%;  
   border-radius: 50%;
   background-color: transparent;
   animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
@@ -251,5 +251,7 @@ const Circle = styled.div`
     border-radius: 15px;
   }
 `;
+
+
 
 export default Card;
