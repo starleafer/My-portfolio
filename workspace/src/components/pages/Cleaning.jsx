@@ -27,11 +27,11 @@ function Cleaning() {
   const website = "https://dustbusters-207c6.web.app/";
 
   const browserImages = [
-    { id: "1", src: 'dustbusters/1.png', alt: 'browser search' },
-    { id: "2", src: 'dustbusters/2.png', alt: 'browser pager' },
-    { id: "3", src: 'dustbusters/dbBook.png', alt: 'browser series' },
-    { id: "4", src: 'dustbusters/dbLogin.png', alt: 'browser series' },
-    { id: "5", src: 'dustbusters/dbReviews.png', alt: 'browser series' },
+    { id: "1", src: '/pageimages/dustbusters/1.png', alt: 'browser search' },
+    { id: "2", src: '/pageimages/dustbusters/2.png', alt: 'browser pager' },
+    { id: "3", src: '/pageimages/dustbusters/dbBook.png', alt: 'browser series' },
+    { id: "4", src: '/pageimages/dustbusters/dbLogin.png', alt: 'browser series' },
+    { id: "5", src: '/pageimages/dustbusters/dbReviews.png', alt: 'browser series' },
   ];
   
   return (

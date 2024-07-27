@@ -22,18 +22,18 @@ function MovieApp() {
 
 
   const nativeImages = [
-    { id: "1", src: 'movieapp/login.jpg' },
-    { id: "2", src: 'movieapp/movielist.jpg' },
-    { id: "3", src: 'movieapp/movieinfo.jpg' },
-    { id: "4", src: 'movieapp/search.jpg' },
-    { id: "5", src: 'movieapp/drawer.jpg' },
-    { id: "6", src: 'movieapp/mypage.jpg' },
+    { id: "1", src: '/pageimages/movieapp/login.jpg' },
+    { id: "2", src: '/pageimages/movieapp/movielist.jpg' },
+    { id: "3", src: '/pageimages/movieapp/movieinfo.jpg' },
+    { id: "4", src: '/pageimages/movieapp/search.jpg' },
+    { id: "5", src: '/pageimages/movieapp/drawer.jpg' },
+    { id: "6", src: '/pageimages/movieapp/mypage.jpg' },
   ];
 
   const browserImages = [
-    { id: "1", src: 'movieapp/browserSearch.png', alt: 'browser search' },
-    { id: "2", src: 'movieapp/browserPager.png', alt: 'browser pager' },
-    { id: "3", src: 'movieapp/browserSerier.png', alt: 'browser series' },
+    { id: "1", src: '/pageimages/movieapp/browserSearch.png', alt: 'browser search' },
+    { id: "2", src: '/pageimages/movieapp/browserPager.png', alt: 'browser pager' },
+    { id: "3", src: '/pageimages/movieapp/browserSerier.png', alt: 'browser series' },
   ];
 
 

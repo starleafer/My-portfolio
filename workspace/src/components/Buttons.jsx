@@ -98,7 +98,7 @@ function Buttons({ props }) {
                 Home
               </StyledButton>
             </Link>
-            <Link to={`/about`} style={{ textDecoration: "none" }}>
+            {/* <Link to={`/about`} style={{ textDecoration: "none" }}>
               <StyledButton
                 path={currentPath}
                 style={{ borderColor: color }}
@@ -108,7 +108,7 @@ function Buttons({ props }) {
               >
                 About
               </StyledButton>
-            </Link>
+            </Link> */}
           </>
           : null}
       <Contact className={isContactActive ? 'active' : ''}>

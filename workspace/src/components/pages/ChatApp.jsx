@@ -21,14 +21,14 @@ function ChatApp() {
   const nativeRepo = "https://github.com/starleafer/ClassChat"
 
   const nativeImages = [
-    { id: "1", src: 'chatapp/login.jpg' },
-    { id: "2", src: 'chatapp/registeruser.jpg' },
-    { id: "3", src: 'chatapp/chat.jpg' },
-    { id: "4", src: 'chatapp/drawer.jpg' },
-    { id: "5", src: 'chatapp/profile.jpg' },
-    { id: "6", src: 'chatapp/photo.jpg' },
-    { id: "7", src: 'chatapp/profilephoto.jpg' },
-    { id: "8", src: 'chatapp/chatphoto.jpg' },
+    { id: "1", src: '/pageimages/chatapp/login.jpg' },
+    { id: "2", src: '/pageimages/chatapp/registeruser.jpg' },
+    { id: "3", src: '/pageimages/chatapp/chat.jpg' },
+    { id: "4", src: '/pageimages/chatapp/drawer.jpg' },
+    { id: "5", src: '/pageimages/chatapp/profile.jpg' },
+    { id: "6", src: '/pageimages/chatapp/photo.jpg' },
+    { id: "7", src: '/pageimages/chatapp/profilephoto.jpg' },
+    { id: "8", src: '/pageimages/chatapp/chatphoto.jpg' },
   ];
 
  

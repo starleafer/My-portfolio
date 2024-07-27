@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import { useButtonContext } from '../context/ButtonContext';
 import { useNavigate } from 'react-router-dom';
+import AnimatedCard from './card-animations/AnimatedCard';
 
 
-function Card({ id, path, title, label, color, backgroundColor }) {
+function Card({ id, path, title, label, color, backgroundColor, image }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
   const { setButtonFade } = useButtonContext();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
   const handleClick = () => {
     setIsClicked(true);
@@ -31,32 +32,44 @@ function Card({ id, path, title, label, color, backgroundColor }) {
   return (
     <Body>
       {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
-      <StyledCard
-        key={id}
-        onClick={handleClick}
-        onKeyDown={(e) => e.key === 'Enter' && handleClick()} 
-        onFocus={() => setIsHovered(id)}
-        onBlur={() => setIsHovered(null)}
-        onMouseEnter={() => setIsHovered(id)}
-        onMouseLeave={() => setIsHovered(null)}
-        className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
-        style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
-      >
-        <Title>{title}</Title>
-        <Label className={isHovered === id ? "hovered" : ""}>{label}</Label>
-      </StyledCard>
+      <CardContainer>
+        <StyledCard
+          key={id}
+          onClick={handleClick}
+          onKeyDown={(e) => e.key === 'Enter' && handleClick()}
+          onFocus={() => setIsHovered(id)}
+          onBlur={() => setIsHovered(null)}
+          onMouseEnter={() => setIsHovered(id)}
+          onMouseLeave={() => setIsHovered(null)}
+          className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
+          style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
+        >
+          <Title className={isHovered === id ? "fade-out" : "fade-in"}>{title}</Title>
+          <Label className={isHovered === id ? "fade-out" : "fade-in"}>{label}</Label>
+          <AnimatedCard isVisible={isHovered === id} id={id} delay="0.3s" />
+        </StyledCard>
+      </CardContainer>
     </Body>
   );
 }
 
-const slide = keyframes`
-    0% {
-      left: -22vw;
-    }
-    100% {
-      left: 100%;
-    }
-  `;
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
 
 const fadeInShadow = keyframes`
 0% {
@@ -95,20 +108,25 @@ const Body = styled.div`
   margin-bottom: 15px;
 `
 
+const CardContainer = styled.div`
+  position: relative;
+
+`;
+
 const StyledCard = styled.div.attrs({
-  tabIndex: 0, 
+  tabIndex: 0,
 })`
-  width: 10vw;
+  width: 12vw;
   height: 40vh;
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  position: absolute;
+  /* padding: 0 20px; */
   font-size: 1.5vw;
   font-weight: 700;
   color: var(--dark);
   border: 3px solid var(--dark);
   border-radius: 15px;
-  position: relative;
   overflow: hidden;
   transition: transform 1s; 
 
@@ -117,6 +135,10 @@ const StyledCard = styled.div.attrs({
     transform: translateY(-1.5vw);
     transition: transform 0.3s;
     animation: ${fadeInShadow} 0.5s ease forwards;
+
+    .title {
+      animation: ${fadeOut} 0.5s forwards;
+    }
     
     .hovered {
       color: white;
@@ -125,6 +147,10 @@ const StyledCard = styled.div.attrs({
 
   &:not(:hover) {
     animation: ${fadeOutShadow} 0.8s ease forwards;
+
+    .title {
+      animation: ${fadeIn} 0.5s forwards;
+    }
   }
 
   &:focus {
@@ -171,15 +197,32 @@ const StyledCard = styled.div.attrs({
   `;
 
 const Title = styled.div`
-  flex: 1;    
+  flex: 1;
   margin: 5px;
-  `;
+  margin-left: 20px;
+
+  &.fade-in {
+    animation: ${fadeIn} 0.5s forwards;
+  }
+
+  &.fade-out {
+    animation: ${fadeOut} 0.5s forwards;
+  }
+`;
 
 const Label = styled.div`
   margin: 10px;
   color: #bbbbbb;
   border-radius: 15px;
   text-align: right;
+
+  &.fade-in {
+    animation: ${fadeIn} 0.5s forwards;
+  }
+
+  &.fade-out {
+    animation: ${fadeOut} 0.5s forwards;
+  } 
 
     @media (max-width: 768) {
     &.nohover {

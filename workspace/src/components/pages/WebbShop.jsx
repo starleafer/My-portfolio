@@ -20,13 +20,13 @@ function WebbShop() {
 
 
   const browserImages = [
-    { id: "1", src: 'webshop/products.png', alt: 'browser search' },
-    { id: "2", src: 'webshop/description.png', alt: 'browser pager' },
-    { id: "3", src: 'webshop/create.png', alt: 'browser series' },
-    { id: "4", src: 'webshop/createdproduct.png', alt: 'browser search' },
-    { id: "5", src: 'webshop/admin.png', alt: 'browser pager' },
-    { id: "6", src: 'webshop/cart.png', alt: 'browser series' },
-    { id: "7", src: 'webshop/checkout.png', alt: 'browser series' },
+    { id: "1", src: '/pageimages/webbshop/products.png', alt: 'browser search' },
+    { id: "2", src: '/pageimages/webbshop/description.png', alt: 'browser pager' },
+    { id: "3", src: '/pageimages/webbshop/create.png', alt: 'browser series' },
+    { id: "4", src: '/pageimages/webbshop/createdproduct.png', alt: 'browser search' },
+    { id: "5", src: '/pageimages/webbshop/admin.png', alt: 'browser pager' },
+    { id: "6", src: '/pageimages/webbshop/cart.png', alt: 'browser series' },
+    { id: "7", src: '/pageimages/webbshop/checkout.png', alt: 'browser series' },
   ];
   
   return (

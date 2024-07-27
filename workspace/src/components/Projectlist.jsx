@@ -33,12 +33,12 @@ function Projectlist() {
                 <ListLabel>/My Projects</ListLabel>
                 <ProjectContainer>
                 {card.map((item, index) => (
-                        <motion.div
+                        <MotionContainer
                             key={item.id}
                             variants={cardVariants}
                             initial="offscreen"
                             animate="onscreen"
-                            custom={index} // Pass index as custom prop for delay calculation
+                            custom={index} 
                         >
                             <Card
                                 key={item.id}
@@ -48,8 +48,9 @@ function Projectlist() {
                                 label={item.label}
                                 color={item.color}
                                 backgroundColor={item.backgroundColor}
+                                image={item.image}
                             />
-                        </motion.div>
+                        </MotionContainer>
                     ))}
                 </ProjectContainer>
             </StyledProjectList>
@@ -62,19 +63,18 @@ const StyledProjectList = styled.div`
     width: 80vw;
     flex-direction: column;
     justify-content: center;
-
+    
     @media (max-width: 768px) {
-    width: 90vw;
-  }
-`
+        width: 90vw;
+    }
+    `
 
 const ProjectContainer = styled.div`
-    height:50vh;
+    height: 10vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
-    gap: 2vw;
 
     @media (max-width: 1024px) {
         height: 45vh;
@@ -87,6 +87,14 @@ const ProjectContainer = styled.div`
         gap: 0;
   }
 `
+
+const MotionContainer = styled(motion.div)`
+    display: flex;
+    width: 15vw;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+  `
 
 const ListLabel = styled.h4`
     font-size: 1.5em;

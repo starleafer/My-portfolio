@@ -43,7 +43,7 @@ function Mainpage({ props }) {
                 <span key={index}> </span> :
                 <TitleLetters
                   key={index}
-                  hoverColor={hoverColor}
+                  hovercolor={hoverColor}
                   onMouseEnter={() => setHoverColor(getRandomColor())}
                 >
                   {letter}
@@ -90,6 +90,7 @@ const fadeOutShadow = keyframes`
 const MainContainer = styled.div`
   width: 100vw;
   height: 100vh; 
+  padding-left: 5vw;
   overflow-y: auto;
   overflow-x: hidden;
   scroll-snap-type: y mandatory;
@@ -165,7 +166,7 @@ font-size: 6.5em;
   transition: color 0.2s ease, background-color 0.1s ease, transform 0.3s ease; 
 
   &:hover {
-    color: ${props => props.hoverColor || 'white'};
+    color: ${props => props.hovercolor || 'white'};
     transform: translateY(-0.7vw) translateX(-0.7vw);
     animation: ${fadeInShadow} 0.5s ease forwards;
     
