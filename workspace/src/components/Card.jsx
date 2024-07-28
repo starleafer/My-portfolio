@@ -123,14 +123,13 @@ const StyledCard = styled.div.attrs({
   display: flex;
   flex-direction: column;
   position: relative;
-  /* padding: 0 20px; */
   font-size: 1.5vw;
   font-weight: 700;
   color: var(--dark);
   border: 3px solid var(--dark);
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 1s; 
+  transition: transform 1s ; 
 
   &:hover {
     color: #fff;

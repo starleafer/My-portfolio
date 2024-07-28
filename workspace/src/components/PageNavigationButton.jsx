@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom';
 
 function PageNavigationButton() {
   const { card } = useCardContext();
-  // const { runTransition, setRunTransition } = useTransitionContext();
   const navigate = useNavigate();
 
   const { setRunTransition, triggerTransition } = useTransitionContext();
@@ -18,8 +17,6 @@ function PageNavigationButton() {
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
   const shadow = currentCard.shadow;
-
-  console.log(shadow);
 
   const handlePreviousClick = () => {
     setRunTransition(true);
@@ -121,7 +118,7 @@ const NavigationButton = styled.button`
         box-shadow: 0 0 0 transparent;
       }
       100% {
-        box-shadow: 0.5vw 0.5vw 0 ${props.shadow || 'var(--dark)'};
+        box-shadow: 0.3vw 0.3vw 0 ${props.shadow || 'var(--dark)'};
       }
     `;
 
@@ -136,7 +133,7 @@ const NavigationButton = styled.button`
 
     return css`
       &:hover {
-        transform: translateY(-1vw);
+        transform: translateY(-0.5vw);
         transition: transform 0.3s;
         animation: ${fadeInShadow} 0.5s ease forwards;
       }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useButtonContext } from '../context/ButtonContext';
 import { useCardContext } from '../context/CardContext';
@@ -16,6 +16,7 @@ function Buttons({ props }) {
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
+  const shadow = currentCard.shadow;
 
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
@@ -83,6 +84,7 @@ function Buttons({ props }) {
       variants={buttonVariants}
       path={currentPath}
       backgroundColor={backgroundColor}
+      shadow={shadow}
     >
       {
         location.pathname !== "/" ?
@@ -90,7 +92,6 @@ function Buttons({ props }) {
             <Link to={`/`} style={{ textDecoration: "none" }}>
               <StyledButton
                 path={currentPath}
-                style={{ borderColor: color }}
                 color={color}
                 backgroundColor={backgroundColor}
                 className={`${worksclass} ${lightmode}`}
@@ -98,23 +99,11 @@ function Buttons({ props }) {
                 Home
               </StyledButton>
             </Link>
-            {/* <Link to={`/about`} style={{ textDecoration: "none" }}>
-              <StyledButton
-                path={currentPath}
-                style={{ borderColor: color }}
-                color={color}
-                backgroundColor={backgroundColor}
-                className={`${aboutclass} ${lightmode}`}
-              >
-                About
-              </StyledButton>
-            </Link> */}
           </>
           : null}
       <Contact className={isContactActive ? 'active' : ''}>
         <StyledButton
           path={currentPath}
-          style={{ borderColor: color }}
           color={color}
           backgroundColor={backgroundColor}
           onClick={() => { copyEmail(); setIsContactActive(true); }}
@@ -180,21 +169,13 @@ const fadeout = keyframes`
 }
 `;
 
-const fadeOutShadow = keyframes`
-  0% {
-    box-shadow: 0vw 0vw var(--dark);
-  }
-  100% {
-    box-shadow: 0.5vw 0.5vw var(--dark);
-  }
-`;
-
 const ButtonContainer = styled(m.div)`
   height: 93.8vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
+  margin-left: 15px;
   gap: 2.5vh;
   padding: 3vh 1vw;
   position: fixed;
@@ -233,15 +214,15 @@ const StyledButton = styled(m.button)`
   min-width: 5vw;
   height: 4vh;
   border-radius: 8px;
-  border: 1px solid black;
-  font-size: 1em;
+  border: 1px solid transparent;
+  font-size: 1.2em;
   font-weight: 600;
   color: ${props => props.color};
   background-color: transparent;
   background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: 100% center;
-  transition: transform 0.5s, box-shadow 0.3s, background-position 0.5s;
+  transition: background-position 0.3s cubic-bezier(.27,-0.32,.7,1.37), color 0.3s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.3s cubic-bezier(.27,-0.32,.7,1.37), transform 0.3s cubic-bezier(.27,-0.32,.7,1.37), border-color 0.3s cubic-bezier(.27,-0.32,.7,1.37);
   z-index: 1;
 
   @media (max-width: 1200px) {
@@ -254,29 +235,49 @@ const StyledButton = styled(m.button)`
 
   &.lightmode {
     color: var(--redish);
-    border-color: var(--redish);
   }
 
-  &:hover {
-    color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
-    background-position: 0% center;   
-  }
+  ${props => {
+    const fadeInShadow = keyframes`
+      0% {
+        box-shadow: 0 0 0 transparent;
+      }
+      100% {
+        box-shadow: 0.3vw 0.3vw 0 ${props.shadow};
+      }
+    `;
 
-  @media (max-width: 768px) {
-    font-size: 1.1em;
-    height: 3.5vh;
+    const fadeOutShadow = keyframes`
+      0% {
+        box-shadow: 0.3vw 0.3vw 0 ${props.shadow};
+      }
+      100% {
+        box-shadow: 0 0 0;
+      }
+    `;
 
-  }
+    return css`
+      &:hover {
+        transform: translateY(-0.3vw);
+        transition: transform 0.3s;
+        animation: ${fadeInShadow} 0.5s ease forwards;
+        border: 1px solid ${props => props.color};
+      }
 
-  @media (max-width: 375px) {
-    font-size: 1.2em;
-  }
+      &:not(:hover) {
+        animation: ${fadeOutShadow} 0.8s;
+        border-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
+      }
 
-  &.mainpage,
-  &.about {
-  transform: translateY(-0.3vw) translateX(-0.3vw);
-  animation: ${fadeOutShadow} 0.8s ease forwards;
-  }
+      &:focus {
+        outline: none;
+        transform: translateY(-1vw);
+        transition: transform 0.3s;
+        animation: ${fadeInShadow} 0.5s ease forwards;
+        border: 1px solid ${props => props.color};
+      }
+    `;
+  }}
 `;
 
 const Contact = styled.div`
@@ -293,9 +294,8 @@ const Contact = styled.div`
       border-radius: 10px;
     }
   }
-
-  
 `;
+
 const CopyAlert = styled.div`
   position: absolute;
   left: 2vw;
@@ -312,13 +312,12 @@ const CopyAlert = styled.div`
   background-color: #54a051;
   color: #fff;
   transform: translateX(100%);
-  transition: transform 0.3s; 
+  transition: transform 0.3s cubic-bezier(.27,-0.32,.7,1.37), color 0.3s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.3s cubic-bezier(.27,-0.32,.7,1.37);
 
   &.clicked {
     animation: ${slideAndFadeOut} 1.5s forwards;
     
     @media (max-width: 768px) {
-      
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
       height: 3.5vh;
       width: 13vw;
@@ -329,7 +328,6 @@ const CopyAlert = styled.div`
     }
     
     @media (max-width: 375px) {
-      
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
       width: 21vw;
       font-size: 1em;

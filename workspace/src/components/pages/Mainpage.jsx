@@ -1,8 +1,7 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Projectlist from '../Projectlist';
 import { motion as m } from 'framer-motion'
 import styled, { keyframes } from 'styled-components';
-import ProfilePic from "../../assets/ProfilePic.jpg";
 import AboutMe from '../pages/AboutMe';
 
 function Mainpage({ setCursorHoverColor, setIsHovering  }) {
@@ -60,14 +59,6 @@ function Mainpage({ setCursorHoverColor, setIsHovering  }) {
   );
 }
 
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`;
 
 const fadeInShadow = keyframes`
 0% {
@@ -156,19 +147,18 @@ const Title = styled.h1`
 
 const TitleLetters = styled.span`
   display: inline-block; 
-
-font-size: 6.5em;
+  font-size: 6.5em;
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark); 
   background-color: transparent; 
-  transition: color 0.2s ease, background-color 0.1s ease, transform 0.3s ease; 
+  transition: color 0.2s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.1s cubic-bezier(.27,-0.32,.7,1.37), transform 0.3s cubic-bezier(.27,-0.32,.7,1.37); 
 
   &:hover {
     color: ${props => props.hovercolor || 'white'};
     transform: translateY(-0.7vw) translateX(-0.7vw);
-    animation: ${fadeInShadow} 0.5s ease forwards;
+    animation: ${fadeInShadow} 0.5s cubic-bezier(.27,-0.32,.7,1.37) forwards;
     
     .hovered {
       color: white;
@@ -176,8 +166,8 @@ font-size: 6.5em;
   }
 
   &:not(:hover) {
-    animation: ${fadeOutShadow} 0.8s ease forwards;
+    animation: ${fadeOutShadow} 0.8s cubic-bezier(.27,-0.32,.7,1.37) forwards;
   }
-`
+`;
 
 export default Mainpage;
