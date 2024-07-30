@@ -1,6 +1,6 @@
 'use client';
 import { Routes, Route, useLocation } from "react-router-dom";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Mainpage from "./components/pages/Mainpage";
 import ChatApp from "./components/pages/ChatApp";
@@ -11,25 +11,26 @@ import Cleaning from "./components/pages/Cleaning";
 import AboutMe from "./components/pages/AboutMe";
 import Buttons from "./components/Buttons";
 import { CardProvider } from "./context/CardContext";
-import { TransitionProvider } from "./context/TransitionContext";
+import { TransitionProvider, useTransitionContext } from "./context/TransitionContext";
 import "../src/index.css";
-import _ from "lodash";
 import Splash from "./components/Splash";
 import { motion } from 'framer-motion';
 import useMousePosition from './utils/useMousePosition';
 
-function App({ router, props }) {
+function App() {
+  const { runTransition } = useTransitionContext();
+  const location = useLocation();
   const [bgColor, setBgColor] = useState("");
-  const [secondary, setSecondary] = useState("");
   const [showSplash, setShowSplash] = useState(true);
 
   const [isHovering, setIsHovering] = useState(false);
-  const [cursorHoverColor, setCursorHoverColor] = useState(""); 
+  const [cursorColor, setCursorColor] = useState("");
+  const [cursorHoverColor, setCursorHoverColor] = useState("");
+  const [cursorVisible, setCursorVisible] = useState(true);
 
   const { x, y } = useMousePosition();
-  const size = isHovering ? 80 : 40;
 
-  const location = useLocation();
+  const size = isHovering ? 80 : 40;
 
   const home = "/";
   const cleaning = "/cleaning";
@@ -37,44 +38,46 @@ function App({ router, props }) {
   const webbshop = "/webbshop";
   const movieapp = "/movieapp";
   const tictactoe = "/tictactoe";
-  const about = "/about";
 
   useEffect(() => {
     let pathColor = "";
     let secondaryColor = "";
 
     switch (location.pathname) {
-
-      case "/":
+      case home:
         secondaryColor = "var(--dark)";
         break;
-      case "/cleaning":
+      case cleaning:
         pathColor = "var(--yellowish)";
         secondaryColor = "var(--dark)";
         break;
-      case "/tictactoe":
+      case tictactoe:
         pathColor = "var(--redish)";
         secondaryColor = "var(--blueish)";
         break;
-      case "/webbshop":
+      case webbshop:
         pathColor = "var(--greenish)";
         secondaryColor = "bisque";
         break;
-      case "/chatapp":
+      case chatapp:
         pathColor = "var(--light-purple)";
         secondaryColor = "var(--neon-green)";
         break;
-      case "/movieapp":
+      case movieapp:
         pathColor = "var(--darker)";
         secondaryColor = "var(--redish)";
         break;
-
       default:
         pathColor = "";
     }
 
-    setBgColor(pathColor);
-    setSecondary(secondaryColor);
+    setCursorVisible(false);
+    setTimeout(() => {
+      setBgColor(pathColor);
+      setCursorVisible(true);
+    }, 300);
+    setCursorColor(secondaryColor);
+
   }, [location.pathname]);
 
   useEffect(() => {
@@ -82,20 +85,52 @@ function App({ router, props }) {
     return () => clearTimeout(timeoutId);
   }, []);
 
+  useEffect(() => {
+    if (runTransition) {
+      setCursorVisible(false);
+      setTimeout(() => setCursorVisible(true));
+    }
+  }, [runTransition]);
+
+  const handleMouseEnter = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
+  };
+
   return (
     <>
       {showSplash ? (
         <Splash />
       ) : (
         <CardProvider>
-          <Cursor
-            style={{ backgroundColor: cursorHoverColor }} 
-            animate={{
-              WebkitMaskPosition: `${x - (size / 2)}px ${y - (size / 2)}px`,
-              WebkitMaskSize: `${size}px`,
-            }}
-            transition={{ type: "tween", ease: "backOut", duration: 0.5 }}
-          />
+          <div
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          >
+            <Cursor
+              color={(() => {
+                const color = isHovering ? cursorHoverColor : cursorColor;
+                console.log('Active color:', isHovering ? 'cursorHoverColor' : 'cursorColor', color);
+                return color;
+              })()}
+              style={{
+                opacity: cursorVisible ? 1 : 0,
+                transition: 'opacity 0.3s ease-in-out',
+              }}
+              animate={{
+                WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
+                WebkitMaskSize: `${size}px`,
+              }}
+              transition={{
+                type: 'tween',
+                ease: 'backOut',
+                duration: 0.2
+              }}
+            />
+          </div>
           <AppContainer color={bgColor}>
             <TransitionProvider>
               <Content>
@@ -118,7 +153,6 @@ function App({ router, props }) {
                       </RouteContainer>
                     }
                   />
-
                   <Route
                     path={chatapp}
                     element={
@@ -128,7 +162,6 @@ function App({ router, props }) {
                       </RouteContainer>
                     }
                   />
-
                   <Route
                     path={webbshop}
                     element={
@@ -138,7 +171,6 @@ function App({ router, props }) {
                       </RouteContainer>
                     }
                   />
-
                   <Route
                     path={movieapp}
                     element={
@@ -148,23 +180,12 @@ function App({ router, props }) {
                       </RouteContainer>
                     }
                   />
-
                   <Route
                     path={tictactoe}
                     element={
                       <RouteContainer>
                         <Buttons path={tictactoe} />
                         <TicTacToe />
-                      </RouteContainer>
-                    }
-                  />
-
-                  <Route
-                    path={about}
-                    element={
-                      <RouteContainer className="scrollTictac">
-                        <Buttons path={about} />
-                        <AboutMe />
                       </RouteContainer>
                     }
                   />
@@ -207,22 +228,19 @@ const Cursor = styled(motion.div)`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100vw; // Ensure the mask covers the entire viewport width
-  height: 100vh; // Ensure the mask covers the entire viewport height
-  mask-image: url('/mask.svg'); // Use absolute path
-  mask-size: contain; // Ensure the mask image retains its aspect ratio
-  mask-position: center; // Center the mask image
-  mask-repeat: no-repeat; // Prevent the mask image from repeating
-  background: var(--dark);
-  -webkit-mask-image: url('/mask.svg'); // For WebKit browsers
+  width: 100vw; 
+  height: 100vh; 
+  mask-image: url('/mask.svg'); 
+  mask-size: contain; 
+  mask-position: center; 
+  mask-repeat: no-repeat; 
+  background: ${(props) => props.color};
+  -webkit-mask-image: url('/mask.svg'); 
   -webkit-mask-size: contain;
   -webkit-mask-position: center;
   -webkit-mask-repeat: no-repeat;
-  pointer-events: none; // Ensure the cursor does not interfere with other elements
-  z-index: 9999; // Ensure the cursor is on top of other elements
-
-
+  pointer-events: none; 
+  z-index: 9999; 
 `;
-
 
 export default App;

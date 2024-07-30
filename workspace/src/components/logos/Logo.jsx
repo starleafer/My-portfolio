@@ -34,6 +34,14 @@ const Container = styled.div`
     border-radius: 5px;
     font-family: 'Poppins';
     /* border: 5px solid var(--dark); */
+
+    
+    @media (max-width: 768px) {
+     /* visibility: hidden; */
+     }
+    @media (max-width: 375px) {
+     /* visibility: hidden; */
+    }
 `
 const CleaningContainer = styled.div`
     display: flex;

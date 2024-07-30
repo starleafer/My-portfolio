@@ -153,12 +153,12 @@ const TitleLetters = styled.span`
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark); 
   background-color: transparent; 
-  transition: color 0.2s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.1s cubic-bezier(.27,-0.32,.7,1.37), transform 0.3s cubic-bezier(.27,-0.32,.7,1.37); 
+  transition: color 0.2s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.1s , transform 0.3s; 
 
   &:hover {
     color: ${props => props.hovercolor || 'white'};
     transform: translateY(-0.7vw) translateX(-0.7vw);
-    animation: ${fadeInShadow} 0.5s cubic-bezier(.27,-0.32,.7,1.37) forwards;
+    animation: ${fadeInShadow} 0.5s  forwards;
     
     .hovered {
       color: white;
@@ -166,7 +166,20 @@ const TitleLetters = styled.span`
   }
 
   &:not(:hover) {
-    animation: ${fadeOutShadow} 0.8s cubic-bezier(.27,-0.32,.7,1.37) forwards;
+    animation: ${fadeOutShadow} 0.8s  forwards;
+  }
+
+  @media (max-width: 1440px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 1.5em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 3em;
+    margin-bottom: 30px;
   }
 `;
 

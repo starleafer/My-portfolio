@@ -30,7 +30,6 @@ function Projectlist({setCursorHoverColor, setIsHovering}) {
     return (
         <CardProvider>
             <StyledProjectList>
-                <ListLabel>/My Projects</ListLabel>
                 <ProjectContainer>
                 {card.map((item, index) => (
                         <MotionContainer
@@ -72,7 +71,7 @@ const StyledProjectList = styled.div`
     `
 
 const ProjectContainer = styled.div`
-    height: 50vh;
+    height: 60vh;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -97,17 +96,5 @@ const MotionContainer = styled(motion.div)`
     justify-content: flex-start;
     align-items: center;
   `
-
-const ListLabel = styled.h4`
-    font-size: 1.5em;
-    font-weight: 900;
-    margin-bottom: 10px;
-    align-self: flex-start; 
-    color: var(--dark);
-
-    @media (max-width: 1024px) {
-        font-size: 1.2em;
-  }
-    `
 
 export default Projectlist

@@ -4,13 +4,6 @@ const CardContext = createContext();
 
 export const CardProvider = ({ children }) => {
 
-
- 
-
-  const webbShopImages = [
-   
-  ];
-
   const card = [
     { id: 1, title: "Cleaning service", path: 'cleaning', label: "React.js", color: 'var(--dark)', backgroundColor: 'var(--yellowish)'  },
     { id: 2, title: "Tic tac toe", path: 'tictactoe', label: "React Native", color: 'var(--blueish)', backgroundColor: 'var(--redish)', shadow: 'var(--shadow-blueish)'  },

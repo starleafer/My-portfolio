@@ -64,5 +64,13 @@ const AnimationContainer = styled.div`
   animation: ${revealAnimation} 0.3s ease-out forwards;
   animation-delay: ${({ delay }) => delay || '0s'};
   text-align: center;
+
+  
+  @media (max-width: 768px) {
+    /* visibility: hidden; */
+  }
+    @media (max-width: 375px) {
+      /* visibility: hidden; */
+  }
 `;
 

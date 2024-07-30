@@ -41,8 +41,8 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
           onKeyDown={(e) => e.key === 'Enter' && handleClick()}
           onFocus={() => setIsHovered(id)}
           onBlur={() => setIsHovered(null)}
-          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHovering(true) }} // Update hover color
-          onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHovering(false) }} // Reset hover color
+          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHovering(true) }} 
+          onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHovering(false) }} 
           className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
           style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
         >
@@ -175,7 +175,7 @@ const StyledCard = styled.div.attrs({
     align-items: center;
     border-radius: 5px;
     flex-direction: row;
-    font-size: 1em;
+    font-size: 1.3em;
 
     &:hover {
       color: var(--dark) !important;
@@ -183,6 +183,8 @@ const StyledCard = styled.div.attrs({
       transform: none;
       
     }
+
+   
   }
 
   @media (max-width: 425px) {

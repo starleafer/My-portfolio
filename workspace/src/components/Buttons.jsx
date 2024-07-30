@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
-import { useButtonContext } from '../context/ButtonContext';
 import { useCardContext } from '../context/CardContext';
 
-function Buttons({ props }) {
+function Buttons({ onClick }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
-  const [fadeOut, setFadeOut] = useState(false);
-  const { buttonFade } = useButtonContext();
+  const [fadeIn, setFadeIn] = useState(false);
   const { card } = useCardContext();
 
   const currentPath = window.location.pathname.replace('/', '');
@@ -22,11 +20,22 @@ function Buttons({ props }) {
   const email = "emil.stjernlof@gmail.com";
 
   useEffect(() => {
+    setFadeIn(true);
+
     const timer = setTimeout(() => {
       setCopySuccessMessage("");
     }, 3000);
     return () => clearTimeout(timer);
   }, [copySuccessMessage]);
+
+  useEffect(() => {
+    setFadeIn(false);
+    const timer = setTimeout(() => {
+      setFadeIn(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, [location.pathname]);
+
 
   function copyEmail() {
     navigator.clipboard.writeText(email);
@@ -36,21 +45,6 @@ function Buttons({ props }) {
       setIsContactActive(false);
     }, 200);
   }
-
-  const buttonVariants = {
-    hidden: {
-      opacity: 0,
-      transition: {
-        duration: 0.5,
-      }
-    },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.5,
-      }
-    }
-  };
 
   let worksclass = "";
   let aboutclass = "";
@@ -66,47 +60,33 @@ function Buttons({ props }) {
     lightmode = "lightmode";
   }
 
-  useEffect(() => {
-    setFadeOut(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    if (buttonFade) {
-      setFadeOut(true);
-    }
-  }, [buttonFade]);
-
   return (
     <ButtonContainer
-      className={`fade-${fadeOut ? 'out' : 'in'}`}
-      initial="hidden"
-      animate="visible"
-      variants={buttonVariants}
       path={currentPath}
       backgroundColor={backgroundColor}
       shadow={shadow}
+      fadeIn={fadeIn} // Pass the fadeIn state to ButtonContainer
     >
-      {
-        location.pathname !== "/" ?
-          <>
-            <Link to={`/`} style={{ textDecoration: "none" }}>
-              <StyledButton
-                path={currentPath}
-                color={color}
-                backgroundColor={backgroundColor}
-                className={`${worksclass} ${lightmode}`}
-              >
-                Home
-              </StyledButton>
-            </Link>
-          </>
-          : null}
+      {location.pathname !== "/" ? (
+        <>
+          <Link to={`/`} style={{ textDecoration: "none" }} onClick={onClick}>
+            <StyledButton
+              path={currentPath}
+              color={color}
+              backgroundColor={backgroundColor}
+              className={`${worksclass} ${lightmode}`}
+            >
+              Home
+            </StyledButton>
+          </Link>
+        </>
+      ) : null}
       <Contact className={isContactActive ? 'active' : ''}>
         <StyledButton
           path={currentPath}
           color={color}
           backgroundColor={backgroundColor}
-          onClick={() => { copyEmail(); setIsContactActive(true); }}
+          onClick={copyEmail}
           className={`clicked ${lightmode}`}
         >
           Contact
@@ -116,6 +96,15 @@ function Buttons({ props }) {
     </ButtonContainer>
   );
 }
+
+const fadeInAnimation = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
 
 const slideAndFadeOut = keyframes`
   0% {
@@ -151,24 +140,6 @@ const slideAndFadeOutMobile = keyframes`
   }
 `;
 
-const fadein = keyframes`
-0% {
-  opacity: 0;
-}
-100% {
-  opacity: 1;
-}
-`;
-
-const fadeout = keyframes`
-0% {
-  opacity: 1;
-}
-100% {
-  opacity: 0;
-}
-`;
-
 const ButtonContainer = styled(m.div)`
   height: 93.8vh;
   display: flex;
@@ -181,6 +152,8 @@ const ButtonContainer = styled(m.div)`
   position: fixed;
   left: 0;
   z-index: 1;
+  opacity: 0;
+  animation: ${props => props.fadeIn ? css`${fadeInAnimation} 1s forwards` : 'none'};
 
   @media (max-width: 768px) {
     position: fixed;
@@ -198,15 +171,7 @@ const ButtonContainer = styled(m.div)`
     @media (max-width: 768px) {
       margin: 0;
       margin-left: auto;
-  }
-  }
-  
-  &.fade-in {
-    animation: ${fadein} 0.1s forwards;
-  }
-
-  &.fade-out {
-    animation: ${fadeout} 0.3s forwards;
+    }
   }
 `;
 
@@ -268,14 +233,6 @@ const StyledButton = styled(m.button)`
         animation: ${fadeOutShadow} 0.8s;
         border-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
       }
-
-      &:focus {
-        outline: none;
-        transform: translateY(-1vw);
-        transition: transform 0.3s;
-        animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid ${props => props.color};
-      }
     `;
   }}
 `;
@@ -309,13 +266,14 @@ const CopyAlert = styled.div`
   font-size: 1.1em;
   font-family: 'Roboto Flex';
   border-radius: 10px;
-  background-color: #54a051;
+  background-color: var(--darker);
   color: #fff;
   transform: translateX(100%);
-  transition: transform 0.3s cubic-bezier(.27,-0.32,.7,1.37), color 0.3s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.3s cubic-bezier(.27,-0.32,.7,1.37);
+  transition: transform 0.3s, color 0.3s , background-color 0.3s ;
+  overflow: hidden;
 
   &.clicked {
-    animation: ${slideAndFadeOut} 1.5s forwards;
+    animation: ${slideAndFadeOut} 2s forwards;
     
     @media (max-width: 768px) {
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
@@ -334,6 +292,29 @@ const CopyAlert = styled.div`
       padding: 1px;
       transform: translateX(-80%);
       right: 0;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      background-color: #d6d5d5e8;
+      right: 500px;
+      left: 140%;
+      height: 5vw;
+      width: 1vw;
+      transform: skewX(-30deg);
+      opacity: 0; 
+      transition: 0.6s 0.2s; 
+      opacity: 1; 
+
+      @starting-style {
+        left: -22vw;
+      }
+    }
+
+    &:after {
+      width: 1vw;
     }
   }
 `;
