@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useCardContext } from '../context/CardContext';
 
-function Buttons({ onClick }) {
+function Buttons({ }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
+  const [showCircle, setShowCircle] = useState(false);
+
   const [fadeIn, setFadeIn] = useState(false);
   const { card } = useCardContext();
+  const navigate = useNavigate();
 
   const currentPath = window.location.pathname.replace('/', '');
   const currentCard = card.find(item => item.path === currentPath) || card[0];
@@ -60,42 +64,75 @@ function Buttons({ onClick }) {
     lightmode = "lightmode";
   }
 
+  const handleClick = () => {
+    setIsClicked(true);
+    setShowCircle(true);
+    
+    const circleAnimationTimeout = setTimeout(() => {
+      setIsClicked(false);
+      navigate(`/`);
+      setShowCircle(false);
+    }, 800);
+
+    return () => {
+      clearTimeout(circleAnimationTimeout);
+
+    };
+  }
+
+  console.log(showCircle)
+
   return (
-    <ButtonContainer
-      path={currentPath}
-      backgroundColor={backgroundColor}
-      shadow={shadow}
-      fadeIn={fadeIn} // Pass the fadeIn state to ButtonContainer
-    >
-      {location.pathname !== "/" ? (
-        <>
-          <Link to={`/`} style={{ textDecoration: "none" }} onClick={onClick}>
-            <StyledButton
-              path={currentPath}
-              color={color}
-              backgroundColor={backgroundColor}
-              className={`${worksclass} ${lightmode}`}
-            >
-              Home
-            </StyledButton>
-          </Link>
-        </>
-      ) : null}
-      <Contact className={isContactActive ? 'active' : ''}>
-        <StyledButton
-          path={currentPath}
-          color={color}
-          backgroundColor={backgroundColor}
-          onClick={copyEmail}
-          className={`clicked ${lightmode}`}
-        >
-          Contact
-        </StyledButton>
-        {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
-      </Contact>
-    </ButtonContainer>
+    <>
+      {showCircle && <Circle style={{ backgroundColor: isClicked ? 'white' : "" }} />}
+      <ButtonContainer
+        path={currentPath}
+        backgroundColor={backgroundColor}
+        shadow={shadow}
+        fadeIn={fadeIn} 
+      >
+        {location.pathname !== "/" ? (
+          <>
+            {/* <Link to={`/`} style={{ textDecoration: "none" }} > */}
+              <StyledButton
+                path={currentPath}
+                color={color}
+                onClick={handleClick}
+                backgroundColor={backgroundColor}
+                className={`${worksclass} ${lightmode}`}
+              >
+                Home
+              </StyledButton>
+            {/* </Link> */}
+          </>
+        ) : null}
+        <Contact className={isContactActive ? 'active' : ''}>
+          <StyledButton
+            path={currentPath}
+            color={color}
+            backgroundColor={backgroundColor}
+            onClick={copyEmail}
+            className={`clicked ${lightmode}`}
+          >
+            Contact
+          </StyledButton>
+          {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
+        </Contact>
+      </ButtonContainer>
+    </>
   );
 }
+
+const CircleAnimation = keyframes`
+0% {
+  transform: scale(0);
+  opacity: 1;
+}
+100% {
+  transform: scale(4);
+  opacity: 1;
+}
+`;
 
 const fadeInAnimation = keyframes`
   from {
@@ -316,6 +353,24 @@ const CopyAlert = styled.div`
     &:after {
       width: 1vw;
     }
+  }
+`;
+
+const Circle = styled.div`
+  position: absolute;
+  width: 70%;
+  height: 80%;
+  right: 60%;
+  bottom: 55%;
+  border-radius: 50%;
+  background-color: white;
+  animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
+  transform-origin: center;
+  z-index: 9999;
+  opacity: 1; 
+
+  @media (max-width: 768px) {
+    border-radius: 15px;
   }
 `;
 

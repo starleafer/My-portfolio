@@ -27,6 +27,7 @@ function App() {
   const [cursorColor, setCursorColor] = useState("");
   const [cursorHoverColor, setCursorHoverColor] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
+  const [cursorOpacity, setCursorOpacity] = useState(1);
 
   const { x, y } = useMousePosition();
 
@@ -71,14 +72,16 @@ function App() {
         pathColor = "";
     }
 
-    setCursorVisible(false);
+
+    setCursorOpacity(0); // Fade out cursor
     setTimeout(() => {
       setBgColor(pathColor);
-      setCursorVisible(true);
+      setCursorOpacity(1); // Fade in cursor
     }, 300);
     setCursorColor(secondaryColor);
 
   }, [location.pathname]);
+
 
   useEffect(() => {
     const timeoutId = setTimeout(() => setShowSplash(false), 3200);
@@ -240,7 +243,7 @@ const Cursor = styled(motion.div)`
   -webkit-mask-position: center;
   -webkit-mask-repeat: no-repeat;
   pointer-events: none; 
-  z-index: 9999; 
+  z-index: 100; 
 `;
 
 export default App;

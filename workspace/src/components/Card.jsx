@@ -183,8 +183,6 @@ const StyledCard = styled.div.attrs({
       transform: none;
       
     }
-
-   
   }
 
   @media (max-width: 425px) {
