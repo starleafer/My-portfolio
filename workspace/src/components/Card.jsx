@@ -45,6 +45,8 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
           onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHovering(false) }} 
           className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
           style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
+  
+
         >
           <Title className={isHovered === id ? "fade-out" : "fade-in"}>{title}</Title>
           <Label className={isHovered === id ? "fade-out" : "fade-in"}>{label}</Label>
@@ -144,6 +146,8 @@ const StyledCard = styled.div.attrs({
     .hovered {
       color: white;
     }
+
+    
   }
 
   &:not(:hover) {

@@ -4,11 +4,12 @@ import styled, { css, keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useCardContext } from '../context/CardContext';
 
-function Buttons({ }) {
+function Buttons({ about }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
+  const [circleColor, setCircleColor] = useState("");
 
   const [fadeIn, setFadeIn] = useState(false);
   const { card } = useCardContext();
@@ -64,53 +65,63 @@ function Buttons({ }) {
     lightmode = "lightmode";
   }
 
-  const handleClick = () => {
+  const handleClick = (route, color) => {
     setIsClicked(true);
     setShowCircle(true);
-    
+    setCircleColor(color);
+
     const circleAnimationTimeout = setTimeout(() => {
       setIsClicked(false);
-      navigate(`/`);
+      navigate(route);
       setShowCircle(false);
     }, 800);
 
     return () => {
       clearTimeout(circleAnimationTimeout);
-
     };
-  }
-
-  console.log(showCircle)
+  };
 
   return (
     <>
-      {showCircle && <Circle style={{ backgroundColor: isClicked ? 'white' : "" }} />}
+      {showCircle && <Circle color={isClicked ? circleColor : ""} />}
       <ButtonContainer
         path={currentPath}
         backgroundColor={backgroundColor}
         shadow={shadow}
-        fadeIn={fadeIn} 
+        fadeIn={fadeIn}
       >
         {location.pathname !== "/" ? (
           <>
-            {/* <Link to={`/`} style={{ textDecoration: "none" }} > */}
-              <StyledButton
-                path={currentPath}
-                color={color}
-                onClick={handleClick}
-                backgroundColor={backgroundColor}
-                className={`${worksclass} ${lightmode}`}
-              >
-                Home
-              </StyledButton>
-            {/* </Link> */}
+            <StyledButton
+              path={currentPath}
+              color={color}
+              backgroundColor={backgroundColor}
+              about={about}
+              onClick={() => handleClick('/', 'white')}
+              className={`${worksclass} ${lightmode}`}
+            >
+              Home
+            </StyledButton>
           </>
+        ) : null}
+        {location.pathname !== "/about" ? (
+          <StyledButton
+            path={currentPath}
+            color={color}
+            backgroundColor={backgroundColor}
+            about={about}
+            onClick={() => handleClick('/about', 'var(--dark)')}
+            className={`${aboutclass} ${lightmode}`}
+          >
+            About me
+          </StyledButton>
         ) : null}
         <Contact className={isContactActive ? 'active' : ''}>
           <StyledButton
             path={currentPath}
             color={color}
             backgroundColor={backgroundColor}
+            about={about}
             onClick={copyEmail}
             className={`clicked ${lightmode}`}
           >
@@ -182,7 +193,7 @@ const ButtonContainer = styled(m.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
+  background-color: ${props => (props.path === '' || props.path === 'about') ? 'transparent' : props.backgroundColor};
   margin-left: 15px;
   gap: 2.5vh;
   padding: 3vh 1vw;
@@ -219,9 +230,9 @@ const StyledButton = styled(m.button)`
   border: 1px solid transparent;
   font-size: 1.2em;
   font-weight: 600;
-  color: ${props => props.color};
-  background-color: transparent;
-  background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
+  color: ${props => props.about ? 'white' : props.color};
+  background-color: ${props => props.about ? props.color : 'transparent'};
+  /* background-image: linear-gradient(to right, ${props => props.about ? props.backgroundColor : props.color} 50%, transparent 50%); */
   background-size: 200% 100%;
   background-position: 100% center;
   transition: background-position 0.3s cubic-bezier(.27,-0.32,.7,1.37), color 0.3s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.3s cubic-bezier(.27,-0.32,.7,1.37), transform 0.3s cubic-bezier(.27,-0.32,.7,1.37), border-color 0.3s cubic-bezier(.27,-0.32,.7,1.37);
@@ -263,12 +274,12 @@ const StyledButton = styled(m.button)`
         transform: translateY(-0.3vw);
         transition: transform 0.3s;
         animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid ${props => props.color};
+        border: 1px solid ${props => props.about ? 'white' : props.color};
       }
 
       &:not(:hover) {
         animation: ${fadeOutShadow} 0.8s;
-        border-color: ${props => (props.path === '' || props.path === 'about') ? '#fff' : props.backgroundColor};
+        border-color: ${props => (props.path === '' ) ? '#fff' : 'transparent'};
       }
     `;
   }}
@@ -363,7 +374,7 @@ const Circle = styled.div`
   right: 60%;
   bottom: 55%;
   border-radius: 50%;
-  background-color: white;
+  background-color: ${props => props.color};
   animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
   transform-origin: center;
   z-index: 9999;

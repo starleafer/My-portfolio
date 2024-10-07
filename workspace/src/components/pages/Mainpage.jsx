@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import Projectlist from '../Projectlist';
 import { motion as m } from 'framer-motion'
 import styled, { keyframes } from 'styled-components';
@@ -7,6 +7,7 @@ import AboutMe from '../pages/AboutMe';
 function Mainpage({ setCursorHoverColor, setIsHovering  }) {
 
   const [hoverColor, setHoverColor] = useState('');
+  const aboutMeRef = useRef(null);
 
   const colors = [
     '--dark: #1b1f2e',
@@ -27,9 +28,36 @@ function Mainpage({ setCursorHoverColor, setIsHovering  }) {
 
   const name = "Emil Stjernlöf";
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Trigger transition to AboutMe page
+          // You can replace this with your actual transition logic
+          console.log('AboutMe section is in view');
+        }
+      },
+      {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      }
+    );
+
+    if (aboutMeRef.current) {
+      observer.observe(aboutMeRef.current);
+    }
+
+    return () => {
+      if (aboutMeRef.current) {
+        observer.unobserve(aboutMeRef.current);
+      }
+    };
+  }, []);
+
   return (
     <MainContainer>
-      <SectionOne>
+      <Section>
         <TitlesContainer
           initial={{ x: '10%', opacity: 0 }}
           animate={{ x: '0%', opacity: 1 }}
@@ -51,14 +79,13 @@ function Mainpage({ setCursorHoverColor, setIsHovering  }) {
           </Title>
         </TitlesContainer>
         <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHovering={setIsHovering} />
-      </SectionOne>
-      <SectionTwo>
+      </Section>
+      {/* <Section dark>
         <AboutMe />
-      </SectionTwo>
+      </Section> */}
     </MainContainer>
   );
 }
-
 
 const fadeInShadow = keyframes`
 0% {
@@ -80,36 +107,25 @@ const fadeOutShadow = keyframes`
 
 const MainContainer = styled.div`
   width: 100vw;
-  height: 100vh; 
-  padding-left: 5vw;
-  overflow-y: auto;
+  height: 100vh;
+  overflow-y: hidden;
   overflow-x: hidden;
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;  Enables smooth scrolling */
   background-color: #fff;
 `;
 
-const SectionOne = styled.section`
+const Section = styled.section`
   display: flex;
   width: 100vw;
-  height: 100vh; 
+  height: 100vh;
   align-items: center;
   flex-direction: column;
   position: relative;
+  box-sizing: border-box;
+  padding: 20px 20px 20px 5vw;
   scroll-snap-align: start;
-  box-sizing: border-box; 
-  padding: 20px;
-`;
-
-const SectionTwo = styled.section`
-  display: flex;
-  width: 100vw;
-  height: 100vh; 
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  scroll-snap-align: start;
-  box-sizing: border-box; 
-  padding: 20px;
+  background-color: ${props => props.dark ? 'var(--dark)' : '#fff'};
 `;
 
 const TitlesContainer = styled(m.div)`
@@ -122,7 +138,7 @@ const TitlesContainer = styled(m.div)`
   @media (max-width: 768px) {
   /* align-items: center; */
   }
-`
+`;
 
 const Title = styled.h1`
   font-weight: 500;
@@ -147,7 +163,7 @@ const Title = styled.h1`
 
 const TitleLetters = styled.span`
   display: inline-block; 
-  font-size: 6.5em;
+  font-size: 8.5em;
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;

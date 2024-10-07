@@ -16,14 +16,16 @@ import "../src/index.css";
 import Splash from "./components/Splash";
 import { motion } from 'framer-motion';
 import useMousePosition from './utils/useMousePosition';
+import CustomCursor from "./components/CustomCursor";
 
 function App() {
   const { runTransition } = useTransitionContext();
   const location = useLocation();
   const [bgColor, setBgColor] = useState("");
-  const [showSplash, setShowSplash] = useState(true);
+  const [showSplash, setShowSplash] = useState(false);
 
   const [isHovering, setIsHovering] = useState(false);
+  const [isMouseDown, setIsMouseDown] = useState(false);
   const [cursorColor, setCursorColor] = useState("");
   const [cursorHoverColor, setCursorHoverColor] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
@@ -31,7 +33,7 @@ function App() {
 
   const { x, y } = useMousePosition();
 
-  const size = isHovering ? 80 : 40;
+  const size = isHovering ? 80 : isMouseDown ? 25 : isHovering && isMouseDown ? 25 : 40;
 
   const home = "/";
   const cleaning = "/cleaning";
@@ -68,20 +70,22 @@ function App() {
         pathColor = "var(--darker)";
         secondaryColor = "var(--redish)";
         break;
+      case "/about":
+        pathColor = "white";
+        secondaryColor = "white";
+        break;
       default:
         pathColor = "";
     }
 
-
-    setCursorOpacity(0); // Fade out cursor
+    setCursorOpacity(0);
     setTimeout(() => {
       setBgColor(pathColor);
-      setCursorOpacity(1); // Fade in cursor
+      setCursorOpacity(1);
     }, 300);
     setCursorColor(secondaryColor);
 
   }, [location.pathname]);
-
 
   useEffect(() => {
     const timeoutId = setTimeout(() => setShowSplash(false), 3200);
@@ -94,6 +98,19 @@ function App() {
       setTimeout(() => setCursorVisible(true));
     }
   }, [runTransition]);
+
+  useEffect(() => {
+    const handleMouseDown = () => setIsMouseDown(true);
+    const handleMouseUp = () => setIsMouseDown(false);
+
+    window.addEventListener('mousedown', handleMouseDown);
+    window.addEventListener('mouseup', handleMouseUp);
+
+    return () => {
+      window.removeEventListener('mousedown', handleMouseDown);
+      window.removeEventListener('mouseup', handleMouseUp);
+    };
+  }, []);
 
   const handleMouseEnter = () => {
     setIsHovering(true);
@@ -109,31 +126,14 @@ function App() {
         <Splash />
       ) : (
         <CardProvider>
-          <div
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            <Cursor
-              color={(() => {
-                const color = isHovering ? cursorHoverColor : cursorColor;
-                console.log('Active color:', isHovering ? 'cursorHoverColor' : 'cursorColor', color);
-                return color;
-              })()}
-              style={{
-                opacity: cursorVisible ? 1 : 0,
-                transition: 'opacity 0.3s ease-in-out',
-              }}
-              animate={{
-                WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
-                WebkitMaskSize: `${size}px`,
-              }}
-              transition={{
-                type: 'tween',
-                ease: 'backOut',
-                duration: 0.2
-              }}
-            />
-          </div>
+          <CustomCursor
+            x={x}
+            y={y}
+            isHovering={isHovering}
+            cursorColor={cursorColor}
+            cursorHoverColor={cursorHoverColor}
+            size={size}
+          />
           <AppContainer color={bgColor}>
             <TransitionProvider>
               <Content>
@@ -141,55 +141,64 @@ function App() {
                   <Route
                     path={home}
                     element={
-                      <RouteContainer>
+                      <ScrollContainer>
                         <Buttons path={home} />
                         <Mainpage setCursorHoverColor={setCursorHoverColor} setIsHovering={setIsHovering} />
-                      </RouteContainer>
+                      </ScrollContainer>
                     }
                   />
                   <Route
                     path={cleaning}
                     element={
-                      <RouteContainer className="scrollCleaning">
+                      <ScrollContainer className="scrollCleaning">
                         <Buttons path={cleaning} />
                         <Cleaning />
-                      </RouteContainer>
+                      </ScrollContainer>
                     }
                   />
                   <Route
                     path={chatapp}
                     element={
-                      <RouteContainer className="scrollChatApp">
+                      <ScrollContainer className="scrollChatApp">
                         <Buttons path={chatapp} />
                         <ChatApp />
-                      </RouteContainer>
+                      </ScrollContainer>
                     }
                   />
                   <Route
                     path={webbshop}
                     element={
-                      <RouteContainer className="scrollWebbShop">
+                      <ScrollContainer className="scrollWebbShop">
                         <Buttons path={webbshop} />
                         <WebbShop />
-                      </RouteContainer>
+                      </ScrollContainer>
                     }
                   />
                   <Route
                     path={movieapp}
                     element={
-                      <RouteContainer className="scrollMovies">
+                      <ScrollContainer className="scrollMovies">
                         <Buttons path={movieapp} />
                         <MovieApp />
-                      </RouteContainer>
+                      </ScrollContainer>
                     }
                   />
                   <Route
                     path={tictactoe}
                     element={
-                      <RouteContainer>
+                      <ScrollContainer>
                         <Buttons path={tictactoe} />
                         <TicTacToe />
-                      </RouteContainer>
+                      </ScrollContainer>
+                    }
+                  />
+                  <Route
+                    path="/about"
+                    element={
+                      <ScrollContainer>
+                        <Buttons path="/about" about />
+                        <AboutMe />
+                      </ScrollContainer>
                     }
                   />
                 </Routes>
@@ -215,35 +224,18 @@ const Content = styled.div`
   height: 100%;
 `;
 
-const RouteContainer = styled.div`
+const ScrollContainer = styled.div`
   display: flex;
   flex-direction: row;
   height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;
     font-size: 0.7em;
     align-items: flex-start;
   }
-`;
-
-const Cursor = styled(motion.div)`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw; 
-  height: 100vh; 
-  mask-image: url('/mask.svg'); 
-  mask-size: contain; 
-  mask-position: center; 
-  mask-repeat: no-repeat; 
-  background: ${(props) => props.color};
-  -webkit-mask-image: url('/mask.svg'); 
-  -webkit-mask-size: contain;
-  -webkit-mask-position: center;
-  -webkit-mask-repeat: no-repeat;
-  pointer-events: none; 
-  z-index: 100; 
 `;
 
 export default App;
