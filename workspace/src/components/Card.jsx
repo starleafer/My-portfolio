@@ -32,7 +32,6 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
   }
 
 
-
   return (
     <Body>
       {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
@@ -43,11 +42,11 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
           onKeyDown={(e) => e.key === 'Enter' && handleClick()}
           onFocus={() => setIsHovered(id)}
           onBlur={() => setIsHovered(null)}
-          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHoveringCards(true), console.log(color) }} 
+          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHoveringCards(true)}} 
           onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHoveringCards(false) }} 
           className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
           style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
-  
+          cursorHoverColor={color}
 
         >
           <Title className={isHovered === id ? "fade-out" : "fade-in"}>{title}</Title>
@@ -136,7 +135,8 @@ const StyledCard = styled.div.attrs({
   transition: transform 1s ; 
 
   &:hover {
-    color: #fff;
+    color: ${props => props.color};
+    border-color: ${props => props.cursorHoverColor};
     transform: translateY(-1.5vw);
     transition: transform 0.3s;
     animation: ${fadeInShadow} 0.5s ease forwards;
