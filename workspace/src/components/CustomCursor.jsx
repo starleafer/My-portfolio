@@ -2,19 +2,29 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
 
-const CustomCursor = ({ x, y, isHovering, cursorColor, cursorHoverColor, size }) => {
-  return (
+const CustomCursor = ({ x, y, isHoveringCards, isHoverButton, cursorColor, cursorHoverColor, size }) => {
+  const baseSize = size;
+  const expandedSize = size * 2;
+
+  const offsetX = 30;
+  const offsetY = 35;
+
+   return (
     <CursorWrapper
       animate={{
-        WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
-        WebkitMaskSize: `${size}px`,
+        x: x + offsetX - (isHoverButton ? expandedSize : baseSize),
+        y: y + offsetY - (isHoverButton ? expandedSize : baseSize),
+        width: isHoverButton ? expandedSize : baseSize,
+        height: isHoverButton ? expandedSize : baseSize,
+        backgroundColor: isHoveringCards ? cursorHoverColor : cursorColor,
       }}
       transition={{
-        type: 'tween',
-        ease: 'backOut',
-        duration: 0.2
+        x: { type: 'tween', ease: 'backOut', duration: 0.4 },
+        y: { type: 'tween', ease: 'backOut', duration: 0.4 },
+        width: { type: 'tween', ease: 'backOut', duration: 0.4 },
+        height: { type: 'tween', ease: 'backOut', duration: 0.4 },
       }}
-      color={isHovering ? cursorHoverColor : cursorColor}
+      color={isHoveringCards ? cursorHoverColor : 'var(--dark)'}
     />
   );
 };
@@ -25,13 +35,12 @@ const CursorWrapper = styled(motion.div)`
   left: 0;
   width: 100vw;
   height: 100vh;
-  mask-image: url('/mask.svg');
-  mask-size: 40px;
-  mask-position: 50% 50%;
-  mask-repeat: no-repeat;
+  mask-image: none;
   background: ${props => props.color};
+  border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
+  
 `;
 
 export default CustomCursor;

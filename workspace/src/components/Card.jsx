@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import AnimatedCard from './card-animations/AnimatedCard';
 
 
-function Card({ id, path, title, label, color, backgroundColor, setCursorHoverColor, setIsHovering  }) {
+function Card({ id, path, title, label, color, backgroundColor, setCursorHoverColor, setIsHoveringCards  }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
@@ -17,7 +17,7 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
     setIsClicked(true);
     setShowCircle(true);
     setButtonFade(true);
-    setIsHovering(false);
+    setIsHoveringCards(false);
     console.log(id);
 
     const circleAnimationTimeout = setTimeout(() => {
@@ -31,6 +31,8 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
     };
   }
 
+
+
   return (
     <Body>
       {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
@@ -41,8 +43,8 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
           onKeyDown={(e) => e.key === 'Enter' && handleClick()}
           onFocus={() => setIsHovered(id)}
           onBlur={() => setIsHovered(null)}
-          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHovering(true) }} 
-          onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHovering(false) }} 
+          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHoveringCards(true), console.log(color) }} 
+          onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHoveringCards(false) }} 
           className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
           style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
   

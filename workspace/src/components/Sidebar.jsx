@@ -29,7 +29,7 @@ function Sidebar() {
     } else if (location.pathname === '/tictactoe') {
         cursor.style.borderColor = 'var(--blueish)'
     } else if (location.pathname === '/webbshop') {
-        cursor.style.borderColor = 'bisque'
+        cursor.style.borderColor = 'var(--bisque)'
     } else if (location.pathname === '/movieapp') {
         cursor.style.borderColor = 'var(--redish)'
     } else if (location.pathname === '/cleaning') {
@@ -83,8 +83,8 @@ const Container = styled(m.div)`
 
     &.webbshop{
         /* background-color: var(--greenish); */
-        color: bisque;
-        border-color: bisque;
+        color: var(--bisque);
+        border-color: var(--bisque);
     }
 
     &.movieapp{
@@ -118,8 +118,8 @@ const AvatarContainer = styled.div`
 
     &.webbshop{
         /* background-color: var(--greenish); */
-        color: bisque;
-        border-color: bisque;
+        color: var(--bisque);
+        border-color: var(--bisque);
     }
 
     &.movieapp{
@@ -155,8 +155,8 @@ const SidebarContents = styled.div`
 
     &.webbshop{
         /* background-color: var(--greenish); */
-        color: bisque;
-        border-color: bisque;
+        color: var(--bisque);
+        border-color: var(--bisque);
     }
 
     &.movieapp{
@@ -188,8 +188,8 @@ const Content = styled.div`
 
     &.webbshop{
         /* background-color: var(--greenish); */
-        color: bisque;
-        border-color: bisque;
+        color: var(--bisque);
+        border-color: var(--bisque);
     }
 
     &.movieapp{

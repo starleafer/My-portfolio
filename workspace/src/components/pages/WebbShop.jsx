@@ -78,7 +78,7 @@ const PageTitle = styled.h1`
 font-size: 5vw;
 width: 80%;
 align-self: flex-start;
-color: bisque;
+color: var(--bisque);
 
 @media (max-width: 1024px) {
   margin: 1.5vh 0;

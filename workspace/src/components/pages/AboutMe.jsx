@@ -193,25 +193,25 @@ const ContactLinksContainer = styled.div`
   `;
 
 const ContactLinks = styled.img`
-  width: 3em;
-  height: 3em;
+  width: 2.3em;
+  height: 2.3em;
   transition: transform 0.3s ease;
 
     &:hover {
-      transform: scale(1.3);
+      transform: scale(1.5);
     }
   
 `;
 
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   color: #ffffff;
-  width: 3em;
-  height: 3em;
+  width: 2.3em;
+  height: 2.3em;
 
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.5);
   }
 `;
 
@@ -224,12 +224,12 @@ const EnvelopeContainer = styled.div`
 
 const EnvelopeIcon = styled(FontAwesomeIcon)`
   color: #ffffff;
-  width: 3em;
-  height: 3em;
+  width: 2.3em;
+  height: 2.3em;
   transition: transform 0.3s ease;
 
   &:hover {
-    transform: scale(1.3);
+    transform: scale(1.5);
   }
 `;
 

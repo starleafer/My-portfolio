@@ -67,7 +67,7 @@ const Busters = styled.div`
 
 const SoleSoul = styled.div`
     font-size: 1.2em;
-    color: bisque;
+    color: var(--bisque);
     font-family: 'Righteous';
 `
 
@@ -88,9 +88,9 @@ const ClassChat = styled.div`
 const MovieNight = styled.div`
   font-size: 1.2em;
   font-family: "Righteous";
-  color: bisque;
+  color: var(--bisque);
   padding: 5px;
-  border: 4px solid bisque;
+  border: 4px solid var(--bisque);
   border-radius: 10px;
   text-shadow: 0 0 0.125em rgb(223, 58, 29),
    0 0 0.45em rgb(255, 42, 5);  

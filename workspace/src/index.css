@@ -5,6 +5,8 @@
   --dark: #1b1f2e;
   --darker: #0f111a;
   --greenish: #497770;
+  
+  --bisque: #ffe4c4;
   --shadow-bisuqe: #dfc8ad;
   --yellowish: #f5ca80;
   --ocean: #00a6a6;
@@ -138,7 +140,7 @@ body {
 
 .scrollWebbShop {
   ::-webkit-scrollbar-thumb {
-    background: bisque;
+    background: var(--bisque);
   }
 }
 

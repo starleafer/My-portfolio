@@ -24,8 +24,9 @@ function App() {
   const [bgColor, setBgColor] = useState("");
   const [showSplash, setShowSplash] = useState(false);
 
-  const [isHovering, setIsHovering] = useState(false);
   const [isMouseDown, setIsMouseDown] = useState(false);
+  const [isHoveringCards, setIsHoveringCards] = useState(false);
+  const [isHoverButton, setIsHoverButton] = useState(false);
   const [cursorColor, setCursorColor] = useState("");
   const [cursorHoverColor, setCursorHoverColor] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
@@ -33,7 +34,7 @@ function App() {
 
   const { x, y } = useMousePosition();
 
-  const size = isHovering ? 80 : isMouseDown ? 25 : isHovering && isMouseDown ? 25 : 40;
+  const size = isHoveringCards ? 80 : isMouseDown ? 25 : isHoverButton ? 40 : 40;
 
   const home = "/";
   const cleaning = "/cleaning";
@@ -60,7 +61,7 @@ function App() {
         break;
       case webbshop:
         pathColor = "var(--greenish)";
-        secondaryColor = "bisque";
+        secondaryColor = "var(--bisque)";
         break;
       case chatapp:
         pathColor = "var(--light-purple)";
@@ -82,6 +83,7 @@ function App() {
     setTimeout(() => {
       setBgColor(pathColor);
       setCursorOpacity(1);
+      setCursorHoverColor();
     }, 300);
     setCursorColor(secondaryColor);
 
@@ -112,14 +114,6 @@ function App() {
     };
   }, []);
 
-  const handleMouseEnter = () => {
-    setIsHovering(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovering(false);
-  };
-
   return (
     <>
       {showSplash ? (
@@ -129,7 +123,8 @@ function App() {
           <CustomCursor
             x={x}
             y={y}
-            isHovering={isHovering}
+            isHoverButton={isHoverButton}
+            isHoveringCards={isHoveringCards}
             cursorColor={cursorColor}
             cursorHoverColor={cursorHoverColor}
             size={size}
@@ -142,8 +137,8 @@ function App() {
                     path={home}
                     element={
                       <ScrollContainer>
-                        <Buttons path={home} />
-                        <Mainpage setCursorHoverColor={setCursorHoverColor} setIsHovering={setIsHovering} />
+                        <Buttons path={home} setIsHoverButton={setIsHoverButton} />
+                        <Mainpage setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
                       </ScrollContainer>
                     }
                   />
@@ -151,7 +146,7 @@ function App() {
                     path={cleaning}
                     element={
                       <ScrollContainer className="scrollCleaning">
-                        <Buttons path={cleaning} />
+                        <Buttons path={cleaning} setIsHoverButton={setIsHoverButton} />
                         <Cleaning />
                       </ScrollContainer>
                     }
@@ -160,7 +155,7 @@ function App() {
                     path={chatapp}
                     element={
                       <ScrollContainer className="scrollChatApp">
-                        <Buttons path={chatapp} />
+                        <Buttons path={chatapp} setIsHoverButton={setIsHoverButton} />
                         <ChatApp />
                       </ScrollContainer>
                     }
@@ -169,7 +164,7 @@ function App() {
                     path={webbshop}
                     element={
                       <ScrollContainer className="scrollWebbShop">
-                        <Buttons path={webbshop} />
+                        <Buttons path={webbshop} setIsHoverButton={setIsHoverButton} />
                         <WebbShop />
                       </ScrollContainer>
                     }
@@ -178,7 +173,7 @@ function App() {
                     path={movieapp}
                     element={
                       <ScrollContainer className="scrollMovies">
-                        <Buttons path={movieapp} />
+                        <Buttons path={movieapp} setIsHoverButton={setIsHoverButton} />
                         <MovieApp />
                       </ScrollContainer>
                     }
@@ -187,7 +182,7 @@ function App() {
                     path={tictactoe}
                     element={
                       <ScrollContainer>
-                        <Buttons path={tictactoe} />
+                        <Buttons path={tictactoe} setIsHoverButton={setIsHoverButton} />
                         <TicTacToe />
                       </ScrollContainer>
                     }

@@ -4,7 +4,7 @@ import { motion as m } from 'framer-motion'
 import styled, { keyframes } from 'styled-components';
 import AboutMe from '../pages/AboutMe';
 
-function Mainpage({ setCursorHoverColor, setIsHovering  }) {
+function Mainpage({ setCursorHoverColor, setIsHoveringCards  }) {
 
   const [hoverColor, setHoverColor] = useState('');
   const aboutMeRef = useRef(null);
@@ -78,7 +78,7 @@ function Mainpage({ setCursorHoverColor, setIsHovering  }) {
             )}
           </Title>
         </TitlesContainer>
-        <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHovering={setIsHovering} />
+        <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
       </Section>
       {/* <Section dark>
         <AboutMe />

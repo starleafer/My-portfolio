@@ -4,7 +4,7 @@ import styled, { css, keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
 import { useCardContext } from '../context/CardContext';
 
-function Buttons({ about }) {
+function Buttons({ about, setIsHoverButton }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -99,7 +99,9 @@ function Buttons({ about }) {
               about={about}
               onClick={() => handleClick('/', 'white')}
               className={`${worksclass} ${lightmode}`}
-            >
+              // onMouseEnter={() => setIsHoverButton(true)}
+              // onMouseLeave={() => setIsHoverButton(false)}    
+                      >
               Home
             </StyledButton>
           </>
@@ -112,7 +114,9 @@ function Buttons({ about }) {
             about={about}
             onClick={() => handleClick('/about', 'var(--dark)')}
             className={`${aboutclass} ${lightmode}`}
-          >
+            // onMouseEnter={() => setIsHoverButton(true)}
+            // onMouseLeave={() => setIsHoverButton(false)}   
+                   >
             About me
           </StyledButton>
         ) : null}
@@ -124,7 +128,9 @@ function Buttons({ about }) {
             about={about}
             onClick={copyEmail}
             className={`clicked ${lightmode}`}
-          >
+            // onMouseEnter={() => setIsHoverButton(true)}
+            // onMouseLeave={() => setIsHoverButton(false)}    
+                  >
             Contact
           </StyledButton>
           {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
@@ -224,8 +230,9 @@ const ButtonContainer = styled(m.div)`
 `;
 
 const StyledButton = styled(m.button)`
-  min-width: 5vw;
-  height: 4vh;
+  /* min-width: 5vw; */
+  height: 5vh;
+  padding: 5px;
   border-radius: 8px;
   border: 1px solid transparent;
   font-size: 1.2em;

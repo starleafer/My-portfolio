@@ -4,7 +4,7 @@ import Card from './Card';
 import { CardProvider, useCardContext } from '../context/CardContext';
 import {motion} from 'framer-motion'
 
-function Projectlist({setCursorHoverColor, setIsHovering}) {
+function Projectlist({setCursorHoverColor, setIsHoveringCards}) {
     const { card } = useCardContext();
 
     if (!card) {
@@ -49,7 +49,7 @@ function Projectlist({setCursorHoverColor, setIsHovering}) {
                                 backgroundColor={item.backgroundColor}
                                 image={item.image}
                                 setCursorHoverColor={setCursorHoverColor}
-                                setIsHovering={setIsHovering}
+                                setIsHoveringCards={setIsHoveringCards}
                             />
                         </MotionContainer>
                     ))}
