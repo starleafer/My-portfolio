@@ -22,8 +22,6 @@ function TicTacToe() {
   )
 }
 
-
-
 const Body = styled(m.div)`
 display: flex;
   justify-content: center;

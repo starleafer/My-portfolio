@@ -34,7 +34,6 @@ function ChatApp() {
  
   return (
     <>
-      <Body>
         <PageBody
           title={<PageTitle>{title}</PageTitle>}
           PageDescription1={PageDescription1}
@@ -46,34 +45,33 @@ function ChatApp() {
           previousPage
           nextPage
         />
-      </Body>
       <TransitionScreen />
     </>
   )
 }
 
-const Body = styled(m.div)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--light-purple);
-  overflow-y: auto; 
-  padding: 0 200px;
-  /* border: 1px solid red; */
+// const Body = styled(m.div)`
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   background-color: var(--light-purple);
+//   overflow-y: auto; 
+//   padding: 0 200px;
+//   /* border: 1px solid red; */
 
-  @media (max-width: 1024px) {
-    gap: 5vh; 
-    /* margin: 0 200px 0 0;   */
-  }
+//   @media (max-width: 1024px) {
+//     gap: 5vh; 
+//     /* margin: 0 200px 0 0;   */
+//   }
   
-  @media (max-width: 768px) {
-    margin: 50px 0 0 0;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  `;
+//   @media (max-width: 768px) {
+//     margin: 50px 0 0 0;
+//     padding: 0;
+//     justify-content: flex-start;
+//     align-items: center;
+//   }
+//   `;
 
   const PageTitle = styled.h1`
   font-size: 5vw;

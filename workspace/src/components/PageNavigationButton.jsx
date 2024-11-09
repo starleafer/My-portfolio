@@ -4,7 +4,7 @@ import { useCardContext } from '../context/CardContext';
 import { useTransitionContext } from '../context/TransitionContext';
 import { useNavigate } from 'react-router-dom';
 
-function PageNavigationButton() {
+function PageNavigationButton({title}) {
   const { card } = useCardContext();
   const navigate = useNavigate();
 
@@ -54,16 +54,17 @@ function PageNavigationButton() {
     <Container>
       <NavigationButton
         onClick={handlePreviousClick}
-        style={{ color: color, borderColor: color }}
+        style={{ color: color }}
         color={color}
         shadow={shadow}
         backgroundColor={backgroundColor}
       >
         <Arrow left>&lt;</Arrow>Previous Project
       </NavigationButton>
+      {title}
       <NavigationButton
         onClick={handleNextClick}
-        style={{ color: color, borderColor: color }}
+        style={{ color: color}}
         color={color}
         shadow={shadow}
 
@@ -80,9 +81,9 @@ export default PageNavigationButton;
 
 const Container = styled.div`
   display: flex;
-  width: 95%;
+  width: 40vw;
   gap: 2vw;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   margin: 0;
 
@@ -97,8 +98,8 @@ const NavigationButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 10vw;
-  border: 1px solid var(--dark);
+  width: 10em;
+  border: 0px solid transparent;
   color: var(--dark);
   background-color: transparent;
   font-family: 'Roboto Flex';
@@ -133,13 +134,15 @@ const NavigationButton = styled.button`
 
     return css`
       &:hover {
-        transform: translateY(-0.5vw);
+        transform: translateY(-0.3vw);
         transition: transform 0.3s;
         animation: ${fadeInShadow} 0.5s ease forwards;
+        border: 1px solid ${props.color || 'var(--dark)'};
       }
 
       &:not(:hover) {
-        animation: ${fadeOutShadow} 0.8s ;
+        animation: ${fadeOutShadow} 0.8s;
+        border-color: transparent;
       }
 
       &:focus {

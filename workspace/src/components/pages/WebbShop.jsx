@@ -6,7 +6,7 @@ import { useTransitionContext } from '../../context/TransitionContext';
 import TransitionScreen from '../TransitionScreen';
 
 function WebbShop() {
-  const [isNative, setIsNative] = useState(false)
+  // const [nativeAndBrowser, setNativeAndBrowser] = useState(false)
   const [isBrowser, setIsBrowser] = useState(true)
   const { runTransition } = useTransitionContext();
 
@@ -31,17 +31,16 @@ function WebbShop() {
   
   return (
     <>
-      <Body>
         <PageBody
           title={<PageTitle>{title}</PageTitle>}
           PageDescription1={PageDescription1}
           PageDescription2={PageDescription2}
           browserRepo={browserRepo}
           browserImages={browserImages}
-          isNative={isNative}
+          // isNative={isNative}
           isBrowser={isBrowser}
-        />
-      </Body>
+        >
+        </PageBody>
       {
       runTransition === true
       ? <TransitionScreen />
@@ -51,28 +50,28 @@ function WebbShop() {
   );
 }
 
-const Body = styled(m.div)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--greenish);
-  overflow-y: auto; 
-  padding: 0 200px;
-  /* border: 1px solid red; */
+// const Body = styled(m.div)`
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   background-color: var(--greenish);
+//   overflow-y: auto; 
+//   padding: 0 50px 0 200px;
+//   /* border: 1px solid red; */
 
-  @media (max-width: 1024px) {
-    gap: 5vh; 
-    /* margin: 0 200px 0 0;   */
-  }
+//   @media (max-width: 1024px) {
+//     gap: 5vh; 
+//     /* margin: 0 200px 0 0;   */
+//   }
   
-  @media (max-width: 768px) {
-    margin: 50px 0 0 0;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  `;
+//   @media (max-width: 768px) {
+//     margin: 50px 0 0 0;
+//     padding: 0;
+//     justify-content: flex-start;
+//     align-items: center;
+//   }
+//   `;
 
 const PageTitle = styled.h1`
 font-size: 5vw;

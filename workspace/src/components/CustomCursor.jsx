@@ -6,8 +6,9 @@ const CustomCursor = ({ x, y, isHoveringCards, isHoverButton, cursorColor, curso
   const baseSize = size;
   const expandedSize = size * 2;
 
-  const offsetX = 30;
-  const offsetY = 35;
+  const offsetX = 18;
+  const offsetY = 22;
+
 
    return (
     <CursorWrapper
@@ -25,6 +26,7 @@ const CustomCursor = ({ x, y, isHoveringCards, isHoverButton, cursorColor, curso
         height: { type: 'tween', ease: 'backOut', duration: 0.4 },
       }}
       color={isHoveringCards ? cursorHoverColor : 'var(--dark)'}
+      cursorColor={cursorColor}
     />
   );
 };

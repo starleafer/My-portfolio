@@ -34,7 +34,7 @@ function App() {
 
   const { x, y } = useMousePosition();
 
-  const size = isHoveringCards ? 80 : isMouseDown ? 25 : isHoverButton ? 40 : 40;
+  const size = isHoveringCards ? 60 : isMouseDown ? 15 : isHoverButton ? 40 : 25;
 
   const home = "/";
   const cleaning = "/cleaning";

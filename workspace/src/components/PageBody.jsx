@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import { Link } from 'react-router-dom';
+import { motion as m } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { useTransitionContext } from '../context/TransitionContext';
-import TransitionScreen from './TransitionScreen';
 import { useCardContext } from '../context/CardContext';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import PageNavigationButton from './PageNavigationButton';
+import ImageGallerySlider from './ImageGallerySlider';
 
 function PageBody({
   title,
@@ -21,8 +21,9 @@ function PageBody({
   browserImages,
   isNative,
   isBrowser,
+  showSwitch,
 }) {
-
+  const [isSwitchActive, setIsSwitchActive] = useState(false);
   const { card } = useCardContext();
 
   const links = [nativeRepo, browserRepo, website].filter(link => link);
@@ -31,9 +32,11 @@ function PageBody({
   const currentPath = window.location.pathname.replace('/', '');
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const color = currentCard.color;
+  const backgroundColor = currentCard.backgroundColor;
+  const shadowColor = currentCard.shadow;
 
 
-  const renderNativeLink = isNative && (
+  const renderNativeLink = nativeRepo && (
     <Link
       to={nativeRepo}
       target="_blank"
@@ -54,7 +57,7 @@ function PageBody({
     </Link>
   );
 
-  const renderBrowserLink = isBrowser && (
+  const renderBrowserLink = browserRepo && (
     <Link
       to={browserRepo}
       target="_blank"
@@ -95,15 +98,20 @@ function PageBody({
     </Link>
   );
 
+  console.log(isSwitchActive)
+
   return (
-    <>
+    <Body backgroundColor={backgroundColor}>
       <Content color={color}>
-           
         <InfoSection>
-          {title}
+          <Header>
+            {title}
+            <PageNavigationButton />
+          </Header>
           <Info>
-            <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
-              {PageDescription1}
+            <Items>
+              <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
+                {PageDescription1}
 
                 {PageDescription2 ? (
                   <>
@@ -119,32 +127,58 @@ function PageBody({
                     {PageDescription3}
                   </>
                 ) : null}
-            </PageDescription>
+                <LinkGroup>
+                  <Github>
+                    <LinkContainer numColumns={numColumns}>
+                      {renderNativeLink}
+                      {renderBrowserLink}
+                      {renderWebsiteLink}
+                    </LinkContainer>
+                  </Github>
+                </LinkGroup>
+              </PageDescription>
 
-            <LinkGroup>
-              <Github>
-                <LinkContainer numColumns={numColumns}>
-                  {renderNativeLink}
-                  {renderBrowserLink}
-                  {renderWebsiteLink}
-                </LinkContainer>
-              </Github>
-              <PageNavigationButton />
-            </LinkGroup>
+              <ImageContainer isSwitchActive={isSwitchActive}>
+                {!isSwitchActive ?
+                  <ImageGallerySlider
+                    images={isNative ? nativeImages : browserImages}
+                    isNative={isNative}
+                    color={color}
+                    backgroundColor={backgroundColor}
+                    shadowColor={shadowColor}
+                    showSwitch={showSwitch}
+                    isSwitchActive={isSwitchActive}
+                    setIsSwitchActive={setIsSwitchActive}
+                  />
+                  : <ImageGallerySlider
+                    isNative
+                    images={nativeImages}
+                    color={color}
+                    backgroundColor={backgroundColor}
+                    shadowColor={shadowColor}
+                    showSwitch={showSwitch}
+                    isSwitchActive={isSwitchActive}
+                    setIsSwitchActive={setIsSwitchActive}
+                  />
+                }
+              </ImageContainer>
+            </Items>
+
           </Info>
         </InfoSection>
+
         {isNative ? (
           <Native>
-            {isBrowser ? <NativeHeader>React Native</NativeHeader> : ""}
-            <ImageContainer>
+            {/* {isBrowser ? <NativeHeader>React Native</NativeHeader> : ""} */}
+            {/* <ImageContainer>
               {nativeImages.map(image => (
                 <MobileImage key={image.id} src={image.src} />
               ))}
-            </ImageContainer>
+            </ImageContainer> */}
           </Native>
         ) : null}
 
-        {isBrowser ? (
+        {/* {isBrowser ? (
           <Browser>
             {isNative ? <BrowserHeader>React</BrowserHeader> : ""}
             <ImageContainer style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
@@ -153,10 +187,11 @@ function PageBody({
               ))}
             </ImageContainer>
           </Browser>
-        ) : null}
-        <PageNavigationButton />
+        ) : null} */}
+
+        {/* <PageNavigationButton /> */}
       </Content>
-    </>
+    </Body>
   )
 }
 
@@ -178,15 +213,38 @@ const glow = keyframes`
   }
 `;
 
+const Body = styled(m.div)`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: ${props => props.backgroundColor};
+  overflow: hidden; 
+  padding: 0 0 0 200px;
+  /* border: 1px solid red; */
+
+  @media (max-width: 1024px) {
+    gap: 5vh; 
+    /* margin: 0 200px 0 0;   */
+  }
+
+  @media (max-width: 768px) {
+    margin: 50px 0 0 0;
+    padding: 0;
+    justify-content: flex-start;
+    align-items: center;
+  }
+`;
 
 const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 100px 0 100px 0;
-  gap: 5vh; 
+  /* padding: 100px 0 100px 0; */
+  gap: 6vh; 
   animation: ${fadein} 0.8s forwards;
   color: ${props => props.color};
+  overflow: hidden;
   /* border: 1px solid orange; */
 
   @media (max-width: 1024px) {
@@ -204,8 +262,26 @@ const Content = styled.div`
   }
   `
 
+const Header = styled.div` 
+  display: flex;
+  width: 98%;
+  align-items: space-between;
+  `
+
+const Items = styled.div`
+  display: flex;
+  width: 90vw;
+  height: 60vh;
+  justify-content: space-between;
+  /* border: 1px solid red; */
+  `
+
 const InfoSection = styled.div`
-  width: 95%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90vw;
   min-width: 60%;
   /* border: 1px solid pink; */
   
@@ -226,9 +302,9 @@ const Info = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   gap: 3vw;
-  font-size: 1.1em;
+  font-size: .5em;
   font-weight: 600;
   /* border: 1px solid green; */
 
@@ -253,9 +329,13 @@ const Info = styled.section`
 `
 
 const PageDescription = styled.h3`
+  display: flex;
+  height: 50vh;
+  width: 57vw;
+  align-items: center;
+  justify-content: center;
   font-family: Roboto Flex;
   font-weight: 500;
-  width: 55vw;
   align-self: flex-start;
   font-size: 1.2vw; 
   /* border: 1px solid blue; */
@@ -279,6 +359,7 @@ const LinkGroup = styled.div`
   display: flex;
   width: 100%;
   align-items: flex-end;
+  margin-top: 2em;
   /* border: 1px solid red; */
 
   @media (max-width: 768px) {
@@ -304,7 +385,7 @@ const Github = styled.div`
   min-width: 20vw;
   border-radius: 15px;
   border: 4px dotted ${props => props.color};
-  
+
     @media (max-width: 1440px) {
       font-size: 1vw;
     }
@@ -317,12 +398,12 @@ const Github = styled.div`
       font-size: 0.8vw;
       border: 2px dotted ${props => props.color};
     }
-  
+
     @media (max-width: 768px) {
       width: 100%;
       border: none; 
     }
-  
+
     @media (max-width: 425px) {
     width: 60%;
     }
@@ -383,16 +464,7 @@ const InfoLinks = styled.div`
     }
   }
 `
-const NativeHeader = styled.h3`
-  width: 100%;
-  font-weight: 700;
-  color: ${props => props.color};
 
-  @media (max-width: 768px) {
-    width: 100%;
-    font-size: 2vw;
-  }
-`
 const Native = styled.div`
   display: flex;
   width: 95%;
@@ -415,46 +487,11 @@ const Native = styled.div`
 `
 
 const ImageContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);  
-  grid-template-rows: repeat(2, 1fr);    
-  gap: 2vw; 
-  min-width: 50%;
-  margin: 0;
-  /* border: 1px solid cyan; */
-
-  @media (max-width: 1440px) {
-    justify-content: flex-start;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-template-rows: repeat(2, 1fr);    
-    gap: 2vw; 
-  }
-
-  @media (max-width: 375px) {
-    grid-template-columns: repeat(2, 1fr); 
-    grid-template-rows: repeat(2, 1fr); 
-  }
-`
-
-const MobileImage = styled.img`
+  display: flex;
+  justify-content: center;
+  margin-left: ${props => props.isSwitchActive ? '2.5em' : '2.5em'};
+  height: 100%;
   width: 100%;
-  border-radius: 10px;
-`
-
-const BrowserHeader = styled.h3`
-    width: 100%;
-    font-weight: 700;
-    color: ${props => props.color};
-
-    @media (max-width: 768px) {
-      width: 100%;
-      font-size: 2vw;
-  }
 `
 
 const Browser = styled.div`

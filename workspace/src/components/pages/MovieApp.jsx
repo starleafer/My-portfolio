@@ -5,9 +5,10 @@ import PageBody from '../PageBody';
 import TransitionScreen from '../TransitionScreen';
 import { useTransitionContext } from '../../context/TransitionContext';
 
-function MovieApp() {
+function MovieApp(pathColor, secondaryColor) {
   const [isNative, setIsNative] = useState(true)
   const [isBrowser, setIsBrowser] = useState(true)
+  const [showSwitch, setShowSwitch] = useState(true)
   const { runTransition } = useTransitionContext();
 
   const title = "Movie Night"
@@ -39,7 +40,6 @@ function MovieApp() {
 
   return (
     <>
-      <Body>
         <PageBody
           title={<PageTitle>{title}</PageTitle>}
           PageDescription1={PageDescription1}
@@ -48,10 +48,11 @@ function MovieApp() {
           browserRepo={browserRepo}
           nativeImages={nativeImages}
           browserImages={browserImages}
-          isNative={isNative}
-          isBrowser={isBrowser}
+          // isNative={isNative}
+          // isBrowser={isBrowser}      
+          showSwitch={showSwitch}   
         />
-      </Body>
+      
       {
       runTransition === true
       ? <TransitionScreen />
@@ -79,28 +80,28 @@ const glow = keyframes`
   }
 `;
 
-const Body = styled(m.div)`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  background-color: var(--darker);
-  overflow-y: auto; 
-  padding: 0 200px;
-  /* border: 1px solid red; */
+// const Body = styled(m.div)`
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   width: 100%;
+//   background-color: var(--darker);
+//   overflow-y: auto; 
+//   padding: 0 100px 0 200px;
+//   /* border: 1px solid red; */
 
-  @media (max-width: 1024px) {
-    gap: 5vh; 
-    /* margin: 0 200px 0 0;   */
-  }
+//   @media (max-width: 1024px) {
+//     gap: 5vh; 
+//     /* margin: 0 200px 0 0;   */
+//   }
   
-  @media (max-width: 768px) {
-    margin: 50px 0 0 0;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: center;
-  }
-  `;
+//   @media (max-width: 768px) {
+//     margin: 50px 0 0 0;
+//     padding: 0;
+//     justify-content: flex-start;
+//     align-items: center;
+//   }
+//   `;
 
   const PageTitle = styled.h1`
   font-size: 5vw;
