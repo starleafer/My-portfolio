@@ -20,8 +20,8 @@ const CustomCursor = ({ x, y, isHoveringCards, isHoverButton, cursorColor, curso
         backgroundColor: isHoveringCards ? cursorHoverColor : cursorColor,
       }}
       transition={{
-        x: { type: 'tween', ease: 'backOut', duration: 0.4 },
-        y: { type: 'tween', ease: 'backOut', duration: 0.4 },
+        x: { type: 'tween', ease: 'backOut', duration: 0.2 },
+        y: { type: 'tween', ease: 'backOut', duration: 0.2 },
         width: { type: 'tween', ease: 'backOut', duration: 0.4 },
         height: { type: 'tween', ease: 'backOut', duration: 0.4 },
       }}
