@@ -141,6 +141,7 @@ const ImageGallerySlider = ({
           color={color}
           backgroundColor={backgroundColor}
           shadowColor={shadowColor}
+          style={{ marginLeft: '2em'}}
         >
           <Arrow>&gt;</Arrow>
         </NavButton>
@@ -208,7 +209,7 @@ const Gallery = styled(m.div)`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 3em;
+  margin: 3em 7em 3em 3em;
 `;
 
 const ViewerContainer = styled.div`
@@ -222,6 +223,7 @@ const ViewerContainer = styled.div`
   width: 100%;
   height: 600px;
   top: 1em;
+  margin-top: 8em;
 `;
 
 const ImageStack = styled(m.div)`
@@ -262,7 +264,6 @@ const SwitchContainer = styled(m.div)`
   transform: translateX(-50%);
 `;
 
-// Rest of the styled components remain unchanged
 const NavButton = styled.button`
   background-color: ${(props) => props.backgroundColor};
   border: 1px solid ${(props) => props.color};

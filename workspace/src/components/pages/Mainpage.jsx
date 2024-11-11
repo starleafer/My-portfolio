@@ -32,8 +32,6 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards  }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          // Trigger transition to AboutMe page
-          // You can replace this with your actual transition logic
           console.log('AboutMe section is in view');
         }
       },
@@ -80,9 +78,6 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards  }) {
         </TitlesContainer>
         <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
       </Section>
-      {/* <Section dark>
-        <AboutMe />
-      </Section> */}
     </MainContainer>
   );
 }
@@ -110,8 +105,6 @@ const MainContainer = styled.div`
   height: 100vh;
   overflow-y: hidden;
   overflow-x: hidden;
-  /* scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;  Enables smooth scrolling */
   background-color: #fff;
 `;
 
@@ -136,7 +129,6 @@ const TitlesContainer = styled(m.div)`
   margin-top: 5vh;
 
   @media (max-width: 768px) {
-  /* align-items: center; */
   }
 `;
 
