@@ -14,9 +14,7 @@ import { CardProvider } from "./context/CardContext";
 import { TransitionProvider, useTransitionContext } from "./context/TransitionContext";
 import "../src/index.css";
 import Splash from "./components/Splash";
-import { motion } from 'framer-motion';
-import useMousePosition from './utils/useMousePosition';
-import CustomCursor from "./components/CustomCursor";
+import MasksAndCursor from "./components/MasksAndCursor";
 
 function App() {
   const { runTransition } = useTransitionContext();
@@ -24,7 +22,6 @@ function App() {
   const [bgColor, setBgColor] = useState("");
   const [showSplash, setShowSplash] = useState(false);
 
-  const [isMouseDown, setIsMouseDown] = useState(false);
   const [isHoveringCards, setIsHoveringCards] = useState(false);
   const [isHoverButton, setIsHoverButton] = useState(false);
   const [cursorColor, setCursorColor] = useState("");
@@ -32,9 +29,7 @@ function App() {
   const [cursorVisible, setCursorVisible] = useState(true);
   const [cursorOpacity, setCursorOpacity] = useState(1);
 
-  const { x, y } = useMousePosition();
 
-  const size = isHoveringCards ? 60 : isMouseDown ? 15 : isHoverButton ? 40 : 25;
 
   const home = "/";
   const cleaning = "/cleaning";
@@ -101,18 +96,7 @@ function App() {
     }
   }, [runTransition]);
 
-  useEffect(() => {
-    const handleMouseDown = () => setIsMouseDown(true);
-    const handleMouseUp = () => setIsMouseDown(false);
 
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-
-    return () => {
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-    };
-  }, []);
 
   return (
     <>
@@ -120,7 +104,13 @@ function App() {
         <Splash />
       ) : (
         <CardProvider>
-          <CustomCursor
+          <MasksAndCursor
+            isHoverButton={isHoverButton}
+            isHoveringCards={isHoveringCards}
+            cursorColor={cursorColor}
+            cursorHoverColor={cursorHoverColor}
+          />
+          {/* <CustomCursor
             x={x}
             y={y}
             isHoverButton={isHoverButton}
@@ -128,7 +118,7 @@ function App() {
             cursorColor={cursorColor}
             cursorHoverColor={cursorHoverColor}
             size={size}
-          />
+          /> */}
           <AppContainer color={bgColor}>
             <TransitionProvider>
               <Content>

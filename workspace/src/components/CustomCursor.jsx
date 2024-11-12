@@ -10,7 +10,7 @@ const CustomCursor = ({ x, y, isHoveringCards, isHoverButton, cursorColor, curso
   const offsetY = 22;
 
 
-   return (
+  return (
     <CursorWrapper
       animate={{
         x: x + offsetX - (isHoverButton ? expandedSize : baseSize),

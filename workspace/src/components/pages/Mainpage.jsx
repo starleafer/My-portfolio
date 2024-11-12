@@ -3,9 +3,9 @@ import Projectlist from '../Projectlist';
 import { motion as m } from 'framer-motion'
 import styled, { keyframes } from 'styled-components';
 import AboutMe from '../pages/AboutMe';
+import useMousePosition from '../../utils/useMousePosition';
 
-function Mainpage({ setCursorHoverColor, setIsHoveringCards  }) {
-
+function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
   const [hoverColor, setHoverColor] = useState('');
   const aboutMeRef = useRef(null);
 
@@ -53,32 +53,36 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards  }) {
     };
   }, []);
 
+
   return (
-    <MainContainer>
-      <Section>
-        <TitlesContainer
-          initial={{ x: '10%', opacity: 0 }}
-          animate={{ x: '0%', opacity: 1 }}
-          transition={{ duration: 0.75, ease: "easeOut" }}
-          exit={{ opacity: 1 }}
-        >
-          <Title>
-            {name.split('').map((letter, index) =>
-              letter === ' ' ?
-                <span key={index}> </span> :
-                <TitleLetters
-                  key={index}
-                  hovercolor={hoverColor}
-                  onMouseEnter={() => setHoverColor(getRandomColor())}
-                >
-                  {letter}
-                </TitleLetters>
-            )}
-          </Title>
-        </TitlesContainer>
-        <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
-      </Section>
-    </MainContainer>
+    <>
+      <MainContainer>
+        <Section>
+          <TitlesContainer
+            initial={{ x: '10%', opacity: 0 }}
+            animate={{ x: '0%', opacity: 1 }}
+            transition={{ duration: 0.75, ease: "easeOut" }}
+            exit={{ opacity: 1 }}
+          >
+            <Title>
+              {name.split('').map((letter, index) =>
+                letter === ' ' ?
+                  <span key={index}> </span> :
+                  <TitleLetters
+                    key={index}
+                    hovercolor={hoverColor}
+                    onMouseEnter={() => setHoverColor(getRandomColor())}
+                  >
+                    {letter}
+                  </TitleLetters>
+              )}
+            </Title>
+          </TitlesContainer>
+          <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
+        </Section>
+      </MainContainer>
+
+    </>
   );
 }
 
@@ -101,6 +105,7 @@ const fadeOutShadow = keyframes`
 `;
 
 const MainContainer = styled.div`
+  position: relative;
   width: 100vw;
   height: 100vh;
   overflow-y: hidden;
