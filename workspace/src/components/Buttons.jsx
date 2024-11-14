@@ -99,9 +99,9 @@ function Buttons({ about, setIsHoverButton }) {
               about={about}
               onClick={() => handleClick('/', 'white')}
               className={`${worksclass} ${lightmode}`}
-              // onMouseEnter={() => setIsHoverButton(true)}
-              // onMouseLeave={() => setIsHoverButton(false)}    
-                      >
+            // onMouseEnter={() => setIsHoverButton(true)}
+            // onMouseLeave={() => setIsHoverButton(false)}    
+            >
               Home
             </StyledButton>
           </>
@@ -114,9 +114,9 @@ function Buttons({ about, setIsHoverButton }) {
             about={about}
             onClick={() => handleClick('/about', 'var(--dark)')}
             className={`${aboutclass} ${lightmode}`}
-            // onMouseEnter={() => setIsHoverButton(true)}
-            // onMouseLeave={() => setIsHoverButton(false)}   
-                   >
+          // onMouseEnter={() => setIsHoverButton(true)}
+          // onMouseLeave={() => setIsHoverButton(false)}   
+          >
             About me
           </StyledButton>
         ) : null}
@@ -128,12 +128,12 @@ function Buttons({ about, setIsHoverButton }) {
             about={about}
             onClick={copyEmail}
             className={`clicked ${lightmode}`}
-            // onMouseEnter={() => setIsHoverButton(true)}
-            // onMouseLeave={() => setIsHoverButton(false)}    
-                  >
+          // onMouseEnter={() => setIsHoverButton(true)}
+          // onMouseLeave={() => setIsHoverButton(false)}    
+          >
             Contact
           </StyledButton>
-          {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
+          {copySuccessMessage && <CopyAlert className="clicked" color={color} backgroundColor={backgroundColor}>{copySuccessMessage}</CopyAlert>}
         </Contact>
       </ButtonContainer>
     </>
@@ -286,7 +286,7 @@ const StyledButton = styled(m.button)`
 
       &:not(:hover) {
         animation: ${fadeOutShadow} 0.8s;
-        border-color: ${props => (props.path === '' ) ? '#fff' : 'transparent'};
+        border-color: ${props => (props.path === '') ? '#fff' : 'transparent'};
       }
     `;
   }}
@@ -321,8 +321,8 @@ const CopyAlert = styled.div`
   font-size: 1.1em;
   font-family: 'Roboto Flex';
   border-radius: 10px;
-  background-color: var(--darker);
-  color: #fff;
+  background-color: ${props => props.color};
+  color: ${props => props.backgroundColor};
   transform: translateX(100%);
   transition: transform 0.3s, color 0.3s , background-color 0.3s ;
   overflow: hidden;
@@ -353,7 +353,7 @@ const CopyAlert = styled.div`
     &::after {
       content: '';
       position: absolute;
-      background-color: #d6d5d5e8;
+      background-color: #f2f8ffe8;
       right: 500px;
       left: 140%;
       height: 5vw;
@@ -361,6 +361,7 @@ const CopyAlert = styled.div`
       transform: skewX(-30deg);
       opacity: 0; 
       transition: 0.6s 0.2s; 
+      transition-delay: .3s;
       opacity: 1; 
 
       @starting-style {
