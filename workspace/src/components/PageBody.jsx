@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import { Link } from 'react-router-dom';
 import { motion as m } from 'framer-motion';
@@ -8,6 +8,7 @@ import { useCardContext } from '../context/CardContext';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import PageNavigationButton from './PageNavigationButton';
 import ImageGallerySlider from './ImageGallerySlider';
+import { SmoothScroll } from './SmoothScroll';
 
 function PageBody({
   title,
@@ -33,8 +34,6 @@ function PageBody({
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
-  const shadowColor = currentCard.shadow;
-
 
   const renderNativeLink = nativeRepo && (
     <Link
@@ -98,74 +97,40 @@ function PageBody({
     </Link>
   );
 
-  console.log(isSwitchActive)
-
   return (
     <Body backgroundColor={backgroundColor}>
       <Content color={color}>
-        <InfoSection>
-          <Header>
-            {title}
-            <PageNavigationButton />
-          </Header>
-          <Info>
-            <Items>
-              <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
-                {PageDescription1}
+        <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
+          {title}
+          {PageDescription1}
 
-                {PageDescription2 ? (
-                  <>
-                    <br />
-                    <br />
-                    {PageDescription2}
-                  </>
-                ) : null}
-                {PageDescription3 ? (
-                  <>
-                    <br />
-                    <br />
-                    {PageDescription3}
-                  </>
-                ) : null}
-                <LinkGroup>
-                  <Github>
-                    <LinkContainer numColumns={numColumns}>
-                      {renderNativeLink}
-                      {renderBrowserLink}
-                      {renderWebsiteLink}
-                    </LinkContainer>
-                  </Github>
-                </LinkGroup>
-              </PageDescription>
-
-              <ImageContainer isSwitchActive={isSwitchActive}>
-                {!isSwitchActive ?
-                  <ImageGallerySlider
-                    images={isNative ? nativeImages : browserImages}
-                    isNative={isNative}
-                    color={color}
-                    backgroundColor={backgroundColor}
-                    shadowColor={shadowColor}
-                    showSwitch={showSwitch}
-                    isSwitchActive={isSwitchActive}
-                    setIsSwitchActive={setIsSwitchActive}
-                  />
-                  : <ImageGallerySlider
-                    isNative
-                    images={nativeImages}
-                    color={color}
-                    backgroundColor={backgroundColor}
-                    shadowColor={shadowColor}
-                    showSwitch={showSwitch}
-                    isSwitchActive={isSwitchActive}
-                    setIsSwitchActive={setIsSwitchActive}
-                  />
-                }
-              </ImageContainer>
-            </Items>
-
-          </Info>
-        </InfoSection>
+          {PageDescription2 ? (
+            <>
+              <br />
+              <br />
+              {PageDescription2}
+            </>
+          ) : null}
+          {PageDescription3 ? (
+            <>
+              <br />
+              <br />
+              {PageDescription3}
+            </>
+          ) : null}
+          <LinkGroup>
+            <Github>
+              <LinkContainer numColumns={numColumns}>
+                {renderNativeLink}
+                {renderBrowserLink}
+                {renderWebsiteLink}
+              </LinkContainer>
+            </Github>
+          </LinkGroup>
+        </PageDescription>
+        <ImageContainer isSwitchActive={isSwitchActive}>
+            <ImageGallerySlider color={color} images={isNative ? nativeImages : browserImages} />
+        </ImageContainer>
       </Content>
     </Body>
   )
@@ -184,10 +149,10 @@ const fadein = keyframes`
 const Body = styled(m.div)`
   position: relative;
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   background-color: ${props => props.backgroundColor};
   overflow: hidden; 
-  padding: 0 0 0 210px;
+  padding: 0 50px 0 210px;
 
   @media (max-width: 1024px) {
     gap: 5vh; 
@@ -203,12 +168,12 @@ const Body = styled(m.div)`
 
 const Content = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 6vh; 
+  justify-content: center;
+  /* gap: 1em;  */
   animation: ${fadein} 0.8s forwards;
   color: ${props => props.color};
-  overflow: hidden;
+  /* overflow: hidden; */
 
   @media (max-width: 1024px) {
     width: 95%;
@@ -225,72 +190,11 @@ const Content = styled.div`
   }
   `
 
-const Header = styled.div` 
-  display: flex;
-  width: 98%;
-  align-items: space-between;
-  `
-
-const Items = styled.div`
-  display: flex;
-  width: 90vw;
-  height: 60vh;
-  justify-content: space-between;
-  `
-
-const InfoSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 90vw;
-  min-width: 60%;
-  
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-
-
-  @media (max-width: 768px) {
-  align-items: center;
-  width: 100%;
-  margin: 0;
-}
-`
-
-const Info = styled.section`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  width: 90%;
-  gap: 3vw;
-  font-size: .5em;
-  font-weight: 600;
-
-  @media (max-width: 1440px) {
-    font-size: 1vw;
-    width: 100%;
-
-  }
-  @media (max-width: 1024px) {
-    padding-top: 3vh;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 1.7vw;
-}
-
-@media (max-width: 425px) {
-  font-size: 2.9vw;
-  flex-direction: column;
-  align-items: flex-start;
-}
-`
 
 const PageDescription = styled.h3`
   display: flex;
-  width: 45em;
+  width: 32vw;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   font-family: Roboto Flex;
@@ -390,7 +294,7 @@ const InfoLinks = styled.div`
   margin: 10px 0;
   font-size: 1.1vw;
   color: ${props => props.color};
-  overflow: hidden;
+  /* overflow: hidden; */
   border-radius: 10px;
 
 
@@ -420,32 +324,13 @@ const InfoLinks = styled.div`
   }
 `
 
-const Native = styled.div`
-  display: flex;
-  width: 95%;
-  flex-direction: column;
-  align-items: center;
-
-  @media (max-width: 1440px) {
-    align-items: flex-start;
-  }
-
-  @media (max-width: 1024px) {
-    width: 100%;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    align-items: center;
-  }
-`
-
 const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
   margin-left: ${props => props.isSwitchActive ? '2.5em' : '2.5em'};
-  height: 100%;
-  width: 100%;
 `
 
 

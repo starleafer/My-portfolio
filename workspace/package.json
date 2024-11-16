@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "d3-ease": "^3.0.1",
     "framer-motion": "^10.16.4",
+    "lenis": "^1.1.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.16.0",

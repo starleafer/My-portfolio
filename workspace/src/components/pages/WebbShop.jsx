@@ -23,10 +23,10 @@ function WebbShop() {
     { id: "1", src: '/pageimages/webbshop/products.png', alt: 'browser search' },
     { id: "2", src: '/pageimages/webbshop/description.png', alt: 'browser pager' },
     { id: "3", src: '/pageimages/webbshop/create.png', alt: 'browser series' },
-    { id: "4", src: '/pageimages/webbshop/createdproduct.png', alt: 'browser search' },
+    // { id: "4", src: '/pageimages/webbshop/createdproduct.png', alt: 'browser search' },
     { id: "5", src: '/pageimages/webbshop/admin.png', alt: 'browser pager' },
     { id: "6", src: '/pageimages/webbshop/cart.png', alt: 'browser series' },
-    { id: "7", src: '/pageimages/webbshop/checkout.png', alt: 'browser series' },
+    // { id: "7", src: '/pageimages/webbshop/checkout.png', alt: 'browser series' },
   ];
   
   return (
@@ -75,7 +75,7 @@ function WebbShop() {
 
 const PageTitle = styled.h1`
 font-size: 5vw;
-width: 80%;
+/* width: 80%; */
 align-self: flex-start;
 color: var(--bisque);
 

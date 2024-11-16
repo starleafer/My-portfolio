@@ -30,7 +30,6 @@ function App() {
   const [cursorOpacity, setCursorOpacity] = useState(1);
 
 
-
   const home = "/";
   const cleaning = "/cleaning";
   const chatapp = "/chatapp";
@@ -206,13 +205,13 @@ const AppContainer = styled.div`
 
 const Content = styled.div`
   flex-grow: 1;
-  height: 100%;
+  /* height: 100%; */
 `;
 
 const ScrollContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100%;
+  /* height: 100%; */
   overflow-y: auto;
   overflow-x: hidden;
 

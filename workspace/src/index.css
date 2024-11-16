@@ -122,40 +122,11 @@ body {
 .scrollTictac,
 .scrollCleaning {
   ::-webkit-scrollbar {
-    width: 7px;
-    background: transparent;
+    display: none;
   }
 }
 
-.scrollCleaning {
-  ::-webkit-scrollbar-thumb {
-    background: var(--dark);
-  }
-}
 
-.scrollChatApp {
-  ::-webkit-scrollbar-thumb {
-    background: var(--neon-green);
-  }
-}
-
-.scrollWebbShop {
-  ::-webkit-scrollbar-thumb {
-    background: var(--bisque);
-  }
-}
-
-.scrollMovies {
-  ::-webkit-scrollbar-thumb {
-    background: var(--redish);
-  }
-}
-
-.scrollTictac {
-  ::-webkit-scrollbar-thumb {
-    background: var(--blueish);
-  }
-}
 
 .mask {
   position: absolute;
