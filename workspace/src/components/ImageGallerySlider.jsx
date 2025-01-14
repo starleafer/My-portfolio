@@ -1,18 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { motion as m, useScroll } from 'framer-motion';
+import React, { useEffect, useRef } from 'react';
+import { motion as m } from 'framer-motion';
 import styled from 'styled-components';
-import { SmoothScroll } from './SmoothScroll';
 import Lenis from 'lenis';
+import ImageCounterSlider from './ImageCounterSlider';
 
-const ImageGallerySlider = ({ color, images = [] }) => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const ImageGallerySlider = ({ color, backgroundColor, images = [] }) => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start end', 'start start'],
-  });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -37,9 +31,14 @@ const ImageGallerySlider = ({ color, images = [] }) => {
     };
   }, []);
 
-
   return (
-    <>
+    <Contents>
+      <ImageCounterSlider
+        color={color}
+        backgroundColor={backgroundColor}
+        images={images}
+        scrollRef={sliderRef}
+      />
       <Slider ref={sliderRef}>
         {images.map((image, index) => (
           <CardContainer
@@ -49,7 +48,6 @@ const ImageGallerySlider = ({ color, images = [] }) => {
             key={index}
           >
             <Card
-              key={index}
               style={{
                 top: `${index * 35}px`,
               }}
@@ -59,16 +57,24 @@ const ImageGallerySlider = ({ color, images = [] }) => {
           </CardContainer>
         ))}
       </Slider>
-    </>
+    </Contents>
+
   );
 };
 
+const Contents = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+`;
 
 const Slider = styled.div`
   height: 100vh;
   width: 55vw;
   top: -0%;
-  margin-top: 20vh;
+  margin-top: 22vh;
   display: flex;
   position: relative;
   flex-direction: column;

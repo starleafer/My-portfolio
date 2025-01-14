@@ -97,6 +97,8 @@ function PageBody({
     </Link>
   );
 
+  console.log(color)
+
   return (
     <Body backgroundColor={backgroundColor}>
       <Content color={color}>
@@ -129,7 +131,7 @@ function PageBody({
           </LinkGroup>
         </PageDescription>
         <ImageContainer isSwitchActive={isSwitchActive}>
-            <ImageGallerySlider color={color} images={isNative ? nativeImages : browserImages} />
+            <ImageGallerySlider color={color} backgroundColor={backgroundColor} images={isNative ? nativeImages : browserImages} />
         </ImageContainer>
       </Content>
     </Body>
