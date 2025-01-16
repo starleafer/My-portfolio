@@ -3,8 +3,9 @@ import styled, { css, keyframes } from 'styled-components';
 import { useCardContext } from '../context/CardContext';
 import { useTransitionContext } from '../context/TransitionContext';
 import { useNavigate } from 'react-router-dom';
+import CustomButton from './CustomButton';
 
-function PageNavigationButton({title}) {
+function PageNavigationButton({ title }) {
   const { card } = useCardContext();
   const navigate = useNavigate();
 
@@ -35,7 +36,7 @@ function PageNavigationButton({title}) {
   }
 
   const handleNextClick = () => {
-    setRunTransition(true); 
+    setRunTransition(true);
     triggerTransition('next');
     const nextIndex = (currentIndex + 1) % card.length;
     const nextPath = card[nextIndex].path;
@@ -52,26 +53,31 @@ function PageNavigationButton({title}) {
 
   return (
     <Container>
-      <NavigationButton
-        onClick={handlePreviousClick}
-        style={{ color: color }}
-        color={color}
-        shadow={shadow}
-        backgroundColor={backgroundColor}
-      >
-        <Arrow left>&lt;</Arrow>Previous Project
-      </NavigationButton>
-      {title}
-      <NavigationButton
-        onClick={handleNextClick}
-        style={{ color: color}}
-        color={color}
-        shadow={shadow}
-
-        backgroundColor={backgroundColor}
-      >
-        Next Project <Arrow>&gt;</Arrow>
-      </NavigationButton>
+      <ButtonContainer>
+        <CustomButton
+          onClick={handlePreviousClick}
+          style={{ color: color }}
+          color={color}
+          shadow={shadow}
+          backgroundColor={backgroundColor}
+          label="Previous Project"
+          width={'10em'}
+        >
+        </CustomButton>
+      </ButtonContainer>
+        {title}
+      <ButtonContainer>
+        <CustomButton
+          onClick={handleNextClick}
+          style={{ color: color }}
+          color={color}
+          shadow={shadow}
+          backgroundColor={backgroundColor}
+          label="Next Project"
+          width={'10em'}
+        >
+        </CustomButton>
+      </ButtonContainer>
 
     </Container>
   );
@@ -81,11 +87,11 @@ export default PageNavigationButton;
 
 const Container = styled.div`
   display: flex;
-  width: 40vw;
-  gap: 2vw;
-  justify-content: center;
+  flex-direction: row;  
   align-items: center;
-  margin: 0;
+  justify-content: center;
+  gap: 6em;
+  margin-top: 3em;
 
   @media (max-width: 768px) {
     justify-content: flex-end;
@@ -94,78 +100,10 @@ const Container = styled.div`
   }
 `;
 
-const NavigationButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+const ButtonContainer = styled.div`
   width: 10em;
-  border: 0px solid transparent;
-  color: var(--dark);
-  background-color: transparent;
-  font-family: 'Roboto Flex';
-  border-radius: 10px;
-  padding: 10px;
-  font-size: 1vw;
-  font-weight: 600;
-  background-color: transparent;
-  background-image: linear-gradient(to right, ${props => props.color || 'default-hover-color'} 50%, transparent 50%);
-  background-size: 200% 100%;
-  background-position: 100% center;
-  transition: transform 1s;
-
-  ${props => {
-    const fadeInShadow = keyframes`
-      0% {
-        box-shadow: 0 0 0 transparent;
-      }
-      100% {
-        box-shadow: 0.3vw 0.3vw 0 ${props.shadow || 'var(--dark)'};
-      }
-    `;
-
-    const fadeOutShadow = keyframes`
-      0% {
-        box-shadow: 0.5vw 0.5vw 0 ${props.shadow || 'var(--dark)'};
-      }
-      100% {
-        box-shadow: 0 0 0 ;
-      }
-    `;
-
-    return css`
-      &:hover {
-        transform: translateY(-0.3vw);
-        transition: transform 0.3s;
-        animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid ${props.color || 'var(--dark)'};
-      }
-
-      &:not(:hover) {
-        animation: ${fadeOutShadow} 0.8s;
-        border-color: transparent;
-      }
-
-      &:focus {
-        outline: none;
-        transform: translateY(-1vw);
-        transition: transform 0.3s;
-        animation: ${fadeInShadow} 0.5s ease forwards;
-      }
-    `;
-  }}
-
-  @media (max-width: 768px) {
-    width: 14vw;
-    font-size: 1.3vw;
-  }
-
-  @media (max-width: 425px) {
-    font-size: 2vw;
-    width: 20vw;
-    padding: 1.7vw;
-    font-size: 2.2vw;
-  }
 `;
+
 
 const Arrow = styled.span`
   font-size: 1.5vw;

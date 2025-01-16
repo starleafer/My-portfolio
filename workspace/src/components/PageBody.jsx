@@ -102,37 +102,40 @@ function PageBody({
   return (
     <Body backgroundColor={backgroundColor}>
       <Content color={color}>
-        <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
-          {title}
-          {PageDescription1}
-
-          {PageDescription2 ? (
-            <>
-              <br />
-              <br />
-              {PageDescription2}
-            </>
-          ) : null}
-          {PageDescription3 ? (
-            <>
-              <br />
-              <br />
-              {PageDescription3}
-            </>
-          ) : null}
-          <LinkGroup>
-            <Github>
-              <LinkContainer numColumns={numColumns}>
-                {renderNativeLink}
-                {renderBrowserLink}
-                {renderWebsiteLink}
-              </LinkContainer>
-            </Github>
-          </LinkGroup>
-        </PageDescription>
-        <ImageContainer isSwitchActive={isSwitchActive}>
+        <TitleContainer>
+          <PageNavigationButton title={title} />         
+        </TitleContainer>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '2em' }}>
+          <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
+            {PageDescription1}
+            {PageDescription2 ? (
+              <>
+                <br />
+                <br />
+                {PageDescription2}
+              </>
+            ) : null}
+            {PageDescription3 ? (
+              <>
+                <br />
+                <br />
+                {PageDescription3}
+              </>
+            ) : null}
+            <LinkGroup>
+              <Github>
+                <LinkContainer numColumns={numColumns}>
+                  {renderNativeLink}
+                  {renderBrowserLink}
+                  {renderWebsiteLink}
+                </LinkContainer>
+              </Github>
+            </LinkGroup>
+          </PageDescription>
+          <ImageContainer isSwitchActive={isSwitchActive}>
             <ImageGallerySlider color={color} backgroundColor={backgroundColor} images={isNative ? nativeImages : browserImages} />
-        </ImageContainer>
+          </ImageContainer>
+        </div>
       </Content>
     </Body>
   )
@@ -151,7 +154,6 @@ const fadein = keyframes`
 const Body = styled(m.div)`
   position: relative;
   display: flex;
-  /* width: 100%; */
   background-color: ${props => props.backgroundColor};
   overflow: hidden; 
   padding: 0 50px 0 210px;
@@ -172,10 +174,9 @@ const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 1em;  */
+  flex-direction: column;
   animation: ${fadein} 0.8s forwards;
   color: ${props => props.color};
-  /* overflow: hidden; */
 
   @media (max-width: 1024px) {
     width: 95%;
@@ -192,13 +193,21 @@ const Content = styled.div`
   }
   `
 
+const TitleContainer = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding-right: 13em;
+  `;
 
 const PageDescription = styled.h3`
   display: flex;
   width: 32vw;
   height: 100vh;
+  padding-top: 2em;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   font-family: Roboto Flex;
   font-weight: 500;
   align-self: flex-start;

@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion as m } from 'framer-motion';
 import styled from 'styled-components';
 import Lenis from 'lenis';
 import ImageCounterSlider from './ImageCounterSlider';
+import GalleryImagePopover from './GalleryImagePopover';
 
 const ImageGallerySlider = ({ color, backgroundColor, images = [] }) => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -31,6 +33,14 @@ const ImageGallerySlider = ({ color, backgroundColor, images = [] }) => {
     };
   }, []);
 
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+  };
+
+  const handleClosePopover = () => {
+    setSelectedImage(null);
+  };
+
   return (
     <Contents>
       <ImageCounterSlider
@@ -51,14 +61,20 @@ const ImageGallerySlider = ({ color, backgroundColor, images = [] }) => {
               style={{
                 top: `${index * 35}px`,
               }}
+              onClick={() => handleImageClick(image)}
             >
               <Image src={image.src} alt={image.alt || 'Image'} />
             </Card>
           </CardContainer>
         ))}
       </Slider>
+      <GalleryImagePopover
+        image={selectedImage}
+        onClose={handleClosePopover}
+        color={color}
+        backgroundColor={backgroundColor}
+      />
     </Contents>
-
   );
 };
 
@@ -67,7 +83,7 @@ const Contents = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
 `;
 
 const Slider = styled.div`
@@ -111,13 +127,16 @@ const Card = styled(m.div)`
   border-radius: 25px;
   padding: 50px;
   transform-origin: top;
+  cursor: none;
 `;
 
 const Image = styled.img`
-  border-radius: 7px;
+  border-radius: 4px;
   width: 800px;
   height: 400px;
-  border: 1px solid #6d6d6dae;
+  border: 1px solid #424242ad;
+  cursor: none; 
+
 `;
 
 export default ImageGallerySlider;
