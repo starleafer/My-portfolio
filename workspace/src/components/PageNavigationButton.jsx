@@ -53,16 +53,16 @@ function PageNavigationButton({ title }) {
 
   return (
     <Container>
-      <ButtonContainer>
+      <ButtonContainer style={{ marginRight: '3em' }}>
         <CustomButton
           onClick={handlePreviousClick}
-          style={{ color: color }}
+          style={{ color: color}}
           color={color}
           shadow={shadow}
           backgroundColor={backgroundColor}
           label="Previous Project"
           width={'10em'}
-        >
+          >
         </CustomButton>
       </ButtonContainer>
         {title}
@@ -104,12 +104,5 @@ const ButtonContainer = styled.div`
   width: 10em;
 `;
 
-
-const Arrow = styled.span`
-  font-size: 1.5vw;
-  padding-top: 3%;
-  ${props => props.left ? 'margin-right: 0.5em;' : 'margin-left: 0.5em;'}
-
-`;
 
 

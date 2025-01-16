@@ -46,6 +46,7 @@ function Cleaning() {
           browserImages={browserImages}
           isNative={isNative}
           isBrowser={isBrowser}
+          cleaning
         />
       {
       runTransition === true
@@ -68,8 +69,6 @@ const fadein = keyframes`
 
 const PageTitle = styled.h1`
 font-size: 5vw;
-align-self: flex-start;
-/* color: var(--redish); */
 
 @media (max-width: 1024px) {
   margin: 1.5vh 0;

@@ -1,9 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { motion as m, AnimatePresence } from 'framer-motion';
 import CustomButton from './CustomButton';
 
-const GalleryImagePopover = ({ image, onClose, color, backgroundColor }) => {
+const GalleryImagePopover = ({ image, images = [], onClose, color, backgroundColor, title, shadowColor }) => {
+  const [currentIndex, setCurrentIndex] = useState(images.indexOf(image));
+
+  useEffect(() => {
+    if (images.indexOf(image) === -1) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(images.indexOf(image));
+    }
+  }, [image, images]);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  const currentImage = images[currentIndex];
+
+  const imageVariants = {
+    enter: (direction) => ({
+      x: direction === 1 ? 300 : -300, // Start off-screen
+      opacity: 0,
+    }),
+    center: {
+      x: 0, // Centered position
+      opacity: 1,
+    },
+    exit: (direction) => ({
+      x: direction === 1 ? -300 : 300, // Exit off-screen
+      opacity: 0,
+    }),
+  };
+
   return (
     <AnimatePresence>
       {image && (
@@ -24,14 +59,21 @@ const GalleryImagePopover = ({ image, onClose, color, backgroundColor }) => {
             onClick={(e) => e.stopPropagation()}
           >
             <ImageGroup>
-              <PopoverImage src={image.src} alt={image.alt || 'Image'} onClick={onClose} />
+              <PopoverImage
+                src={currentImage.src}
+                alt={currentImage.alt || 'Image'}
+                onClick={onClose}
+
+              />
               <ClosButtonContainer>
-                <CustomButton color={color} border backgroundColor={backgroundColor} label="X" onClick={onClose} />
+                <CustomButton color={color} border cleaning backgroundColor={backgroundColor} label="X" onClick={onClose} />
               </ClosButtonContainer>
             </ImageGroup>
             <NavigationGroup>
-              <CustomButton width="20em" border color={color} backgroundColor={backgroundColor} label="Previous Image" />
-              <CustomButton width="20em" border color={color} backgroundColor={backgroundColor} label="Next Image" />
+              <CustomButton width="20em" border cleaning color={color} backgroundColor={backgroundColor} shadowColor={shadowColor} title label="Previous Image" onClick={handlePrevious}
+              />
+              <CustomButton width="20em" border cleaning color={color} backgroundColor={backgroundColor} shadowColor={shadowColor} title label="Next Image" onClick={handleNext}
+              />
             </NavigationGroup>
 
           </PopoverContent>
@@ -56,9 +98,7 @@ const Overlay = styled(m.div)`
 
 const PopoverContent = styled(m.div)`
   border-radius: 10px;
-  /* padding: 20px; */
-  max-width: 100%;
-  max-height: 100%;
+  object-fit: cover; 
   display: flex;
   flex-direction: column;
   justify-content: center;

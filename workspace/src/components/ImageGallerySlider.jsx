@@ -5,7 +5,7 @@ import Lenis from 'lenis';
 import ImageCounterSlider from './ImageCounterSlider';
 import GalleryImagePopover from './GalleryImagePopover';
 
-const ImageGallerySlider = ({ color, backgroundColor, images = [] }) => {
+const ImageGallerySlider = ({ color, backgroundColor, shadowColor, cleaning, images = [] }) => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -67,12 +67,16 @@ const ImageGallerySlider = ({ color, backgroundColor, images = [] }) => {
             </Card>
           </CardContainer>
         ))}
+        <div style={{ height: '100vh' }} />
       </Slider>
       <GalleryImagePopover
         image={selectedImage}
+        images={images}
         onClose={handleClosePopover}
         color={color}
+        cleaning={cleaning}
         backgroundColor={backgroundColor}
+        shadowColor={shadowColor}
       />
     </Contents>
   );
@@ -83,13 +87,13 @@ const Contents = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* height: 100vh; */
+  min-height: 100vh;
 `;
 
 const Slider = styled.div`
   height: 100vh;
   width: 55vw;
-  top: -0%;
+  bottom: 14em;
   margin-top: 22vh;
   display: flex;
   position: relative;
@@ -97,6 +101,7 @@ const Slider = styled.div`
   align-items: center;
   overflow-y: auto;
   overflow-x: hidden;
+  /* padding-bottom: 5vh; */
 
   &::-webkit-scrollbar {
     display: none;

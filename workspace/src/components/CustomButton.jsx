@@ -1,18 +1,20 @@
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
-const CustomButton = ({ width, border, onClick, color, shadow, label }) => {
+const CustomButton = ({ width, border, onClick, color, backgroundColor, shadowColor, label, cleaning }) => {
+  console.log(cleaning)
   return (
-      <Button
-        onClick={onClick}
-        color={color}
-        shadow={shadow}
-        width={width}
-        style={{ color: color }}
-        borders
-      >
-        {label}
-      </Button>
+    <Button
+      onClick={onClick}
+      color={color}
+      shadowColor={shadowColor}
+      cleaning={cleaning}
+      width={width}
+      style={{ color: cleaning ? backgroundColor : color }}
+      borders
+    >
+      {label}
+    </Button>
   );
 };
 
@@ -44,13 +46,13 @@ const Button = styled.button`
         box-shadow: 0 0 0 transparent;
       }
       100% {
-        box-shadow: 0.3vw 0.3vw 0 ${props.shadow || 'var(--dark)'};
+        box-shadow: 0.3vw 0.3vw 0 ${props.shadowColor || 'var(--dark)'};
       }
     `;
 
     const fadeOutShadow = keyframes`
       0% {
-        box-shadow: 0.5vw 0.5vw 0 ${props.shadow || 'var(--dark)'};
+        box-shadow: 0.5vw 0.5vw 0 ${props.shadowColor || 'var(--dark)'};
       }
       100% {
         box-shadow: 0 0 0;
@@ -61,7 +63,7 @@ const Button = styled.button`
       &:hover {
         transform: translateY(-0.3vw);
         animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid ${props.color || 'var(--dark)'};
+        border: 1px solid ${props.cleaning ? props.backgroundColor : props.color || 'var(--dark)'};
       }
 
       &:not(:hover) {

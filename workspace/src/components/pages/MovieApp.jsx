@@ -5,7 +5,7 @@ import PageBody from '../PageBody';
 import TransitionScreen from '../TransitionScreen';
 import { useTransitionContext } from '../../context/TransitionContext';
 
-function MovieApp(pathColor, secondaryColor) {
+function MovieApp() {
   const [isNative, setIsNative] = useState(true)
   const [isBrowser, setIsBrowser] = useState(true)
   const [showSwitch, setShowSwitch] = useState(true)

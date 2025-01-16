@@ -45,7 +45,7 @@ const CounterContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 0.5rem;
-  transform: translateY(13rem); 
+  transform: translateY(.5rem); 
 `;
 
 const Indicator = styled(m.div)`

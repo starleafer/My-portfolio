@@ -23,6 +23,7 @@ function PageBody({
   isNative,
   isBrowser,
   showSwitch,
+  cleaning
 }) {
   const [isSwitchActive, setIsSwitchActive] = useState(false);
   const { card } = useCardContext();
@@ -34,6 +35,9 @@ function PageBody({
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
+  const shadowColor = currentCard.shadow;
+
+  console.log("FÄRG", shadowColor)
 
   const renderNativeLink = nativeRepo && (
     <Link
@@ -97,15 +101,15 @@ function PageBody({
     </Link>
   );
 
-  console.log(color)
+  console.log("FÄRG", backgroundColor)
 
   return (
     <Body backgroundColor={backgroundColor}>
       <Content color={color}>
         <TitleContainer>
-          <PageNavigationButton title={title} />         
+          <PageNavigationButton title={title} />
         </TitleContainer>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '2em' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '1em' }}>
           <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
             {PageDescription1}
             {PageDescription2 ? (
@@ -133,7 +137,13 @@ function PageBody({
             </LinkGroup>
           </PageDescription>
           <ImageContainer isSwitchActive={isSwitchActive}>
-            <ImageGallerySlider color={color} backgroundColor={backgroundColor} images={isNative ? nativeImages : browserImages} />
+            <ImageGallerySlider
+              color={color}
+              backgroundColor={backgroundColor}
+              shadowColor={shadowColor}
+              images={isNative ? nativeImages : browserImages}
+              cleaning={cleaning}
+            />
           </ImageContainer>
         </div>
       </Content>
