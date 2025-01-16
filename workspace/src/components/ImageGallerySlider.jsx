@@ -5,7 +5,7 @@ import Lenis from 'lenis';
 import ImageCounterSlider from './ImageCounterSlider';
 import GalleryImagePopover from './GalleryImagePopover';
 
-const ImageGallerySlider = ({ color, backgroundColor, shadowColor, cleaning, images = [] }) => {
+const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, invertedColors, images = [] }) => {
   const containerRef = useRef(null);
   const sliderRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
@@ -63,7 +63,7 @@ const ImageGallerySlider = ({ color, backgroundColor, shadowColor, cleaning, ima
               }}
               onClick={() => handleImageClick(image)}
             >
-              <Image src={image.src} alt={image.alt || 'Image'} />
+              <Image src={image.src} alt={image.alt || 'Image'} isNative={isNative} />
             </Card>
           </CardContainer>
         ))}
@@ -74,9 +74,10 @@ const ImageGallerySlider = ({ color, backgroundColor, shadowColor, cleaning, ima
         images={images}
         onClose={handleClosePopover}
         color={color}
-        cleaning={cleaning}
+        invertedColors={invertedColors}
         backgroundColor={backgroundColor}
         shadowColor={shadowColor}
+        isNative={isNative}
       />
     </Contents>
   );
@@ -137,8 +138,8 @@ const Card = styled(m.div)`
 
 const Image = styled.img`
   border-radius: 4px;
-  width: 800px;
-  height: 400px;
+  width: ${(props) => (props.isNative ? '13em' : '50em')};
+  height: ${(props) => (props.isNative ? '25em' : '25em')};
   border: 1px solid #424242ad;
   cursor: none; 
 

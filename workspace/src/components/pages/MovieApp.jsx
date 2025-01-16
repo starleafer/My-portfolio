@@ -40,24 +40,24 @@ function MovieApp() {
 
   return (
     <>
-        <PageBody
-          title={<PageTitle>{title}</PageTitle>}
-          PageDescription1={PageDescription1}
-          PageDescription2={PageDescription2}
-          nativeRepo={nativeRepo}
-          browserRepo={browserRepo}
-          nativeImages={nativeImages}
-          browserImages={browserImages}
-          // isNative={isNative}
-          // isBrowser={isBrowser}      
-          showSwitch={showSwitch}   
-        />
-      
+      <PageBody
+        title={<PageTitle>{title}</PageTitle>}
+        PageDescription1={PageDescription1}
+        PageDescription2={PageDescription2}
+        nativeRepo={nativeRepo}
+        browserRepo={browserRepo}
+        nativeImages={nativeImages}
+        browserImages={browserImages}
+        // isNative={isNative}
+        // isBrowser={isBrowser}      
+        showSwitch={showSwitch}
+      />
+
       {
-      runTransition === true
-      ? <TransitionScreen />
-      : ""
-    }
+        runTransition === true
+          ? <TransitionScreen />
+          : ""
+      }
     </>
   )
 }
@@ -94,7 +94,7 @@ const glow = keyframes`
 //     gap: 5vh; 
 //     /* margin: 0 200px 0 0;   */
 //   }
-  
+
 //   @media (max-width: 768px) {
 //     margin: 50px 0 0 0;
 //     padding: 0;
@@ -103,8 +103,8 @@ const glow = keyframes`
 //   }
 //   `;
 
-  const PageTitle = styled.h1`
-  font-size: 5vw;
+const PageTitle = styled.h1`
+  font-size: 6em;
   width: 80%;
   align-self: flex-start;
   animation: ${glow} 2s infinite alternate; 
@@ -122,7 +122,7 @@ const glow = keyframes`
     font-size: 1.8em;
   }
   `
-  
+
 // const Content = styled.div`
 //   display: flex;
 //   flex-direction: column;

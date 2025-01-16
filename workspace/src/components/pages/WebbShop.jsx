@@ -74,8 +74,7 @@ function WebbShop() {
 //   `;
 
 const PageTitle = styled.h1`
-font-size: 5vw;
-/* width: 80%; */
+font-size: 6em;
 align-self: flex-start;
 color: var(--bisque);
 

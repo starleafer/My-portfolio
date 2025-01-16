@@ -23,7 +23,7 @@ function PageBody({
   isNative,
   isBrowser,
   showSwitch,
-  cleaning
+  invertedColors
 }) {
   const [isSwitchActive, setIsSwitchActive] = useState(false);
   const { card } = useCardContext();
@@ -36,8 +36,6 @@ function PageBody({
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
-
-  console.log("FÄRG", shadowColor)
 
   const renderNativeLink = nativeRepo && (
     <Link
@@ -110,7 +108,7 @@ function PageBody({
           <PageNavigationButton title={title} />
         </TitleContainer>
         <div style={{ display: 'flex', flexDirection: 'row', gap: '1em' }}>
-          <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
+          <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0'}}>
             {PageDescription1}
             {PageDescription2 ? (
               <>
@@ -142,7 +140,8 @@ function PageBody({
               backgroundColor={backgroundColor}
               shadowColor={shadowColor}
               images={isNative ? nativeImages : browserImages}
-              cleaning={cleaning}
+              isNative={isNative}
+              invertedColors={invertedColors}
             />
           </ImageContainer>
         </div>
@@ -211,7 +210,7 @@ const TitleContainer = styled.div`
   padding-right: 13em;
   `;
 
-const PageDescription = styled.h3`
+const PageDescription = styled.div`
   display: flex;
   width: 32vw;
   height: 100vh;
@@ -351,7 +350,7 @@ const ImageContainer = styled.div`
   flex-direction: column;
   height: 100vh;
   overflow: hidden;
-  margin-left: ${props => props.isSwitchActive ? '2.5em' : '2.5em'};
+  margin-left: ${props => props.isSwitchActive ? '2.5em' : '0'};
 `
 
 

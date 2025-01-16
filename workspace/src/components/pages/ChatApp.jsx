@@ -31,20 +31,21 @@ function ChatApp() {
     { id: "8", src: '/pageimages/chatapp/chatphoto.jpg' },
   ];
 
- 
+
   return (
     <>
-        <PageBody
-          title={<PageTitle>{title}</PageTitle>}
-          PageDescription1={PageDescription1}
-          PageDescription2={PageDescription2}
-          nativeRepo={nativeRepo}
-          nativeImages={nativeImages}
-          isNative={isNative}
-          isBrowser={isBrowser}
-          previousPage
-          nextPage
-        />
+      <PageBody
+        title={<PageTitle>{title}</PageTitle>}
+        PageDescription1={PageDescription1}
+        PageDescription2={PageDescription2}
+        nativeRepo={nativeRepo}
+        nativeImages={nativeImages}
+        isNative={isNative}
+        isBrowser={isBrowser}
+        previousPage
+        nextPage
+        invertedColors
+      />
       <TransitionScreen />
     </>
   )
@@ -64,7 +65,7 @@ function ChatApp() {
 //     gap: 5vh; 
 //     /* margin: 0 200px 0 0;   */
 //   }
-  
+
 //   @media (max-width: 768px) {
 //     margin: 50px 0 0 0;
 //     padding: 0;
@@ -73,9 +74,9 @@ function ChatApp() {
 //   }
 //   `;
 
-  const PageTitle = styled.h1`
-  font-size: 5vw;
-  width: 80%;
+const PageTitle = styled.h1`
+font-size: 6em;
+width: 80%;
   align-self: flex-start;
   color: var(--neon-green);
   

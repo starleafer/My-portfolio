@@ -46,7 +46,7 @@ function Cleaning() {
           browserImages={browserImages}
           isNative={isNative}
           isBrowser={isBrowser}
-          cleaning
+          invertedColors
         />
       {
       runTransition === true
@@ -68,7 +68,7 @@ const fadein = keyframes`
 
 
 const PageTitle = styled.h1`
-font-size: 5vw;
+font-size: 6em;
 
 @media (max-width: 1024px) {
   margin: 1.5vh 0;
