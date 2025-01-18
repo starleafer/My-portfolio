@@ -92,15 +92,13 @@ const Container = styled.div`
   gap: 6em;
   margin-top: 3em;
 
-  @media (max-width: 768px) {
-    justify-content: flex-end;
+  @media (max-width: 1536px) {
     margin: 0;
-    width: 100%;
   }
 `;
 
 const ButtonContainer = styled.div`
-  /* width: 10em; */
+  width: 10em;
 `;
 
 
