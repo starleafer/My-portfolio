@@ -1,8 +1,18 @@
-import React from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import React from "react";
+import styled, { css, keyframes } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-const CustomButton = ({ width, border, onClick, color, backgroundColor, shadowColor, label, cleaning }) => {
-  console.log(cleaning)
+const CustomButton = ({
+  width,
+  border,
+  onClick,
+  color,
+  backgroundColor,
+  shadowColor,
+  label,
+  cleaning,
+}) => {
   return (
     <Button
       onClick={onClick}
@@ -13,29 +23,41 @@ const CustomButton = ({ width, border, onClick, color, backgroundColor, shadowCo
       style={{ color: cleaning ? backgroundColor : color }}
       borders
     >
-      {label}
+      {label === "Previous Project" ? (
+        <>
+          <StyledIcon color={color} icon={faArrowLeft} /> {label}
+        </>
+      ) : (
+        <>
+          {label} <StyledIcon color={color} icon={faArrowRight} />
+        </>
+      )}
     </Button>
   );
 };
 
 export default CustomButton;
 
-
 const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props) => props.width || ''};
+  width: ${(props) => props.width || ""};
   border: 0px solid;
   color: var(--dark);
   background-color: transparent;
-  font-family: 'Roboto Flex';
+  /* font-family: "Roboto Flex"; */
   border-radius: 10px;
   padding: 13px;
   font-size: 1vw;
   font-weight: 600;
+  gap: 0.75em;
   background-color: transparent;
-  background-image: linear-gradient(to right, ${(props) => props.color || 'default-hover-color'} 50%, transparent 50%);
+  /* background-image: linear-gradient(
+    to right,
+    ${(props) => props.color || "default-hover-color"} 50%,
+    transparent 50%
+  ); */
   background-size: 200% 100%;
   background-position: 100% center;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -46,13 +68,13 @@ const Button = styled.button`
         box-shadow: 0 0 0 transparent;
       }
       100% {
-        box-shadow: 0.3vw 0.3vw 0 ${props.shadowColor || 'var(--dark)'};
+        box-shadow: 0.3vw 0.3vw 0 ${props.shadowColor || "var(--dark)"};
       }
     `;
 
     const fadeOutShadow = keyframes`
       0% {
-        box-shadow: 0.5vw 0.5vw 0 ${props.shadowColor || 'var(--dark)'};
+        box-shadow: 0.5vw 0.5vw 0 ${props.shadowColor || "var(--dark)"};
       }
       100% {
         box-shadow: 0 0 0;
@@ -63,7 +85,10 @@ const Button = styled.button`
       &:hover {
         transform: translateY(-0.3vw);
         animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid ${props.cleaning ? props.backgroundColor : props.color || 'var(--dark)'};
+        border: 1px solid
+          ${props.cleaning
+            ? props.backgroundColor
+            : props.color || "var(--dark)"};
       }
 
       &:not(:hover) {
@@ -94,4 +119,14 @@ const Button = styled.button`
     padding: 1.7vw;
     font-size: 2.2vw;
   }
+`;
+
+const StyledIcon = styled(FontAwesomeIcon)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: .5em;
+  height: .5em;
+  font-size: 1.5em;
+  color: ${(props) => props.color || "var(--dark)"};
 `;

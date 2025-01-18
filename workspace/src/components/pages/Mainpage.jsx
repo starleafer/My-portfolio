@@ -145,8 +145,8 @@ const Title = styled.h1`
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark); 
 
-  @media (max-width: 1440px) {
-    font-size: 8em;
+  @media (max-width: 1536px) {
+    font-size: 1.3em;
   }
 
   @media (max-width: 1024px) {
@@ -180,19 +180,6 @@ const TitleLetters = styled.span`
 
   &:not(:hover) {
     animation: ${fadeOutShadow} 0.8s  forwards;
-  }
-
-  @media (max-width: 1440px) {
-    font-size: 1.2em;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 1.5em;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 3em;
-    margin-bottom: 30px;
   }
 `;
 

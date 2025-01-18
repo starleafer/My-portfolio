@@ -5,7 +5,7 @@ import { useTransitionContext } from '../context/TransitionContext';
 import { useNavigate } from 'react-router-dom';
 import CustomButton from './CustomButton';
 
-function PageNavigationButton({ title }) {
+function PageNavigationButton({ title, shadowColor }) {
   const { card } = useCardContext();
   const navigate = useNavigate();
 
@@ -17,7 +17,6 @@ function PageNavigationButton({ title }) {
   const currentIndex = card.findIndex(item => item.path === currentPath);
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
-  const shadow = currentCard.shadow;
 
   const handlePreviousClick = () => {
     setRunTransition(true);
@@ -58,10 +57,10 @@ function PageNavigationButton({ title }) {
           onClick={handlePreviousClick}
           style={{ color: color}}
           color={color}
-          shadow={shadow}
+          shadowColor={shadowColor}
           backgroundColor={backgroundColor}
           label="Previous Project"
-          width={'10em'}
+          // width={'11em'}
           >
         </CustomButton>
       </ButtonContainer>
@@ -71,10 +70,10 @@ function PageNavigationButton({ title }) {
           onClick={handleNextClick}
           style={{ color: color }}
           color={color}
-          shadow={shadow}
+          shadowColor={shadowColor}
           backgroundColor={backgroundColor}
           label="Next Project"
-          width={'10em'}
+          // width={'10em'}
         >
         </CustomButton>
       </ButtonContainer>
@@ -101,7 +100,7 @@ const Container = styled.div`
 `;
 
 const ButtonContainer = styled.div`
-  width: 10em;
+  /* width: 10em; */
 `;
 
 

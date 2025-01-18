@@ -75,7 +75,7 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
                         </Message>
                     )}
                 </MaskedSecret>
-                <Secret></Secret>
+                {/* <Secret></Secret> */}
             </MaskedGroup>
         </>
     )
@@ -113,6 +113,11 @@ const MaskedSecret = styled(m.div)`
     width: 100vw;
     height: 100vh;
     pointer-events: none;
+
+    @media (max-width: 1536px) {
+        margin-left: 2.5em;
+        font-size: 1.4em;
+    }
 `;
 
 const Message = styled.h4`
