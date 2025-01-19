@@ -16,12 +16,12 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
     switch (true) {
         case isHoveringCards:
             size = 80;
-            offsetX = 10; 
+            offsetX = window.innerWidth <= 1536 ? 10 : -40;
             offsetY = -40;
             break;
         case isMouseDown:
             size = 15;
-            offsetX = 50; 
+            offsetX = window.innerWidth <= 1536 ? 50 : -10;
             offsetY = -8;
             break;
         case isHoverButton:
@@ -31,12 +31,12 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
             break;
         case isHovered:
             size = 130;
-            offsetX = 0; 
+            offsetX = window.innerWidth <= 1536 ? 0 : -60;
             offsetY = -60;
             break;
         default:
             size = 35;
-            offsetX = -(size / -1); 
+            offsetX = window.innerWidth <= 1536 ? -(size / -1) : -(size / 2);
             offsetY = -(size / 2);
     }
 
