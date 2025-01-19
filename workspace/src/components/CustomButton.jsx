@@ -12,9 +12,11 @@ const CustomButton = ({
   invertedColors,
   shadowColor,
   label,
+  previous,
+  next,
   cleaning,
 }) => {
-  console.log("asdassdasd", backgroundColor);
+  console.log("previous", previous);
   return (
     <Button
       onClick={onClick}
@@ -26,27 +28,33 @@ const CustomButton = ({
       border={border}
       invertedColors={invertedColors}
     >
-      {label === "Previous Project" ? (
+      {previous || next ? (
         <>
-          <StyledIcon
-            color={color}
-            backgroundColor={backgroundColor}
-            invertedColors
-            back
-            icon={faArrowLeft}
-          />{" "}
-          {label}
+          {previous && (
+            <>
+              <StyledIcon
+                color={color}
+                backgroundColor={backgroundColor}
+                invertedColors={invertedColors}
+                icon={faArrowLeft}
+              />{" "}
+              {label}
+            </>
+          )}
+          {next && (
+            <>
+              {label}{" "}
+              <StyledIcon
+                color={color}
+                backgroundColor={backgroundColor}
+                invertedColors={invertedColors}
+                icon={faArrowRight}
+              />
+            </>
+          )}
         </>
       ) : (
-        <>
-          {label}{" "}
-          <StyledIcon
-            color={color}
-            backgroundColor={backgroundColor}
-            invertedColors
-            backicon={faArrowRight}
-          />
-        </>
+        label
       )}
     </Button>
   );
@@ -95,7 +103,8 @@ const Button = styled.button`
   ${(props) => css`
     &:hover {
       transform: translateY(-0.3vw);
-      animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease forwards;
+      animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
+        forwards;
       border: 1px solid
         ${props.invertedColors
           ? props.backgroundColor
@@ -114,12 +123,14 @@ const Button = styled.button`
 
     &:focus {
       transform: translateY(-0.3vw);
-      animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease forwards;
+      animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
+        forwards;
     }
 
     &:focus:not(:hover) {
       transform: translateY(0);
-      animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.5s ease forwards;
+      animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.5s ease
+        forwards;
     }
   `}
 

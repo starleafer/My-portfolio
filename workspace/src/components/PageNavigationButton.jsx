@@ -60,6 +60,7 @@ function PageNavigationButton({ title, shadowColor }) {
           shadowColor={shadowColor}
           backgroundColor={backgroundColor}
           label="Previous Project"
+          previous
           // width={'11em'}
           >
         </CustomButton>
@@ -73,6 +74,7 @@ function PageNavigationButton({ title, shadowColor }) {
           shadowColor={shadowColor}
           backgroundColor={backgroundColor}
           label="Next Project"
+          next
           // width={'10em'}
         >
         </CustomButton>

@@ -85,7 +85,7 @@ const GalleryImagePopover = ({
                 title
                 label="Previous Image"
                 hasIcon
-                prev={true}
+                previous
                 onClick={handlePrevious}
               />
               <CustomButton
@@ -98,7 +98,7 @@ const GalleryImagePopover = ({
                 title
                 label="Next Image"
                 hasIcon
-                next={true}
+                next
                 onClick={handleNext}
               />
             </NavigationGroup>
