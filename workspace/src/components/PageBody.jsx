@@ -107,7 +107,7 @@ function PageBody({
         <TitleContainer>
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '1em' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', gap: '4em' }}>
           <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0'}}>
             {PageDescription1}
             {PageDescription2 ? (

@@ -43,12 +43,6 @@ const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, inv
 
   return (
     <Contents>
-      <ImageCounterSlider
-        color={color}
-        backgroundColor={backgroundColor}
-        images={images}
-        scrollRef={sliderRef}
-      />
       <Slider ref={sliderRef}>
         {images.map((image, index) => (
           <CardContainer
@@ -79,23 +73,29 @@ const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, inv
         shadowColor={shadowColor}
         isNative={isNative}
       />
+          <ImageCounterSlider
+            color={color}
+            backgroundColor={backgroundColor}
+            images={images}
+            scrollRef={sliderRef}
+          />
     </Contents>
   );
 };
 
 const Contents = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
 `;
 
 const Slider = styled.div`
-  height: 100vh;
-  width: 55vw;
-  bottom: 14em;
-  margin-top: 22vh;
+  height: 80vh;
+  width: 45vw;
+  bottom: 20em;
+  margin-top: 27em;
   display: flex;
   position: relative;
   flex-direction: column;

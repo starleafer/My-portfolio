@@ -42,10 +42,14 @@ const ImageCounterSlider = ({ color, backgroundColor, images = [], scrollRef }) 
 
 const CounterContainer = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  flex-direction: column;
+  padding-top: 25em;
   gap: 0.5rem;
-  transform: translateY(.5rem); 
+  transform: translateY(.5rem);
+  height: 100vh;
+  border: 1px solid transparent;
 `;
 
 const Indicator = styled(m.div)`

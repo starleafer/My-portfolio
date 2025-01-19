@@ -1,9 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
-import { motion as m, AnimatePresence } from 'framer-motion';
-import CustomButton from './CustomButton';
+import React, { useEffect, useState } from "react";
+import styled from "styled-components";
+import { motion as m, AnimatePresence } from "framer-motion";
+import CustomButton from "./CustomButton";
 
-const GalleryImagePopover = ({ image, images = [], onClose, color, backgroundColor, invertedColors, shadowColor, isNative }) => {
+const GalleryImagePopover = ({
+  image,
+  images = [],
+  onClose,
+  color,
+  backgroundColor,
+  invertedColors,
+  shadowColor,
+  isNative,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(images.indexOf(image));
 
   useEffect(() => {
@@ -19,11 +28,12 @@ const GalleryImagePopover = ({ image, images = [], onClose, color, backgroundCol
   };
 
   const handlePrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const currentImage = images[currentIndex];
-
 
   return (
     <AnimatePresence>
@@ -47,22 +57,51 @@ const GalleryImagePopover = ({ image, images = [], onClose, color, backgroundCol
             <ImageGroup isNative={isNative}>
               <PopoverImage
                 src={currentImage.src}
-                alt={currentImage.alt || 'Image'}
+                alt={currentImage.alt || "Image"}
                 onClick={onClose}
                 isNative={isNative}
-
               />
               <ClosButtonContainer>
-                <CustomButton color={color} border invertedColors backgroundColor={backgroundColor} label="X" onClick={onClose} />
+                <CustomButton
+                  color={color}
+                  border
+                  invertedColors={invertedColors}
+                  backgroundColor={backgroundColor}
+                  shadowColor={shadowColor}
+                  hasIcon
+                  label="X"
+                  onClick={onClose}
+                />
               </ClosButtonContainer>
             </ImageGroup>
             <NavigationGroup>
-              <CustomButton width="20em" border invertedColors color={color} backgroundColor={backgroundColor} shadowColor={shadowColor} title label="Previous Image" onClick={handlePrevious}
+              <CustomButton
+                width="20em"
+                border
+                invertedColors={invertedColors}
+                color={color}
+                backgroundColor={backgroundColor}
+                shadowColor={shadowColor}
+                title
+                label="Previous Image"
+                hasIcon
+                prev={true}
+                onClick={handlePrevious}
               />
-              <CustomButton width="20em" border invertedColors color={color} backgroundColor={backgroundColor} shadowColor={shadowColor} title label="Next Image" onClick={handleNext}
+              <CustomButton
+                width="20em"
+                border
+                invertedColors={invertedColors}
+                color={color}
+                backgroundColor={backgroundColor}
+                shadowColor={shadowColor}
+                title
+                label="Next Image"
+                hasIcon
+                next={true}
+                onClick={handleNext}
               />
             </NavigationGroup>
-
           </PopoverContent>
         </Overlay>
       )}
@@ -85,7 +124,7 @@ const Overlay = styled(m.div)`
 
 const PopoverContent = styled(m.div)`
   border-radius: 10px;
-  object-fit: cover; 
+  object-fit: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -94,24 +133,24 @@ const PopoverContent = styled(m.div)`
 `;
 
 const PopoverImage = styled.img`
-  max-width: ${(props) => (props.isNative ? '30%' : '80%')};
+  max-width: ${(props) => (props.isNative ? "30%" : "80%")};
   max-height: 80%;
   border-radius: 10px;
-  cursor: none; 
+  cursor: none;
 `;
 
 const ImageGroup = styled.div`
   display: flex;
   gap: 5em;
   margin-top: 20px;
-  align-items: flex-start; 
-  justify-content: ${props => props.isNative ? 'center' : 'flex-end'};
+  align-items: flex-start;
+  justify-content: ${(props) => (props.isNative ? "center" : "flex-end")};
   margin-right: 2em;
-  margin-left: ${props => props.isNative ? '12em' : '0'};
+  margin-left: ${(props) => (props.isNative ? "12em" : "0")};
 `;
 
 const ClosButtonContainer = styled.div`
-width: 5em;
+  width: 5em;
 `;
 
 const NavigationGroup = styled.div`

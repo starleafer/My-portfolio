@@ -9,27 +9,43 @@ const CustomButton = ({
   onClick,
   color,
   backgroundColor,
+  invertedColors,
   shadowColor,
   label,
   cleaning,
 }) => {
+  console.log("asdassdasd", backgroundColor);
   return (
     <Button
       onClick={onClick}
       color={color}
+      backgroundColor={backgroundColor}
       shadowColor={shadowColor}
       cleaning={cleaning}
       width={width}
-      style={{ color: cleaning ? backgroundColor : color }}
-      borders
+      border={border}
+      invertedColors={invertedColors}
     >
       {label === "Previous Project" ? (
         <>
-          <StyledIcon color={color} icon={faArrowLeft} /> {label}
+          <StyledIcon
+            color={color}
+            backgroundColor={backgroundColor}
+            invertedColors
+            back
+            icon={faArrowLeft}
+          />{" "}
+          {label}
         </>
       ) : (
         <>
-          {label} <StyledIcon color={color} icon={faArrowRight} />
+          {label}{" "}
+          <StyledIcon
+            color={color}
+            backgroundColor={backgroundColor}
+            invertedColors
+            backicon={faArrowRight}
+          />
         </>
       )}
     </Button>
@@ -38,75 +54,74 @@ const CustomButton = ({
 
 export default CustomButton;
 
+const fadeInShadow = (shadowColor) => keyframes`
+  0% {
+    box-shadow: 0 0 0 transparent;
+  }
+  100% {
+    box-shadow: 0.3vw 0.3vw 0 ${shadowColor};
+  }
+`;
+
+const fadeOutShadow = (shadowColor) => keyframes`
+  0% {
+    box-shadow: 0.3vw 0.3vw 0 ${shadowColor};
+  }
+  100% {
+    box-shadow: 0 0 0 transparent;
+  }
+`;
+
 const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
   width: ${(props) => props.width || ""};
   border: 0px solid;
-  color: var(--dark);
+  color: ${(props) =>
+    props.invertedColors
+      ? props.backgroundColor
+      : props.color || "var(--dark)"};
   background-color: transparent;
-  /* font-family: "Roboto Flex"; */
   border-radius: 10px;
   padding: 13px;
   font-size: 1vw;
   font-weight: 600;
   gap: 0.75em;
-  background-color: transparent;
-  /* background-image: linear-gradient(
-    to right,
-    ${(props) => props.color || "default-hover-color"} 50%,
-    transparent 50%
-  ); */
   background-size: 200% 100%;
   background-position: 100% center;
   transition: transform 0.3s, box-shadow 0.3s;
 
-  ${(props) => {
-    const fadeInShadow = keyframes`
-      0% {
-        box-shadow: 0 0 0 transparent;
-      }
-      100% {
-        box-shadow: 0.3vw 0.3vw 0 ${props.shadowColor || "var(--dark)"};
-      }
-    `;
+  ${(props) => css`
+    &:hover {
+      transform: translateY(-0.3vw);
+      animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease forwards;
+      border: 1px solid
+        ${props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
+    }
 
-    const fadeOutShadow = keyframes`
-      0% {
-        box-shadow: 0.5vw 0.5vw 0 ${props.shadowColor || "var(--dark)"};
-      }
-      100% {
-        box-shadow: 0 0 0;
-      }
-    `;
-
-    return css`
-      &:hover {
-        transform: translateY(-0.3vw);
-        animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid
-          ${props.cleaning
+    &:not(:hover) {
+      animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
+      border: 1px solid
+        ${props.border
+          ? props.invertedColors
             ? props.backgroundColor
-            : props.color || "var(--dark)"};
-      }
+            : props.color
+          : "transparent"};
+    }
 
-      &:not(:hover) {
-        animation: ${fadeOutShadow} 0.8s;
-        border-color: transparent;
-      }
+    &:focus {
+      transform: translateY(-0.3vw);
+      animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease forwards;
+    }
 
-      &:focus {
-        transform: translateY(-0.3vw);
-        animation: ${fadeInShadow} 0.5s ease forwards;
-      }
-
-      &:focus:not(:hover) {
-        transform: translateY(0);
-        animation: ${fadeOutShadow} 0.5s ease forwards;
-      }
-    `;
-  }}
+    &:focus:not(:hover) {
+      transform: translateY(0);
+      animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.5s ease forwards;
+    }
+  `}
 
   @media (max-width: 768px) {
     width: 14vw;
@@ -125,8 +140,11 @@ const StyledIcon = styled(FontAwesomeIcon)`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: .5em;
-  height: .5em;
+  width: 0.5em;
+  height: 0.5em;
   font-size: 1.5em;
-  color: ${(props) => props.color || "var(--dark)"};
+  color: ${(props) =>
+    props.invertedColors
+      ? props.backgroundColor
+      : props.color || "var(--dark)"};
 `;
