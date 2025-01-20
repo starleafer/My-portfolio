@@ -8,7 +8,6 @@ import { useCardContext } from '../context/CardContext';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import PageNavigationButton from './PageNavigationButton';
 import ImageGallerySlider from './ImageGallerySlider';
-import { SmoothScroll } from './SmoothScroll';
 
 function PageBody({
   title,
@@ -164,8 +163,9 @@ const Body = styled(m.div)`
   position: relative;
   display: flex;
   background-color: ${props => props.backgroundColor};
+  width: 100%;
   overflow: hidden; 
-  padding: 0 50px 0 210px;
+  padding: 0 0 0 210px;
 
   @media (max-width: 1024px) {
     gap: 5vh; 
@@ -314,7 +314,6 @@ const InfoLinks = styled.div`
   margin: 10px 0;
   font-size: 1.1vw;
   color: ${props => props.color};
-  /* overflow: hidden; */
   border-radius: 10px;
 
 
@@ -325,7 +324,6 @@ const InfoLinks = styled.div`
   @media (max-width: 768px) {
     border: 1px dotted ${props => props.color};
     font-size: 1.2vw;
-    /* width: 12vw; */
     padding: 10px;
     margin: 0 10px 0 0;
 

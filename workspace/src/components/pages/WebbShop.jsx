@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import styled from 'styled-components';
-import { motion as m } from 'framer-motion';
 import PageBody from '../PageBody';
 import { useTransitionContext } from '../../context/TransitionContext';
 import TransitionScreen from '../TransitionScreen';
@@ -49,29 +48,6 @@ function WebbShop() {
     </>
   );
 }
-
-// const Body = styled(m.div)`
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   width: 100%;
-//   background-color: var(--greenish);
-//   overflow-y: auto; 
-//   padding: 0 50px 0 200px;
-//   /* border: 1px solid red; */
-
-//   @media (max-width: 1024px) {
-//     gap: 5vh; 
-//     /* margin: 0 200px 0 0;   */
-//   }
-  
-//   @media (max-width: 768px) {
-//     margin: 50px 0 0 0;
-//     padding: 0;
-//     justify-content: flex-start;
-//     align-items: center;
-//   }
-//   `;
 
 const PageTitle = styled.h1`
 font-size: 6em;

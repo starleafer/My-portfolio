@@ -1,10 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from "styled-components";
-import { motion as m } from 'framer-motion';
-// import { Link } from 'react-router-dom';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faGithub } from '@fortawesome/free-brands-svg-icons';
-// import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import styled from "styled-components";
 import { useTransitionContext } from '../../context/TransitionContext';
 import TransitionScreen from '../TransitionScreen';
 import PageBody from '../PageBody';
@@ -57,16 +52,6 @@ function Cleaning() {
   )
 }
 
-const fadein = keyframes`
-0% {
-  opacity: 0;
-}
-100% {
-  opacity: 1;
-}
-`;
-
-
 const PageTitle = styled.h1`
 font-size: 6em;
 
@@ -86,124 +71,5 @@ font-size: 6em;
   font-size: 1.8em;
 }
 `
-
-// const Content = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   gap: 70px;
-//   margin-left: 50px;
-//   margin-top: 50px;
-//   animation: ${fadein} 0.8s forwards;
-
-//   @media (max-width: 768px) {
-//       margin-left: 0;
-//       gap: 20px;
-//   }
-// `
-
-// const InfoContainer = styled.article`
-//   display: flex;
-//   align-items: flex-end;
-//   width: 70vw;
-//   gap: 10vw;
-//   @media (max-width: 768px) {
-//     flex-direction: column;
-//     gap: 0;
-
-//   }
-//   `
-
-// const Info = styled.section`
-//   display: flex;
-//   flex-direction: column;
-//   text-align: left;
-//   width: 100%;
-//   font-size: 1.3em;
-//   font-weight: 600;
-
-// `
-
-// const PageTitle = styled.h1`
-// font-size: 3.6rem;
-
-// @media (max-width: 768px) {
-//     font-size: 1.6rem;
-//     margin: 25px 0 0 0 ;
-//   }
-// `
-
-// const PageDescription = styled.h3`
-//   font-family: Roboto Flex;
-//   font-weight: 500;
-
-//   @media (max-width: 768px) {
-//     font-size: 0.8rem;
-//   }
-// `
-
-// const Links = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   margin-bottom: 20px;
-//   align-items: flex-start;
-//   width: 100%;
-//   gap: 1vw;
-
-//   @media (max-width: 768px) {
-//     flex-direction: row;
-//     width: 70vw;
-//     font-size: 0.4rem;
-//     margin-top: 1rem;
-//     /* justify-content: space-evenly; */
-//     align-items: center;
-
-//     :last-child {
-
-//     @media (max-width: 768px) {
-//       margin: 0;
-//       margin-left: auto;
-//   }
-//   }
-// }
-
-// @media (max-width: 375px) {  
-    
-// }
-// `
-
-// const InfoLinks = styled.div`
-//   display: flex;
-//   position: relative; 
-//   align-items: center;
-//   justify-content: center;
-//   font-family: 'Roboto Flex';
-//   gap: 5px;
-//   font-size: 1.5em;
-//   color: var(--dark);
-//   background-color: var(--yellowish);
-//   border-radius: 10px;
-//   overflow: hidden;
-
-//   &:hover {
-//     color: #fff;
-//   }
-  
-// `
-
-// const ImageContainer = styled.div`
-//   display: flex;
-//   margin-bottom: 3vh;
-//   flex-direction: column;
-//   justify-content: center;
-//   align-items: center;
-//   gap: 20px;
-//   width: 75vw;
-// `
-
-// const Image = styled.img`
-//   width: 100%;
-//   border-radius: 10px;
-// `
 
 export default Cleaning
