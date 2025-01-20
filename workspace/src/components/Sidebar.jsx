@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components';
 import { Link, useLocation } from 'react-router-dom';
 import { motion as m } from 'framer-motion'
+import CustomButton from './CustomButton';
 
 function Sidebar() {
   const location = useLocation();
@@ -50,10 +51,10 @@ function Sidebar() {
         <AvatarContainer className={sidebarclass} />
         <SidebarContents className={sidebarclass}>
         <Link to={`/`} style={{ textDecoration: 'none' }}>
-            <Content className={sidebarclass}>Home</Content>
+            <CustomButton className={sidebarclass}>Home</CustomButton>
         </Link>
-            <Content className={sidebarclass}>About me</Content>
-            <Content className={sidebarclass}>Contact</Content>
+            <CustomButton className={sidebarclass}>About me</CustomButton>
+            <CustomButton className={sidebarclass}>Contact</CustomButton>
         </SidebarContents> 
     </Container>
   )
