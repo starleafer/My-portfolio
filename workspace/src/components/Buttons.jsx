@@ -210,7 +210,7 @@ const ButtonContainer = styled(m.div)`
   animation: ${props => props.fadeIn ? css`${fadeInAnimation} 1s forwards` : 'none'};
 
   @media (max-width: 768px) {
-    position: fixed;
+    /* position: fixed; */
     flex-direction: row; 
     align-items: flex-start;
     height: 5vh;

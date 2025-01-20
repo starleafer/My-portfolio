@@ -73,7 +73,7 @@ function PageBody({
             style={{ marginRight: '0.5vw' }}
           />
         )}
-        Browse code
+        Browser code
       </InfoLinks>
     </Link>
   );
@@ -97,8 +97,6 @@ function PageBody({
       </InfoLinks>
     </Link>
   );
-
-  console.log("FÄRG", backgroundColor)
 
   return (
     <Body backgroundColor={backgroundColor}>
@@ -261,9 +259,7 @@ const Github = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-right: 0.5vw;
-  width: 40%;
-  min-width: 20vw;
+  padding: 0.3em;
   border-radius: 15px;
   border: 4px dotted ${props => props.color};
 
@@ -294,7 +290,7 @@ const LinkContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(${props => props.numColumns}, 1fr);
   width: 100%;
-  padding: 0.3vw;
+  padding: 0.4vw;
   align-items: center;
   justify-content: space-evenly;
   
@@ -311,7 +307,6 @@ const InfoLinks = styled.div`
   align-items: center;
   justify-content: center;
   font-family: 'Roboto Flex';
-  margin: 10px 0;
   font-size: 1.1vw;
   color: ${props => props.color};
   border-radius: 10px;
