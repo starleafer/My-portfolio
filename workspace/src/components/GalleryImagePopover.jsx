@@ -76,27 +76,27 @@ const GalleryImagePopover = ({
             </ImageGroup>
             <NavigationGroup>
               <CustomButton
-                width="20em"
+                width={'10em'}
                 border
                 invertedColors={invertedColors}
                 color={color}
                 backgroundColor={backgroundColor}
                 shadowColor={shadowColor}
                 title
-                label="Previous Image"
+                label="Previous"
                 hasIcon
                 previous
                 onClick={handlePrevious}
               />
               <CustomButton
-                width="20em"
+                width={'10em'}
                 border
                 invertedColors={invertedColors}
                 color={color}
                 backgroundColor={backgroundColor}
                 shadowColor={shadowColor}
                 title
-                label="Next Image"
+                label="Next "
                 hasIcon
                 next
                 onClick={handleNext}

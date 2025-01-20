@@ -82,7 +82,7 @@ const fadeOutShadow = (shadowColor) => keyframes`
 
 const Button = styled.button`
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   width: ${(props) => props.width || ""};
   border: 0px solid;
@@ -95,7 +95,7 @@ const Button = styled.button`
   padding: 13px;
   font-size: 1vw;
   font-weight: 600;
-  gap: 0.75em;
+  gap: 0.1em;
   background-size: 200% 100%;
   background-position: 100% center;
   transition: transform 0.3s, box-shadow 0.3s;
