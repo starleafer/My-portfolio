@@ -143,19 +143,7 @@ const Title = styled.h1`
   margin: 0.5em 0.2em 0 0;
   color: white;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: var(--dark); 
-
-  @media (max-width: 1536px) {
-    font-size: 1.3em;
-  }
-
-  @media (max-width: 1024px) {
-    font-size: 5.7em;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 2.7em;
-  }
+  -webkit-text-stroke-color: var(--dark);
 `;
 
 const TitleLetters = styled.span`

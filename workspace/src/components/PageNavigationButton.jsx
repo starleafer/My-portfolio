@@ -55,17 +55,19 @@ function PageNavigationButton({ title, shadowColor }) {
       <ButtonContainer style={{ marginRight: '3em' }}>
         <CustomButton
           onClick={handlePreviousClick}
-          style={{ color: color}}
+          style={{ color: color }}
           color={color}
           shadowColor={shadowColor}
           backgroundColor={backgroundColor}
           label="Previous Project"
           previous
           width={'10em'}
-          >
+        >
         </CustomButton>
       </ButtonContainer>
+      <Title>
         {title}
+      </Title>
       <ButtonContainer>
         <CustomButton
           onClick={handleNextClick}
@@ -103,5 +105,8 @@ const ButtonContainer = styled.div`
   width: 10em;
 `;
 
+const Title = styled.h1`
+ font-size: clamp(60px, 5vw, 100px);
+`;
 
 

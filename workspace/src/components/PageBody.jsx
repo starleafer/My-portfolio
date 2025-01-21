@@ -218,7 +218,7 @@ const PageDescription = styled.div`
   font-family: Roboto Flex;
   font-weight: 500;
   align-self: flex-start;
-  font-size: 1.3rem; 
+  font-size: clamp(10px, 2vw, 21px); 
   
   @media (max-width: 1024px) {
     font-size: 1.1em;
@@ -293,6 +293,7 @@ const LinkContainer = styled.div`
   padding: 0.4vw;
   align-items: center;
   justify-content: space-evenly;
+  gap: 1em;
   
   @media (max-width: 425px) {
     flex-direction: row;
@@ -307,33 +308,13 @@ const InfoLinks = styled.div`
   align-items: center;
   justify-content: center;
   font-family: 'Roboto Flex';
-  font-size: 1.1vw;
+  font-size: clamp(10px, 2vw, 21px); 
   color: ${props => props.color};
   border-radius: 10px;
 
 
   &:hover {
     color: #fff;
-  }
-
-  @media (max-width: 768px) {
-    border: 1px dotted ${props => props.color};
-    font-size: 1.2vw;
-    padding: 10px;
-    margin: 0 10px 0 0;
-
-    &:active {
-      background-color: var(--reddish);
-      color: var(--darker);
-    }
-
-    @media (max-width: 425px) {
-      font-size: 2vw;
-      width: 18vw;
-      padding: 2vw;
-      font-size: 2.2vw;
-
-    }
   }
 `
 

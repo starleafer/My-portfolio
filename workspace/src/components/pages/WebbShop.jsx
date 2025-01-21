@@ -31,7 +31,7 @@ function WebbShop() {
   return (
     <>
         <PageBody
-          title={<PageTitle>{title}</PageTitle>}
+          title={title}
           PageDescription1={PageDescription1}
           PageDescription2={PageDescription2}
           browserRepo={browserRepo}
@@ -48,24 +48,5 @@ function WebbShop() {
     </>
   );
 }
-
-const PageTitle = styled.h1`
-font-size: 6em;
-align-self: flex-start;
-color: var(--bisque);
-
-@media (max-width: 1024px) {
-  margin: 1.5vh 0;
-}
-
-
-@media (max-width: 768px) {
-  font-size: 1.8em;
-}
-
-@media (max-width: 425px) {
-  font-size: 1.8em;
-}
-`
 
 export default WebbShop

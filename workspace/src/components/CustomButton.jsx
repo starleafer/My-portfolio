@@ -93,7 +93,7 @@ const Button = styled.button`
   background-color: transparent;
   border-radius: 10px;
   padding: 13px;
-  font-size: 1vw;
+  font-size: clamp(15px, 2vw, 20px);
   font-weight: 600;
   gap: 0.1em;
   background-size: 200% 100%;

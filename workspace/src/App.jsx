@@ -208,7 +208,6 @@ const ScrollContainer = styled.div`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    font-size: 0.7em;
     align-items: flex-start;
   }
 `;
