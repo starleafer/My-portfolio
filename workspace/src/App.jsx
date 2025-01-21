@@ -109,15 +109,6 @@ function App() {
             cursorColor={cursorColor}
             cursorHoverColor={cursorHoverColor}
           />
-          {/* <CustomCursor
-            x={x}
-            y={y}
-            isHoverButton={isHoverButton}
-            isHoveringCards={isHoveringCards}
-            cursorColor={cursorColor}
-            cursorHoverColor={cursorHoverColor}
-            size={size}
-          /> */}
           <AppContainer color={bgColor}>
             <TransitionProvider>
               <Content>

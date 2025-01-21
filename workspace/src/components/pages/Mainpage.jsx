@@ -160,7 +160,7 @@ const Title = styled.h1`
 
 const TitleLetters = styled.span`
   display: inline-block; 
-  font-size: 8.5em;
+  font-size: clamp(48px, 10vw, 204px);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
