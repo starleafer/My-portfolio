@@ -111,11 +111,12 @@ const Body = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
+
 `
 
 const CardContainer = styled.div`
   position: relative;
-
+  
 `;
 
 const StyledCard = styled.div.attrs({
@@ -165,12 +166,6 @@ const StyledCard = styled.div.attrs({
     transform: translateY(-1.5vw);
     transition: transform 0.3s;
     animation: ${fadeInShadow} 0.5s ease forwards;
-  }
-
-  @media (max-width: 1200px) {
-    border-width: 2px;
-    width: 9vw;
-    max-height: 35vh;
   }
 
 

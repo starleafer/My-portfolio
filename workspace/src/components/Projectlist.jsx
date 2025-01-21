@@ -67,6 +67,7 @@ const StyledProjectList = styled.div`
     
     @media (max-width: 768px) {
         width: 90vw;
+        margin: 3em 0 0 4em;
     }
     `
 

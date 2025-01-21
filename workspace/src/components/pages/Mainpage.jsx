@@ -134,6 +134,7 @@ const TitlesContainer = styled(m.div)`
   margin-top: 5vh;
 
   @media (max-width: 768px) {
+    margin-top: 3em;
   }
 `;
 
@@ -148,7 +149,7 @@ const Title = styled.h1`
 
 const TitleLetters = styled.span`
   display: inline-block; 
-  font-size: clamp(48px, 10vw, 204px);
+  font-size: clamp(68px, 10vw, 204px);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
