@@ -199,7 +199,7 @@ const ButtonContainer = styled(m.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${props => (props.path === '' || props.path === 'about') ? 'transparent' : props.backgroundColor};
+  /* background-color: ${props => (props.path === '' || props.path === 'about') ? 'transparent' : props.backgroundColor}; */
   margin-left: 15px;
   gap: 2.5vh;
   padding: 3vh 1vw;

@@ -1,13 +1,15 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styled, { keyframes } from "styled-components";
 import { Link } from 'react-router-dom';
-import { motion as m } from 'framer-motion';
+import { motion as m, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { useCardContext } from '../context/CardContext';
 import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import PageNavigationButton from './PageNavigationButton';
 import ImageGallerySlider from './ImageGallerySlider';
+import ParallaxImage from './ParallaxImage';
+import TestSlider from './TestSlider';
 
 function PageBody({
   title,
@@ -17,12 +19,12 @@ function PageBody({
   nativeRepo,
   browserRepo,
   website,
-  nativeImages,
-  browserImages,
+  nativeImages = [],
+  browserImages = [],
   isNative,
   isBrowser,
   showSwitch,
-  invertedColors
+  invertedColors,
 }) {
   const [isSwitchActive, setIsSwitchActive] = useState(false);
   const { card } = useCardContext();
@@ -36,6 +38,7 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
+  
   const renderNativeLink = nativeRepo && (
     <Link
       to={nativeRepo}
@@ -98,14 +101,29 @@ function PageBody({
     </Link>
   );
 
+
+  const container = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ['start end', 'start start']
+  });
+
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    console.log("Scroll progress in PageBody:", latest);
+  });
+  console.log(container.current);
+
+
   return (
     <Body backgroundColor={backgroundColor}>
+ 
       <Content color={color}>
         <TitleContainer>
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
-        <div style={{ display: 'flex', flexDirection: 'row', gap: '4em' }}>
-          <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0'}}>
+        <ContentGroup>
+          <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
             {PageDescription1}
             {PageDescription2 ? (
               <>
@@ -131,17 +149,27 @@ function PageBody({
               </Github>
             </LinkGroup>
           </PageDescription>
-          <ImageContainer isSwitchActive={isSwitchActive}>
-            <ImageGallerySlider
+          <ImageContainer isSwitchActive={isSwitchActive} ref={container} >
+            {isNative
+              ? nativeImages.map((image, index) => (
+                <ParallaxImage key={index} images={[image]} scrollYProgress={scrollYProgress} />
+              ))
+              : browserImages.map((image, index) => (
+                <ParallaxImage key={index} images={[image]} scrollYProgress={scrollYProgress} />
+              ))
+            }
+
+
+            {/* <ImageGallerySlider
               color={color}
               backgroundColor={backgroundColor}
               shadowColor={shadowColor}
               images={isNative ? nativeImages : browserImages}
               isNative={isNative}
               invertedColors={invertedColors}
-            />
+            /> */}
           </ImageContainer>
-        </div>
+        </ContentGroup>
       </Content>
     </Body>
   )
@@ -156,14 +184,14 @@ const fadein = keyframes`
 }
 `;
 
-
 const Body = styled(m.div)`
   position: relative;
   display: flex;
   background-color: ${props => props.backgroundColor};
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden; 
-  padding: 0 0 0 210px;
+  padding: 0 0 0 0;
 
   @media (max-width: 1024px) {
     gap: 5vh; 
@@ -179,6 +207,9 @@ const Body = styled(m.div)`
 
 const Content = styled.div`
   display: flex;
+  width: 100%;
+  height: 100vh;
+
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -200,12 +231,24 @@ const Content = styled.div`
   }
   `
 
+const ContentGroup = styled.div`
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  /* margin-left: 25vw; */
+  gap: 4em;
+  /* border: 3px solid yellow; */
+  `;
+
 const TitleContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
   justify-content: center;
-  padding-right: 13em;
+  /* padding-right: 13em; */
   `;
 
 const PageDescription = styled.div`
@@ -312,19 +355,33 @@ const InfoLinks = styled.div`
   color: ${props => props.color};
   border-radius: 10px;
 
-
   &:hover {
     color: #fff;
   }
 `
 
-const ImageContainer = styled.div`
+const ImageContainer = styled(motion.div)`
+  /* margin: 0 0 60vh 0; */
+  position: relative;
+  border: 4px solid blue;
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+
+
+
+
+
+
+  /* position: absolute;
+  width: 100vw;
   display: flex;
   justify-content: center;
+  align-items: center;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
-  margin-left: ${props => props.isSwitchActive ? '2.5em' : '0'};
+  overflow: hidden; */
+  /* margin-left: ${props => props.isSwitchActive ? '2.5em' : '0'}; */
 `
 
 

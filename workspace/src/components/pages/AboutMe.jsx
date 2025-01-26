@@ -134,12 +134,19 @@ const slideAndFadeOut = keyframes`
 
 const Body = styled.div`
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--dark);
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+
+    padding: 0 10vw; 
+  }
+
 `;
 
 const Content = styled.div`
@@ -148,6 +155,9 @@ const Content = styled.div`
   width: 60%;
   color: white;
   animation: ${fadeInAnimation} 2s, ${slideInAnimation} 1s;
+
+
+    
 `;
 
 const Text = styled.div`
@@ -170,13 +180,22 @@ const CascadingText = styled.div`
 
 const Image = styled.img`
   position: relative;
-  height: 22em;
-  width: 20em;
+  height: auto;
+  width: 100%;
+  max-width: 20em;
   margin-top: 2em;
   background-color: #fff;
   border-radius: 5%;
   filter: grayscale(100%);
   z-index: 1;
+
+  @media (max-width: 768px) {
+    max-width: 15em;
+  }
+
+  @media (max-width: 425px) {
+    max-width: 10em;
+  }
 `;
 
 const ContactLinksContainer = styled.div`

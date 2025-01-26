@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion as m } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import styled from 'styled-components';
 import Lenis from 'lenis';
 import ImageCounterSlider from './ImageCounterSlider';
@@ -7,17 +7,29 @@ import GalleryImagePopover from './GalleryImagePopover';
 
 const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, invertedColors, images = [] }) => {
   const containerRef = useRef(null);
-  const sliderRef = useRef(null);
   const [selectedImage, setSelectedImage] = useState(null);
+  
+  const sliderRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sliderRef,
+    offset: ["start end", "end end"],
+  });
+
+  useEffect(() => {
+    console.log("Scroll Progress:", scrollYProgress.get());
+  }, [scrollYProgress]);
+
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  // const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 5]);
 
   useEffect(() => {
     const lenis = new Lenis({
       wrapper: sliderRef.current,
-      content: containerRef.current,
       duration: 1.2,
-      orientation: 'vertical',
       smooth: true,
-      smoothWheel: true,
+      orientation: "vertical",
       touchMultiplier: 2,
     });
 
@@ -45,23 +57,22 @@ const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, inv
     <Contents>
       <Slider ref={sliderRef}>
         {images.map((image, index) => (
-          <CardContainer
-            ref={containerRef}
-            className="image-card"
-            data-index={index}
-            key={index}
-          >
+          <CardContainer key={index}>
             <Card
-              style={{
-                top: `${index * 35}px`,
-              }}
+           
               onClick={() => handleImageClick(image)}
             >
-              <Image src={image.src} alt={image.alt || 'Image'} isNative={isNative} />
+              <Image
+                src={image.src}
+                alt={image.alt || "Image"}
+                isNative={isNative}
+                style={{
+                  opacity: scrollYProgress.get(),          
+                }}
+              />
             </Card>
           </CardContainer>
         ))}
-        <div style={{ height: '100vh' }} />
       </Slider>
       <GalleryImagePopover
         image={selectedImage}
@@ -73,36 +84,37 @@ const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, inv
         shadowColor={shadowColor}
         isNative={isNative}
       />
-          <ImageCounterSlider
-            color={color}
-            backgroundColor={backgroundColor}
-            images={images}
-            scrollRef={sliderRef}
-          />
+      <ImageCounterSlider
+        color={color}
+        backgroundColor={backgroundColor}
+        images={images}
+        scrollRef={sliderRef}
+      />
     </Contents>
   );
 };
 
 const Contents = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 `;
 
 const Slider = styled.div`
-  height: 80vh;
-  width: 45vw;
-  bottom: 20em;
-  margin-top: 27em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 200vh;
   display: flex;
-  position: relative;
   flex-direction: column;
   align-items: center;
+  justify-content: flex-start;
   overflow-y: auto;
-  overflow-x: hidden;
-  /* padding-bottom: 5vh; */
 
   &::-webkit-scrollbar {
     display: none;
@@ -118,31 +130,29 @@ const CardContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: sticky;
-  top: 0px;
-  margin-right: 2vw;
-  margin-bottom: 5em;
+  top: 150px;
+  margin: 0 0 25vh 40vw;
+  border: 1px solid red;
 `;
 
-const Card = styled(m.div)`
+const Card = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
   height: 500px;
   width: 1000px;
   border-radius: 25px;
   padding: 50px;
   transform-origin: top;
-  cursor: none;
+  cursor: pointer;
 `;
 
-const Image = styled.img`
-  border-radius: 4px;
-  width: ${(props) => (props.isNative ? '13em' : '50em')};
-  height: ${(props) => (props.isNative ? '25em' : '25em')};
-  border: 1px solid #424242ad;
-  cursor: none; 
-
+const Image = styled(motion.img)`
+  width: ${(props) => (props.isNative ? '13em' : 'clamp(400px, 50vw, 800px)')};
+  height: ${(props) => (props.isNative ? '25em' : 'clamp(200px, 25vw, 400px)')};
+  cursor: none;
 `;
 
 export default ImageGallerySlider;

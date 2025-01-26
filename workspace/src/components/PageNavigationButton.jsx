@@ -94,7 +94,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 6em;
-  margin-top: 3em;
 
   @media (max-width: 1536px) {
     margin: 0;

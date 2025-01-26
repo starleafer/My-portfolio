@@ -16,7 +16,6 @@ const CustomButton = ({
   next,
   cleaning,
 }) => {
-  console.log("previous", previous);
   return (
     <Button
       onClick={onClick}
