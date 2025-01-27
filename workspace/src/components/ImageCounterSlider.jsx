@@ -16,7 +16,7 @@ export default function ImageCounterSlider({
           // Calculate ranges based on viewport positions
           const imageStart = index / images.length;
           const imageEnd = (index + 1) / images.length;
-          const overlap = 0.2 / images.length; // Overlap between transitions
+          const overlap = 0.1 / images.length; // Overlap between transitions
 
           const rawOpacity = useTransform(
             scrollProgress,
@@ -29,8 +29,8 @@ export default function ImageCounterSlider({
             index === 0
               ? [1, 1, 1, 0.2]         // First counter starts visible
               : index === images.length - 1
-              ? [0.2, 1, 1, 1]         // Last counter stays visible
-              : [0.2, 1, 1, 0.2]       // Middle counters fade in/out
+              ? [0.1, 1, 1, 1]         // Last counter stays visible
+              : [0.1, 1, 1, 0.2]       // Middle counters fade in/out
           );
 
           // Very relaxed spring for smooth transitions

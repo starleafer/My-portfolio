@@ -33,6 +33,8 @@ const GalleryImagePopover = ({
     );
   };
 
+  console.log(isNative);
+
   const currentImage = images[currentIndex];
 
   return (
@@ -55,7 +57,7 @@ const GalleryImagePopover = ({
             onClick={(e) => e.stopPropagation()}
           >
             <ImageGroup isNative={isNative}>
-              <ImageContainer>
+              <ImageContainer isNative={isNative}>
                 <PopoverImage
                   src={currentImage.src}
                   alt={currentImage.alt || "Image"}
@@ -130,25 +132,26 @@ const PopoverContent = styled(m.div)`
   object-fit: cover;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
+  gap: 2em;
 `;
 
 const ImageContainer = styled.div`
-  width: 90vw;
-  height: 90vh;
+  width: ${(props) => props.isNative ? "60%" : "80%"};
+  height: ${(props) => props.isNative ? "60%" : "80%"};
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 5vw;
+  /* margin-left: 5vw; */
   border-radius: 20px;
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
 `;
 
 const PopoverImage = styled(m.img)`
-  width: 80%;
-  height: 80%;
+  width: ${(props) => props.isNative ? "60%" : "80%"};
+  height: ${(props) => props.isNative ? "60%" : "80%"}; 
   object-fit: cover;
   background-color: ${(props) => props.backgroundColor};
   border-radius: 20px;
@@ -158,17 +161,21 @@ const PopoverImage = styled(m.img)`
 const ImageGroup = styled.div`
   display: flex;
   width: 100%;
-  height: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: center;
   margin-top: 20px;
-  align-items: flex-start;
-  justify-content: ${(props) => (props.isNative ? "center" : "flex-end")};
-  margin-right: 3em;
-  margin-left: ${(props) => (props.isNative ? "15em" : "0")};
+  margin-right: 0;
+  margin-left: 0;
+  position: relative;
 `;
 
 const ClosButtonContainer = styled.div`
+  position: absolute;
+  top: 2em;
+  right: 2em;
   width: 5em;
-  margin-top: 2em;
+  margin-top: 0;
 `;
 
 const NavigationGroup = styled.div`
@@ -177,7 +184,8 @@ const NavigationGroup = styled.div`
   gap: 4em;
   height: 4em;
   width: 25em;
-  margin-bottom: 3em;
+  margin-top: auto;
+  padding-bottom: 2em;
 `;
 
 

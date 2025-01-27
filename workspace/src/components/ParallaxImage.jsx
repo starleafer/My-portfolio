@@ -109,9 +109,10 @@ export default function ParallaxImage({
         const imageAlt = image.alt || `Image ${index + 1}`;
 
         const adjustBackgroundColor = (index, totalImages, color) => {
-          const percentage = 15 + index * 15;
+          const step = 75 / (totalImages - 1);
+          const percentage = 15 + index * step;
 
-          const adjustedPercentage = Math.min(percentage, 100);
+          const adjustedPercentage = Math.min(percentage, 90);
 
           return `color-mix(in srgb, ${color} ${adjustedPercentage}%, black)`;
         };
