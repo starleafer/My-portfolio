@@ -16,9 +16,6 @@ const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, inv
     offset: ["start end", "end end"],
   });
 
-  useEffect(() => {
-    console.log("Scroll Progress:", scrollYProgress.get());
-  }, [scrollYProgress]);
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   // const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.5]);

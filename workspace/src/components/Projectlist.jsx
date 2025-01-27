@@ -7,10 +7,6 @@ import {motion} from 'framer-motion'
 function Projectlist({setCursorHoverColor, setIsHoveringCards}) {
     const { card } = useCardContext();
 
-    if (!card) {
-        return console.log('Context is undefined');
-    }
-
     const cardVariants = {
         offscreen: {
             x: 100,

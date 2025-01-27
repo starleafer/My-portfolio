@@ -10,7 +10,6 @@ const CustomScrollbar = ({ props, children, scrollbarColor }) => {
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
 
-  console.log(color)
 
   return (
     <CustomScrollbarContainer thumbColor={color} trackColor={backgroundColor}>

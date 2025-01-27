@@ -1,13 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import {
-  motion as m,
-  motion,
-  useMotionValueEvent,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+import { motion as m, motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useCardContext } from "../context/CardContext";
@@ -43,21 +37,7 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
-  useEffect(() => {
-    console.log("Native images:", {
-      array: nativeImages,
-      length: nativeImages?.length,
-      isArray: Array.isArray(nativeImages),
-      sample: nativeImages?.[0],
-    });
 
-    console.log("Browser images:", {
-      array: browserImages,
-      length: browserImages?.length,
-      isArray: Array.isArray(browserImages),
-      sample: browserImages?.[0],
-    });
-  }, [nativeImages, browserImages]);
 
   const renderNativeLink = nativeRepo && (
     <Link
@@ -133,7 +113,7 @@ function PageBody({
               display: "flex",
               flexDirection: "column",
               font: "55vw",
-              margin: "0",
+              marginLeft: "3vw",
             }}
           >
             {PageDescription1}
@@ -219,11 +199,12 @@ const Content = styled.div`
   display: flex;
   width: 100%;
   height: 100vh;
-
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   flex-direction: column;
   animation: ${fadein} 0.8s forwards;
+  position: relative; // Add this
+
   color: ${(props) => props.color};
 
   @media (max-width: 1024px) {
@@ -243,14 +224,13 @@ const Content = styled.div`
 
 const ContentGroup = styled.div`
   display: flex;
-  /* width: 100vw; */
-  height: 100vh;
+  width: 100vw;
+  height: calc(100vh - 100px);
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   flex-direction: row;
-  /* margin-left: 25vw; */
+  margin-left: 10vw;
   gap: 4em;
-  /* border: 3px solid yellow; */
 `;
 
 const TitleContainer = styled.div`
@@ -258,7 +238,6 @@ const TitleContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
-  /* padding-right: 13em; */
 `;
 
 const PageDescription = styled.div`
@@ -371,7 +350,9 @@ const InfoLinks = styled.div`
 `;
 
 const ImageContainer = styled(motion.div)`
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
 `;
 
 export default PageBody;

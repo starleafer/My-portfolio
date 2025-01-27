@@ -18,7 +18,6 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
     setShowCircle(true);
     setButtonFade(true);
     setIsHoveringCards(false);
-    console.log(id);
 
     const circleAnimationTimeout = setTimeout(() => {
       setIsClicked(false);

@@ -1,7 +1,14 @@
 import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useMotionValueEvent,
+} from "framer-motion";
 import styled from "styled-components";
 import Lenis from "lenis";
+import ImageCounterSlider from "./ImageCounterSlider";
 
 export default function ParallaxImage({
   images = [],
@@ -11,6 +18,12 @@ export default function ParallaxImage({
   isNative,
 }) {
   const containerRef = useRef(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Add container scroll progress tracking
+  const { scrollYProgress: containerScrollProgress } = useScroll({
+    container: containerRef,
+  });
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -35,6 +48,20 @@ export default function ParallaxImage({
     };
   }, []);
 
+  const handleScrollProgress = (progress, index) => {
+    // Thresholds for scrolling up and down
+    const upThreshold = index === 0 ? 0.1 : 0.3;
+    const downThreshold = index === 0 ? 0.3 : 0.5;
+    
+    if (progress > downThreshold) {
+      // Scrolling down
+      setCurrentImageIndex(index);
+    } else if (progress < upThreshold && index > 0) {
+      // Scrolling up - set to previous image
+      setCurrentImageIndex(index - 1);
+    }
+  };
+
   if (!images || images.length === 0) {
     return null;
   }
@@ -46,7 +73,11 @@ export default function ParallaxImage({
         const { scrollYProgress } = useScroll({
           target: itemRef,
           container: containerRef,
-          offset: ["start end", "start start"],
+          offset: ["start 60%", "center center"],
+        });
+
+        useMotionValueEvent(scrollYProgress, "change", (latest) => {
+          handleScrollProgress(latest, index);
         });
 
         const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
@@ -67,9 +98,6 @@ export default function ParallaxImage({
 
           const adjustedPercentage = Math.min(percentage, 100);
 
-          console.log(
-            `Index: ${index}, Adjusted Percentage: ${adjustedPercentage}`
-          );
           return `color-mix(in srgb, ${color} ${adjustedPercentage}%, black)`;
         };
 
@@ -102,24 +130,33 @@ export default function ParallaxImage({
                   opacity: smoothOpacity,
                   scale: smoothScale,
                 }}
-                onLoad={() =>
-                  console.log(`Image loaded successfully:`, imageUrl)
-                }
-                onError={(e) => console.error(`Image load error:`, imageUrl, e)}
               />
             </ImageContainer>
           </CardWrapper>
         );
       })}
+      <ImageCounterSlider
+        color={color}
+        backgroundColor={backgroundColor}
+        images={images}
+        currentIndex={currentImageIndex}
+        scrollProgress={containerScrollProgress}
+      />
     </Container>
   );
 }
 
 const Container = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   height: 100vh;
-  width: 47vw;
+  width: 100vw;
   overflow-y: scroll;
+  padding-top: 8vh;
+  right: 10vw;
 `;
 
 const CardWrapper = styled(motion.div)`
@@ -129,15 +166,16 @@ const CardWrapper = styled(motion.div)`
   align-items: center;
   position: sticky;
   gap: ${(props) => (props.isNative ? "0" : "5em")};
-  top: 0;
+  left: 50vw;
   margin-top: ${(props) => (props.isFirst ? "0" : "80vh")};
+  min-height: ${(props) => (props.isNative ? "500px" : "400px")};
   width: ${(props) => (props.isNative ? "25vw" : "40vw")};
-  height: ${(props) => (props.isNative ? "500px" : "400px")};
   padding: 10px;
   border-radius: 20px;
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+  flex-shrink: 0;
 `;
 
 const InfoContainer = styled.div`

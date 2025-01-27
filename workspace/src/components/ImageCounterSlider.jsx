@@ -1,71 +1,83 @@
-import React from 'react';
-import { motion as m, useScroll, useTransform } from 'framer-motion';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
+import React from "react";
+import { motion, useTransform, useSpring } from "framer-motion";
+import styled from "styled-components";
 
-const ImageCounterSlider = ({ color, backgroundColor, images = [], scrollRef }) => {
-  const { scrollYProgress } = useScroll({
-    container: scrollRef,
-    offset: ["start end", "end end"],
-  });
-
-  const scalesAndOpacities = images.map((_, index) => {
-    const rangeStart = index / images.length;
-    const rangeEnd = (index + 1) / images.length;
-
-    return {
-      scale: index === 0 
-        ? useTransform(scrollYProgress, [0, rangeEnd], [1.5, 1.5]) 
-        : useTransform(scrollYProgress, [rangeStart, rangeEnd], [1, 1.5]),
-      opacity: index === 0 
-        ? useTransform(scrollYProgress, [0, rangeEnd], [1, 1]) 
-        : useTransform(scrollYProgress, [rangeStart, rangeEnd], [0.5, 1]),
-    };
-  });
-
+export default function ImageCounterSlider({
+  color,
+  backgroundColor,
+  images,
+  currentIndex,
+  scrollProgress,
+}) {
   return (
-    <CounterContainer>
-      {images.map((_, index) => (
-        <Indicator
-          key={index}
-          style={{
-            scale: scalesAndOpacities[index].scale,
-            opacity: scalesAndOpacities[index].opacity,
-            backgroundColor: color,
-            borderColor: backgroundColor,
-          }}
-        />
-      ))}
-    </CounterContainer>
+    <Container>
+      <CounterContainer>
+        {images.map((_, index) => {
+          // Calculate ranges based on viewport positions
+          const imageStart = index / images.length;
+          const imageEnd = (index + 1) / images.length;
+          const overlap = 0.2 / images.length; // Overlap between transitions
+
+          const rawOpacity = useTransform(
+            scrollProgress,
+            [
+              imageStart - overlap,     // Start fade in
+              imageStart + overlap,     // Full opacity
+              imageEnd - overlap,       // Start fade out
+              imageEnd + overlap,       // Complete fade
+            ],
+            index === 0
+              ? [1, 1, 1, 0.2]         // First counter starts visible
+              : index === images.length - 1
+              ? [0.2, 1, 1, 1]         // Last counter stays visible
+              : [0.2, 1, 1, 0.2]       // Middle counters fade in/out
+          );
+
+          // Very relaxed spring for smooth transitions
+          const counterOpacity = useSpring(rawOpacity, {
+            stiffness: 30,
+            damping: 12,
+            mass: 1.5,
+            restDelta: 0.00001
+          });
+
+          return (
+            <Counter
+              key={index}
+              as={motion.div}
+              color={color}
+              style={{ opacity: counterOpacity }}
+            ></Counter>
+          );
+        })}
+      </CounterContainer>
+    </Container>
   );
-};
+}
+
+const Container = styled.div`
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  bottom: 10vh;
+  right: 5vw;
+  z-index: 100;
+`;
 
 const CounterContainer = styled.div`
   display: flex;
-  height: 100vh;
-  justify-content: start;
-  align-items: center;
   flex-direction: column;
-  margin-left: 75em;
-  padding-top: 10em;
-  gap: 0.5rem;
-  transform: translateY(.5rem);
+  gap: 10px;
 `;
 
-const Indicator = styled(m.div)`
-  width: 12px;
-  height: 12px;
-  border: 2px solid;
+const Counter = styled.div`
+  width: 1em;
+  height: 1em;
   border-radius: 50%;
+  background-color: ${(props) => props.color};
+  position: relative;
+  overflow: hidden;
 `;
-
-ImageCounterSlider.propTypes = {
-  color: PropTypes.string,
-  backgroundColor: PropTypes.string,
-  images: PropTypes.arrayOf(PropTypes.string),
-  scrollRef: PropTypes.shape({
-    current: PropTypes.instanceOf(Element),
-  }),
-};
-
-export default ImageCounterSlider;
