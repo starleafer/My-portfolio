@@ -133,6 +133,10 @@ const Button = styled.button`
     }
   `}
 
+  @media (max-width: 1536px) {
+    font-size: 1rem;
+  }
+
   @media (max-width: 768px) {
     width: 14vw;
     font-size: 1.3vw;
@@ -157,4 +161,6 @@ const StyledIcon = styled(FontAwesomeIcon)`
     props.invertedColors
       ? props.backgroundColor
       : props.color || "var(--dark)"};
+
+
 `;

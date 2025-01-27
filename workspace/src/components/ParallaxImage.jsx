@@ -202,6 +202,13 @@ const CardWrapper = styled(motion.div)`
   background-color: ${(props) => props.backgroundColor};
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
+
+  @media (max-width: 1536px) {
+    gap: ${(props) => (props.isNative ? "0" : "2em")};
+    width: ${(props) => (props.isNative ? "30vw" : "40vw")};
+    min-height: ${(props) => (props.isNative ? "330px" : "300px")};
+  }
+
 `;
 
 const InfoContainer = styled.div`
@@ -213,6 +220,10 @@ const InfoContainer = styled.div`
   margin: 0 0 10px 30px;
   width: 170px;
   left: 20px;
+
+  @media (max-width: 1536px) {
+    margin: 0 0 10px 10px;
+  }
 `;
 
 const Info = styled.p`
@@ -220,6 +231,10 @@ const Info = styled.p`
   font-weight: 600;
   margin-bottom: 10px;
   font-family: "Roboto Flex";
+
+  @media (max-width: 1536px) {
+    font-size: .8rem;
+  }
 `;
 
 const ImageContainer = styled.div`
@@ -231,6 +246,11 @@ const ImageContainer = styled.div`
   height: ${(props) => (props.isNative ? "400px" : "300px")};
   overflow: hidden;
   border-radius: 20px;
+
+  @media (max-width: 1536px) {
+    height: ${(props) => (props.isNative ? "300px" : "200px")};
+    width: ${(props) => (props.isNative ? "50%" : "60%")};
+  }
 `;
 
 const Image = styled(motion.img)`

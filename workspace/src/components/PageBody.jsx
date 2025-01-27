@@ -207,11 +207,9 @@ const Content = styled.div`
 
   color: ${(props) => props.color};
 
-  @media (max-width: 1024px) {
-    width: 95%;
-    padding-top: 50px;
-    margin: 0 10px 0 0;
-    gap: 20px;
+  @media (max-width: 1536px) {
+    padding-top: 40px;
+
   }
 
   @media (max-width: 768px) {
@@ -231,6 +229,10 @@ const ContentGroup = styled.div`
   flex-direction: row;
   margin-left: 10vw;
   gap: 4em;
+
+  @media (max-width: 1536px) {
+    margin-left: 7vw;
+  }
 `;
 
 const TitleContainer = styled.div`
@@ -252,10 +254,12 @@ const PageDescription = styled.div`
   align-self: flex-start;
   font-size: clamp(10px, 2vw, 21px);
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1536px) {
     font-size: 1.1em;
-    width: 50vw;
+    width: 30vw;
     flex-wrap: wrap;
+    padding-top: 0px;
+
   }
   @media (max-width: 768px) {
     font-size: 1.1em;
@@ -267,6 +271,7 @@ const PageDescription = styled.div`
     width: 100%;
   }
 `;
+
 const LinkGroup = styled.div`
   display: flex;
   width: 100%;
@@ -295,9 +300,7 @@ const Github = styled.div`
   border-radius: 15px;
   border: 4px dotted ${(props) => props.color};
 
-  @media (max-width: 1440px) {
-    font-size: 1vw;
-  }
+ 
 
   @media (max-width: 1024px) {
     font-size: 1vw;
@@ -346,6 +349,10 @@ const InfoLinks = styled.div`
 
   &:hover {
     color: #fff;
+  }
+
+  @media (max-width: 1536px) {
+    font-size: 1em;
   }
 `;
 
