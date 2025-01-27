@@ -16,14 +16,14 @@ function ChatApp() {
   const nativeRepo = "https://github.com/starleafer/ClassChat"
 
   const nativeImages = [
-    { id: "1", src: '/pageimages/chatapp/login.jpg' },
-    { id: "2", src: '/pageimages/chatapp/registeruser.jpg' },
-    { id: "3", src: '/pageimages/chatapp/chat.jpg' },
-    { id: "4", src: '/pageimages/chatapp/drawer.jpg' },
-    { id: "5", src: '/pageimages/chatapp/profile.jpg' },
-    { id: "6", src: '/pageimages/chatapp/photo.jpg' },
-    { id: "7", src: '/pageimages/chatapp/profilephoto.jpg' },
-    { id: "8", src: '/pageimages/chatapp/chatphoto.jpg' },
+    { id: "1", src: '/pageimages/chatapp/login.jpg', info: "Welcome to Class Chat! Login to get started!", alt: 'browser search' },
+    { id: "2", src: '/pageimages/chatapp/registeruser.jpg', info: "Register a new user!", alt: 'browser pager' },
+    { id: "3", src: '/pageimages/chatapp/chat.jpg', info: "Start chatting with your friends!", alt: 'browser series' },
+    { id: "4", src: '/pageimages/chatapp/drawer.jpg', info: "And you can also manage your profile here!", alt: 'browser series' },
+    { id: "5", src: '/pageimages/chatapp/profile.jpg', info: "Check out your profile!", alt: 'browser series' },
+    { id: "6", src: '/pageimages/chatapp/photo.jpg', info: "Upload a profile picture!", alt: 'browser series' },
+    { id: "7", src: '/pageimages/chatapp/profilephoto.jpg', info: "And you can also upload a profile picture!", alt: 'browser series' },
+    { id: "8", src: '/pageimages/chatapp/chatphoto.jpg', info: "Cool!", alt: 'browser series' },
   ];
 
   return (
@@ -38,6 +38,7 @@ function ChatApp() {
         isBrowser={isBrowser}
         previousPage
         nextPage
+        
       />
       <TransitionScreen />
     </>

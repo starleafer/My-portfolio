@@ -3,20 +3,21 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import styled from "styled-components";
 import Lenis from "lenis";
 
-
-export default function ParallaxImage({ images = [] }) {
+export default function ParallaxImage({
+  images = [],
+  backgroundColor,
+  color,
+  invertedColors,
+  isNative,
+}) {
   const containerRef = useRef(null);
-
-  useEffect(() => {
-    console.log('Processing images:', images);
-  }, [images]);
 
   useEffect(() => {
     const lenis = new Lenis({
       wrapper: containerRef.current,
       content: containerRef.current,
       duration: 1.2,
-      orientation: 'vertical',
+      orientation: "vertical",
       smooth: true,
       smoothWheel: true,
       touchMultiplier: 2,
@@ -38,8 +39,6 @@ export default function ParallaxImage({ images = [] }) {
     return null;
   }
 
-  
-
   return (
     <Container ref={containerRef}>
       {images.map((image, index) => {
@@ -47,36 +46,69 @@ export default function ParallaxImage({ images = [] }) {
         const { scrollYProgress } = useScroll({
           target: itemRef,
           container: containerRef,
-          offset: ["start end", "end start"],
+          offset: ["start end", "start start"],
         });
 
         const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
         const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 1, 1]);
 
-        const smoothOpacity = useSpring(opacity, { stiffness: 100, damping: 20 });
+        const smoothOpacity = useSpring(opacity, {
+          stiffness: 100,
+          damping: 20,
+        });
+
         const smoothScale = useSpring(scale, { stiffness: 100, damping: 20 });
 
         const imageUrl = image.src || image;
         const imageAlt = image.alt || `Image ${index + 1}`;
 
+        const adjustBackgroundColor = (index, totalImages, color) => {
+          const percentage = 15 + index * 15;
+
+          const adjustedPercentage = Math.min(percentage, 100);
+
+          console.log(
+            `Index: ${index}, Adjusted Percentage: ${adjustedPercentage}`
+          );
+          return `color-mix(in srgb, ${color} ${adjustedPercentage}%, black)`;
+        };
+
         return (
-          <ImageWrapper
+          <CardWrapper
             key={image.id || index}
             ref={itemRef}
             isFirst={index === 0}
             isLast={index === images.length - 1}
+            isNative={isNative}
+            style={{
+              backgroundColor: adjustBackgroundColor(
+                index,
+                images.length,
+                invertedColors ? color : backgroundColor
+              ),
+              color: invertedColors ? backgroundColor : color,
+              top: isNative ? `${index * 10}px` : `${index * 35}px`,
+              marginBottom: index === images.length - 1 ? "40vh" : "0",
+            }}
           >
-            <StyledImage
-              src={imageUrl}
-              alt={imageAlt}
-              style={{
-                opacity: smoothOpacity,
-                scale: smoothScale,
-              }}
-              onLoad={() => console.log(`Image loaded successfully:`, imageUrl)}
-              onError={(e) => console.error(`Image load error:`, imageUrl, e)}
-            />
-          </ImageWrapper>
+            <InfoContainer>
+              <Info>{image.info}</Info>
+            </InfoContainer>
+            <ImageContainer isNative={isNative}>
+              <Image
+                src={imageUrl}
+                alt={imageAlt}
+                style={{
+                  opacity: smoothOpacity,
+                  scale: smoothScale,
+                }}
+                onLoad={() =>
+                  console.log(`Image loaded successfully:`, imageUrl)
+                }
+                onError={(e) => console.error(`Image load error:`, imageUrl, e)}
+              />
+            </ImageContainer>
+          </CardWrapper>
         );
       })}
     </Container>
@@ -86,29 +118,59 @@ export default function ParallaxImage({ images = [] }) {
 const Container = styled.div`
   position: relative;
   height: 100vh;
-  width: 100%;
+  width: 47vw;
   overflow-y: scroll;
-  border: 1px solid red;
 `;
 
-const ImageWrapper = styled(motion.div)`
+const CardWrapper = styled(motion.div)`
   display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   position: sticky;
+  gap: ${(props) => (props.isNative ? "0" : "5em")};
   top: 0;
-  margin-top: ${props => props.isFirst ? "20vh" : props.isLast ? "10vh" : "80vh"};
-  width: 100%;
-  height: 60vh;
-  border: 1px solid blue;
+  margin-top: ${(props) => (props.isFirst ? "0" : "80vh")};
+  width: ${(props) => (props.isNative ? "25vw" : "40vw")};
+  height: ${(props) => (props.isNative ? "500px" : "400px")};
+  padding: 10px;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: ${(props) => props.backgroundColor};
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
 `;
 
-const StyledImage = styled(motion.img)`
-  max-width: 90%;
-  max-height: 90%;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  border: 1px solid green;
+const InfoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  font-size: 1rem;
+  margin: 0 0 10px 30px;
+  width: 170px;
+  left: 20px;
+`;
+
+const Info = styled.p`
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: "Roboto Flex";
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: ${(props) => (props.isNative ? "60%" : "60%")};
+  height: ${(props) => (props.isNative ? "400px" : "300px")};
   overflow: hidden;
+  border-radius: 20px;
+`;
+
+const Image = styled(motion.img)`
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
 `;

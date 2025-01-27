@@ -1,14 +1,20 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from 'react-router-dom';
-import { motion as m, motion, useMotionValueEvent, useScroll, useTransform } from 'framer-motion';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { useCardContext } from '../context/CardContext';
-import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
-import PageNavigationButton from './PageNavigationButton';
-import ImageGallerySlider from './ImageGallerySlider';
-import ParallaxImage from './ParallaxImage';
+import { Link } from "react-router-dom";
+import {
+  motion as m,
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { useCardContext } from "../context/CardContext";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import PageNavigationButton from "./PageNavigationButton";
+import ImageGallerySlider from "./ImageGallerySlider";
+import ParallaxImage from "./ParallaxImage";
 
 function PageBody({
   title,
@@ -28,37 +34,36 @@ function PageBody({
   const [isSwitchActive, setIsSwitchActive] = useState(false);
   const { card } = useCardContext();
 
-  const links = [nativeRepo, browserRepo, website].filter(link => link);
+  const links = [nativeRepo, browserRepo, website].filter((link) => link);
   const numColumns = links.length;
 
-  const currentPath = window.location.pathname.replace('/', '');
-  const currentCard = card.find(item => item.path === currentPath) || card[0];
+  const currentPath = window.location.pathname.replace("/", "");
+  const currentCard = card.find((item) => item.path === currentPath) || card[0];
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
   useEffect(() => {
-    console.log('Native images:', {
+    console.log("Native images:", {
       array: nativeImages,
       length: nativeImages?.length,
       isArray: Array.isArray(nativeImages),
-      sample: nativeImages?.[0]
+      sample: nativeImages?.[0],
     });
-    
-    console.log('Browser images:', {
+
+    console.log("Browser images:", {
       array: browserImages,
       length: browserImages?.length,
       isArray: Array.isArray(browserImages),
-      sample: browserImages?.[0]
+      sample: browserImages?.[0],
     });
   }, [nativeImages, browserImages]);
 
-  
   const renderNativeLink = nativeRepo && (
     <Link
       to={nativeRepo}
       target="_blank"
-      style={{ textDecoration: 'none', color: color }}
+      style={{ textDecoration: "none", color: color }}
       onMouseEnter={() => setHoveredLink(2)}
       onMouseLeave={() => setHoveredLink(null)}
     >
@@ -67,7 +72,7 @@ function PageBody({
           <FontAwesomeIcon
             icon={faGithub}
             className="icon"
-            style={{ marginRight: '0.5vw' }}
+            style={{ marginRight: "0.5vw" }}
           />
         )}
         Native code
@@ -79,7 +84,7 @@ function PageBody({
     <Link
       to={browserRepo}
       target="_blank"
-      style={{ textDecoration: 'none', color: color }}
+      style={{ textDecoration: "none", color: color }}
       onMouseEnter={() => setHoveredLink(2)}
       onMouseLeave={() => setHoveredLink(null)}
     >
@@ -88,7 +93,7 @@ function PageBody({
           <FontAwesomeIcon
             icon={faGithub}
             className="icon"
-            style={{ marginRight: '0.5vw' }}
+            style={{ marginRight: "0.5vw" }}
           />
         )}
         Browser code
@@ -100,7 +105,7 @@ function PageBody({
     <Link
       to={website}
       target="_blank"
-      style={{ textDecoration: 'none', color: color }}
+      style={{ textDecoration: "none", color: color }}
       onMouseEnter={() => setHoveredLink(3)}
       onMouseLeave={() => setHoveredLink(null)}
     >
@@ -108,7 +113,7 @@ function PageBody({
         {window.innerWidth >= 768 && (
           <FontAwesomeIcon
             icon={faArrowUpRightFromSquare}
-            style={{ marginRight: '0.5vw' }}
+            style={{ marginRight: "0.5vw" }}
           />
         )}
         The webpage
@@ -116,16 +121,21 @@ function PageBody({
     </Link>
   );
 
-
   return (
     <Body backgroundColor={backgroundColor}>
- 
       <Content color={color}>
         <TitleContainer>
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
         <ContentGroup>
-          <PageDescription style={{ display: 'flex', flexDirection: 'column', font: '55vw', margin: '0' }}>
+          <PageDescription
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              font: "55vw",
+              margin: "0",
+            }}
+          >
             {PageDescription1}
             {PageDescription2 ? (
               <>
@@ -152,29 +162,27 @@ function PageBody({
             </LinkGroup>
           </PageDescription>
           <ImageContainer isSwitchActive={isSwitchActive}>
-            {isNative
-              ? 
-                <ParallaxImage images={nativeImages} />
-              
-              : 
-                <ParallaxImage  images={browserImages} />
-              
-            }
-
-
-            {/* <ImageGallerySlider
-              color={color}
-              backgroundColor={backgroundColor}
-              shadowColor={shadowColor}
-              images={isNative ? nativeImages : browserImages}
-              isNative={isNative}
-              invertedColors={invertedColors}
-            /> */}
+            {isNative ? (
+              <ParallaxImage
+                images={nativeImages}
+                backgroundColor={backgroundColor}
+                color={color}
+                invertedColors={invertedColors}
+                isNative={isNative}
+              />
+            ) : (
+              <ParallaxImage
+                images={browserImages}
+                backgroundColor={backgroundColor}
+                color={color}
+                invertedColors={invertedColors}
+              />
+            )}
           </ImageContainer>
         </ContentGroup>
       </Content>
     </Body>
-  )
+  );
 }
 
 const fadein = keyframes`
@@ -189,14 +197,14 @@ const fadein = keyframes`
 const Body = styled(m.div)`
   position: relative;
   display: flex;
-  background-color: ${props => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
   width: 100vw;
   height: 100vh;
-  overflow: hidden; 
+  overflow: hidden;
   padding: 0 0 0 0;
 
   @media (max-width: 1024px) {
-    gap: 5vh; 
+    gap: 5vh;
   }
 
   @media (max-width: 768px) {
@@ -216,7 +224,7 @@ const Content = styled.div`
   justify-content: center;
   flex-direction: column;
   animation: ${fadein} 0.8s forwards;
-  color: ${props => props.color};
+  color: ${(props) => props.color};
 
   @media (max-width: 1024px) {
     width: 95%;
@@ -231,19 +239,19 @@ const Content = styled.div`
     margin: 0 10px 0 0;
     gap: 20px;
   }
-  `
+`;
 
 const ContentGroup = styled.div`
   display: flex;
   /* width: 100vw; */
   height: 100vh;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: row;
   /* margin-left: 25vw; */
   gap: 4em;
   /* border: 3px solid yellow; */
-  `;
+`;
 
 const TitleContainer = styled.div`
   display: flex;
@@ -251,7 +259,7 @@ const TitleContainer = styled.div`
   align-items: center;
   justify-content: center;
   /* padding-right: 13em; */
-  `;
+`;
 
 const PageDescription = styled.div`
   display: flex;
@@ -263,8 +271,8 @@ const PageDescription = styled.div`
   font-family: Roboto Flex;
   font-weight: 500;
   align-self: flex-start;
-  font-size: clamp(10px, 2vw, 21px); 
-  
+  font-size: clamp(10px, 2vw, 21px);
+
   @media (max-width: 1024px) {
     font-size: 1.1em;
     width: 50vw;
@@ -279,7 +287,7 @@ const PageDescription = styled.div`
     font-size: 1.1em;
     width: 100%;
   }
-  `
+`;
 const LinkGroup = styled.div`
   display: flex;
   width: 100%;
@@ -287,17 +295,17 @@ const LinkGroup = styled.div`
   margin-top: 2em;
 
   @media (max-width: 768px) {
-   align-items: center;
-   justify-content: space-between;
-  }  
+    align-items: center;
+    justify-content: space-between;
+  }
 
   @media (max-width: 425px) {
-   width: 100%;
-   align-items: center;
-   justify-content: center;
-   margin-top: 10px;
-  }  
-`
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+  }
+`;
 
 const Github = styled.div`
   display: flex;
@@ -306,66 +314,64 @@ const Github = styled.div`
   justify-content: center;
   padding: 0.3em;
   border-radius: 15px;
-  border: 4px dotted ${props => props.color};
+  border: 4px dotted ${(props) => props.color};
 
-    @media (max-width: 1440px) {
-      font-size: 1vw;
-    }
+  @media (max-width: 1440px) {
+    font-size: 1vw;
+  }
 
-    @media (max-width: 1024px) {
-      font-size: 1vw;
-    }
+  @media (max-width: 1024px) {
+    font-size: 1vw;
+  }
 
-    @media (max-width: 965px) {
-      font-size: 0.8vw;
-      border: 2px dotted ${props => props.color};
-    }
+  @media (max-width: 965px) {
+    font-size: 0.8vw;
+    border: 2px dotted ${(props) => props.color};
+  }
 
-    @media (max-width: 768px) {
-      width: 100%;
-      border: none; 
-    }
+  @media (max-width: 768px) {
+    width: 100%;
+    border: none;
+  }
 
-    @media (max-width: 425px) {
+  @media (max-width: 425px) {
     width: 60%;
-    }
-`
+  }
+`;
 
 const LinkContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(${props => props.numColumns}, 1fr);
+  grid-template-columns: repeat(${(props) => props.numColumns}, 1fr);
   width: 100%;
   padding: 0.4vw;
   align-items: center;
   justify-content: space-evenly;
   gap: 1em;
-  
+
   @media (max-width: 425px) {
     flex-direction: row;
     justify-content: flex-start;
     margin: 0;
   }
-`
+`;
 
 const InfoLinks = styled.div`
   display: flex;
-  position: relative; 
+  position: relative;
   align-items: center;
   justify-content: center;
-  font-family: 'Roboto Flex';
-  font-size: clamp(10px, 2vw, 21px); 
-  color: ${props => props.color};
+  font-family: "Roboto Flex";
+  font-size: clamp(10px, 2vw, 21px);
+  color: ${(props) => props.color};
   border-radius: 10px;
 
   &:hover {
     color: #fff;
   }
-`
+`;
 
 const ImageContainer = styled(motion.div)`
-width: 100%;
+  width: 100%;
+`;
 
-`
-
-
-export default PageBody
+export default PageBody;

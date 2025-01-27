@@ -19,13 +19,11 @@ function WebbShop() {
 
 
   const browserImages = [
-    { id: "1", src: '/pageimages/webbshop/products.png', alt: 'browser search' },
-    { id: "2", src: '/pageimages/webbshop/description.png', alt: 'browser pager' },
-    { id: "3", src: '/pageimages/webbshop/create.png', alt: 'browser series' },
-    // { id: "4", src: '/pageimages/webbshop/createdproduct.png', alt: 'browser search' },
-    { id: "5", src: '/pageimages/webbshop/admin.png', alt: 'browser pager' },
-    { id: "6", src: '/pageimages/webbshop/cart.png', alt: 'browser series' },
-    // { id: "7", src: '/pageimages/webbshop/checkout.png', alt: 'browser series' },
+    { id: "1", src: '/pageimages/webbshop/products.png', info: "Have a look at our products!", alt: 'browser search' },
+    { id: "2", src: '/pageimages/webbshop/description.png', info: "And feel free to read more about them!", alt: 'browser pager' },
+    { id: "3", src: '/pageimages/webbshop/cart.png', info: "Did you find something you like? Great! Add it to your cart!", alt: 'browser series' },
+    { id: "4", src: '/pageimages/webbshop/create.png', info: "Are you an admin? Cool! You can create new products here!", alt: 'browser series' },
+    { id: "5", src: '/pageimages/webbshop/admin.png', info: "And you can also manage your products here!", alt: 'browser pager' },
   ];
   
   return (

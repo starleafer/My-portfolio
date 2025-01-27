@@ -32,9 +32,9 @@ function MovieApp() {
   ];
 
   const browserImages = [
-    { id: "1", src: '/pageimages/movieapp/browserSearch.png', alt: 'browser search' },
-    { id: "2", src: '/pageimages/movieapp/browserPager.png', alt: 'browser pager' },
-    { id: "3", src: '/pageimages/movieapp/browserSerier.png', alt: 'browser series' },
+    { id: "1", src: '/pageimages/movieapp/browserSearch.png', info: "Time for a movie night! Search for your favorite movie!", alt: 'browser search' },
+    { id: "2", src: '/pageimages/movieapp/browserPager.png', info: "We have a wide range of movies to choose from!", alt: 'browser pager' },
+    { id: "3", src: '/pageimages/movieapp/browserSerier.png', info: "Or is it a series you're looking for? We've got you covered!", alt: 'browser series' },
   ];
 
 
