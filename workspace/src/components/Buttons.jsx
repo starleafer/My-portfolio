@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { motion as m } from "framer-motion";
-import { useCardContext } from '../context/CardContext';
+import { useCardContext } from "../context/CardContext";
+import CustomButton from "./CustomButton";
 
 function Buttons({ about, setIsHoverButton }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
@@ -15,11 +16,13 @@ function Buttons({ about, setIsHoverButton }) {
   const { card } = useCardContext();
   const navigate = useNavigate();
 
-  const currentPath = window.location.pathname.replace('/', '');
-  const currentCard = card.find(item => item.path === currentPath) || card[0];
+  const currentPath = window.location.pathname.replace("/", "");
+  const currentCard = card.find((item) => item.path === currentPath) || card[0];
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
   const shadow = currentCard.shadow;
+
+  console.log(backgroundColor);
 
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
@@ -40,7 +43,6 @@ function Buttons({ about, setIsHoverButton }) {
     }, 100);
     return () => clearTimeout(timer);
   }, [location.pathname]);
-
 
   function copyEmail() {
     navigator.clipboard.writeText(email);
@@ -91,49 +93,44 @@ function Buttons({ about, setIsHoverButton }) {
         fadeIn={fadeIn}
       >
         {location.pathname !== "/" ? (
-          <>
-            <StyledButton
-              path={currentPath}
-              color={color}
-              backgroundColor={backgroundColor}
-              about={about}
-              onClick={() => handleClick('/', 'white')}
-              className={`${worksclass} ${lightmode}`}
-            // onMouseEnter={() => setIsHoverButton(true)}
-            // onMouseLeave={() => setIsHoverButton(false)}    
-            >
-              Home
-            </StyledButton>
-          </>
+          <CustomButton
+            color={color}
+            backgroundColor={backgroundColor}
+            invertedColors={about}
+            onClick={() => handleClick("/", "white")}
+            label="Home"
+            className={`${worksclass} ${lightmode}`}
+          />
         ) : null}
         {location.pathname !== "/about" ? (
-          <StyledButton
-            path={currentPath}
+          <CustomButton
             color={color}
             backgroundColor={backgroundColor}
-            about={about}
-            onClick={() => handleClick('/about', 'var(--dark)')}
+            invertedColors={about}
+            onClick={() => handleClick("/about", "var(--dark)")}
+            label="About me"
             className={`${aboutclass} ${lightmode}`}
-          // onMouseEnter={() => setIsHoverButton(true)}
-          // onMouseLeave={() => setIsHoverButton(false)}   
-          >
-            About me
-          </StyledButton>
+          />
         ) : null}
-        <Contact className={isContactActive ? 'active' : ''}>
-          <StyledButton
-            path={currentPath}
+        <Contact className={isContactActive ? "active" : ""}>
+          <CustomButton
             color={color}
             backgroundColor={backgroundColor}
-            about={about}
+            invertedColors={about}
             onClick={copyEmail}
+            label="Contact"
             className={`clicked ${lightmode}`}
-          // onMouseEnter={() => setIsHoverButton(true)}
-          // onMouseLeave={() => setIsHoverButton(false)}    
-          >
-            Contact
-          </StyledButton>
-          {copySuccessMessage && <CopyAlert className="clicked" color={color} backgroundColor={backgroundColor}>{copySuccessMessage}</CopyAlert>}
+          />
+          {copySuccessMessage && (
+            <CopyAlert
+              className="clicked"
+              color={color}
+              path={currentPath}
+              backgroundColor={backgroundColor}
+            >
+              {copySuccessMessage}
+            </CopyAlert>
+          )}
         </Contact>
       </ButtonContainer>
     </>
@@ -207,9 +204,9 @@ const ButtonContainer = styled.div`
   flex-direction: row;
   align-items: center;
   gap: 2.5vh;
-  padding: 2vh 1vw;
+  padding: 3vh 2vw;
   z-index: 999;
-  opacity: ${props => props.fadeIn ? 1 : 0};
+  opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
 
   @media (max-width: 768px) {
@@ -228,67 +225,6 @@ const ButtonContainer = styled.div`
       margin-left: auto;
     }
   }
-`;
-
-const StyledButton = styled(m.button)`
-  height: 5vh;
-  padding: 5px;
-  border-radius: 8px;
-  border: 1px solid transparent;
-  font-size: 1.2em;
-  font-weight: 600;
-  color: ${props => props.about ? 'white' : props.color};
-  background-color: ${props => props.about ? props.color : 'transparent'};
-  background-size: 200% 100%;
-  background-position: 100% center;
-  transition: background-position 0.3s cubic-bezier(.27,-0.32,.7,1.37), color 0.3s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.3s cubic-bezier(.27,-0.32,.7,1.37), transform 0.3s cubic-bezier(.27,-0.32,.7,1.37), border-color 0.3s cubic-bezier(.27,-0.32,.7,1.37);
-  z-index: 1;
-
-  @media (max-width: 1200px) {
-    font-size: 0.9em;
-  }
-
-  @media (max-width: 965px) {
-    font-size: 0.9em;
-  }
-
-  &.lightmode {
-    color: var(--redish);
-  }
-
-  ${props => {
-    const fadeInShadow = keyframes`
-      0% {
-        box-shadow: 0 0 0 transparent;
-      }
-      100% {
-        box-shadow: 0.3vw 0.3vw 0 ${props.shadow};
-      }
-    `;
-
-    const fadeOutShadow = keyframes`
-      0% {
-        box-shadow: 0.3vw 0.3vw 0 ${props.shadow};
-      }
-      100% {
-        box-shadow: 0 0 0;
-      }
-    `;
-
-    return css`
-      &:hover {
-        transform: translateY(-0.3vw);
-        transition: transform 0.3s;
-        animation: ${fadeInShadow} 0.5s ease forwards;
-        border: 1px solid ${props => props.about ? 'white' : props.color};
-      }
-
-      &:not(:hover) {
-        animation: ${fadeOutShadow} 0.8s;
-        border-color: ${props => (props.path === '') ? '#fff' : 'transparent'};
-      }
-    `;
-  }}
 `;
 
 const Contact = styled.div`
@@ -331,17 +267,17 @@ const CopyAlert = styled.div`
   justify-content: center;
   font-weight: 800;
   font-size: 1.1em;
-  font-family: 'Roboto Flex';
+  font-family: "Roboto Flex";
   border-radius: 10px;
-  background-color: ${props => props.color};
-  color: ${props => props.backgroundColor};
+  background-color: ${(props) => props.color};
+  color: ${(props) => props.path === "" ? "white" : props.backgroundColor};
   transform: translateX(-50%);
   transition: transform 0.3s, color 0.3s, background-color 0.3s;
   overflow: hidden;
 
   &.clicked {
     animation: ${slideAndFadeOut} 2s forwards;
-    
+
     @media (max-width: 768px) {
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
       height: 3.5vh;
@@ -353,7 +289,7 @@ const CopyAlert = styled.div`
     }
 
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       background-color: #f2f8ffe8;
       top: -100%;
@@ -361,7 +297,7 @@ const CopyAlert = styled.div`
       height: 300%;
       width: 50px;
       transform: rotate(30deg);
-      animation: ${shineEffect} .5s ease-in-out;
+      animation: ${shineEffect} 0.5s ease-in-out;
       animation-delay: 0.3s;
     }
   }
@@ -374,11 +310,11 @@ const Circle = styled.div`
   right: 60%;
   bottom: 55%;
   border-radius: 50%;
-  background-color: ${props => props.color};
-  animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
+  background-color: ${(props) => props.color};
+  animation: ${CircleAnimation} 0.7s ease-in-out forwards;
   transform-origin: center;
   z-index: 9999;
-  opacity: 1; 
+  opacity: 1;
 
   @media (max-width: 768px) {
     border-radius: 15px;

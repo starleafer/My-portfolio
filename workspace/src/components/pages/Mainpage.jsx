@@ -131,7 +131,7 @@ const TitlesContainer = styled(m.div)`
   width: 80vw;
   align-items: end;
   flex-wrap: wrap;
-  margin-top: 5vh;
+  margin-top: 8vh;
 
   @media (max-width: 768px) {
     margin-top: 3em;

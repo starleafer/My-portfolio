@@ -91,7 +91,7 @@ const Button = styled.button`
       : props.color || "var(--dark)"};
   background-color: transparent;
   border-radius: 10px;
-  padding: 13px;
+  padding: 10px;
   font-size: clamp(15px, 2vw, 20px);
   font-weight: 600;
   gap: 0.1em;
