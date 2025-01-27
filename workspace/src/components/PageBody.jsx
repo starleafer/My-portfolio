@@ -9,7 +9,6 @@ import { faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import PageNavigationButton from './PageNavigationButton';
 import ImageGallerySlider from './ImageGallerySlider';
 import ParallaxImage from './ParallaxImage';
-import TestSlider from './TestSlider';
 
 function PageBody({
   title,
@@ -37,6 +36,22 @@ function PageBody({
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
+
+  useEffect(() => {
+    console.log('Native images:', {
+      array: nativeImages,
+      length: nativeImages?.length,
+      isArray: Array.isArray(nativeImages),
+      sample: nativeImages?.[0]
+    });
+    
+    console.log('Browser images:', {
+      array: browserImages,
+      length: browserImages?.length,
+      isArray: Array.isArray(browserImages),
+      sample: browserImages?.[0]
+    });
+  }, [nativeImages, browserImages]);
 
   
   const renderNativeLink = nativeRepo && (
@@ -102,19 +117,6 @@ function PageBody({
   );
 
 
-  const container = useRef(null)
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ['start end', 'start start']
-  });
-
-
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    console.log("Scroll progress in PageBody:", latest);
-  });
-  console.log(container.current);
-
-
   return (
     <Body backgroundColor={backgroundColor}>
  
@@ -149,14 +151,14 @@ function PageBody({
               </Github>
             </LinkGroup>
           </PageDescription>
-          <ImageContainer isSwitchActive={isSwitchActive} ref={container} >
+          <ImageContainer isSwitchActive={isSwitchActive}>
             {isNative
-              ? nativeImages.map((image, index) => (
-                <ParallaxImage key={index} images={[image]} scrollYProgress={scrollYProgress} />
-              ))
-              : browserImages.map((image, index) => (
-                <ParallaxImage key={index} images={[image]} scrollYProgress={scrollYProgress} />
-              ))
+              ? 
+                <ParallaxImage images={nativeImages} />
+              
+              : 
+                <ParallaxImage  images={browserImages} />
+              
             }
 
 
@@ -233,7 +235,7 @@ const Content = styled.div`
 
 const ContentGroup = styled.div`
   display: flex;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   align-items: center;
   justify-content: flex-start;
@@ -361,27 +363,8 @@ const InfoLinks = styled.div`
 `
 
 const ImageContainer = styled(motion.div)`
-  /* margin: 0 0 60vh 0; */
-  position: relative;
-  border: 4px solid blue;
-  height: 100vh;
-  width: 100%;
-  overflow-y: auto;
+width: 100%;
 
-
-
-
-
-
-  /* position: absolute;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden; */
-  /* margin-left: ${props => props.isSwitchActive ? '2.5em' : '0'}; */
 `
 
 
