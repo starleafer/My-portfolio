@@ -162,61 +162,62 @@ const fadeInAnimation = keyframes`
 
 const slideAndFadeOut = keyframes`
   0% {
-    left: 0vw;
     opacity: 0;
+    transform: translateX(-50%);
   }
   20% {
-    left: 2vw;
     opacity: 1;
+    transform: translateX(0);
   }
   70% {
     opacity: 1;
+    transform: translateX(0);
   }
   100% {
     opacity: 0;
+    transform: translateX(50%);
   }
 `;
 
 const slideAndFadeOutMobile = keyframes`
   0% {
-    left: -16vw;
     opacity: 0;
+    transform: translateX(-50%);
   }
   20% {
-    opacity: 0;
+    opacity: 1;
+    transform: translateX(0);
   }
   70% {
     opacity: 1;
+    transform: translateX(0);
   }
   100% {
-    right: 15%; 
     opacity: 0;
+    transform: translateX(50%);
   }
 `;
 
-const ButtonContainer = styled(m.div)`
-  height: 93.8vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* background-color: ${props => (props.path === '' || props.path === 'about') ? 'transparent' : props.backgroundColor}; */
-  margin-left: 15px;
-  gap: 2.5vh;
-  padding: 3vh 1vw;
+const ButtonContainer = styled.div`
   position: fixed;
+  width: 100vw;
+  top: 0;
   left: 0;
-  z-index: 1;
-  opacity: 0;
-  animation: ${props => props.fadeIn ? css`${fadeInAnimation} 1s forwards` : 'none'};
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2.5vh;
+  padding: 2vh 1vw;
+  z-index: 999;
+  opacity: ${props => props.fadeIn ? 1 : 0};
+  transition: opacity 1s;
 
   @media (max-width: 768px) {
-    /* position: fixed; */
-    flex-direction: row; 
+    flex-direction: row;
     align-items: flex-start;
     height: 5vh;
     width: 88vw;
     padding: 16px 6vw;
-    z-index: 1;
   }
 
   :last-child {
@@ -230,7 +231,6 @@ const ButtonContainer = styled(m.div)`
 `;
 
 const StyledButton = styled(m.button)`
-  /* min-width: 5vw; */
   height: 5vh;
   padding: 5px;
   border-radius: 8px;
@@ -239,7 +239,6 @@ const StyledButton = styled(m.button)`
   font-weight: 600;
   color: ${props => props.about ? 'white' : props.color};
   background-color: ${props => props.about ? props.color : 'transparent'};
-  /* background-image: linear-gradient(to right, ${props => props.about ? props.backgroundColor : props.color} 50%, transparent 50%); */
   background-size: 200% 100%;
   background-position: 100% center;
   transition: background-position 0.3s cubic-bezier(.27,-0.32,.7,1.37), color 0.3s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.3s cubic-bezier(.27,-0.32,.7,1.37), transform 0.3s cubic-bezier(.27,-0.32,.7,1.37), border-color 0.3s cubic-bezier(.27,-0.32,.7,1.37);
@@ -293,6 +292,7 @@ const StyledButton = styled(m.button)`
 `;
 
 const Contact = styled.div`
+  position: relative;
   display: flex;
   min-width: 5vw;
   flex-direction: row;
@@ -308,9 +308,21 @@ const Contact = styled.div`
   }
 `;
 
+const shineEffect = keyframes`
+  0% {
+    left: -100%;
+    opacity: 1;
+  }
+  100% {
+    left: 200%;
+    opacity: 1;
+  }
+`;
+
 const CopyAlert = styled.div`
   position: absolute;
-  left: 2vw;
+  left: 100%;
+  margin-left: 1em;
   width: 110px;
   height: 40px;
   padding: 2px;
@@ -323,8 +335,8 @@ const CopyAlert = styled.div`
   border-radius: 10px;
   background-color: ${props => props.color};
   color: ${props => props.backgroundColor};
-  transform: translateX(100%);
-  transition: transform 0.3s, color 0.3s , background-color 0.3s ;
+  transform: translateX(-50%);
+  transition: transform 0.3s, color 0.3s, background-color 0.3s;
   overflow: hidden;
 
   &.clicked {
@@ -336,41 +348,21 @@ const CopyAlert = styled.div`
       width: 13vw;
       font-size: 2vw;
       padding: 1px;
-      transform: translateX(-60%);
-      right: 0;
-    }
-    
-    @media (max-width: 375px) {
-      animation: ${slideAndFadeOutMobile} 1.5s forwards;
-      width: 21vw;
-      font-size: 1em;
-      padding: 1px;
-      transform: translateX(-80%);
-      right: 0;
+      left: 100%;
+      margin-left: 0.5em;
     }
 
-    &::before,
-    &::after {
+    &::before {
       content: '';
       position: absolute;
       background-color: #f2f8ffe8;
-      right: 500px;
-      left: 140%;
-      height: 5vw;
-      width: 1vw;
-      transform: skewX(-30deg);
-      opacity: 0; 
-      transition: 0.6s 0.2s; 
-      transition-delay: .3s;
-      opacity: 1; 
-
-      @starting-style {
-        left: -22vw;
-      }
-    }
-
-    &:after {
-      width: 1vw;
+      top: -100%;
+      left: -100%;
+      height: 300%;
+      width: 50px;
+      transform: rotate(30deg);
+      animation: ${shineEffect} .5s ease-in-out;
+      animation-delay: 0.3s;
     }
   }
 `;

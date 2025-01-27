@@ -9,6 +9,7 @@ import {
 import styled from "styled-components";
 import Lenis from "lenis";
 import ImageCounterSlider from "./ImageCounterSlider";
+import GalleryImagePopover from "./GalleryImagePopover";
 
 export default function ParallaxImage({
   images = [],
@@ -19,6 +20,8 @@ export default function ParallaxImage({
 }) {
   const containerRef = useRef(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [lenisInstance, setLenisInstance] = useState(null);
 
   // Add container scroll progress tracking
   const { scrollYProgress: containerScrollProgress } = useScroll({
@@ -36,6 +39,8 @@ export default function ParallaxImage({
       touchMultiplier: 2,
     });
 
+    setLenisInstance(lenis);
+
     function raf(time) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -52,7 +57,7 @@ export default function ParallaxImage({
     // Thresholds for scrolling up and down
     const upThreshold = index === 0 ? 0.1 : 0.3;
     const downThreshold = index === 0 ? 0.3 : 0.5;
-    
+
     if (progress > downThreshold) {
       // Scrolling down
       setCurrentImageIndex(index);
@@ -65,6 +70,16 @@ export default function ParallaxImage({
   if (!images || images.length === 0) {
     return null;
   }
+
+  const handleImageClick = (image) => {
+    setSelectedImage(image);
+    lenisInstance?.stop();
+  };
+
+  const handleClosePopover = () => {
+    setSelectedImage(null);
+    lenisInstance?.start();
+  };
 
   return (
     <Container ref={containerRef}>
@@ -104,6 +119,7 @@ export default function ParallaxImage({
         return (
           <CardWrapper
             key={image.id || index}
+            onClick={() => handleImageClick(image)}
             ref={itemRef}
             isFirst={index === 0}
             isLast={index === images.length - 1}
@@ -135,6 +151,15 @@ export default function ParallaxImage({
           </CardWrapper>
         );
       })}
+      <GalleryImagePopover
+        image={selectedImage}
+        images={images}
+        onClose={handleClosePopover}
+        color={color}
+        backgroundColor={backgroundColor}
+        invertedColors={invertedColors}
+        isNative={isNative}
+      />
       <ImageCounterSlider
         color={color}
         backgroundColor={backgroundColor}
