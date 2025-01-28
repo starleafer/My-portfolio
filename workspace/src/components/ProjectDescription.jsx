@@ -49,7 +49,7 @@ function ProjectDescription({
       )}
       <br />
 
-      <ButtonGroup>
+      <ButtonGroup showViewSwitch={showViewSwitch}>
         <LinkGroup>
           <LinkInner color={color}>
             {repos.map((repo, index) => (
@@ -126,7 +126,7 @@ const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: ${props => props.showViewSwitch ? "center" : "flex-start"};
   gap: 2em;
   min-height: 3em;
 `;
