@@ -17,6 +17,8 @@ export default function ParallaxImage({
   color,
   invertedColors,
   isNative,
+  doubleRepo,
+  isSwitchActive,
 }) {
   const containerRef = useRef(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -167,11 +169,11 @@ export default function ParallaxImage({
       />
       <ImageCounterSlider
         color={color}
-        backgroundColor={backgroundColor}
         images={images}
-        currentIndex={currentImageIndex}
         scrollProgress={containerScrollProgress}
         isNative={isNative}
+        doubleRepo={doubleRepo}
+        isSwitchActive={isSwitchActive}
       />
     </Container>
   );
@@ -199,7 +201,7 @@ const CardWrapper = styled(motion.div)`
   gap: ${(props) => (props.isNative ? "0" : "5em")};
   left: 50vw;
   margin-top: ${(props) => (props.isFirst ? "0" : "80vh")};
-  min-height: ${(props) => (props.isNative ? "500px" : "400px")};
+  min-height: ${(props) => (props.isNative ? "450px" : "400px")};
   width: ${(props) => (props.isNative ? "25vw" : "40vw")};
   padding: 10px;
   border-radius: 20px;

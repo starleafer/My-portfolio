@@ -1,23 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { motion as m, motion, useScroll } from "framer-motion";
 import { useCardContext } from "../context/CardContext";
 import PageNavigationButton from "./PageNavigationButton";
 import ParallaxImage from "./ParallaxImage";
 import ProjectDescription from "./ProjectDescription";
-import CustomSwitch from "./CustomSwitch";
+import CustomButton from "./CustomButton";
+import DoubleParallaxImage from "./DoubleParallaxImage";
 
 function PageBody({
   title,
   descriptions,
   repos,
+  nativeRepo,
+  browserRepo,
+  website,
   nativeImages = [],
   browserImages = [],
   isNative,
   isBrowser,
+  showSwitch,
   invertedColors,
 }) {
-  const [isSwitchActive, setIsSwitchActive] = useState(isNative);
+  const [doubleRepo, setDoubleRepo] = useState(false);
+  
   const { card } = useCardContext();
 
   const currentPath = window.location.pathname.replace("/", "");
@@ -26,11 +32,11 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
-  const showSwitch = isNative && isBrowser;
 
-  const handleSwitchToggle = () => {
-    setIsSwitchActive(!isSwitchActive);
-  };
+  useEffect(() => {
+    setDoubleRepo(isNative && isBrowser);
+  }, [isNative, isBrowser])
+
 
   return (
     <Body backgroundColor={backgroundColor}>
@@ -45,23 +51,68 @@ function PageBody({
             color={color}
             backgroundColor={backgroundColor}
           />
-          {showSwitch && (
-            <SwitchWrapper>
-              <CustomSwitch
-                isActive={isSwitchActive}
-                onToggle={handleSwitchToggle}
-                color={color}
-              />
-            </SwitchWrapper>
-          )}
           <ImageContainer>
-            <ParallaxImage
-              images={isSwitchActive ? nativeImages : browserImages}
-              backgroundColor={backgroundColor}
-              color={color}
-              invertedColors={invertedColors}
-              isNative={isSwitchActive}
-            />
+            {isNative && isBrowser ? (
+              <ViewContainer>
+                <DoubleParallaxImage
+                  nativeImages={nativeImages}
+                  browserImages={browserImages}
+                  backgroundColor={backgroundColor}
+                  color={color}
+                  invertedColors={invertedColors}
+                  doubleRepo={doubleRepo}
+                />
+                {/* <ParallaxWrapper
+                  variants={slideVariants}
+                  animate={isSwitchActive ? "browserView" : "nativeView"}
+                  initial="nativeView"
+                  style={{ zIndex: isSwitchActive ? 1 : 2 }}
+                >
+                  <ParallaxImage
+                    images={nativeImages}
+                    backgroundColor={backgroundColor}
+                    color={color}
+                    invertedColors={invertedColors}
+                    isNative={true}
+                    isSwitchActive={isSwitchActive}
+                    doubleRepo={doubleRepo}
+                  />
+                </ParallaxWrapper>
+                <ParallaxWrapper
+                  variants={browserSlideVariants}
+                  animate={isSwitchActive ? "browserView" : "nativeView"}
+                  initial="browserView"
+                  style={{ zIndex: isSwitchActive ? 2 : 1 }}
+                >
+                  <ParallaxImage
+                    images={browserImages}
+                    backgroundColor={backgroundColor}
+                    color={color}
+                    invertedColors={invertedColors}
+                    isNative={false}
+                    isSwitchActive={isSwitchActive}
+                    doubleRepo={doubleRepo}
+                  />
+                </ParallaxWrapper>
+                <ViewToggle>
+                  <CustomButton
+                    onClick={() => setIsSwitchActive(!isSwitchActive)}
+                    color={color}
+                    border
+                    backgroundColor={backgroundColor}
+                    label={isSwitchActive ? "Native View" : "Browser View"}
+                  />
+                </ViewToggle> */}
+              </ViewContainer>
+            ) : (
+              <ParallaxImage
+                images={isNative ? nativeImages : browserImages}
+                backgroundColor={backgroundColor}
+                color={color}
+                invertedColors={invertedColors}
+                isNative={isNative}
+              />
+            )}
           </ImageContainer>
         </ContentGroup>
       </Content>
@@ -135,7 +186,6 @@ const ContentGroup = styled.div`
   flex-direction: row;
   margin-left: 10vw;
   gap: 2em;
-  position: relative;
 `;
 
 const TitleContainer = styled.div`
@@ -145,21 +195,50 @@ const TitleContainer = styled.div`
   justify-content: center;
 `;
 
+const ViewContainer = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2em;
+  /* border: 1px solid red; */
+`;
+
+const ViewToggle = styled.div`
+  position: relative;
+  pointer-events: all;
+  margin-top: 20vh;
+  margin-left: 20vw;
+  z-index: 100000;
+`;
+
 const ImageContainer = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   position: absolute;
   pointer-events: none;
-  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   & > * {
     pointer-events: auto;
   }
 `;
 
-const SwitchWrapper = styled.div`
-  position: relative;
-  z-index: 2;
+const ParallaxWrapper = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
 `;
 
 export default PageBody;
