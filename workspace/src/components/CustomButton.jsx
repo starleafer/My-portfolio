@@ -217,10 +217,14 @@ const Button = styled.button`
   }
 
 
-  @media (max-width: 480px) {
+  @media (max-width: 768px) and (min-width: 321px) {
     width: 6rem;
     padding: 1.7vw;
     font-size: 1em;
+    border: 1px solid ${(props) => 
+      props.invertedColors 
+        ? props.backgroundColor 
+        : props.color || "var(--dark)"};
   }
 `;
 

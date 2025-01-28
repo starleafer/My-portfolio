@@ -275,11 +275,13 @@ const ImageContainer = styled(motion.div)`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: 100%;
+    width: 100vw;
     height: auto;
     min-height: 100vh;
     position: relative;
-    margin-top: 2em;
+    /* margin-top: 1em; */
+    padding-top: 4em;
+    border: 1px solid red;
   }
 `;
 

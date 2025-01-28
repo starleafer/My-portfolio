@@ -132,6 +132,7 @@ const LinkInner = styled.div`
     gap: 1em;
     padding: 0.5em;
     max-width: 70vw;
+    border: none;
   }
 `;
 

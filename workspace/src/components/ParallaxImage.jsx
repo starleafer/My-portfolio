@@ -217,6 +217,13 @@ const CardWrapper = styled(motion.div)`
     min-height: ${(props) => (props.isNative ? "330px" : "300px")};
   }
 
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: 80vw;
+    justify-content: flex-start;
+    margin-left: 1em;
+  
+  }
+
 `;
 
 const InfoContainer = styled.div`
