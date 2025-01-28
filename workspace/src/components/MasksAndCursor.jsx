@@ -96,7 +96,7 @@ const MaskedGroup = styled.div`
     align-items: start;
     width: 100%;
     height: 100vh;
-    z-index: 100;
+    z-index: 110;
     pointer-events: none; 
 `;
 
