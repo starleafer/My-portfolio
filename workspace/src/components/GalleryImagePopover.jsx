@@ -33,8 +33,6 @@ const GalleryImagePopover = ({
     );
   };
 
-  console.log(isNative);
-
   const currentImage = images[currentIndex];
 
   return (

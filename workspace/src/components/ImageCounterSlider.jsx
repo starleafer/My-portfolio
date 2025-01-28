@@ -8,9 +8,10 @@ export default function ImageCounterSlider({
   images,
   currentIndex,
   scrollProgress,
+  isNative,
 }) {
   return (
-    <Container>
+    <Container isNative={isNative}>
       <CounterContainer>
         {images.map((_, index) => {
           // Calculate ranges based on viewport positions
@@ -63,8 +64,13 @@ const Container = styled.div`
   justify-content: center;
   height: 80vh;
   bottom: 10vh;
-  right: 5vw;
+  right: ${(props) => (props.isNative ? "20vw" : "5vw")};
   z-index: 100;
+
+  /* @media (max-width: 1536px) {
+    bottom: 10vh;
+    right: 2vw;
+  }  */
 `;
 
 const CounterContainer = styled.div`

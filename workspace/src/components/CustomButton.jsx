@@ -21,7 +21,7 @@ const CustomButton = ({
       onClick={onClick}
       color={color}
       backgroundColor={backgroundColor}
-      shadowColor={shadowColor}
+      // shadowColor={shadowColor}
       cleaning={cleaning}
       width={width}
       border={border}
@@ -61,18 +61,18 @@ const CustomButton = ({
 
 export default CustomButton;
 
-const fadeInShadow = (shadowColor) => keyframes`
+const fadeInShadow = () => keyframes`
   0% {
     box-shadow: 0 0 0 transparent;
   }
   100% {
-    box-shadow: 0.3vw 0.3vw 0 ${shadowColor};
+    box-shadow: 0.3vw 0.3vw 0 ;
   }
 `;
 
-const fadeOutShadow = (shadowColor) => keyframes`
+const fadeOutShadow = () => keyframes`
   0% {
-    box-shadow: 0.3vw 0.3vw 0 ${shadowColor};
+    box-shadow: 0.3vw 0.3vw 0 ;
   }
   100% {
     box-shadow: 0 0 0 transparent;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
 import { Link } from "react-router-dom";
-import { motion as m, motion } from "framer-motion";
+import { motion as m, motion, useScroll } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useCardContext } from "../context/CardContext";
@@ -9,6 +9,7 @@ import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import PageNavigationButton from "./PageNavigationButton";
 import ImageGallerySlider from "./ImageGallerySlider";
 import ParallaxImage from "./ParallaxImage";
+import CustomButton from "./CustomButton";
 
 function PageBody({
   title,
@@ -37,68 +38,73 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
+  // const containerRef = useRef(null);
+  // const { scrollYProgress } = useScroll({
+  //   target: containerRef,
+  //   offset: ["start start", "end end"],
+  // });
 
+  // useEffect(() => {
+  //   scrollYProgress.on("change", e => console.log(scrollYProgress.current))
+  // }, [scrollYProgress])
 
   const renderNativeLink = nativeRepo && (
-    <Link
-      to={nativeRepo}
-      target="_blank"
-      style={{ textDecoration: "none", color: color }}
-      onMouseEnter={() => setHoveredLink(2)}
-      onMouseLeave={() => setHoveredLink(null)}
-    >
-      <InfoLinks>
-        {window.innerWidth >= 768 && (
-          <FontAwesomeIcon
-            icon={faGithub}
-            className="icon"
-            style={{ marginRight: "0.5vw" }}
-          />
-        )}
-        Native code
-      </InfoLinks>
-    </Link>
+    <CustomButton
+      color={color}
+      backgroundColor={backgroundColor}
+      onClick={() => window.open(nativeRepo, '_blank')}
+      label={
+        <>
+          {window.innerWidth >= 768 && (
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="icon"
+              style={{ marginRight: "0.5vw" }}
+            />
+          )}
+          Native code
+        </>
+      }
+    />
   );
 
   const renderBrowserLink = browserRepo && (
-    <Link
-      to={browserRepo}
-      target="_blank"
-      style={{ textDecoration: "none", color: color }}
-      onMouseEnter={() => setHoveredLink(2)}
-      onMouseLeave={() => setHoveredLink(null)}
-    >
-      <InfoLinks>
-        {window.innerWidth >= 768 && (
-          <FontAwesomeIcon
-            icon={faGithub}
-            className="icon"
-            style={{ marginRight: "0.5vw" }}
-          />
-        )}
-        Browser code
-      </InfoLinks>
-    </Link>
+    <CustomButton
+      color={color}
+      backgroundColor={backgroundColor}
+      onClick={() => window.open(browserRepo, '_blank')}
+      label={
+        <>
+          {window.innerWidth >= 768 && (
+            <FontAwesomeIcon
+              icon={faGithub}
+              className="icon"
+              style={{ marginRight: "0.5vw" }}
+            />
+          )}
+          Browser code
+        </>
+      }
+    />
   );
 
   const renderWebsiteLink = website && (
-    <Link
-      to={website}
-      target="_blank"
-      style={{ textDecoration: "none", color: color }}
-      onMouseEnter={() => setHoveredLink(3)}
-      onMouseLeave={() => setHoveredLink(null)}
-    >
-      <InfoLinks>
-        {window.innerWidth >= 768 && (
-          <FontAwesomeIcon
-            icon={faArrowUpRightFromSquare}
-            style={{ marginRight: "0.5vw" }}
-          />
-        )}
-        The webpage
-      </InfoLinks>
-    </Link>
+    <CustomButton
+      color={color}
+      backgroundColor={backgroundColor}
+      onClick={() => window.open(website, '_blank')}
+      label={
+        <>
+          {window.innerWidth >= 768 && (
+            <FontAwesomeIcon
+              icon={faArrowUpRightFromSquare}
+              style={{ marginRight: "0.5vw" }}
+            />
+          )}
+          The webpage
+        </>
+      }
+    />
   );
 
   return (
@@ -141,7 +147,7 @@ function PageBody({
               </Github>
             </LinkGroup>
           </PageDescription>
-          <ImageContainer isSwitchActive={isSwitchActive}>
+          <ImageContainer isSwitchActive={isSwitchActive} >
             {isNative ? (
               <ParallaxImage
                 images={nativeImages}
@@ -272,6 +278,8 @@ const LinkGroup = styled.div`
   width: 100%;
   align-items: flex-end;
   margin-top: 2em;
+  z-index: 200;
+  position: relative;
 
   @media (max-width: 768px) {
     align-items: center;
@@ -291,7 +299,7 @@ const Github = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0.3em;
+  padding: 0.5em 1em;
   border-radius: 15px;
   border: 4px dotted ${(props) => props.color};
 
@@ -353,6 +361,11 @@ const ImageContainer = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   position: absolute;
+  pointer-events: none;
+  
+  & > * {
+    pointer-events: auto;
+  }
 `;
 
 export default PageBody;

@@ -23,9 +23,9 @@ export default function ParallaxImage({
   const [selectedImage, setSelectedImage] = useState(null);
   const [lenisInstance, setLenisInstance] = useState(null);
 
-  // Add container scroll progress tracking
   const { scrollYProgress: containerScrollProgress } = useScroll({
     container: containerRef,
+    offset: ["start start", "end end"],
   });
 
   useEffect(() => {
@@ -54,15 +54,12 @@ export default function ParallaxImage({
   }, []);
 
   const handleScrollProgress = (progress, index) => {
-    // Thresholds for scrolling up and down
     const upThreshold = index === 0 ? 0.1 : 0.3;
     const downThreshold = index === 0 ? 0.3 : 0.5;
 
     if (progress > downThreshold) {
-      // Scrolling down
       setCurrentImageIndex(index);
     } else if (progress < upThreshold && index > 0) {
-      // Scrolling up - set to previous image
       setCurrentImageIndex(index - 1);
     }
   };
@@ -91,19 +88,25 @@ export default function ParallaxImage({
           offset: ["start 60%", "center center"],
         });
 
+        const scale = useTransform(
+          containerScrollProgress,
+          [0, 1],
+          [1, 1 - ((images.length - index) * 0.05)]
+        );
+
         useMotionValueEvent(scrollYProgress, "change", (latest) => {
           handleScrollProgress(latest, index);
         });
 
         const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
-        const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 1, 1]);
+        const imageScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.5, 1, 1]);
 
         const smoothOpacity = useSpring(opacity, {
           stiffness: 100,
           damping: 20,
         });
 
-        const smoothScale = useSpring(scale, { stiffness: 100, damping: 20 });
+        const smoothScale = useSpring(imageScale, { stiffness: 100, damping: 20 });
 
         const imageUrl = image.src || image;
         const imageAlt = image.alt || `Image ${index + 1}`;
@@ -134,6 +137,7 @@ export default function ParallaxImage({
               color: invertedColors ? backgroundColor : color,
               top: isNative ? `${index * 10}px` : `${index * 35}px`,
               marginBottom: index === images.length - 1 ? "40vh" : "0",
+              scale,
             }}
           >
             <InfoContainer>
@@ -167,6 +171,7 @@ export default function ParallaxImage({
         images={images}
         currentIndex={currentImageIndex}
         scrollProgress={containerScrollProgress}
+        isNative={isNative}
       />
     </Container>
   );
