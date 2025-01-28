@@ -79,7 +79,7 @@ export default function ParallaxImage({
   };
 
   return (
-    <Container ref={containerRef}>
+    <Container ref={containerRef} isNative={isNative}>
       {images.map((image, index) => {
         const itemRef = useRef(null);
         const { scrollYProgress } = useScroll({
@@ -187,7 +187,7 @@ const Container = styled.div`
   width: 100vw;
   overflow-y: scroll;
   padding-top: 3vh;
-  right: 10vw;
+  right: ${(props) => (props.isNative ? "3vw" : "10vw")};
 `;
 
 const CardWrapper = styled(motion.div)`

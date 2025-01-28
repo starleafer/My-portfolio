@@ -9,6 +9,7 @@ const CustomButton = ({
   border,
   onClick,
   color,
+  padding,
   backgroundColor,
   invertedColors,
   shadowColor,
@@ -26,6 +27,7 @@ const CustomButton = ({
         color={color}
         backgroundColor={backgroundColor}
         // shadowColor={shadowColor}
+        padding={padding}
         cleaning={cleaning}
         width={width}
         border={border}
@@ -170,7 +172,7 @@ const Button = styled.button`
       : props.color || "var(--dark)"};
   background-color: transparent;
   border-radius: 10px;
-  padding: 10px;
+  padding: ${(props) => props.padding || "10px"};
   font-size: clamp(15px, 2vw, 20px);
   font-family: 'Poiret One';
   font-weight: 600;

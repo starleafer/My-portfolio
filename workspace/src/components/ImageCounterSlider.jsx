@@ -14,27 +14,25 @@ export default function ImageCounterSlider({
     <Container isNative={isNative}>
       <CounterContainer>
         {images.map((_, index) => {
-          // Calculate ranges based on viewport positions
           const imageStart = index / images.length;
           const imageEnd = (index + 1) / images.length;
-          const overlap = 0.1 / images.length; // Overlap between transitions
+          const overlap = 0.1 / images.length; 
 
           const rawOpacity = useTransform(
             scrollProgress,
             [
-              imageStart - overlap,     // Start fade in
-              imageStart + overlap,     // Full opacity
-              imageEnd - overlap,       // Start fade out
-              imageEnd + overlap,       // Complete fade
+              imageStart - overlap,
+              imageStart + overlap,
+              imageEnd - overlap,
+              imageEnd + overlap,
             ],
             index === 0
-              ? [1, 1, 1, 0.2]         // First counter starts visible
+              ? [1, 1, 1, 0.2]
               : index === images.length - 1
-              ? [0.1, 1, 1, 1]         // Last counter stays visible
-              : [0.1, 1, 1, 0.2]       // Middle counters fade in/out
+              ? [0.1, 1, 1, 1]
+              : [0.1, 1, 1, 0.2]
           );
 
-          // Very relaxed spring for smooth transitions
           const counterOpacity = useSpring(rawOpacity, {
             stiffness: 30,
             damping: 12,
@@ -64,7 +62,7 @@ const Container = styled.div`
   justify-content: center;
   height: 80vh;
   bottom: 10vh;
-  right: ${(props) => (props.isNative ? "20vw" : "5vw")};
+  right: ${(props) => (props.isNative ? "12vw" : "5vw")};
   z-index: 100;
 
   /* @media (max-width: 1536px) {

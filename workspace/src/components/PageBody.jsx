@@ -23,9 +23,6 @@ function PageBody({
   const [isSwitchActive, setIsSwitchActive] = useState(false);
   const { card } = useCardContext();
 
-  const links = [nativeRepo, browserRepo, website].filter((link) => link);
-  const numColumns = links.length;
-
   const currentPath = window.location.pathname.replace("/", "");
   const currentCard = card.find((item) => item.path === currentPath) || card[0];
   const color = currentCard.color;
@@ -105,7 +102,7 @@ const Content = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   animation: ${fadein} 0.8s forwards;
-  position: relative; // Add this
+  position: relative; 
 
   color: ${(props) => props.color};
 

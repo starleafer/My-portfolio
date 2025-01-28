@@ -68,6 +68,7 @@ const GalleryImagePopover = ({
                 <CustomButton
                   color={color}
                   border
+                  padding=".7em"
                   invertedColors={invertedColors}
                   backgroundColor={backgroundColor}
                   shadowColor={shadowColor}
@@ -136,8 +137,7 @@ const PopoverContent = styled(m.div)`
 `;
 
 const ImageContainer = styled.div`
-  width: ${(props) => props.isNative ? "60%" : "80%"};
-  height: ${(props) => props.isNative ? "60%" : "80%"};
+  width: ${(props) => props.isNative ? "35%" : "80%"};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -152,8 +152,8 @@ const ImageContainer = styled.div`
 `;
 
 const PopoverImage = styled(m.img)`
-  width: 100%; /* Take up the full width of the container */
-  height: 100%; /* Take up the full height of the container */
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   background-color: ${(props) => props.backgroundColor};
   border-radius: 20px;
