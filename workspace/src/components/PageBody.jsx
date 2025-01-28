@@ -1,15 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
 import { motion as m, motion, useScroll } from "framer-motion";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
 import { useCardContext } from "../context/CardContext";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import PageNavigationButton from "./PageNavigationButton";
-import ImageGallerySlider from "./ImageGallerySlider";
 import ParallaxImage from "./ParallaxImage";
-import CustomButton from "./CustomButton";
 import ProjectDescription from "./ProjectDescription";
 
 function PageBody({
@@ -38,64 +32,6 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
-  const renderNativeLink = nativeRepo && (
-    <CustomButton
-      color={color}
-      backgroundColor={backgroundColor}
-      onClick={() => window.open(nativeRepo, "_blank")}
-      label={
-        <>
-          {window.innerWidth >= 768 && (
-            <FontAwesomeIcon
-              icon={faGithub}
-              className="icon"
-              style={{ marginRight: "0.5vw" }}
-            />
-          )}
-          Native code
-        </>
-      }
-    />
-  );
-
-  const renderBrowserLink = browserRepo && (
-    <CustomButton
-      color={color}
-      backgroundColor={backgroundColor}
-      onClick={() => window.open(browserRepo, "_blank")}
-      label={
-        <>
-          {window.innerWidth >= 768 && (
-            <FontAwesomeIcon
-              icon={faGithub}
-              className="icon"
-              style={{ marginRight: "0.5vw" }}
-            />
-          )}
-          Browser code
-        </>
-      }
-    />
-  );
-
-  const renderWebsiteLink = website && (
-    <CustomButton
-      color={color}
-      backgroundColor={backgroundColor}
-      onClick={() => window.open(website, "_blank")}
-      label={
-        <>
-          {window.innerWidth >= 768 && (
-            <FontAwesomeIcon
-              icon={faArrowUpRightFromSquare}
-              style={{ marginRight: "0.5vw" }}
-            />
-          )}
-          The webpage
-        </>
-      }
-    />
-  );
 
   return (
     <Body backgroundColor={backgroundColor}>
@@ -104,20 +40,8 @@ function PageBody({
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
         <ContentGroup>
-          <ProjectDescription
-            descriptions={descriptions}
-            repos={repos}
-            color={color}
-            backgroundColor={backgroundColor}
-          />
-          <LinkGroup>
-            {/* <Github>
-                <LinkContainer numColumns={numColumns}>
-                  {renderNativeLink}
-                  {renderBrowserLink}
-                  {renderWebsiteLink}
-                </LinkContainer>
-              </Github> */}
+          <ProjectDescription descriptions={descriptions} repos={repos} color={color} backgroundColor={backgroundColor} />
+          <LinkGroup>      
           </LinkGroup>
           <ImageContainer isSwitchActive={isSwitchActive}>
             {isNative ? (
@@ -218,34 +142,6 @@ const TitleContainer = styled.div`
   justify-content: center;
 `;
 
-// const PageDescription = styled.div`
-//   display: flex;
-//   width: 32vw;
-//   height: 100vh;
-//   padding-top: 2em;
-//   align-items: center;
-//   justify-content: start;
-//   font-family: 'Lato', sans-serif;   /* Roboto Flex; */
-//   font-weight: 500;
-//   align-self: flex-start;
-//   font-size: clamp(10px, 2vw, 21px);
-
-//   @media (max-width: 1024px) {
-//     font-size: 1.1em;
-//     width: 50vw;
-//     flex-wrap: wrap;
-//   }
-//   @media (max-width: 768px) {
-//     font-size: 1.1em;
-//     width: 90%;
-//   }
-
-//   @media (max-width: 425px) {
-//     font-size: 1.1em;
-//     width: 100%;
-//   }
-// `;
-
 const LinkGroup = styled.div`
   display: flex;
   width: 100%;
@@ -264,69 +160,6 @@ const LinkGroup = styled.div`
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-  }
-`;
-
-// const Github = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   padding: 0.5em 1em;
-//   border-radius: 15px;
-//   border: 4px dotted ${(props) => props.color};
-
-//   @media (max-width: 1440px) {
-//     font-size: 1vw;
-//   }
-
-//   @media (max-width: 1024px) {
-//     font-size: 1vw;
-//   }
-
-//   @media (max-width: 965px) {
-//     font-size: 0.8vw;
-//     border: 2px dotted ${(props) => props.color};
-//   }
-
-//   @media (max-width: 768px) {
-//     width: 100%;
-//     border: none;
-//   }
-
-//   @media (max-width: 425px) {
-//     width: 60%;
-//   }
-// `;
-
-const LinkContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(${(props) => props.numColumns}, 1fr);
-  width: 100%;
-  padding: 0.4vw;
-  align-items: center;
-  justify-content: space-evenly;
-  gap: 1em;
-
-  @media (max-width: 425px) {
-    flex-direction: row;
-    justify-content: flex-start;
-    margin: 0;
-  }
-`;
-
-const InfoLinks = styled.div`
-  display: flex;
-  position: relative;
-  align-items: center;
-  justify-content: center;
-  font-family: "Roboto Flex";
-  font-size: clamp(10px, 2vw, 21px);
-  color: ${(props) => props.color};
-  border-radius: 10px;
-
-  &:hover {
-    color: #fff;
   }
 `;
 

@@ -79,30 +79,30 @@ const GalleryImagePopover = ({
             </ImageGroup>
             <NavigationGroup>
               <CustomButton
-                width={"10em"}
-                border
                 invertedColors={invertedColors}
                 color={color}
                 backgroundColor={backgroundColor}
                 shadowColor={shadowColor}
-                title
+                onClick={handlePrevious}
                 label="Previous"
+                width={"10em"}
+                border
+                title
                 hasIcon
                 previous
-                onClick={handlePrevious}
               />
               <CustomButton
-                width={"10em"}
-                border
                 invertedColors={invertedColors}
                 color={color}
                 backgroundColor={backgroundColor}
                 shadowColor={shadowColor}
-                title
+                onClick={handleNext}
+                width={"10em"}
                 label="Next "
+                border
+                title
                 hasIcon
                 next
-                onClick={handleNext}
               />
             </NavigationGroup>
           </PopoverContent>
@@ -141,20 +141,29 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* margin-left: 5vw; */
   border-radius: 20px;
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
+
+  @media (max-width: 1536px) {
+    width: ${(props) => props.isNative ? "60%" : "80%"};
+    height: ${(props) => props.isNative ? "60%" : "80%"};
+  }
 `;
 
 const PopoverImage = styled(m.img)`
-  width: ${(props) => props.isNative ? "60%" : "80%"};
-  height: ${(props) => props.isNative ? "60%" : "80%"}; 
+  width: 100%; /* Take up the full width of the container */
+  height: 100%; /* Take up the full height of the container */
   object-fit: cover;
   background-color: ${(props) => props.backgroundColor};
   border-radius: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: 1536px) {
+    width: ${(props) => props.isNative ? "100%" : "90%"};
+  }
 `;
+
 
 const ImageGroup = styled.div`
   display: flex;
