@@ -5,22 +5,19 @@ import { useCardContext } from "../context/CardContext";
 import PageNavigationButton from "./PageNavigationButton";
 import ParallaxImage from "./ParallaxImage";
 import ProjectDescription from "./ProjectDescription";
+import CustomSwitch from "./CustomSwitch";
 
 function PageBody({
   title,
   descriptions,
   repos,
-  nativeRepo,
-  browserRepo,
-  website,
   nativeImages = [],
   browserImages = [],
   isNative,
   isBrowser,
-  showSwitch,
   invertedColors,
 }) {
-  const [isSwitchActive, setIsSwitchActive] = useState(false);
+  const [isSwitchActive, setIsSwitchActive] = useState(isNative);
   const { card } = useCardContext();
 
   const currentPath = window.location.pathname.replace("/", "");
@@ -29,6 +26,11 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
+  const showSwitch = isNative && isBrowser;
+
+  const handleSwitchToggle = () => {
+    setIsSwitchActive(!isSwitchActive);
+  };
 
   return (
     <Body backgroundColor={backgroundColor}>
@@ -37,26 +39,29 @@ function PageBody({
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
         <ContentGroup>
-          <ProjectDescription descriptions={descriptions} repos={repos} color={color} backgroundColor={backgroundColor} />
-          <LinkGroup>      
-          </LinkGroup>
-          <ImageContainer isSwitchActive={isSwitchActive}>
-            {isNative ? (
-              <ParallaxImage
-                images={nativeImages}
-                backgroundColor={backgroundColor}
+          <ProjectDescription
+            descriptions={descriptions}
+            repos={repos}
+            color={color}
+            backgroundColor={backgroundColor}
+          />
+          {showSwitch && (
+            <SwitchWrapper>
+              <CustomSwitch
+                isActive={isSwitchActive}
+                onToggle={handleSwitchToggle}
                 color={color}
-                invertedColors={invertedColors}
-                isNative={isNative}
               />
-            ) : (
-              <ParallaxImage
-                images={browserImages}
-                backgroundColor={backgroundColor}
-                color={color}
-                invertedColors={invertedColors}
-              />
-            )}
+            </SwitchWrapper>
+          )}
+          <ImageContainer>
+            <ParallaxImage
+              images={isSwitchActive ? nativeImages : browserImages}
+              backgroundColor={backgroundColor}
+              color={color}
+              invertedColors={invertedColors}
+              isNative={isSwitchActive}
+            />
           </ImageContainer>
         </ContentGroup>
       </Content>
@@ -102,7 +107,7 @@ const Content = styled.div`
   justify-content: flex-start;
   flex-direction: column;
   animation: ${fadein} 0.8s forwards;
-  position: relative; 
+  position: relative;
 
   color: ${(props) => props.color};
 
@@ -130,6 +135,7 @@ const ContentGroup = styled.div`
   flex-direction: row;
   margin-left: 10vw;
   gap: 2em;
+  position: relative;
 `;
 
 const TitleContainer = styled.div`
@@ -139,36 +145,21 @@ const TitleContainer = styled.div`
   justify-content: center;
 `;
 
-const LinkGroup = styled.div`
-  display: flex;
-  width: 100%;
-  align-items: flex-end;
-  margin-top: 2em;
-  z-index: 200;
-  position: relative;
-
-  @media (max-width: 768px) {
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  @media (max-width: 425px) {
-    width: 100%;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-  }
-`;
-
 const ImageContainer = styled(motion.div)`
   width: 100vw;
   height: 100vh;
   position: absolute;
   pointer-events: none;
+  z-index: 1;
 
   & > * {
     pointer-events: auto;
   }
+`;
+
+const SwitchWrapper = styled.div`
+  position: relative;
+  z-index: 2;
 `;
 
 export default PageBody;

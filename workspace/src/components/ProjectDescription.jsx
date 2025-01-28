@@ -65,7 +65,7 @@ const DescriptionContainer = styled.div`
   flex-direction: column;
   gap: 1.5em;
   margin: 2em 0;
-  width: 50vw;
+  width: 30vw;
 `;
 
 const Description = styled.p`

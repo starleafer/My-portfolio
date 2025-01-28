@@ -11,11 +11,6 @@ function MovieApp() {
   const { card } = useCardContext();
   const cardData = card.find(item => item.path === 'movieapp');
 
-  const [isNative, setIsNative] = useState(true)
-  const [isBrowser, setIsBrowser] = useState(true)
-  const [showSwitch, setShowSwitch] = useState(true)
-
-
   return (
     <>
       <PageBody
@@ -24,7 +19,8 @@ function MovieApp() {
         repos={cardData.repos}
         nativeImages={cardData.images.nativeImage}
         browserImages={cardData.images.browserImage}    
-        showSwitch={showSwitch}
+        isNative
+        isBrowser
       />
 
       {
