@@ -98,6 +98,10 @@ const MaskedGroup = styled.div`
     height: 100vh;
     z-index: 110;
     pointer-events: none; 
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    display: none;
+  }
 `;
 
 const MaskedSecret = styled(m.div)`

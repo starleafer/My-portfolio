@@ -111,6 +111,12 @@ const MainContainer = styled.div`
   overflow-y: hidden;
   overflow-x: hidden;
   background-color: #fff;
+
+  @media (max-width: 480px) {
+    width: 100vw;
+    height: 100vh;
+    border: 1px solid red;
+  }
 `;
 
 const Section = styled.section`
@@ -149,7 +155,7 @@ const Title = styled.h1`
 
 const TitleLetters = styled.span`
   display: inline-block; 
-  font-size: clamp(68px, 10vw, 204px);
+  font-size: clamp(2vw, 10vw, 204px);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;

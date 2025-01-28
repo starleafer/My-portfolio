@@ -1,17 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import styled, { keyframes } from 'styled-components';
-import { useButtonContext } from '../context/ButtonContext';
-import { useNavigate } from 'react-router-dom';
-import AnimatedCard from './card-animations/AnimatedCard';
+import React, { useState, useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+import { useButtonContext } from "../context/ButtonContext";
+import { useNavigate } from "react-router-dom";
+import AnimatedCard from "./card-animations/AnimatedCard";
 
-
-function Card({ id, path, title, label, color, backgroundColor, setCursorHoverColor, setIsHoveringCards  }) {
+function Card({
+  id,
+  path,
+  title,
+  label,
+  color,
+  backgroundColor,
+  setCursorHoverColor,
+  setIsHoveringCards,
+}) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [showCircle, setShowCircle] = useState(false);
   const { setButtonFade } = useButtonContext();
   const navigate = useNavigate();
-
 
   const handleClick = () => {
     setIsClicked(true);
@@ -22,34 +29,57 @@ function Card({ id, path, title, label, color, backgroundColor, setCursorHoverCo
     const circleAnimationTimeout = setTimeout(() => {
       setIsClicked(false);
       navigate(`/${path}`);
-      setButtonFade(false)
+      setButtonFade(false);
     }, 800);
 
     return () => {
       clearTimeout(circleAnimationTimeout);
     };
-  }
-
+  };
 
   return (
     <Body>
-      {showCircle && <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />}
+      {showCircle && (
+        <Circle style={{ backgroundColor: isClicked ? backgroundColor : "" }} />
+      )}
       <CardContainer>
         <StyledCard
           key={id}
           onClick={handleClick}
-          onKeyDown={(e) => e.key === 'Enter' && handleClick()}
+          onKeyDown={(e) => e.key === "Enter" && handleClick()}
           onFocus={() => setIsHovered(id)}
           onBlur={() => setIsHovered(null)}
-          onMouseEnter={() => { setIsHovered(id); setCursorHoverColor(color); setIsHoveringCards(true)}} 
-          onMouseLeave={() => { setIsHovered(null); setCursorHoverColor('var(--darker)'); setIsHoveringCards(false) }} 
-          className={`${isHovered === id ? "hovered" : ""} ${isClicked ? "clicked" : ""}`}
-          style={{ backgroundColor: isHovered === id ? backgroundColor : "", color: isHovered === id ? color : "" }}
+          onMouseEnter={() => {
+            setIsHovered(id);
+            setCursorHoverColor(color);
+            setIsHoveringCards(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(null);
+            setCursorHoverColor("var(--darker)");
+            setIsHoveringCards(false);
+          }}
+          className={`${isHovered === id ? "hovered" : ""} ${
+            isClicked ? "clicked" : ""
+          }`}
+          style={{
+            backgroundColor: isHovered === id ? backgroundColor : "",
+            color: isHovered === id ? color : "",
+          }}
           cursorHoverColor={color}
-
         >
-          <Title className={isHovered === id ? "fade-out" : "fade-in"}>{title}</Title>
-          <Label className={isHovered === id ? "fade-out" : "fade-in"}>{label}</Label>
+          <Title
+            className={isHovered === id ? "fade-out" : "fade-in"}
+            backgroundColor={backgroundColor}
+          >
+            {title}
+          </Title>
+          <Label
+            className={isHovered === id ? "fade-out" : "fade-in"}
+            backgroundColor={backgroundColor}
+          >
+            {label}
+          </Label>
           <AnimatedCard isVisible={isHovered === id} id={id} delay="0.3s" />
         </StyledCard>
       </CardContainer>
@@ -110,12 +140,10 @@ const Body = styled.div`
   justify-content: center;
   align-items: center;
   margin-bottom: 15px;
-
-`
+`;
 
 const CardContainer = styled.div`
   position: relative;
-  
 `;
 
 const StyledCard = styled.div.attrs({
@@ -132,11 +160,11 @@ const StyledCard = styled.div.attrs({
   border: 3px solid var(--dark);
   border-radius: 15px;
   overflow: hidden;
-  transition: transform 1s ; 
+  transition: transform 1s;
 
   &:hover {
-    color: ${props => props.color};
-    border-color: ${props => props.cursorHoverColor};
+    color: ${(props) => props.color};
+    border-color: ${(props) => props.cursorHoverColor};
     transform: translateY(-1.5vw);
     transition: transform 0.3s;
     animation: ${fadeInShadow} 0.5s ease forwards;
@@ -144,12 +172,10 @@ const StyledCard = styled.div.attrs({
     .title {
       animation: ${fadeOut} 0.5s forwards;
     }
-    
+
     .hovered {
       color: white;
     }
-
-    
   }
 
   &:not(:hover) {
@@ -167,27 +193,15 @@ const StyledCard = styled.div.attrs({
     animation: ${fadeInShadow} 0.5s ease forwards;
   }
 
-
   @media (max-width: 768px) {
     border-width: 1px;
     height: 5vh;
-    width: 85vw;
+    width: 70vw;
     align-items: center;
     border-radius: 5px;
     flex-direction: row;
-    font-size: 1.3em;
-
-    &:hover {
-      color: var(--dark) !important;
-      background-color: transparent !important;
-      transform: none;
-      
-    }
-  }
-
-  @media (max-width: 425px) {
-
-    width: 75vw;
+    font-size: 1.2em;
+    padding: 10px;
 
     &:hover {
       color: var(--dark) !important;
@@ -195,12 +209,33 @@ const StyledCard = styled.div.attrs({
       transform: none;
     }
   }
-  `;
+
+  @media (max-width: 480px) and (min-width: 321px) {
+    width: 70vw;
+    font-size: 1.2em;
+    padding: 10px;
+
+    &:active {
+      background-color: ${props => props.backgroundColor};
+      color: ${props => props.color};
+    }
+
+    &:hover {
+      color: var(--dark) !important;
+      background-color: transparent !important;
+      transform: none;
+    }
+  }
+`;
 
 const Title = styled.div`
   flex: 1;
   margin: 5px;
   margin-left: 10px;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    color: ${(props) => props.backgroundColor};
+  }
 
   &.fade-in {
     animation: ${fadeIn} 0.5s forwards;
@@ -223,14 +258,14 @@ const Label = styled.div`
 
   &.fade-out {
     animation: ${fadeOut} 0.5s forwards;
-  } 
+  }
 
-    @media (max-width: 768) {
+  @media (max-width: 768px) {
     &.nohover {
       color: #bbbbbb !important;
     }
   }
-    @media (max-width: 375px) {
+  @media (max-width: 480px) {
     &.nohover {
       color: #bbbbbb !important;
     }
@@ -240,19 +275,17 @@ const Label = styled.div`
 const Circle = styled.div`
   position: absolute;
   width: 70%;
-  height: 80%;  
+  height: 80%;
   border-radius: 50%;
   background-color: transparent;
-  animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
+  animation: ${CircleAnimation} 0.7s ease-in-out forwards;
   transform-origin: center;
   z-index: 110;
-  opacity: 1; 
+  opacity: 1;
 
   @media (max-width: 768px) {
-    border-radius: 15px;
+    /* border-radius: 15px; */
   }
 `;
-
-
 
 export default Card;
