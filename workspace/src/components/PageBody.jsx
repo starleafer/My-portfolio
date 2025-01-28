@@ -128,11 +128,11 @@ const ContentGroup = styled.div`
   display: flex;
   width: 100vw;
   height: calc(100vh - 100px);
-  align-items: center;
+  align-items: flex-start;
   justify-content: start;
   flex-direction: row;
   margin-left: 10vw;
-  gap: 4em;
+  gap: 2em;
 `;
 
 const TitleContainer = styled.div`
