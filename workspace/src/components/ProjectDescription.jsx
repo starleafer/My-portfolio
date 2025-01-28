@@ -94,6 +94,14 @@ const DescriptionContainer = styled.div`
   gap: 1.5em;
   margin: 2em 0;
   width: 30vw;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    align-items: center;
+    justify-content: center;
+    margin: 0 3em;
+    width: 75vw;
+    
+  }
 `;
 
 const Description = styled.p`
@@ -106,7 +114,6 @@ const Description = styled.p`
 const LinkGroup = styled.div`
   display: flex;
   flex-direction: row;
-
   z-index: 90;
 `;
 
@@ -120,11 +127,17 @@ const LinkInner = styled.div`
   padding: 1em;
   border-radius: 15px;
   border: 4px dotted ${(props) => props.color};
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    gap: 1em;
+    padding: 0.5em;
+    max-width: 70vw;
+  }
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: ${props => props.showViewSwitch ? "center" : "flex-start"};
   gap: 2em;
@@ -142,6 +155,13 @@ const ViewSwitchButton = styled.div`
     width: 100%;
     min-width: 160px;
     height: 100%;
+  }
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: 100%;
+    min-width: 100%;
+    justify-content: center;  
+    font-size: .8em;
   }
 `;
 

@@ -141,11 +141,14 @@ const ButtonContainer = styled.div`
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
 
-  @media (max-width: 768px) {
+    @media (max-width: 768px) and (min-width: 321px) {
     align-items: center;
+    background-color: ${(props) => props.backgroundColor};
     height: 5vh;
+    position: sticky;
     padding: 16px 6vw;
     gap: 20px;
+    z-index: 120;
   }
 `;
 

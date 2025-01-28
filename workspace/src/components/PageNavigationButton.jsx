@@ -52,7 +52,7 @@ function PageNavigationButton({ title, shadowColor }) {
 
   return (
     <Container>
-      <ButtonContainer style={{ marginRight: '3em' }}>
+      <ButtonContainer className="navigation-buttons" style={{ marginRight: '3em' }}>
         <CustomButton
           onClick={handlePreviousClick}
           style={{ color: color }}
@@ -68,7 +68,7 @@ function PageNavigationButton({ title, shadowColor }) {
       <Title>
         {title}
       </Title>
-      <ButtonContainer>
+      <ButtonContainer className="navigation-buttons">
         <CustomButton
           onClick={handleNextClick}
           style={{ color: color }}
@@ -99,6 +99,15 @@ const Container = styled.div`
   @media (max-width: 1536px) {
     margin-top: 1vh;
   }
+
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    gap: 2em;
+    width: 100vw;
+    margin-top: 1vh;
+    justify-content: flex-start;
+    padding-left: 4em;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -106,8 +115,13 @@ const ButtonContainer = styled.div`
 `;
 
 const Title = styled.h1`
- font-size: clamp(60px, 5vw, 100px);
+ font-size: clamp(45px, 5vw, 100px);
  font-family: 'Poiret One';
+
+ @media (max-width: 768px) and (min-width: 321px) {
+  margin-top: 1em;
+ }
+
 
 `;
 
