@@ -57,20 +57,6 @@ function Buttons({ about, setIsHoverButton }) {
     }, 200);
   }
 
-  // let worksclass = "";
-  // let aboutclass = "";
-  // let lightmode = "";
-
-  // if (location.pathname === "/") {
-  //   worksclass = "mainpage";
-  // } else if (location.pathname === "/about") {
-  //   aboutclass = "about";
-  // }
-
-  // if (location.pathname === "/movieapp") {
-  //   lightmode = "lightmode";
-  // }
-
   const handleClick = (route, color) => {
     setIsClicked(true);
     setShowCircle(true);
@@ -103,7 +89,6 @@ function Buttons({ about, setIsHoverButton }) {
             invertedColors={about}
             onClick={() => handleClick("/", "white")}
             label="Home"
-            // className={`${worksclass} ${lightmode}`}
           />
         ) : null}
         {location.pathname !== "/about" ? (
@@ -113,7 +98,6 @@ function Buttons({ about, setIsHoverButton }) {
             invertedColors={about}
             onClick={() => handleClick("/about", "var(--dark)")}
             label="About me"
-            // className={`${aboutclass} ${lightmode}`}
           />
         ) : null}
         <Contact className={isContactActive ? "active" : ""}>
@@ -125,7 +109,6 @@ function Buttons({ about, setIsHoverButton }) {
             label="Contact"
             copyMessage={copySuccessMessage}
             showCopyAlert={true}
-            // className={`clicked ${lightmode}`}
           />     
         </Contact>
       </ButtonContainer>
@@ -144,53 +127,6 @@ const CircleAnimation = keyframes`
 }
 `;
 
-const fadeInAnimation = keyframes`
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-`;
-
-const slideAndFadeOut = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  70% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(50%);
-  }
-`;
-
-const slideAndFadeOutMobile = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-  20% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  70% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-  100% {
-    opacity: 0;
-    transform: translateX(50%);
-  }
-`;
-
 const ButtonContainer = styled.div`
   position: fixed;
   width: 100vw;
@@ -206,20 +142,10 @@ const ButtonContainer = styled.div`
   transition: opacity 1s;
 
   @media (max-width: 768px) {
-    flex-direction: row;
-    align-items: flex-start;
+    align-items: center;
     height: 5vh;
-    width: 88vw;
     padding: 16px 6vw;
-  }
-
-  :last-child {
-    margin-top: auto;
-
-    @media (max-width: 768px) {
-      margin: 0;
-      margin-left: auto;
-    }
+    gap: 20px;
   }
 `;
 
@@ -230,71 +156,13 @@ const Contact = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  
 
   @media (max-width: 768px) {
     &.active {
       background-color: var(--dark);
       color: #fff;
       border-radius: 10px;
-    }
-  }
-`;
-
-const shineEffect = keyframes`
-  0% {
-    left: -100%;
-    opacity: 1;
-  }
-  100% {
-    left: 200%;
-    opacity: 1;
-  }
-`;
-
-const CopyAlert = styled.div`
-  position: absolute;
-  left: 100%;
-  margin-left: 1em;
-  width: 110px;
-  height: 40px;
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.1em;
-  font-family: 'Lato', sans-serif;   /* Roboto Flex; */
-  border-radius: 10px;
-  background-color: ${(props) => props.color};
-  color: ${(props) => props.path === "" ? "white" : props.backgroundColor};
-  transform: translateX(-50%);
-  transition: transform 0.3s, color 0.3s, background-color 0.3s;
-  overflow: hidden;
-
-  &.clicked {
-    animation: ${slideAndFadeOut} 2s forwards;
-
-    @media (max-width: 768px) {
-      animation: ${slideAndFadeOutMobile} 1.5s forwards;
-      height: 3.5vh;
-      width: 13vw;
-      font-size: 2vw;
-      padding: 1px;
-      left: 100%;
-      margin-left: 0.5em;
-    }
-
-    &::before {
-      content: "";
-      position: absolute;
-      background-color: #f2f8ffe8;
-      top: -100%;
-      left: -100%;
-      height: 300%;
-      width: 50px;
-      transform: rotate(30deg);
-      animation: ${shineEffect} 0.5s ease-in-out;
-      animation-delay: 0.3s;
     }
   }
 `;

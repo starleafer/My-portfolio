@@ -216,16 +216,11 @@ const Button = styled.button`
     font-size: 1rem;
   }
 
-  @media (max-width: 768px) {
-    width: 14vw;
-    font-size: 1.3vw;
-  }
 
-  @media (max-width: 425px) {
-    font-size: 2vw;
-    width: 20vw;
+  @media (max-width: 480px) {
+    width: 6rem;
     padding: 1.7vw;
-    font-size: 2.2vw;
+    font-size: 1em;
   }
 `;
 
@@ -255,11 +250,9 @@ const CopyAlert = styled.div`
     @media (max-width: 768px) {
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
       height: 3.5vh;
-      width: 13vw;
-      font-size: 2vw;
-      padding: 1px;
+      padding: 6px;
       left: 100%;
-      margin-left: 0.5em;
+      margin-left: 1em;
     }
 
     &::before {
