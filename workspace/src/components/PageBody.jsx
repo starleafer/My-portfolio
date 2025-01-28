@@ -61,48 +61,7 @@ function PageBody({
                   color={color}
                   invertedColors={invertedColors}
                   doubleRepo={doubleRepo}
-                />
-                {/* <ParallaxWrapper
-                  variants={slideVariants}
-                  animate={isSwitchActive ? "browserView" : "nativeView"}
-                  initial="nativeView"
-                  style={{ zIndex: isSwitchActive ? 1 : 2 }}
-                >
-                  <ParallaxImage
-                    images={nativeImages}
-                    backgroundColor={backgroundColor}
-                    color={color}
-                    invertedColors={invertedColors}
-                    isNative={true}
-                    isSwitchActive={isSwitchActive}
-                    doubleRepo={doubleRepo}
-                  />
-                </ParallaxWrapper>
-                <ParallaxWrapper
-                  variants={browserSlideVariants}
-                  animate={isSwitchActive ? "browserView" : "nativeView"}
-                  initial="browserView"
-                  style={{ zIndex: isSwitchActive ? 2 : 1 }}
-                >
-                  <ParallaxImage
-                    images={browserImages}
-                    backgroundColor={backgroundColor}
-                    color={color}
-                    invertedColors={invertedColors}
-                    isNative={false}
-                    isSwitchActive={isSwitchActive}
-                    doubleRepo={doubleRepo}
-                  />
-                </ParallaxWrapper>
-                <ViewToggle>
-                  <CustomButton
-                    onClick={() => setIsSwitchActive(!isSwitchActive)}
-                    color={color}
-                    border
-                    backgroundColor={backgroundColor}
-                    label={isSwitchActive ? "Native View" : "Browser View"}
-                  />
-                </ViewToggle> */}
+                />            
               </ViewContainer>
             ) : (
               <ParallaxImage
@@ -205,15 +164,6 @@ const ViewContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2em;
-  /* border: 1px solid red; */
-`;
-
-const ViewToggle = styled.div`
-  position: relative;
-  pointer-events: all;
-  margin-top: 20vh;
-  margin-left: 20vw;
-  z-index: 100000;
 `;
 
 const ImageContainer = styled(motion.div)`
@@ -231,14 +181,5 @@ const ImageContainer = styled(motion.div)`
   }
 `;
 
-const ParallaxWrapper = styled(motion.div)`
-  position: absolute;
-  width: 100%;
-  height: calc(100% - 100px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  will-change: transform;
-`;
 
 export default PageBody;
