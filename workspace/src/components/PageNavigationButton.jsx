@@ -106,6 +106,8 @@ const ButtonContainer = styled.div`
 
 const Title = styled.h1`
  font-size: clamp(60px, 5vw, 100px);
+ font-family: 'Poiret One';
+
 `;
 
 

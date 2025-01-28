@@ -13,16 +13,20 @@ function Buttons({ about, setIsHoverButton }) {
   const [circleColor, setCircleColor] = useState("");
 
   const [fadeIn, setFadeIn] = useState(false);
-  const { card } = useCardContext();
+  const { card, main } = useCardContext();
   const navigate = useNavigate();
 
   const currentPath = window.location.pathname.replace("/", "");
   const currentCard = card.find((item) => item.path === currentPath) || card[0];
-  const color = currentCard.color;
-  const backgroundColor = currentCard.backgroundColor;
-  const shadow = currentCard.shadow;
+  let color = currentCard.color;
+  let backgroundColor = currentCard.backgroundColor;
+  let shadow = currentCard.shadow;
 
-  console.log(backgroundColor);
+  if (currentPath === "about") {
+    color = main.backgroundColor;
+    backgroundColor = main.color;
+    shadow = main.shadow;
+  }
 
   const location = useLocation();
   const email = "emil.stjernlof@gmail.com";
@@ -53,19 +57,19 @@ function Buttons({ about, setIsHoverButton }) {
     }, 200);
   }
 
-  let worksclass = "";
-  let aboutclass = "";
-  let lightmode = "";
+  // let worksclass = "";
+  // let aboutclass = "";
+  // let lightmode = "";
 
-  if (location.pathname === "/") {
-    worksclass = "mainpage";
-  } else if (location.pathname === "/about") {
-    aboutclass = "about";
-  }
+  // if (location.pathname === "/") {
+  //   worksclass = "mainpage";
+  // } else if (location.pathname === "/about") {
+  //   aboutclass = "about";
+  // }
 
-  if (location.pathname === "/movieapp") {
-    lightmode = "lightmode";
-  }
+  // if (location.pathname === "/movieapp") {
+  //   lightmode = "lightmode";
+  // }
 
   const handleClick = (route, color) => {
     setIsClicked(true);
@@ -99,7 +103,7 @@ function Buttons({ about, setIsHoverButton }) {
             invertedColors={about}
             onClick={() => handleClick("/", "white")}
             label="Home"
-            className={`${worksclass} ${lightmode}`}
+            // className={`${worksclass} ${lightmode}`}
           />
         ) : null}
         {location.pathname !== "/about" ? (
@@ -109,7 +113,7 @@ function Buttons({ about, setIsHoverButton }) {
             invertedColors={about}
             onClick={() => handleClick("/about", "var(--dark)")}
             label="About me"
-            className={`${aboutclass} ${lightmode}`}
+            // className={`${aboutclass} ${lightmode}`}
           />
         ) : null}
         <Contact className={isContactActive ? "active" : ""}>
@@ -119,18 +123,10 @@ function Buttons({ about, setIsHoverButton }) {
             invertedColors={about}
             onClick={copyEmail}
             label="Contact"
-            className={`clicked ${lightmode}`}
-          />
-          {copySuccessMessage && (
-            <CopyAlert
-              className="clicked"
-              color={color}
-              path={currentPath}
-              backgroundColor={backgroundColor}
-            >
-              {copySuccessMessage}
-            </CopyAlert>
-          )}
+            copyMessage={copySuccessMessage}
+            showCopyAlert={true}
+            // className={`clicked ${lightmode}`}
+          />     
         </Contact>
       </ButtonContainer>
     </>
@@ -267,7 +263,7 @@ const CopyAlert = styled.div`
   justify-content: center;
   font-weight: 800;
   font-size: 1.1em;
-  font-family: "Roboto Flex";
+  font-family: 'Lato', sans-serif;   /* Roboto Flex; */
   border-radius: 10px;
   background-color: ${(props) => props.color};
   color: ${(props) => props.path === "" ? "white" : props.backgroundColor};

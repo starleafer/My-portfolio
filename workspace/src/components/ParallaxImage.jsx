@@ -224,7 +224,7 @@ const Info = styled.p`
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 10px;
-  font-family: "Roboto Flex";
+  font-family: 'Lato', sans-serif;   /* Roboto Flex; */
 `;
 
 const ImageContainer = styled.div`

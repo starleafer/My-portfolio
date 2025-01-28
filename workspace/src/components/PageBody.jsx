@@ -10,12 +10,12 @@ import PageNavigationButton from "./PageNavigationButton";
 import ImageGallerySlider from "./ImageGallerySlider";
 import ParallaxImage from "./ParallaxImage";
 import CustomButton from "./CustomButton";
+import ProjectDescription from "./ProjectDescription";
 
 function PageBody({
   title,
-  PageDescription1,
-  PageDescription2,
-  PageDescription3,
+  descriptions,
+  repos,
   nativeRepo,
   browserRepo,
   website,
@@ -38,21 +38,11 @@ function PageBody({
   const backgroundColor = currentCard.backgroundColor;
   const shadowColor = currentCard.shadow;
 
-  // const containerRef = useRef(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: containerRef,
-  //   offset: ["start start", "end end"],
-  // });
-
-  // useEffect(() => {
-  //   scrollYProgress.on("change", e => console.log(scrollYProgress.current))
-  // }, [scrollYProgress])
-
   const renderNativeLink = nativeRepo && (
     <CustomButton
       color={color}
       backgroundColor={backgroundColor}
-      onClick={() => window.open(nativeRepo, '_blank')}
+      onClick={() => window.open(nativeRepo, "_blank")}
       label={
         <>
           {window.innerWidth >= 768 && (
@@ -72,7 +62,7 @@ function PageBody({
     <CustomButton
       color={color}
       backgroundColor={backgroundColor}
-      onClick={() => window.open(browserRepo, '_blank')}
+      onClick={() => window.open(browserRepo, "_blank")}
       label={
         <>
           {window.innerWidth >= 768 && (
@@ -92,7 +82,7 @@ function PageBody({
     <CustomButton
       color={color}
       backgroundColor={backgroundColor}
-      onClick={() => window.open(website, '_blank')}
+      onClick={() => window.open(website, "_blank")}
       label={
         <>
           {window.innerWidth >= 768 && (
@@ -114,40 +104,22 @@ function PageBody({
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
         <ContentGroup>
-          <PageDescription
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              font: "55vw",
-              marginLeft: "3vw",
-            }}
-          >
-            {PageDescription1}
-            {PageDescription2 ? (
-              <>
-                <br />
-                <br />
-                {PageDescription2}
-              </>
-            ) : null}
-            {PageDescription3 ? (
-              <>
-                <br />
-                <br />
-                {PageDescription3}
-              </>
-            ) : null}
-            <LinkGroup>
-              <Github>
+          <ProjectDescription
+            descriptions={descriptions}
+            repos={repos}
+            color={color}
+            backgroundColor={backgroundColor}
+          />
+          <LinkGroup>
+            {/* <Github>
                 <LinkContainer numColumns={numColumns}>
                   {renderNativeLink}
                   {renderBrowserLink}
                   {renderWebsiteLink}
                 </LinkContainer>
-              </Github>
-            </LinkGroup>
-          </PageDescription>
-          <ImageContainer isSwitchActive={isSwitchActive} >
+              </Github> */}
+          </LinkGroup>
+          <ImageContainer isSwitchActive={isSwitchActive}>
             {isNative ? (
               <ParallaxImage
                 images={nativeImages}
@@ -246,33 +218,34 @@ const TitleContainer = styled.div`
   justify-content: center;
 `;
 
-const PageDescription = styled.div`
-  display: flex;
-  width: 32vw;
-  height: 100vh;
-  padding-top: 2em;
-  align-items: center;
-  justify-content: start;
-  font-family: Roboto Flex;
-  font-weight: 500;
-  align-self: flex-start;
-  font-size: clamp(10px, 2vw, 21px);
+// const PageDescription = styled.div`
+//   display: flex;
+//   width: 32vw;
+//   height: 100vh;
+//   padding-top: 2em;
+//   align-items: center;
+//   justify-content: start;
+//   font-family: 'Lato', sans-serif;   /* Roboto Flex; */
+//   font-weight: 500;
+//   align-self: flex-start;
+//   font-size: clamp(10px, 2vw, 21px);
 
-  @media (max-width: 1024px) {
-    font-size: 1.1em;
-    width: 50vw;
-    flex-wrap: wrap;
-  }
-  @media (max-width: 768px) {
-    font-size: 1.1em;
-    width: 90%;
-  }
+//   @media (max-width: 1024px) {
+//     font-size: 1.1em;
+//     width: 50vw;
+//     flex-wrap: wrap;
+//   }
+//   @media (max-width: 768px) {
+//     font-size: 1.1em;
+//     width: 90%;
+//   }
 
-  @media (max-width: 425px) {
-    font-size: 1.1em;
-    width: 100%;
-  }
-`;
+//   @media (max-width: 425px) {
+//     font-size: 1.1em;
+//     width: 100%;
+//   }
+// `;
+
 const LinkGroup = styled.div`
   display: flex;
   width: 100%;
@@ -294,37 +267,37 @@ const LinkGroup = styled.div`
   }
 `;
 
-const Github = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5em 1em;
-  border-radius: 15px;
-  border: 4px dotted ${(props) => props.color};
+// const Github = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 0.5em 1em;
+//   border-radius: 15px;
+//   border: 4px dotted ${(props) => props.color};
 
-  @media (max-width: 1440px) {
-    font-size: 1vw;
-  }
+//   @media (max-width: 1440px) {
+//     font-size: 1vw;
+//   }
 
-  @media (max-width: 1024px) {
-    font-size: 1vw;
-  }
+//   @media (max-width: 1024px) {
+//     font-size: 1vw;
+//   }
 
-  @media (max-width: 965px) {
-    font-size: 0.8vw;
-    border: 2px dotted ${(props) => props.color};
-  }
+//   @media (max-width: 965px) {
+//     font-size: 0.8vw;
+//     border: 2px dotted ${(props) => props.color};
+//   }
 
-  @media (max-width: 768px) {
-    width: 100%;
-    border: none;
-  }
+//   @media (max-width: 768px) {
+//     width: 100%;
+//     border: none;
+//   }
 
-  @media (max-width: 425px) {
-    width: 60%;
-  }
-`;
+//   @media (max-width: 425px) {
+//     width: 60%;
+//   }
+// `;
 
 const LinkContainer = styled.div`
   display: grid;
@@ -362,7 +335,7 @@ const ImageContainer = styled(motion.div)`
   height: 100vh;
   position: absolute;
   pointer-events: none;
-  
+
   & > * {
     pointer-events: auto;
   }

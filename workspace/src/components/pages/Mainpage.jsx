@@ -56,7 +56,7 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
 
   return (
     <>
-      <MainContainer>
+      <MainContainer style={{fontFamily: 'Poiret One'}}>
         <Section>
           <TitlesContainer
             initial={{ x: '10%', opacity: 0 }}

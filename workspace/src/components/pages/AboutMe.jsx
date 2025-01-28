@@ -8,78 +8,64 @@ import linkedin from "../../assets/linkedin.jpg";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useCardContext } from "../../context/CardContext";
+import CustomButton from "../CustomButton";
 
 function AboutMe() {
+  const { main } = useCardContext();
+
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
-  const email = "emil.stjernlof@gmail.com";
 
-  function copyEmail() {
-    navigator.clipboard.writeText(email);
-    setCopySuccessMessage(`Email copied!`);
-    setIsContactActive(true);
-    setTimeout(() => {
-      setIsContactActive(false);
-      setCopySuccessMessage("");
-    }, 2000);
-  }
+  const handleButtonClick = (repo, index) => {
+    if (Object.keys(repo)[0] === 'email') {
+      navigator.clipboard.writeText('emil.stjernlof@gmail.com');
+      setCopySuccessMessage('Email copied!');
+      setIsContactActive(true);
+      setTimeout(() => {
+        setIsContactActive(false);
+        setCopySuccessMessage('');
+      }, 2000);
+    } else {
+      window.open(Object.values(repo)[0], '_blank');
+    }
+  };
 
   return (
     <Body>
       <Content>
         <Text>
-          <h2>About me</h2>
+          <h2>{main.title}</h2>
           <CascadingText delay="0.2s">
-            <p>
-              Hi there! I&apos;m Emil Stjernlöf, a dedicated Frontend Developer based
-              in Stockholm, Sweden. Currently pursuing my education at Jensen
-              Yrkeshögskola in Kista, I am deeply passionate about creating
-              seamless user experiences.
-            </p>
+            <p>{main.descriptions.primary}</p>
           </CascadingText>
 
           <CascadingText delay="0.3s">
-            <p>
-              Proficient in JavaScript and specialized in React, I thrive on the
-              challenge of crafting dynamic and interactive web applications. With
-              a keen eye for design and functionality, I believe in the power of
-              technology to enhance the way we interact with the digital world.
-            </p>
+            <p>{main.descriptions.secondary}</p>
           </CascadingText>
 
           <CascadingText delay="0.4s">
-            <p>
-              My journey as a developer has exposed me to a diverse range of
-              projects, allowing me to adapt swiftly to new technologies and
-              frameworks. I am a strong advocate for collaboration and effective
-              communication, valuing the insights and contributions of fellow
-              developers and stakeholders alike.
-            </p>
+            <p>{main.descriptions.tertiary}</p>
           </CascadingText>
 
           <CascadingText delay="0.5s">
-            <p>
-              Outside of coding, I find inspiration in exploring emerging
-              technologies and trends in the ever-evolving field of frontend
-              development. I am excited to continue pushing boundaries and
-              creating compelling digital experiences that leave a lasting
-              impression.
-            </p>
+            <p>{main.descriptions.quaternary}</p>
           </CascadingText>
         </Text>
-        <Image src={profilepic1} alt="profile picture" />
+        <Image src={main.images.profilePic} alt="profile picture" />
       </Content>
       <ContactLinksContainer>
-        <a href="https://github.com/starleafer">
-          <ContactLinks src={github} alt="github" />
-        </a>
-        <a href="https://www.linkedin.com/in/emil-stjernlof/">
-          <StyledFontAwesomeIcon icon={faLinkedin} />
-        </a>
-        <EnvelopeContainer onClick={copyEmail}>
-          <EnvelopeIcon icon={faEnvelope} />
-          {copySuccessMessage && <CopyAlert className="clicked">{copySuccessMessage}</CopyAlert>}
-        </EnvelopeContainer>
+        {main.repos.map((repo, index) => (
+          <CustomButton
+            key={index}
+            color={main.color}
+            backgroundColor={main.backgroundColor}
+            onClick={() => handleButtonClick(repo, index)}
+            label={<IconWrapper>{repo.icon}</IconWrapper>}
+            showCopyAlert={Object.keys(repo)[0] === 'email' && copySuccessMessage}
+            copyMessage={copySuccessMessage}
+          />
+        ))}
       </ContactLinksContainer>
     </Body>
   );
@@ -114,24 +100,6 @@ const cascadingFadeIn = keyframes`
   }
 `;
 
-const slideAndFadeOut = keyframes`
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  20% {
-    transform: translateX(20px);
-    opacity: 1;
-  }
-  70% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(20px);
-    opacity: 0;
-  }
-`;
-
 const Body = styled.div`
   height: 100vh;
   width: 100vw;
@@ -143,10 +111,8 @@ const Body = styled.div`
   overflow: hidden;
 
   @media (max-width: 768px) {
-
-    padding: 0 10vw; 
+    padding: 0 10vw;
   }
-
 `;
 
 const Content = styled.div`
@@ -155,25 +121,22 @@ const Content = styled.div`
   width: 60%;
   color: white;
   animation: ${fadeInAnimation} 2s, ${slideInAnimation} 1s;
-
-
-    
 `;
 
 const Text = styled.div`
   font-weight: 500;
   font-size: 1.1rem;
-  font-family: Roboto Flex;
+  font-family: "Lato", sans-serif; /* Roboto Flex; */
   margin-right: 6vw;
 `;
 
 const CascadingText = styled.div`
   margin: 1em 0;
-  
+
   p {
     opacity: 0;
     animation: ${cascadingFadeIn} 1s forwards;
-    animation-delay: ${props => props.delay || '0s'};
+    animation-delay: ${(props) => props.delay || "0s"};
     margin: 0;
   }
 `;
@@ -199,6 +162,7 @@ const Image = styled.img`
 `;
 
 const ContactLinksContainer = styled.div`
+  position: relative;
   display: flex;
   width: 60%;
   justify-content: flex-start;
@@ -206,114 +170,14 @@ const ContactLinksContainer = styled.div`
   gap: 2em;
   margin-top: 3em;
   opacity: 0;
-
- animation: ${fadeInAnimation} 2s forwards, ${slideInAnimation} 1s forwards;
-  animation-delay: .7s;
-  `;
-
-const ContactLinks = styled.img`
-  width: 2.3em;
-  height: 2.3em;
-  transition: transform 0.3s ease;
-
-    &:hover {
-      transform: scale(1.5);
-    }
-  
+  animation: ${fadeInAnimation} 2s forwards, ${slideInAnimation} 1s forwards;
+  animation-delay: 0.7s;
 `;
 
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  color: #ffffff;
-  width: 2.3em;
-  height: 2.3em;
-
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.5);
-  }
-`;
-
-const EnvelopeContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-
-`;
-
-const EnvelopeIcon = styled(FontAwesomeIcon)`
-  color: #ffffff;
-  width: 2.3em;
-  height: 2.3em;
-  transition: transform 0.3s ease;
-
-  &:hover {
-    transform: scale(1.5);
-  }
-`;
-
-const CopyAlert = styled.div`
-  position: absolute;
-  left: 3.5em;
-  bottom: 0;
-  width: 110px;
-  height: 40px;
-  padding: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.1em;
-  font-family: 'Roboto Flex';
-  border-radius: 10px;
-  background-color: var(--darker);
-  color: #fff;
-  transform: translateX(100%);
-  transition: transform 0.3s, color 0.3s , background-color 0.3s ;
-  overflow: hidden;
-
-  &.clicked {
-    animation: ${slideAndFadeOut} 2s forwards;
-    
-    @media (max-width: 768px) {
-      height: 3.5vh;
-      width: 13vw;
-      font-size: 2vw;
-      padding: 1px;
-      transform: translateX(-60%);
-      right: 0;
-    }
-    
-    @media (max-width: 375px) {
-      width: 21vw;
-      font-size: 1em;
-      padding: 1px;
-      transform: translateX(-80%);
-      right: 0;
-    }
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      background-color: #d6d5d5e8;
-      right: 500px;
-      left: 140%;
-      height: 5vw;
-      width: 1vw;
-      transform: skewX(-30deg);
-      opacity: 0; 
-      transition: 0.6s 0.2s; 
-      opacity: 1; 
-
-      @starting-style {
-        left: -22vw;
-      }
-    }
-
-    &:after {
-      width: 1vw;
-    }
+const IconWrapper = styled.div`
+  svg {
+    width: 2em;
+    height: 2em;
   }
 `;
 
