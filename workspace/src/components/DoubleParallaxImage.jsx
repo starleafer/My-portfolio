@@ -11,9 +11,9 @@ const DoubleParallaxImage = ({
   color,
   invertedColors,
   doubleRepo,
+  isSwitchActive,
+  onSwitchView,
 }) => {
-  const [isSwitchActive, setIsSwitchActive] = useState(false);
-
   const slideVariants = {
     nativeView: {
       x: 0,
@@ -47,15 +47,6 @@ const DoubleParallaxImage = ({
   return (
     <ViewContainer>
       <ParallaxWrapper>
-        <ButtonContainer>
-          <CustomButton
-            onClick={() => setIsSwitchActive(!isSwitchActive)}
-            color={color}
-            border
-            backgroundColor={backgroundColor}
-            label={isSwitchActive ? "Native View" : "Browser View"}
-          />
-        </ButtonContainer>
         <motion.div
           variants={slideVariants}
           animate={isSwitchActive ? "browserView" : "nativeView"}
@@ -103,25 +94,14 @@ const ViewContainer = styled.div`
   width: 100vw;
   overflow: hidden;
   padding-top: 1vh;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
   
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  z-index: 1000;
-  height: 4em;
-  padding-left: 20vw;
-`;
+  `;
 
 const ParallaxWrapper = styled.div`
   position: relative;
   width: 100%;
   height: calc(100% - 15vh);
   overflow: hidden;
-`;
+  `;
 
 export default DoubleParallaxImage;

@@ -245,7 +245,7 @@ const Circle = styled.div`
   background-color: transparent;
   animation: ${CircleAnimation} 0.7s ease-in-out forwards; 
   transform-origin: center;
-  z-index: 10;
+  z-index: 110;
   opacity: 1; 
 
   @media (max-width: 768px) {

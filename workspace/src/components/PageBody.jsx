@@ -23,6 +23,7 @@ function PageBody({
   invertedColors,
 }) {
   const [doubleRepo, setDoubleRepo] = useState(false);
+  const [isSwitchActive, setIsSwitchActive] = useState(false);
   
   const { card } = useCardContext();
 
@@ -37,6 +38,9 @@ function PageBody({
     setDoubleRepo(isNative && isBrowser);
   }, [isNative, isBrowser])
 
+  const handleSwitchView = () => {
+    setIsSwitchActive(!isSwitchActive);
+  };
 
   return (
     <Body backgroundColor={backgroundColor}>
@@ -50,6 +54,9 @@ function PageBody({
             repos={repos}
             color={color}
             backgroundColor={backgroundColor}
+            showViewSwitch={isNative && isBrowser}
+            onSwitchView={handleSwitchView}
+            isSwitchActive={isSwitchActive}
           />
           <ImageContainer>
             {isNative && isBrowser ? (
@@ -61,6 +68,7 @@ function PageBody({
                   color={color}
                   invertedColors={invertedColors}
                   doubleRepo={doubleRepo}
+                  isSwitchActive={isSwitchActive}
                 />            
               </ViewContainer>
             ) : (
@@ -145,6 +153,7 @@ const ContentGroup = styled.div`
   flex-direction: row;
   margin-left: 10vw;
   gap: 2em;
+  z-index: 105;
 `;
 
 const TitleContainer = styled.div`
@@ -164,6 +173,7 @@ const ViewContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2em;
+
 `;
 
 const ImageContainer = styled(motion.div)`
@@ -175,6 +185,7 @@ const ImageContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
 
   & > * {
     pointer-events: auto;

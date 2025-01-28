@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css, keyframes } from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const CustomButton = ({
   width,
@@ -12,13 +12,13 @@ const CustomButton = ({
   padding,
   backgroundColor,
   invertedColors,
-  shadowColor,
+  pulse,
   label,
   previous,
   next,
   cleaning,
   showCopyAlert,
-  copyMessage
+  copyMessage,
 }) => {
   return (
     <ButtonContainer>
@@ -63,9 +63,7 @@ const CustomButton = ({
         )}
       </Button>
       {showCopyAlert && copyMessage && (
-        <CopyAlert className="clicked">
-          {copyMessage}
-        </CopyAlert>
+        <CopyAlert className="clicked">{copyMessage}</CopyAlert>
       )}
     </ButtonContainer>
   );
@@ -84,7 +82,7 @@ CustomButton.propTypes = {
   next: PropTypes.bool,
   cleaning: PropTypes.bool,
   showCopyAlert: PropTypes.bool,
-  copyMessage: PropTypes.string
+  copyMessage: PropTypes.string,
 };
 
 const ButtonContainer = styled.div`
@@ -148,7 +146,6 @@ const slideAndFadeOutMobile = keyframes`
   }
 `;
 
-
 const shineEffect = keyframes`
   0% {
     left: -100%;
@@ -158,7 +155,7 @@ const shineEffect = keyframes`
     left: 200%;
     opacity: 1;
   }
-`;
+  `;
 
 const Button = styled.button`
   display: flex;
@@ -174,7 +171,7 @@ const Button = styled.button`
   border-radius: 10px;
   padding: ${(props) => props.padding || "10px"};
   font-size: clamp(15px, 2vw, 20px);
-  font-family: 'Poiret One';
+  font-family: "Poiret One";
   font-weight: 600;
   gap: 0.4em;
   background-size: 200% 100%;
@@ -291,8 +288,6 @@ const StyledIcon = styled(FontAwesomeIcon)`
     props.invertedColors
       ? props.backgroundColor
       : props.color || "var(--dark)"};
-
-
 `;
 
 export default CustomButton;

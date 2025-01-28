@@ -96,7 +96,7 @@ const MaskedGroup = styled.div`
     align-items: start;
     width: 100%;
     height: 100vh;
-    z-index: 9999;
+    z-index: 100;
     pointer-events: none; 
 `;
 
@@ -104,6 +104,7 @@ const MaskedSecret = styled(m.div)`
     font-size: 1.8em;
     font-weight: 600;
     mask-image: url('../../../public/mask.svg');
+    font-family: "Poiret One", sans-serif;
     mask-repeat: no-repeat;
     mask-size: 40px;
     background: var(--dark);

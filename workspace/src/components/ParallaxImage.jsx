@@ -190,6 +190,7 @@ const Container = styled.div`
   overflow-y: scroll;
   padding-top: 3vh;
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
+  
 `;
 
 const CardWrapper = styled(motion.div)`

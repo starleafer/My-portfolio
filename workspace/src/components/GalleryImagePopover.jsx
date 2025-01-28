@@ -123,7 +123,7 @@ const Overlay = styled(m.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
+  z-index: 99;
 `;
 
 const PopoverContent = styled(m.div)`
@@ -137,7 +137,7 @@ const PopoverContent = styled(m.div)`
 `;
 
 const ImageContainer = styled.div`
-  width: ${(props) => props.isNative ? "35%" : "80%"};
+  width: ${(props) => props.isNative ? "35%"  : "80%"};
   display: flex;
   justify-content: center;
   align-items: center;
