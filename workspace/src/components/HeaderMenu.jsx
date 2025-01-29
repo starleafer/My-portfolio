@@ -77,8 +77,6 @@ function HeaderMenu({ about, setIsHoverButton }) {
     };
   };
 
-  console.log("THE BG_COLOR!", backgroundColor)
-
   return (
     <>
       {showCircle && <Circle color={isClicked ? circleColor : ""} />}

@@ -21,8 +21,6 @@ const CustomButton = ({
   copyMessage,
   showViewSwitch,
 }) => {
-  console.log(color);
-  console.log(backgroundColor);
 
   return (
     <ButtonContainer>
