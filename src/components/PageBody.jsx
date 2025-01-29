@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
-import { motion as m, motion, useScroll } from "framer-motion";
+import { motion as m, motion, useScroll } from 'framer-motion';
 import { useCardContext } from "../context/CardContext";
 import PageNavigationButton from "./PageNavigationButton";
 import ParallaxImage from "./ParallaxImage";
