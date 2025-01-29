@@ -166,6 +166,7 @@ export default function ParallaxImage({
         backgroundColor={backgroundColor}
         invertedColors={invertedColors}
         isNative={isNative}
+        doubleRepo={doubleRepo}
       />
       <ImageCounterSlider
         color={color}

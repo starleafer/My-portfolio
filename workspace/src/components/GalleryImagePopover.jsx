@@ -10,6 +10,7 @@ const GalleryImagePopover = ({
   color,
   backgroundColor,
   invertedColors,
+  doubleRepo,
   shadowColor,
   isNative,
 }) => {
@@ -139,7 +140,8 @@ const PopoverContent = styled(m.div)`
 `;
 
 const ImageContainer = styled.div`
-  width: ${(props) => (props.isNative ? "35%" : "80%")};
+  width: ${(props) => (props.isNative ? "35%" : "100%")};
+  height: ${(props) => (props.isNative ? "auto" : "700px")}; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -149,24 +151,27 @@ const ImageContainer = styled.div`
 
   @media (max-width: 1536px) {
     width: ${(props) => (props.isNative ? "60%" : "80%")};
-    height: ${(props) => (props.isNative ? "60%" : "80%")};
+    height: ${(props) => (props.isNative ? "auto" : "400px")};
   }
 `;
 
 const PopoverImage = styled(m.img)`
-  width: 100%;
-  height: 100%;
+  width: ${(props) => (props.isNative ? "100%" : "auto")};
+  height: ${(props) => (props.isNative ? "auto" : "100%")}; 
+  max-height: 100%;
   object-fit: cover;
   background-color: ${(props) => props.backgroundColor};
   border-radius: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 
   @media (max-width: 1536px) {
-    width: ${(props) => (props.isNative ? "100%" : "90%")};
+    width: ${(props) => (props.isNative ? "100%" : "auto")};
+    height: ${(props) => (props.isNative ? "auto" : "100%")};
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: ${(props) => (props.isNative ? "70%" : "90%")};
+    width: ${(props) => (props.isNative ? "70%" : "auto")};
+    height: ${(props) => (props.isNative ? "auto" : "100%")};
   }
 `;
 
@@ -184,14 +189,15 @@ const ImageGroup = styled.div`
 
 const ClosButtonContainer = styled.div`
   position: absolute;
-  top: 2em;
-  right: 2em;
+  top: 5em;
+  right: -8em;
   width: 5em;
   margin-top: 0;
   z-index: 110;
 
   @media (max-width: 768px) and (min-width: 321px) {
-    top: -5em;
+    top: ${(props) => props.isNative ? "2em" : props.doubleRepo ? "-5em" : "1em"};
+    right: 4em;
   }
 `;
 
