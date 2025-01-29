@@ -167,10 +167,10 @@ const Button = styled.button`
     props.invertedColors
       ? props.backgroundColor
       : props.color || "var(--dark)"};
-    background-color: ${(props) =>
-      props.invertedColors
-        ? props.color
-        : props.backgroundColor || "transparent"};
+  background-color: ${(props) =>
+    props.invertedColors
+      ? props.color
+      : props.backgroundColor || "transparent"};
   border-radius: 10px;
   padding: ${(props) => props.padding || "10px"};
   font-size: clamp(15px, 2vw, 20px);
@@ -188,24 +188,14 @@ const Button = styled.button`
       animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
       border: 1px solid
-        ${
-          props.invertedColors
-            ? props.backgroundColor
-            : props.color || "var(--dark)"
-        };
+        ${props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
     }
 
     &:not(:hover) {
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
-      /* border: 1px solid
-        ${
-          props.border
-            ? props.invertedColors
-              ? props.backgroundColor
-              : props.color
-            : "transparent"
-        };
-    } */
+    }
 
     &:focus {
       transform: translateY(-0.3vw);
@@ -232,10 +222,24 @@ const Button = styled.button`
         props.invertedColors
           ? props.backgroundColor
           : props.color || "var(--dark)"};
+
+    &:active {
+      color: ${(props) =>
+        props.invertedColors
+          ? props.color
+          : props.backgroundColor || "transparent"};
+      background-color: ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
+      transition: color 0.1s, background-color 0.1s;
+    }
   }
 `;
 
 const CopyAlert = styled.div`
+
+
   position: absolute;
   left: 6vw;
   margin-left: 1em;
