@@ -5,9 +5,6 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   base: '/My-portfolio/', 
-  optimizeDeps: {
-    include: ['framer-motion'], 
-  },
   resolve: {
     alias: {
       'framer-motion': resolve(__dirname, 'node_modules/framer-motion'),
@@ -15,17 +12,17 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ['framer-motion'],
+      // Remove 'framer-motion' from external
       output: {
         globals: {
           'framer-motion': 'framerMotion'
-        }
-      }
+        },
+      },
     },
     commonjsOptions: {
       include: [/node_modules/],
-      transformMixedEsModules: true
-    }
+      transformMixedEsModules: true,
+    },
   },
   optimizeDeps: {
     include: ['framer-motion'],
