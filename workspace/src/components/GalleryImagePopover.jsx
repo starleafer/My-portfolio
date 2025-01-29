@@ -67,39 +67,40 @@ const GalleryImagePopover = ({
               <ClosButtonContainer>
                 <CustomButton
                   color={color}
-                  border
-                  padding=".7em"
+                  // backgroundColor={backgroundColor}
                   invertedColors={invertedColors}
-                  backgroundColor={backgroundColor}
                   shadowColor={shadowColor}
-                  hasIcon
-                  label="X"
                   onClick={onClose}
+                  label="X"
+                  padding=".7em"
+                  border
+                  hasIcon
+                  small
                 />
               </ClosButtonContainer>
             </ImageGroup>
             <NavigationGroup>
               <CustomButton
-                invertedColors={invertedColors}
                 color={color}
-                backgroundColor={backgroundColor}
+                // backgroundColor={backgroundColor}
+                invertedColors={invertedColors}
                 shadowColor={shadowColor}
                 onClick={handlePrevious}
-                label="Previous"
                 width={"10em"}
+                label="Previous"
                 border
                 title
                 hasIcon
                 previous
               />
               <CustomButton
-                invertedColors={invertedColors}
                 color={color}
-                backgroundColor={backgroundColor}
+                // backgroundColor={backgroundColor}
+                invertedColors={invertedColors}
                 shadowColor={shadowColor}
                 onClick={handleNext}
-                width={"10em"}
                 label="Next "
+                width={"10em"}
                 border
                 title
                 hasIcon
@@ -123,7 +124,7 @@ const Overlay = styled(m.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 120;
+  z-index: 130;
 `;
 
 const PopoverContent = styled(m.div)`
@@ -137,7 +138,7 @@ const PopoverContent = styled(m.div)`
 `;
 
 const ImageContainer = styled.div`
-  width: ${(props) => props.isNative ? "35%"  : "80%"};
+  width: ${(props) => (props.isNative ? "35%" : "80%")};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,8 +147,8 @@ const ImageContainer = styled.div`
   background-color: ${(props) => props.backgroundColor};
 
   @media (max-width: 1536px) {
-    width: ${(props) => props.isNative ? "60%" : "80%"};
-    height: ${(props) => props.isNative ? "60%" : "80%"};
+    width: ${(props) => (props.isNative ? "60%" : "80%")};
+    height: ${(props) => (props.isNative ? "60%" : "80%")};
   }
 `;
 
@@ -160,10 +161,13 @@ const PopoverImage = styled(m.img)`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 
   @media (max-width: 1536px) {
-    width: ${(props) => props.isNative ? "100%" : "90%"};
+    width: ${(props) => (props.isNative ? "100%" : "90%")};
+  }
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: ${(props) => (props.isNative ? "70%" : "90%")};
   }
 `;
-
 
 const ImageGroup = styled.div`
   display: flex;
@@ -183,6 +187,10 @@ const ClosButtonContainer = styled.div`
   right: 2em;
   width: 5em;
   margin-top: 0;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    top: -5em;
+  }
 `;
 
 const NavigationGroup = styled.div`
@@ -194,6 +202,5 @@ const NavigationGroup = styled.div`
   margin-top: auto;
   padding-bottom: 2em;
 `;
-
 
 export default GalleryImagePopover;

@@ -200,7 +200,8 @@ const Button = styled.button`
 
     &:not(:hover) {
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
-      border-color: transparent;
+      border-color: ${(props) =>
+        props.border ? `1px solid ${props.color}` : "1px solid transparent"};
     }
 
     &:focus {

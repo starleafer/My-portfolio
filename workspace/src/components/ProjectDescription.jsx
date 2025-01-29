@@ -143,9 +143,7 @@ const LinkInner = styled.div`
   @media (max-width: 768px) and (min-width: 321px) {
     gap: 1em;
     padding: 0.5em;
-    max-width: 70vw;
     border: none;
-    
   }
 `;
 
@@ -156,7 +154,6 @@ const ButtonGroup = styled.div`
   justify-content: ${props => props.showViewSwitch ? "center" : "flex-start"};
   gap: 2em;
   min-height: 3em;
-
  
 `;
 

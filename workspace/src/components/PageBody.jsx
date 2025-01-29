@@ -364,7 +364,7 @@ const ScrollTopButton = styled.button`
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    z-index: 1000;
+    z-index: 100;
 
     &:hover {
       transform: translateY(-3px);

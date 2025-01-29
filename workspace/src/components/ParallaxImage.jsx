@@ -254,9 +254,15 @@ const Info = styled.p`
   font-weight: 600;
   margin-bottom: 10px;
   font-family: 'Lato', sans-serif;   /* Roboto Flex; */
+
+
+  @media (max-width: 1536px) and (min-width: 769px) {
+    font-size: 1.2vw;
+  }
 `;
 
 const ImageContainer = styled.div`
+
   position: relative;
   display: flex;
   justify-content: center;

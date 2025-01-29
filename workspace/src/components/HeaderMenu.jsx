@@ -148,15 +148,18 @@ const ButtonContainer = styled.div`
   transition: opacity 1s;
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: 90vw;
-    position: relative;
-
     align-items: center;
     justify-content: center;
+    position: absolute;
     background-color: ${(props) => props.backgroundColor};
+    z-index: 100;
+    
+    /* 
+    width: 90vw;
+    
     height: 5vh;
     gap: 20px;
-    z-index: 120;
+     */
   }
 `;
 
@@ -190,9 +193,7 @@ const Circle = styled.div`
   z-index: 9999;
   opacity: 1;
 
-  @media (max-width: 768px) {
-    border-radius: 15px;
-  }
+
 `;
 
 export default HeaderMenu;

@@ -18,6 +18,7 @@ function AboutMe() {
       "(max-width: 768px) and (min-width: 321px)"
     ).matches;
 
+    // Only initialize Lenis for mobile
     if (isMobile && bodyRef.current) {
       const lenis = new Lenis({
         wrapper: bodyRef.current,
@@ -45,16 +46,16 @@ function AboutMe() {
   }, []);
 
   const handleButtonClick = (repo, index) => {
-    if (Object.keys(repo)[0] === 'email') {
-      navigator.clipboard.writeText('emil.stjernlof@gmail.com');
-      setCopySuccessMessage('Email copied!');
+    if (Object.keys(repo)[0] === "email") {
+      navigator.clipboard.writeText("emil.stjernlof@gmail.com");
+      setCopySuccessMessage("Email copied!");
       setIsContactActive(true);
       setTimeout(() => {
         setIsContactActive(false);
-        setCopySuccessMessage('');
+        setCopySuccessMessage("");
       }, 2000);
     } else {
-      window.open(Object.values(repo)[0], '_blank');
+      window.open(Object.values(repo)[0], "_blank");
     }
   };
 
@@ -90,14 +91,15 @@ function AboutMe() {
               backgroundColor={main.backgroundColor}
               onClick={() => handleButtonClick(repo, index)}
               label={<IconWrapper>{repo.icon}</IconWrapper>}
-              showCopyAlert={Object.keys(repo)[0] === 'email' && copySuccessMessage}
+              showCopyAlert={
+                Object.keys(repo)[0] === "email" && copySuccessMessage
+              }
               copyMessage={copySuccessMessage}
               small
             />
           </ButtonWrapper>
         ))}
       </ContactLinksContainer>
-
     </Body>
   );
 }
@@ -140,13 +142,19 @@ const Body = styled.div`
   justify-content: center;
   background-color: var(--dark);
   overflow: hidden;
-  
-  @media (max-width: 768px) and (min-width: 321px) {
-    height: 150vh;
-    justify-content: flex-start;
-    align-items: center;
+
+  @media (max-width: 1536px) {
   }
-  `;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    height: auto;
+    min-height: 100vh;
+    padding: 5vh 0 5vh 0;
+    overflow-y: auto; // Enable scrolling for mobile
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+`;
 
 const Content = styled.div`
   display: flex;
@@ -158,15 +166,25 @@ const Content = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     width: 90%;
+    flex-direction: column;
+    margin: 8vh 0;
+    
   }
-
 `;
 
 const Text = styled.div`
   font-weight: 500;
   font-size: 1.1rem;
-  font-family: "Lato", sans-serif; /* Roboto Flex; */
+  font-family: "Lato", sans-serif;
   margin-right: 6vw;
+  max-height: 500px;
+  max-width: 500px;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    margin-right: 0;
+    margin-bottom: 4vh;
+    max-width: 100%;
+  }
 `;
 
 const CascadingText = styled.div`
@@ -177,6 +195,14 @@ const CascadingText = styled.div`
     animation: ${cascadingFadeIn} 1s forwards;
     animation-delay: ${(props) => props.delay || "0s"};
     margin: 0;
+  }
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    font-size: 2.4vw;
+  }
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    font-size: 2.4vw;
   }
 `;
 
@@ -191,14 +217,14 @@ const Image = styled.img`
   filter: grayscale(100%);
   z-index: 1;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1536px) {
     max-width: 15em;
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    max-width: 35%;
+    max-width: 60%;
     border-radius: 10%;
-    bottom: 15vh;
+    margin-top: 0;
   }
 `;
 
@@ -216,26 +242,38 @@ const ContactLinksContainer = styled.div`
   animation-delay: 0.7s;
   bottom: 20vh;
 
+  @media (max-width: 1536px) {
+    bottom: 10vh;
+    left: 20%;
+  }
+
   @media (max-width: 768px) and (min-width: 321px) {
-    bottom: 2vh;
-    align-items: flex-start;
-    justify-content: flex-start;
+    position: relative;
+    bottom: auto;
+    left: auto;
     width: 90%;
-  } 
+    margin-top: 2vh;
+    justify-content: center;
+  }
 `;
 
 const ButtonWrapper = styled.div`
-  width: 5rem; 
-  height: 2.5rem;  
+  width: 5rem;
+  height: 2.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: 4rem;
+    height: 2rem;
+  }
 `;
 
 const IconWrapper = styled.div`
   transform: translateZ(0);
   will-change: transform;
-  
+
   svg {
     width: 2em;
     height: 2em;
