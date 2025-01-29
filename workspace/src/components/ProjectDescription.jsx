@@ -91,7 +91,7 @@ function ProjectDescription({
 const DescriptionContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1.1em;
   margin: 2em 0;
   width: 30vw;
 
@@ -109,6 +109,18 @@ const Description = styled.p`
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
+
+  @media (max-width: 1536px) and (min-width: 769px) {
+    font-size: 1.2vw;
+  }
+
+
+
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    font-size: 1em;
+  }
+
 `;
 
 const LinkGroup = styled.div`

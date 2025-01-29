@@ -210,17 +210,18 @@ const CardWrapper = styled(motion.div)`
   margin-top: ${(props) => (props.isFirst ? "0" : "80vh")};
   min-height: ${(props) => (props.isNative ? "450px" : "400px")};
   width: ${(props) => (props.isNative ? "25vw" : "40vw")};
-  padding: 10px;
+  padding: 10px 20px;
   border-radius: 20px;
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 
-  @media (max-width: 1536px) {
+  @media (max-width: 1536px) and (min-width: 769px) {
     gap: ${(props) => (props.isNative ? "0" : "2em")};
     width: ${(props) => (props.isNative ? "30vw" : "40vw")};
     min-height: ${(props) => (props.isNative ? "330px" : "300px")};
+    padding: 0 20px;
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
@@ -243,7 +244,7 @@ const InfoContainer = styled.div`
   width: 170px;
   left: 20px;
 
-  @media (max-width: 1536px) {
+  @media (max-width: 1536px) and (min-width: 769px) {
     margin: 0 0 10px 10px;
   }
 `;
