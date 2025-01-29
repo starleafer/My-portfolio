@@ -1,6 +1,12 @@
 {
+  "homepage": "https://starleafer.github.io/My-portfolio",
   "dependencies": {
     "framer-motion": "^10.16.4",
     "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "build": "react-scripts build"
   }
 }
