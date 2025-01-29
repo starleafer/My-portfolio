@@ -1,4 +1,4 @@
-'use client';
+"use client";
 import { Routes, Route, useLocation } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
@@ -6,12 +6,15 @@ import Mainpage from "./components/pages/Mainpage";
 import ChatApp from "./components/pages/ChatApp";
 import WebbShop from "./components/pages/WebbShop";
 import MovieApp from "./components/pages/MovieApp";
-import TicTacToe from "./components/pages/TicTacToe";
 import Cleaning from "./components/pages/Cleaning";
 import AboutMe from "./components/pages/AboutMe";
 import Buttons from "./components/HeaderMenu";
+import Dashboard from "./components/pages/Dashboard";
 import { CardProvider } from "./context/CardContext";
-import { TransitionProvider, useTransitionContext } from "./context/TransitionContext";
+import {
+  TransitionProvider,
+  useTransitionContext,
+} from "./context/TransitionContext";
 import "../src/index.css";
 import Splash from "./components/Splash";
 import MasksAndCursor from "./components/MasksAndCursor";
@@ -29,13 +32,12 @@ function App() {
   const [cursorVisible, setCursorVisible] = useState(true);
   const [cursorOpacity, setCursorOpacity] = useState(1);
 
-
   const home = "/";
   const cleaning = "/cleaning";
   const chatapp = "/chatapp";
   const webbshop = "/webbshop";
   const movieapp = "/movieapp";
-  const tictactoe = "/tictactoe";
+  const dashboard = "/dashboard";
 
   useEffect(() => {
     let pathColor = "";
@@ -49,10 +51,6 @@ function App() {
         pathColor = "var(--yellowish)";
         secondaryColor = "var(--dark)";
         break;
-      case tictactoe:
-        pathColor = "var(--redish)";
-        secondaryColor = "var(--blueish)";
-        break;
       case webbshop:
         pathColor = "var(--greenish)";
         secondaryColor = "var(--bisque)";
@@ -64,6 +62,10 @@ function App() {
       case movieapp:
         pathColor = "var(--darker)";
         secondaryColor = "var(--redish)";
+        break;
+      case dashboard:
+        pathColor = "var(--blueish)";
+        secondaryColor = "var(--silver-light)";
         break;
       case "/about":
         pathColor = "white";
@@ -80,7 +82,6 @@ function App() {
       setCursorHoverColor();
     }, 300);
     setCursorColor(secondaryColor);
-
   }, [location.pathname]);
 
   useEffect(() => {
@@ -94,8 +95,6 @@ function App() {
       setTimeout(() => setCursorVisible(true));
     }
   }, [runTransition]);
-
-
 
   return (
     <>
@@ -117,8 +116,14 @@ function App() {
                     path={home}
                     element={
                       <ScrollContainer>
-                        <Buttons path={home} setIsHoverButton={setIsHoverButton} />
-                        <Mainpage setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
+                        <Buttons
+                          path={home}
+                          setIsHoverButton={setIsHoverButton}
+                        />
+                        <Mainpage
+                          setCursorHoverColor={setCursorHoverColor}
+                          setIsHoveringCards={setIsHoveringCards}
+                        />
                       </ScrollContainer>
                     }
                   />
@@ -126,7 +131,10 @@ function App() {
                     path={cleaning}
                     element={
                       <ScrollContainer className="scrollCleaning">
-                        <Buttons path={cleaning} setIsHoverButton={setIsHoverButton} />
+                        <Buttons
+                          path={cleaning}
+                          setIsHoverButton={setIsHoverButton}
+                        />
                         <Cleaning />
                       </ScrollContainer>
                     }
@@ -135,7 +143,10 @@ function App() {
                     path={chatapp}
                     element={
                       <ScrollContainer className="scrollChatApp">
-                        <Buttons path={chatapp} setIsHoverButton={setIsHoverButton} />
+                        <Buttons
+                          path={chatapp}
+                          setIsHoverButton={setIsHoverButton}
+                        />
                         <ChatApp />
                       </ScrollContainer>
                     }
@@ -144,7 +155,10 @@ function App() {
                     path={webbshop}
                     element={
                       <ScrollContainer className="scrollWebbShop">
-                        <Buttons path={webbshop} setIsHoverButton={setIsHoverButton} />
+                        <Buttons
+                          path={webbshop}
+                          setIsHoverButton={setIsHoverButton}
+                        />
                         <WebbShop />
                       </ScrollContainer>
                     }
@@ -153,17 +167,23 @@ function App() {
                     path={movieapp}
                     element={
                       <ScrollContainer className="scrollMovies">
-                        <Buttons path={movieapp} setIsHoverButton={setIsHoverButton} />
+                        <Buttons
+                          path={movieapp}
+                          setIsHoverButton={setIsHoverButton}
+                        />
                         <MovieApp />
                       </ScrollContainer>
                     }
                   />
                   <Route
-                    path={tictactoe}
+                    path={dashboard}
                     element={
                       <ScrollContainer>
-                        <Buttons path={tictactoe} setIsHoverButton={setIsHoverButton} />
-                        <TicTacToe />
+                        <Buttons
+                          path={dashboard}
+                          setIsHoverButton={setIsHoverButton}
+                        />
+                        <Dashboard />
                       </ScrollContainer>
                     }
                   />

@@ -37,6 +37,7 @@ function Card({
     };
   };
 
+
   return (
     <Body>
       {showCircle && (

@@ -13,9 +13,9 @@ const Logo = ({ logo }) => {
                         <div style={styles.busters}>Busters</div>
                     </div>
                 );
-            case 3:
+            case 2:
                 return <div style={styles.soleSoul}>SoleSoul.com</div>;
-            case 4:
+            case 3:
                 return (
                     <div style={styles.chatContainer}>
                         <div style={styles.classChat}>Class</div>
@@ -25,11 +25,14 @@ const Logo = ({ logo }) => {
                         </div>
                     </div>
                 );
-            case 5:
+            case 4:
                 return <div style={styles.movieNight}>Movie Night</div>;
+            case 5:
+                return <div style={styles.dashboard}>Dashboard (WIP)</div>;
             default:
                 return null;
         }
+
     };
 
     return <Container>{renderLogoContent()}</Container>;
@@ -104,5 +107,10 @@ const styles = {
             0 0 0.45em rgb(255, 42, 5)
         `,
         boxShadow: '0 0 0.2em',
+    },
+    dashboard: {
+        fontSize: '1.2em',
+        fontFamily: 'Poppins',
+        color: 'var(--silver-light)',
     },
 };

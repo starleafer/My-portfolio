@@ -74,15 +74,6 @@ export const CardProvider = ({ children }) => {
     },
     {
       id: 2,
-      title: "Tic tac toe",
-      path: "tictactoe",
-      label: "React Native",
-      color: "var(--blueish)",
-      backgroundColor: "var(--redish)",
-      shadow: "var(--shadow-blueish)",
-    },
-    {
-      id: 3,
       title: "Sole Soul",
       path: "webbshop",
       label: "React.js",
@@ -137,7 +128,7 @@ export const CardProvider = ({ children }) => {
       ],
     },
     {
-      id: 4,
+      id: 3,
       title: "Class Chat",
       path: "chatapp",
       label: "React Native",
@@ -210,7 +201,7 @@ export const CardProvider = ({ children }) => {
       ],
     },
     {
-      id: 5,
+      id: 4,
       title: "Movie Night",
       path: "movieapp",
       label: "React.js / React Native",
@@ -290,6 +281,35 @@ export const CardProvider = ({ children }) => {
         },
         {
           native: "https://github.com/starleafer/The-Movie-App-Native",
+          icon: <FontAwesomeIcon icon={faGithub} />,
+        },
+      ],
+    },
+    {
+      id: 5,
+      title: "Daily Helper",
+      path: "dashboard",
+      label: "Typescript",
+      color: "var(--silver-light)",
+      backgroundColor: "var(--shadow-blueish)",
+      shadow: "var(--shadow-blueish)",
+      descriptions: {
+        primary:
+          "Daily Helper is a web application that helps you manage your daily tasks and schedule.",
+        secondary: "It is built with React and Typescript.",
+      },
+      images: {
+        browserImage: [
+          {
+            id: "1",          
+            alt: "browser search",
+          },
+        ],
+      },
+
+      repos: [
+        {
+          browser: "https://github.com/starleafer/Daily-Helper",
           icon: <FontAwesomeIcon icon={faGithub} />,
         },
       ],

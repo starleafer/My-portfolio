@@ -11,8 +11,8 @@ function Sidebar() {
 
   if (location.pathname === '/chatapp') {
     sidebarclass = 'chatapp'
-  } else if (location.pathname === '/tictactoe') {
-    sidebarclass = 'tictactoe'
+  } else if (location.pathname === '/dashboard') {
+    sidebarclass = 'dashboard'
   } else if (location.pathname === '/webbshop') {
     sidebarclass = 'webbshop'
   } else if (location.pathname === '/movieapp') {
@@ -27,7 +27,7 @@ function Sidebar() {
 
     if (location.pathname === '/chatapp') {
       cursor.style.borderColor = 'var(--neon-green)';
-    } else if (location.pathname === '/tictactoe') {
+    } else if (location.pathname === '/dashboard') {
         cursor.style.borderColor = 'var(--blueish)'
     } else if (location.pathname === '/webbshop') {
         cursor.style.borderColor = 'var(--bisque)'
@@ -76,7 +76,7 @@ const Container = styled(m.div)`
         border-color: var(--neon-green)
     }
 
-    &.tictactoe {
+    &.dashboard {
         /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
@@ -111,7 +111,7 @@ const AvatarContainer = styled.div`
         border-color: var(--neon-green)
     }
 
-    &.tictactoe {
+    &.dashboard {
         /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
@@ -148,7 +148,7 @@ const SidebarContents = styled.div`
         color: var(--neon-green);
     }
 
-    &.tictactoe {
+    &.dashboard {
         /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
@@ -181,7 +181,7 @@ const Content = styled.div`
         color: var(--neon-green);
     }
 
-    &.tictactoe {
+    &.dashboard {
         /* background-color: var(--redish); */
         color: var(--blueish);
         border-color: var(--blueish)
