@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { motion as m, motion, useScroll } from "framer-motion";
 import { useCardContext } from "../context/CardContext";
@@ -8,7 +8,9 @@ import ProjectDescription from "./ProjectDescription";
 import CustomButton from "./CustomButton";
 import DoubleParallaxImage from "./DoubleParallaxImage";
 import { useNavigate } from "react-router-dom";
-import { useTransitionContext } from '../context/TransitionContext';
+import { useTransitionContext } from "../context/TransitionContext";
+import Lenis from "lenis";
+// import Lenis from "@studio-freight/lenis";
 
 function PageBody({
   title,
@@ -28,7 +30,8 @@ function PageBody({
   const [isSwitchActive, setIsSwitchActive] = useState(false);
   const [touchStart, setTouchStart] = useState(null);
   const [touchEnd, setTouchEnd] = useState(null);
-  
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
   const { card } = useCardContext();
   const navigate = useNavigate();
   const { setRunTransition, triggerTransition } = useTransitionContext();
@@ -41,9 +44,63 @@ function PageBody({
 
   const minSwipeDistance = 50;
 
+  const bodyRef = useRef(null);
+  const contentRef = useRef(null);
+  const [lenisInstance, setLenisInstance] = useState(null);
+
   useEffect(() => {
     setDoubleRepo(isNative && isBrowser);
-  }, [isNative, isBrowser])
+  }, [isNative, isBrowser]);
+
+  useEffect(() => {
+    const isMobile = window.matchMedia(
+      "(max-width: 768px) and (min-width: 321px)"
+    ).matches;
+
+    if (isMobile && bodyRef.current) {
+      const lenis = new Lenis({
+        wrapper: bodyRef.current,
+        content: contentRef.current,
+        duration: 1.2,
+        orientation: "vertical",
+        smooth: true,
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
+
+      setLenisInstance(lenis);
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      return () => {
+        lenis.destroy();
+      };
+    }
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (bodyRef.current) {
+        setShowScrollTop(bodyRef.current.scrollTop > 300);
+      }
+    };
+
+    const currentRef = bodyRef.current;
+    if (currentRef) {
+      currentRef.addEventListener('scroll', handleScroll);
+    }
+
+    return () => {
+      if (currentRef) {
+        currentRef.removeEventListener('scroll', handleScroll);
+      }
+    };
+  }, []);
 
   const handleSwitchView = () => {
     setIsSwitchActive(!isSwitchActive);
@@ -51,20 +108,19 @@ function PageBody({
 
   const handleSwipe = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
 
-    const currentIndex = card.findIndex(item => item.path === currentPath);
+    const currentIndex = card.findIndex((item) => item.path === currentPath);
 
     if (isLeftSwipe) {
-      // Navigate to next project with transition
       setRunTransition(true);
-      triggerTransition('next');
+      triggerTransition("next");
       const nextIndex = (currentIndex + 1) % card.length;
       const nextPath = card[nextIndex].path;
-      
+
       const transitionTimeout = setTimeout(() => {
         setRunTransition(false);
         navigate(`/${nextPath}`);
@@ -72,14 +128,13 @@ function PageBody({
 
       return () => clearTimeout(transitionTimeout);
     }
-    
+
     if (isRightSwipe) {
-      // Navigate to previous project with transition
       setRunTransition(true);
-      triggerTransition('previous');
+      triggerTransition("previous");
       const previousIndex = (currentIndex - 1 + card.length) % card.length;
       const previousPath = card[previousIndex].path;
-      
+
       const transitionTimeout = setTimeout(() => {
         setRunTransition(false);
         navigate(`/${previousPath}`);
@@ -102,14 +157,21 @@ function PageBody({
     handleSwipe();
   };
 
+  const scrollToTop = () => {
+    if (lenisInstance) {
+      lenisInstance.scrollTo(0);
+    }
+  };
+
   return (
-    <Body 
+    <Body
+      ref={bodyRef}
       backgroundColor={backgroundColor}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
       onTouchEnd={onTouchEnd}
     >
-      <Content color={color}>
+      <Content ref={contentRef} color={color}>
         <TitleContainer backgroundColor={backgroundColor}>
           <PageNavigationButton title={title} shadowColor={shadowColor} />
         </TitleContainer>
@@ -134,7 +196,7 @@ function PageBody({
                   invertedColors={invertedColors}
                   doubleRepo={doubleRepo}
                   isSwitchActive={isSwitchActive}
-                />            
+                />
               </ViewContainer>
             ) : (
               <ParallaxImage
@@ -148,6 +210,14 @@ function PageBody({
           </ImageContainer>
         </ContentGroup>
       </Content>
+      <ScrollTopButton 
+        onClick={scrollToTop}
+        show={showScrollTop}
+        color={color}
+        backgroundColor={backgroundColor}
+      >
+        ↑
+      </ScrollTopButton>
     </Body>
   );
 }
@@ -161,19 +231,14 @@ const fadein = keyframes`
 }
 `;
 
-const Body = styled(m.div)`
+const Body = styled.div`
   position: relative;
   display: flex;
-  
   background-color: ${(props) => props.backgroundColor};
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  padding: 0 0 0 0;
-
-  @media (max-width: 1024px) {
-    gap: 5vh;
-  }
+  padding: 0;
 
   @media (max-width: 768px) and (min-width: 321px) {
     margin: 0;
@@ -183,8 +248,8 @@ const Body = styled(m.div)`
     flex-direction: column;
     height: auto;
     min-height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow: hidden;
+    width: 90vw;
   }
 `;
 
@@ -197,7 +262,6 @@ const Content = styled.div`
   flex-direction: column;
   animation: ${fadein} 0.8s forwards;
   position: relative;
-
   color: ${(props) => props.color};
 
   @media (max-width: 768px) and (min-width: 321px) {
@@ -257,7 +321,6 @@ const ViewContainer = styled.div`
   align-items: center;
   justify-content: center;
   gap: 2em;
-
 `;
 
 const ImageContainer = styled(motion.div)`
@@ -275,15 +338,38 @@ const ImageContainer = styled(motion.div)`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: 100vw;
+    width: 90vw;
     height: auto;
     min-height: 100vh;
     position: relative;
-    /* margin-top: 1em; */
-    padding-top: 4em;
-    border: 1px solid red;
   }
 `;
 
+const ScrollTopButton = styled.button`
+  display: none;
+  
+  @media (max-width: 768px) and (min-width: 321px) {
+    display: ${props => props.show ? 'flex' : 'none'};
+    position: fixed;
+    bottom: 2em;
+    right: 1em;
+    width: 2.5em;
+    height: 2.5em;
+    border-radius: 50%;
+    border: 2px solid ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    color: ${props => props.color};
+    font-size: 1.5em;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 1000;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+`;
 
 export default PageBody;

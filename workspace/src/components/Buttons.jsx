@@ -109,7 +109,7 @@ function Buttons({ about, setIsHoverButton }) {
             label="Contact"
             copyMessage={copySuccessMessage}
             showCopyAlert={true}
-          />     
+          />
         </Contact>
       </ButtonContainer>
     </>
@@ -141,12 +141,14 @@ const ButtonContainer = styled.div`
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
 
-    @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: 90vw;
+    position: relative;
+
     align-items: center;
+    justify-content: center;
     background-color: ${(props) => props.backgroundColor};
     height: 5vh;
-    position: sticky;
-    padding: 16px 6vw;
     gap: 20px;
     z-index: 120;
   }
@@ -159,7 +161,6 @@ const Contact = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
 
   @media (max-width: 768px) {
     &.active {

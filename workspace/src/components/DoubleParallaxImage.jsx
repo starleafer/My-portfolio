@@ -94,6 +94,7 @@ const ViewContainer = styled.div`
   width: 100vw;
   overflow: hidden;
   padding-top: 1vh;
+
   
   `;
 
@@ -103,5 +104,6 @@ const ParallaxWrapper = styled.div`
   height: calc(100% - 15vh);
   overflow: hidden;
   `;
+
 
 export default DoubleParallaxImage;

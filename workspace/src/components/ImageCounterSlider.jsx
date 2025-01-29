@@ -85,33 +85,22 @@ const Container = styled.div`
   z-index: 100;
   opacity: 0;
   animation: ${fadeIn} 0.5s ease-in-out forwards;
-  animation-delay: 0.5s;  
+  animation-delay: 0.5s;
 
   @media (max-width: 768px) and (min-width: 321px) {
-    align-items: flex-start;
-    justify-content: flex-start;
-    margin-right: 8em;
-    bottom: 270vh;
-    position: relative;
-    right: 9vw;
-    /* border: 1px solid red; */
-    z-index: ;
-    
+    position: sticky;
+    border: 1px solid red;
+    height: 20vh;
+    top: 50vh;
+
   }
+
 `;
 
 const CounterContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  height: 1em;
-
-  @media (max-width: 768px) and (min-width: 321px) {
-
-    flex-direction: row;
-    /* padding-top: 9em; */
-    gap: 1em;
-  } 
 `;
 
 const Counter = styled.div`

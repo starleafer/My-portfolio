@@ -190,10 +190,16 @@ const Container = styled.div`
   overflow-y: scroll;
   padding-top: 3vh;
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    right: 3vw;
+  }
   
+
 `;
 
 const CardWrapper = styled(motion.div)`
+
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -218,10 +224,11 @@ const CardWrapper = styled(motion.div)`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: 80vw;
+    width: ${(props) => (props.isNative ? "60vw" : "75vw")};
+    left: ${(props) => (props.isNative ? "25vw" : "15vw")};
     justify-content: flex-start;
     margin-left: 1em;
-  
+
   }
 
 `;
