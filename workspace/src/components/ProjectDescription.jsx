@@ -78,8 +78,8 @@ function ProjectDescription({
               border
               pulse
               backgroundColor={backgroundColor}
-              label={isSwitchActive ? "Native View" : "Browser View"}
-              
+              label={isSwitchActive ? "Show Native" : "Show Browser"}   
+              invertedColors={true}
             />
           </ViewSwitchButton>
         )}
@@ -133,19 +133,23 @@ const LinkInner = styled.div`
     padding: 0.5em;
     max-width: 70vw;
     border: none;
+    
   }
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: ${props => props.showViewSwitch ? "center" : "flex-start"};
   gap: 2em;
   min-height: 3em;
+
+ 
 `;
 
 const ViewSwitchButton = styled.div`
+
   display: flex;
   justify-content: flex-start;
   z-index: 90;
@@ -160,8 +164,8 @@ const ViewSwitchButton = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     width: 100%;
-    min-width: 100%;
-    justify-content: center;  
+    min-width: 20%;
+    justify-content: flex-start;  
     font-size: .8em;
   }
 `;

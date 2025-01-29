@@ -167,13 +167,17 @@ const Button = styled.button`
     props.invertedColors
       ? props.backgroundColor
       : props.color || "var(--dark)"};
-  background-color: transparent;
+    background-color: ${(props) =>
+      props.invertedColors
+        ? props.color
+        : props.backgroundColor || "transparent"};
   border-radius: 10px;
   padding: ${(props) => props.padding || "10px"};
   font-size: clamp(15px, 2vw, 20px);
   font-family: "Poiret One";
   font-weight: 600;
   gap: 0.4em;
+
   background-size: 200% 100%;
   background-position: 100% center;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -184,20 +188,24 @@ const Button = styled.button`
       animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
       border: 1px solid
-        ${props.invertedColors
-          ? props.backgroundColor
-          : props.color || "var(--dark)"};
+        ${
+          props.invertedColors
+            ? props.backgroundColor
+            : props.color || "var(--dark)"
+        };
     }
 
     &:not(:hover) {
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
-      border: 1px solid
-        ${props.border
-          ? props.invertedColors
-            ? props.backgroundColor
-            : props.color
-          : "transparent"};
-    }
+      /* border: 1px solid
+        ${
+          props.border
+            ? props.invertedColors
+              ? props.backgroundColor
+              : props.color
+            : "transparent"
+        };
+    } */
 
     &:focus {
       transform: translateY(-0.3vw);
@@ -216,15 +224,14 @@ const Button = styled.button`
     font-size: 1rem;
   }
 
-
   @media (max-width: 768px) and (min-width: 321px) {
-    width: 6rem;
-    padding: 1.7vw;
-    font-size: 1em;
-    border: 1px solid ${(props) => 
-      props.invertedColors 
-        ? props.backgroundColor 
-        : props.color || "var(--dark)"};
+    width: 9rem;
+    padding: 1.3vw;
+    border: 1px solid
+      ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
   }
 `;
 
