@@ -95,6 +95,8 @@ const Container = styled.div`
   justify-content: center;
   gap: 6em;
   margin-top: 4vh;
+  z-index: 106;
+
 
   @media (max-width: 1536px) {
     margin-top: 1vh;

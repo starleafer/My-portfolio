@@ -298,7 +298,7 @@ const TitleContainer = styled.div`
   justify-content: center;
   position: sticky;
   top: 0;
-  z-index: 106;
+  z-index: 101;
   background-color: ${(props) => props.backgroundColor};
   padding: 20px 0;
 

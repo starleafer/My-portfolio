@@ -123,7 +123,7 @@ const Overlay = styled(m.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 99;
+  z-index: 120;
 `;
 
 const PopoverContent = styled(m.div)`

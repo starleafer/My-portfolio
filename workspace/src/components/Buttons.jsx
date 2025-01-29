@@ -137,7 +137,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   gap: 2.5vh;
   padding: 3vh 2vw;
-  z-index: 5;
+  z-index: 105;
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
 

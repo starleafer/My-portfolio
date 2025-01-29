@@ -1,21 +1,50 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled, { keyframes } from "styled-components";
-import { motion as m } from "framer-motion";
-import ProfilePic from "../../assets/ProfilePic.jpg";
-import profilepic1 from "../../assets/profilepic1.jpg";
-import github from "../../assets/github.jpg";
-import linkedin from "../../assets/linkedin.jpg";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useCardContext } from "../../context/CardContext";
 import CustomButton from "../CustomButton";
+import Lenis from "lenis";
 
 function AboutMe() {
   const { main } = useCardContext();
+  const bodyRef = useRef(null);
+  const contentRef = useRef(null);
+  const [lenisInstance, setLenisInstance] = useState(null);
 
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
+
+
+
+  useEffect(() => {
+    const isMobile = window.matchMedia(
+      "(max-width: 768px) and (min-width: 321px)"
+    ).matches;
+
+    if (isMobile && bodyRef.current) {
+      const lenis = new Lenis({
+        wrapper: bodyRef.current,
+        content: contentRef.current,
+        duration: 1.2,
+        orientation: "vertical",
+        smooth: true,
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
+
+      setLenisInstance(lenis);
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+      return () => {
+        lenis.destroy();
+      };
+    }
+  }, []);
 
   const handleButtonClick = (repo, index) => {
     if (Object.keys(repo)[0] === 'email') {
@@ -32,10 +61,11 @@ function AboutMe() {
   };
 
   return (
-    <Body>
-      <Content>
+    <Body ref={bodyRef}>
+      <Content ref={contentRef}>
         <Text>
           <h2>{main.title}</h2>
+
           <CascadingText delay="0.2s">
             <p>{main.descriptions.primary}</p>
           </CascadingText>
@@ -56,17 +86,20 @@ function AboutMe() {
       </Content>
       <ContactLinksContainer>
         {main.repos.map((repo, index) => (
-          <CustomButton
-            key={index}
-            color={main.color}
-            backgroundColor={main.backgroundColor}
-            onClick={() => handleButtonClick(repo, index)}
-            label={<IconWrapper>{repo.icon}</IconWrapper>}
-            showCopyAlert={Object.keys(repo)[0] === 'email' && copySuccessMessage}
-            copyMessage={copySuccessMessage}
-          />
+          <ButtonWrapper key={index}>
+            <CustomButton
+              color={main.color}
+              backgroundColor={main.backgroundColor}
+              onClick={() => handleButtonClick(repo, index)}
+              label={<IconWrapper>{repo.icon}</IconWrapper>}
+              showCopyAlert={Object.keys(repo)[0] === 'email' && copySuccessMessage}
+              copyMessage={copySuccessMessage}
+              small
+            />
+          </ButtonWrapper>
         ))}
       </ContactLinksContainer>
+
     </Body>
   );
 }
@@ -109,11 +142,13 @@ const Body = styled.div`
   justify-content: center;
   background-color: var(--dark);
   overflow: hidden;
-
-  @media (max-width: 768px) {
-    padding: 0 10vw;
+  
+  @media (max-width: 768px) and (min-width: 321px) {
+    height: 150vh;
+    justify-content: flex-start;
+    align-items: center;
   }
-`;
+  `;
 
 const Content = styled.div`
   display: flex;
@@ -121,6 +156,12 @@ const Content = styled.div`
   width: 60%;
   color: white;
   animation: ${fadeInAnimation} 2s, ${slideInAnimation} 1s;
+  margin-bottom: 15vh;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: 90%;
+  }
+
 `;
 
 const Text = styled.div`
@@ -156,15 +197,21 @@ const Image = styled.img`
     max-width: 15em;
   }
 
-  @media (max-width: 425px) {
-    max-width: 10em;
+  @media (max-width: 768px) and (min-width: 321px) {
+    max-width: 35%;
+    border-radius: 10%;
+    bottom: 15vh;
   }
+
+
+
 `;
 
 const ContactLinksContainer = styled.div`
-  position: relative;
+  position: fixed;
   display: flex;
   width: 60%;
+  height: 5rem;
   justify-content: flex-start;
   align-items: center;
   gap: 2em;
@@ -172,12 +219,36 @@ const ContactLinksContainer = styled.div`
   opacity: 0;
   animation: ${fadeInAnimation} 2s forwards, ${slideInAnimation} 1s forwards;
   animation-delay: 0.7s;
+  bottom: 20vh;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    bottom: 2vh;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 90%;
+  } 
+`;
+
+const ButtonWrapper = styled.div`
+  width: 5rem;  // Match button width
+  height: 2.5rem;  // Match button height
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const IconWrapper = styled.div`
+  transform: translateZ(0);
+  will-change: transform;
+  
   svg {
     width: 2em;
     height: 2em;
+
+    @media (max-width: 768px) and (min-width: 321px) {
+      width: 1.5em;
+      height: 1.5em;
+    }
   }
 `;
 

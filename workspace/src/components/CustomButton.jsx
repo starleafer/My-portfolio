@@ -12,7 +12,7 @@ const CustomButton = ({
   padding,
   backgroundColor,
   invertedColors,
-  pulse,
+  small,
   label,
   previous,
   next,
@@ -32,7 +32,9 @@ const CustomButton = ({
         width={width}
         border={border}
         invertedColors={invertedColors}
+        small={small}
       >
+
         {previous || next ? (
           <>
             {previous && (
@@ -187,14 +189,18 @@ const Button = styled.button`
       transform: translateY(-0.3vw);
       animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
-      border: 1px solid
-        ${props.invertedColors
-          ? props.backgroundColor
-          : props.color || "var(--dark)"};
+      border-color: ${props.invertedColors 
+        ? props.backgroundColor
+        : props.color || "var(--dark)"};
     }
 
     &:not(:hover) {
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
+      border-color: ${props.border  
+        ? props.invertedColors
+          ? props.backgroundColor
+          : props.color
+        : "transparent"};
     }
 
     &:focus {
@@ -215,7 +221,7 @@ const Button = styled.button`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: 9rem;
+    width: ${(props) => props.small ? "4rem" : "9rem"};
     padding: 1.3vw;
     border: 1px solid
       ${(props) =>
