@@ -9,7 +9,7 @@ import MovieApp from "./components/pages/MovieApp";
 import TicTacToe from "./components/pages/TicTacToe";
 import Cleaning from "./components/pages/Cleaning";
 import AboutMe from "./components/pages/AboutMe";
-import Buttons from "./components/Buttons";
+import Buttons from "./components/HeaderMenu";
 import { CardProvider } from "./context/CardContext";
 import { TransitionProvider, useTransitionContext } from "./context/TransitionContext";
 import "../src/index.css";

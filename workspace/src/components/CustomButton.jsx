@@ -34,7 +34,6 @@ const CustomButton = ({
         invertedColors={invertedColors}
         small={small}
       >
-
         {previous || next ? (
           <>
             {previous && (
@@ -65,7 +64,13 @@ const CustomButton = ({
         )}
       </Button>
       {showCopyAlert && copyMessage && (
-        <CopyAlert className="clicked">{copyMessage}</CopyAlert>
+        <CopyAlert
+          color={color}
+          backgroundColor={backgroundColor}
+          className="clicked"
+        >
+          {copyMessage}
+        </CopyAlert>
       )}
     </ButtonContainer>
   );
@@ -164,7 +169,7 @@ const Button = styled.button`
   justify-content: space-evenly;
   align-items: center;
   width: ${(props) => props.width || ""};
-  border: 0px solid;
+  border: 1px solid transparent;
   color: ${(props) =>
     props.invertedColors
       ? props.backgroundColor
@@ -179,40 +184,40 @@ const Button = styled.button`
   font-family: "Poiret One";
   font-weight: 600;
   gap: 0.4em;
-
   background-size: 200% 100%;
   background-position: 100% center;
-  transition: transform 0.3s, box-shadow 0.3s;
-
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   ${(props) => css`
     &:hover {
       transform: translateY(-0.3vw);
       animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
-      border-color: ${props.invertedColors 
-        ? props.backgroundColor
-        : props.color || "var(--dark)"};
+      border: 1px solid
+        ${props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
     }
 
     &:not(:hover) {
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
-      border-color: ${props.border  
-        ? props.invertedColors
-          ? props.backgroundColor
-          : props.color
-        : "transparent"};
+      border-color: transparent;
     }
 
     &:focus {
       transform: translateY(-0.3vw);
       animation: ${fadeInShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
+      border: 1px solid
+        ${props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
     }
 
     &:focus:not(:hover) {
       transform: translateY(0);
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
+      border-color: transparent;
     }
   `}
 
@@ -221,7 +226,7 @@ const Button = styled.button`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: ${(props) => props.small ? "4rem" : "9rem"};
+    width: ${(props) => (props.small ? "4rem" : "9rem")};
     padding: 1.3vw;
     border: 1px solid
       ${(props) =>
@@ -244,8 +249,6 @@ const Button = styled.button`
 `;
 
 const CopyAlert = styled.div`
-
-
   position: absolute;
   left: 6vw;
   margin-left: 1em;
@@ -259,8 +262,8 @@ const CopyAlert = styled.div`
   font-size: 1.1em;
   font-family: "Lato", sans-serif;
   border-radius: 10px;
-  background-color: var(--darker);
-  color: #fff;
+  background-color: ${(props) => props.color};
+  color: ${(props) => props.backgroundColor};
   transform: translateX(-50%);
   transition: transform 0.3s, color 0.3s, background-color 0.3s;
   overflow: hidden;

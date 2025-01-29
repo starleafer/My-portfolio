@@ -5,7 +5,7 @@ import { motion as m } from "framer-motion";
 import { useCardContext } from "../context/CardContext";
 import CustomButton from "./CustomButton";
 
-function Buttons({ about, setIsHoverButton }) {
+function HeaderMenu({ about, setIsHoverButton }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -23,6 +23,10 @@ function Buttons({ about, setIsHoverButton }) {
   let shadow = currentCard.shadow;
 
   if (currentPath === "about") {
+    color = main.backgroundColor;
+    backgroundColor = main.color;
+    shadow = main.shadow;
+  } else if (currentPath === "") {
     color = main.backgroundColor;
     backgroundColor = main.color;
     shadow = main.shadow;
@@ -72,6 +76,8 @@ function Buttons({ about, setIsHoverButton }) {
       clearTimeout(circleAnimationTimeout);
     };
   };
+
+  console.log("THE BG_COLOR!", backgroundColor)
 
   return (
     <>
@@ -189,4 +195,4 @@ const Circle = styled.div`
   }
 `;
 
-export default Buttons;
+export default HeaderMenu;
