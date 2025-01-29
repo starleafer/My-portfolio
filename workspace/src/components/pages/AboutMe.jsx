@@ -13,8 +13,6 @@ function AboutMe() {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
   const [isContactActive, setIsContactActive] = useState(false);
 
-
-
   useEffect(() => {
     const isMobile = window.matchMedia(
       "(max-width: 768px) and (min-width: 321px)"
@@ -202,9 +200,6 @@ const Image = styled.img`
     border-radius: 10%;
     bottom: 15vh;
   }
-
-
-
 `;
 
 const ContactLinksContainer = styled.div`
@@ -230,8 +225,8 @@ const ContactLinksContainer = styled.div`
 `;
 
 const ButtonWrapper = styled.div`
-  width: 5rem;  // Match button width
-  height: 2.5rem;  // Match button height
+  width: 5rem; 
+  height: 2.5rem;  
   display: flex;
   justify-content: center;
   align-items: center;
