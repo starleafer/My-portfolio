@@ -15,6 +15,7 @@ const GalleryImagePopover = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(images.indexOf(image));
 
+
   useEffect(() => {
     if (images.indexOf(image) === -1) {
       setCurrentIndex(0);
@@ -67,7 +68,7 @@ const GalleryImagePopover = ({
               <ClosButtonContainer>
                 <CustomButton
                   color={color}
-                  // backgroundColor={backgroundColor}
+                  backgroundColor={backgroundColor}
                   invertedColors={invertedColors}
                   shadowColor={shadowColor}
                   onClick={onClose}
@@ -82,7 +83,7 @@ const GalleryImagePopover = ({
             <NavigationGroup>
               <CustomButton
                 color={color}
-                // backgroundColor={backgroundColor}
+                backgroundColor={backgroundColor}
                 invertedColors={invertedColors}
                 shadowColor={shadowColor}
                 onClick={handlePrevious}
@@ -95,7 +96,7 @@ const GalleryImagePopover = ({
               />
               <CustomButton
                 color={color}
-                // backgroundColor={backgroundColor}
+                backgroundColor={backgroundColor}
                 invertedColors={invertedColors}
                 shadowColor={shadowColor}
                 onClick={handleNext}
@@ -187,6 +188,7 @@ const ClosButtonContainer = styled.div`
   right: 2em;
   width: 5em;
   margin-top: 0;
+  z-index: 110;
 
   @media (max-width: 768px) and (min-width: 321px) {
     top: -5em;

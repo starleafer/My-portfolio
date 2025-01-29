@@ -40,6 +40,7 @@ function Projectlist({setCursorHoverColor, setIsHoveringCards}) {
                                 id={item.id}
                                 path={item.path}
                                 title={item.title}
+                                type={item.type}
                                 label={item.label}
                                 color={item.color}
                                 backgroundColor={item.backgroundColor}

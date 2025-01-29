@@ -14,7 +14,7 @@ function Cleaning() {
         descriptions={cardData.descriptions}
         repos={cardData.repos}
         browserImages={cardData.images.browserImage}
-        invertedColors
+        invertedColors={true}
       />
       <TransitionScreen />
     </>

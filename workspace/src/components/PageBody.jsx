@@ -16,14 +16,10 @@ function PageBody({
   title,
   descriptions,
   repos,
-  nativeRepo,
-  browserRepo,
-  website,
   nativeImages = [],
   browserImages = [],
   isNative,
   isBrowser,
-  showSwitch,
   invertedColors,
 }) {
   const [doubleRepo, setDoubleRepo] = useState(false);
@@ -92,12 +88,12 @@ function PageBody({
 
     const currentRef = bodyRef.current;
     if (currentRef) {
-      currentRef.addEventListener('scroll', handleScroll);
+      currentRef.addEventListener("scroll", handleScroll);
     }
 
     return () => {
       if (currentRef) {
-        currentRef.removeEventListener('scroll', handleScroll);
+        currentRef.removeEventListener("scroll", handleScroll);
       }
     };
   }, []);
@@ -210,7 +206,7 @@ function PageBody({
           </ImageContainer>
         </ContentGroup>
       </Content>
-      <ScrollTopButton 
+      <ScrollTopButton
         onClick={scrollToTop}
         show={showScrollTop}
         color={color}
@@ -347,18 +343,18 @@ const ImageContainer = styled(motion.div)`
 
 const ScrollTopButton = styled.button`
   display: none;
-  
+
   @media (max-width: 768px) and (min-width: 321px) {
-    display: ${props => props.show ? 'flex' : 'none'};
+    display: ${(props) => (props.show ? "flex" : "none")};
     position: fixed;
     bottom: 2em;
     right: 1em;
     width: 2.5em;
     height: 2.5em;
     border-radius: 50%;
-    border: 2px solid ${props => props.color};
-    background-color: ${props => props.backgroundColor};
-    color: ${props => props.color};
+    border: 2px solid ${(props) => props.color};
+    background-color: ${(props) => props.backgroundColor};
+    color: ${(props) => props.color};
     font-size: 1.5em;
     align-items: center;
     justify-content: center;

@@ -19,7 +19,11 @@ const CustomButton = ({
   cleaning,
   showCopyAlert,
   copyMessage,
+  showViewSwitch,
 }) => {
+  console.log(color);
+  console.log(backgroundColor);
+
   return (
     <ButtonContainer>
       <Button
@@ -33,6 +37,7 @@ const CustomButton = ({
         border={border}
         invertedColors={invertedColors}
         small={small}
+        showViewSwitch={showViewSwitch}
       >
         {previous || next ? (
           <>
@@ -201,7 +206,13 @@ const Button = styled.button`
     &:not(:hover) {
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.8s;
       border-color: ${(props) =>
-        props.border ? `1px solid ${props.color}` : "1px solid transparent"};
+        props.border
+          ? `1px solid ${props.color}`
+          : props.invertedColors && props.border
+          ? props.backgroundColor
+          : "transparent"};
+      background-color: ${(props) =>
+        props.showViewSwitch ? props.color : "transparent"};
     }
 
     &:focus {
@@ -218,7 +229,29 @@ const Button = styled.button`
       transform: translateY(0);
       animation: ${fadeOutShadow(props.shadowColor || "var(--dark)")} 0.5s ease
         forwards;
-      border-color: transparent;
+      border-color: ${props.border
+        ? props.color
+        : props.invertedColors && props.border
+        ? props.backgroundColor
+        : "transparent"};
+    }
+
+    &:active {
+      color: ${(props) =>
+        props.invertedColors
+          ? props.color
+          : props.backgroundColor || "transparent"};
+      background-color: ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
+      transition: color 0.1s, background-color 0.1s;
+
+      ${StyledIcon} {
+        color: ${props.invertedColors
+          ? props.color
+          : props.backgroundColor || "var(--dark)"};
+      }
     }
   `}
 
@@ -234,18 +267,6 @@ const Button = styled.button`
         props.invertedColors
           ? props.backgroundColor
           : props.color || "var(--dark)"};
-
-    &:active {
-      color: ${(props) =>
-        props.invertedColors
-          ? props.color
-          : props.backgroundColor || "transparent"};
-      background-color: ${(props) =>
-        props.invertedColors
-          ? props.backgroundColor
-          : props.color || "var(--dark)"};
-      transition: color 0.1s, background-color 0.1s;
-    }
   }
 `;
 

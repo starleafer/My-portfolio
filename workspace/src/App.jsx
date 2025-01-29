@@ -23,7 +23,7 @@ function App() {
   const { runTransition } = useTransitionContext();
   const location = useLocation();
   const [bgColor, setBgColor] = useState("");
-  const [showSplash, setShowSplash] = useState(false);
+  const [showSplash, setShowSplash] = useState(true);
 
   const [isHoveringCards, setIsHoveringCards] = useState(false);
   const [isHoverButton, setIsHoverButton] = useState(false);

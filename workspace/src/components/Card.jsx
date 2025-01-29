@@ -9,10 +9,12 @@ function Card({
   path,
   title,
   label,
+  type,
   color,
   backgroundColor,
   setCursorHoverColor,
   setIsHoveringCards,
+
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -73,7 +75,7 @@ function Card({
             className={isHovered === id ? "fade-out" : "fade-in"}
             backgroundColor={backgroundColor}
           >
-            {title}
+            {type}
           </Title>
           <Label
             className={isHovered === id ? "fade-out" : "fade-in"}

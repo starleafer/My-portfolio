@@ -28,7 +28,7 @@ const Logo = ({ logo }) => {
             case 4:
                 return <div style={styles.movieNight}>Movie Night</div>;
             case 5:
-                return <div style={styles.dashboard}>Dashboard (WIP)</div>;
+                return <div style={styles.dashboard}>Daily Helper (WIP)</div>;
             default:
                 return null;
         }

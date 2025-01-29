@@ -26,6 +26,7 @@ function ProjectDescription({
   showViewSwitch,
   onSwitchView,
   isSwitchActive,
+
 }) {
 
 
@@ -80,6 +81,7 @@ function ProjectDescription({
               backgroundColor={backgroundColor}
               label={isSwitchActive ? "Show Native" : "Show Browser"}   
               invertedColors={true}
+              showViewSwitch={showViewSwitch}
             />
           </ViewSwitchButton>
         )}
