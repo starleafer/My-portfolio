@@ -123,14 +123,25 @@ function HeaderMenu({ about, setIsHoverButton }) {
 }
 
 const CircleAnimation = keyframes`
-0% {
-  transform: scale(0);
-  opacity: 1;
-}
-100% {
-  transform: scale(4);
-  opacity: 1;
-}
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 1;
+  }
+`;
+
+const CircleAnimationMobile = keyframes`
+  0% {
+    transform: translate(50%, 50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(50%, 50%) scale(300);
+    opacity: 1;
+  }
 `;
 
 const ButtonContainer = styled.div`
@@ -193,7 +204,15 @@ const Circle = styled.div`
   z-index: 9999;
   opacity: 1;
 
-
+  @media (max-width: 768px) and (min-width: 321px) {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    right: 50%;
+    bottom: 50%;
+    transform: translate(50%, 50%);
+    animation: ${CircleAnimationMobile} 1s ease-in-out forwards;
+  }
 `;
 
 export default HeaderMenu;

@@ -193,7 +193,7 @@ const StyledCard = styled.div.attrs({
     animation: ${fadeInShadow} 0.5s ease forwards;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 768px) and (min-width: 321px) {
     border-width: 1px;
     height: 5vh;
     width: 70vw;
@@ -204,8 +204,6 @@ const StyledCard = styled.div.attrs({
     padding: 10px;
 
     &:hover {
-      color: var(--dark) !important;
-      background-color: transparent !important;
       transform: none;
     }
   }
