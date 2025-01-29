@@ -4,24 +4,16 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   base: '/My-portfolio/', 
-
-  resolve: {
-    alias: {
-    },
-  },
-
-  optimizeDeps: {
-    include: ['framer-motion'], 
-    esbuildOptions: {
-      target: 'esnext',
-    },
-  },
-
   build: {
     rollupOptions: {
+  
+      input: 'index.html',
       output: {
+        assetFileNames: 'assets/[name]-[hash][extname]',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].js',
         globals: {
-          'framer-motion': 'framerMotion',
+          'framer-motion': 'framerMotion'
         },
       },
     },
@@ -29,5 +21,8 @@ export default defineConfig({
       include: [/node_modules/],
       transformMixedEsModules: true,
     },
-  }
+  },
+  optimizeDeps: {
+    include: ['framer-motion'],
+  },
 });

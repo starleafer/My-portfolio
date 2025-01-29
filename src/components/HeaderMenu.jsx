@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
-import { motion as m } from "framer-motion";
 import { useCardContext } from "../context/CardContext";
 import CustomButton from "./CustomButton";
 
