@@ -4,6 +4,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  base: '/My-portfolio/', 
   resolve: {
     alias: {
       'framer-motion': resolve(__dirname, 'node_modules/framer-motion'),
