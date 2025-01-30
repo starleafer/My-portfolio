@@ -240,8 +240,9 @@ const Body = styled.div`
     flex-direction: column;
     height: auto;
     min-height: 100vh;
-    /* overflow: hidden; */
     width: 90vw;
+    overflow-y: auto; 
+    -webkit-overflow-scrolling: touch; 
   }
 `;
 
@@ -263,6 +264,7 @@ const Content = styled.div`
     padding-top: 20px;
     margin: 0;
     gap: 2em;
+    overflow-y: visible; 
   }
 `;
 
