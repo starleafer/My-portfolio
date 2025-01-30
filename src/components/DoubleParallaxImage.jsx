@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import ParallaxImage from "./ParallaxImage";
 import styled from "styled-components";
-import CustomButton from "./CustomButton";
 import { motion } from "framer-motion";
 
 const DoubleParallaxImage = ({

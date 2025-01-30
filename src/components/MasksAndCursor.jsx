@@ -107,7 +107,7 @@ const MaskedGroup = styled.div`
 const MaskedSecret = styled(m.div)`
     font-size: 1.8em;
     font-weight: 600;
-    mask-image: url('../../../public/mask.svg');
+    mask-image: url(./mask.svg);
     font-family: "Poiret One", sans-serif;
     mask-repeat: no-repeat;
     mask-size: 40px;

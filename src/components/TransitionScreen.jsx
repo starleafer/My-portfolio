@@ -8,7 +8,7 @@ function TransitionScreen() {
   const { runTransition, transitionDirection } = useTransitionContext();
   const { card } = useCardContext();
 
-  const currentPath = window.location.pathname.replace('/', '');
+  const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
   const currentIndex = card.findIndex((item) => item.path === currentPath);
   const previousIndex = (currentIndex - 1 + card.length) % card.length;
   const nextIndex = (currentIndex + 1) % card.length;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { useButtonContext } from "../context/ButtonContext";
 import { useNavigate } from "react-router-dom";
+import { useButtonContext } from "../context/ButtonContext";
 import AnimatedCard from "./card-animations/AnimatedCard";
 
 function Card({

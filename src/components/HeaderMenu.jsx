@@ -16,7 +16,7 @@ function HeaderMenu({ about, setIsHoverButton }) {
   const { card, main } = useCardContext();
   const navigate = useNavigate();
 
-  const currentPath = window.location.pathname.replace("/", "");
+  const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
   const currentCard = card.find((item) => item.path === currentPath) || card[0];
   let color = currentCard.color;
   let backgroundColor = currentCard.backgroundColor;

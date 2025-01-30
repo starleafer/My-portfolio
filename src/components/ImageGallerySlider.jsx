@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import styled from 'styled-components';
 import Lenis from 'lenis';
-import ImageCounterSlider from './ImageCounterSlider';
 import GalleryImagePopover from './GalleryImagePopover';
+import ImageCounterSlider from './ImageCounterSlider';
 
 const ImageGallerySlider = ({ color, backgroundColor, isNative, shadowColor, invertedColors, images = [] }) => {
   const containerRef = useRef(null);

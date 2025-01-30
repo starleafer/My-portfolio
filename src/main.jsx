@@ -10,7 +10,7 @@ import { TransitionProvider } from './context/TransitionContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename='/My-portfolio/'>
       <TransitionProvider>
         <ButtonProvider>
           <CardProvider>

@@ -1,16 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import styled, { keyframes } from "styled-components";
 import { motion as m, motion, useScroll } from "framer-motion";
+import Lenis from "lenis";
 import { useCardContext } from "../context/CardContext";
-import PageNavigationButton from "./PageNavigationButton";
-import ParallaxImage from "./ParallaxImage";
-import ProjectDescription from "./ProjectDescription";
-import CustomButton from "./CustomButton";
-import DoubleParallaxImage from "./DoubleParallaxImage";
 import { useNavigate } from "react-router-dom";
 import { useTransitionContext } from "../context/TransitionContext";
-import Lenis from "lenis";
-// import Lenis from "@studio-freight/lenis";
+import PageNavigationButton from "./PageNavigationButton";
+import ProjectDescription from "./ProjectDescription";
+import DoubleParallaxImage from "./DoubleParallaxImage";
+import ParallaxImage from "./ParallaxImage";
 
 function PageBody({
   title,
@@ -32,7 +30,7 @@ function PageBody({
   const navigate = useNavigate();
   const { setRunTransition, triggerTransition } = useTransitionContext();
 
-  const currentPath = window.location.pathname.replace("/", "");
+  const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
   const currentCard = card.find((item) => item.path === currentPath) || card[0];
   const color = currentCard.color;
   const backgroundColor = currentCard.backgroundColor;

@@ -32,31 +32,31 @@ export const CardProvider = ({ children }) => {
         browserImage: [
           {
             id: "1",
-            src: "/pageimages/dustbusters/1.png",
+            src: "pageimages/dustbusters/1.png",
             info: "Welcome to the home of Dust Busters! Here you can find...",
             alt: "browser search",
           },
           {
             id: "2",
-            src: "/pageimages/dustbusters/2.png",
+            src: "pageimages/dustbusters/2.png",
             info: "...our booking page..",
             alt: "browser pager",
           },
           {
             id: "3",
-            src: "/pageimages/dustbusters/dbBook.png",
+            src: "pageimages/dustbusters/dbBook.png",
             info: "...our booking form..",
             alt: "browser series",
           },
           {
             id: "4",
-            src: "/pageimages/dustbusters/dbLogin.png",
+            src: "pageimages/dustbusters/dbLogin.png",
             info: "...and our login page!",
             alt: "browser series",
           },
           {
             id: "5",
-            src: "/pageimages/dustbusters/dbReviews.png",
+            src: "pageimages/dustbusters/dbReviews.png",
             info: "Checkout our reviews!",
             alt: "browser series",
           },
@@ -92,31 +92,31 @@ export const CardProvider = ({ children }) => {
         browserImage: [
           {
             id: "1",
-            src: "/pageimages/webbshop/products.png",
+            src: "pageimages/webbshop/products.png",
             info: "Have a look at our products!",
             alt: "browser search",
           },
           {
             id: "2",
-            src: "/pageimages/webbshop/description.png",
+            src: "pageimages/webbshop/description.png",
             info: "And feel free to read more about them!",
             alt: "browser pager",
           },
           {
             id: "3",
-            src: "/pageimages/webbshop/cart.png",
+            src: "pageimages/webbshop/cart.png",
             info: "Did you find something you like? Great! Add it to your cart!",
             alt: "browser series",
           },
           {
             id: "4",
-            src: "/pageimages/webbshop/create.png",
+            src: "pageimages/webbshop/create.png",
             info: "Are you an admin? Cool! You can create new products here!",
             alt: "browser series",
           },
           {
             id: "5",
-            src: "/pageimages/webbshop/admin.png",
+            src: "pageimages/webbshop/admin.png",
             info: "And you can also manage your products here!",
             alt: "browser pager",
           },
@@ -148,49 +148,49 @@ export const CardProvider = ({ children }) => {
         nativeImage: [
           {
             id: "1",
-            src: "/pageimages/chatapp/login.jpg",
+            src: "pageimages/chatapp/login.jpg",
             info: "Welcome to Class Chat! Login to get started!",
             alt: "browser search",
           },
           {
             id: "2",
-            src: "/pageimages/chatapp/registeruser.jpg",
+            src: "pageimages/chatapp/registeruser.jpg",
             info: "Register a new user!",
             alt: "browser pager",
           },
           {
             id: "3",
-            src: "/pageimages/chatapp/chat.jpg",
+            src: "pageimages/chatapp/chat.jpg",
             info: "Start chatting with your friends!",
             alt: "browser series",
           },
           {
             id: "4",
-            src: "/pageimages/chatapp/drawer.jpg",
+            src: "pageimages/chatapp/drawer.jpg",
             info: "And you can also manage your profile here!",
             alt: "browser series",
           },
           {
             id: "5",
-            src: "/pageimages/chatapp/profile.jpg",
+            src: "pageimages/chatapp/profile.jpg",
             info: "Check out your profile!",
             alt: "browser series",
           },
           {
             id: "6",
-            src: "/pageimages/chatapp/photo.jpg",
+            src: "pageimages/chatapp/photo.jpg",
             info: "Upload a profile picture!",
             alt: "browser series",
           },
           {
             id: "7",
-            src: "/pageimages/chatapp/profilephoto.jpg",
+            src: "pageimages/chatapp/profilephoto.jpg",
             info: "And you can also upload a profile picture!",
             alt: "browser series",
           },
           {
             id: "8",
-            src: "/pageimages/chatapp/chatphoto.jpg",
+            src: "pageimages/chatapp/chatphoto.jpg",
             info: "Cool!",
             alt: "browser series",
           },
@@ -222,19 +222,19 @@ export const CardProvider = ({ children }) => {
         browserImage: [
           {
             id: "1",
-            src: "/pageimages/movieapp/browserSearch.png",
+            src: "pageimages/movieapp/browserSearcher.png",
             info: "Time for a movie night! Search for your favorite movie!",
             alt: "browser search",
           },
           {
             id: "2",
-            src: "/pageimages/movieapp/browserPager.png",
+            src: "pageimages/movieapp/browserPager.png",
             info: "We have a wide range of movies to choose from!",
             alt: "browser pager",
           },
           {
             id: "3",
-            src: "/pageimages/movieapp/browserSerier.png",
+            src: "pageimages/movieapp/browserSerier.png",
             info: "Or is it a series you're looking for? We've got you covered!",
             alt: "browser series",
           },
@@ -242,37 +242,37 @@ export const CardProvider = ({ children }) => {
         nativeImage: [
           {
             id: "1",
-            src: "/pageimages/movieapp/login.jpg",
+            src: "pageimages/movieapp/login.jpg",
             info: "Welcome to Movie Night! Login to get started!",
             alt: "browser search",
           },
           {
             id: "2",
-            src: "/pageimages/movieapp/movielist.jpg",
+            src: "pageimages/movieapp/movielist.jpg",
             info: "We have a wide range of movies to choose from!",
             alt: "browser pager",
           },
           {
             id: "3",
-            src: "/pageimages/movieapp/movieinfo.jpg",
+            src: "pageimages/movieapp/movieinfo.jpg",
             info: "Check out the details of your favorite movie!",
             alt: "browser series",
           },
           {
             id: "4",
-            src: "/pageimages/movieapp/search.jpg",
+            src: "pageimages/movieapp/search.jpg",
             info: "Search for your favorite movie!",
             alt: "browser series",
           },
           {
             id: "5",
-            src: "/pageimages/movieapp/drawer.jpg",
+            src: "pageimages/movieapp/drawer.jpg",
             info: "And you can also manage your profile here!",
             alt: "browser series",
           },
           {
             id: "6",
-            src: "/pageimages/movieapp/mypage.jpg",
+            src: "pageimages/movieapp/mypage.jpg",
             info: "Check out your profile!",
             alt: "browser series",
           },
@@ -339,7 +339,7 @@ export const CardProvider = ({ children }) => {
         "Outside of coding, I find inspiration in exploring emerging technologies and trends in the ever-evolving field of frontend development. I am excited to continue pushing boundaries and creating compelling digital experiences that leave a lasting impression.",
     },
     images: {
-      profilePic: "/src/assets/profilepic1.jpg",
+      profilePic: "src/assets/profilepic1.jpg",
     },
     repos: [
       {

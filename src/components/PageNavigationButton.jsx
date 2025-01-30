@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import React from 'react';
+import styled from 'styled-components';
 import { useCardContext } from '../context/CardContext';
-import { useTransitionContext } from '../context/TransitionContext';
 import { useNavigate } from 'react-router-dom';
+import { useTransitionContext } from '../context/TransitionContext';
 import CustomButton from './CustomButton';
 
 function PageNavigationButton({ title, shadowColor }) {
@@ -12,7 +12,7 @@ function PageNavigationButton({ title, shadowColor }) {
   const { setRunTransition, triggerTransition } = useTransitionContext();
 
 
-  const currentPath = window.location.pathname.replace('/', '');
+  const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
   const currentCard = card.find(item => item.path === currentPath) || card[0];
   const currentIndex = card.findIndex(item => item.path === currentPath);
   const color = currentCard.color;
