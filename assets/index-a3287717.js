@@ -1845,7 +1845,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     margin-left: 30px;
     position: absolute;
     background-color: ${e=>e.backgroundColor};
-    z-index: 100;
+    z-index: 0;
   }
 `,wR=R.div`
   position: relative;
