@@ -130,7 +130,7 @@ html, body {
 
 .mask {
   position: absolute;
-  mask-image: url('/workspace/src/utils/useMousePosition.js');
+  mask-image: url('/src/utils/useMousePosition.js');
   color: salmon;
 
 }
