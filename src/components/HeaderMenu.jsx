@@ -162,7 +162,7 @@ const ButtonContainer = styled.div`
     margin-left: 30px;
     position: absolute;
     background-color: ${(props) => props.backgroundColor};
-    z-index: 100;
+    z-index: 0;
   }
 `;
 
