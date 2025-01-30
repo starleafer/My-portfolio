@@ -158,7 +158,8 @@ const ButtonContainer = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    margin-left: 30px;
     position: absolute;
     background-color: ${(props) => props.backgroundColor};
     z-index: 100;

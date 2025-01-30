@@ -115,7 +115,6 @@ const MainContainer = styled.div`
   @media (max-width: 480px) {
     width: 100vw;
     height: 100vh;
-    border: 1px solid red;
   }
 `;
 

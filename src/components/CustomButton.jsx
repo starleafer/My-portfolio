@@ -258,8 +258,9 @@ const Button = styled.button`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: ${(props) => (props.small ? "4rem" : "9rem")};
+    width: ${(props) => (props.small ? "4rem" : "auto")};
     padding: 1.3vw;
+    text-wrap: nowrap;
     border: 1px solid
       ${(props) =>
         props.invertedColors
@@ -291,12 +292,15 @@ const CopyAlert = styled.div`
   &.clicked {
     animation: ${slideAndFadeOut} 2s forwards;
 
-    @media (max-width: 768px) {
+    @media (max-width: 768px) and (min-width: 321px) {
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
-      height: 3.5vh;
-      padding: 6px;
+      width: 80px;
+      height: 25px;
+      padding: 4px;
       left: 100%;
       margin-left: 1em;
+      font-size: .8rem;
+
     }
 
     &::before {
