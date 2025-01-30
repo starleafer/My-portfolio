@@ -88,10 +88,10 @@ const Container = styled.div`
   animation-delay: 0.5s;
 
   @media (max-width: 768px) and (min-width: 321px) {
-    position: sticky;
-    border: 1px solid red;
+    display: none;
+    /* position: relative;
     height: 20vh;
-    top: 50vh;
+    top: 50vh; */
 
   }
 

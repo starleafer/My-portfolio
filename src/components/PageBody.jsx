@@ -47,9 +47,7 @@ function PageBody({
   }, [isNative, isBrowser]);
 
   useEffect(() => {
-    const isMobile = window.matchMedia(
-      "(max-width: 768px) and (min-width: 321px)"
-    ).matches;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
     if (isMobile && bodyRef.current) {
       const lenis = new Lenis({
@@ -242,7 +240,7 @@ const Body = styled.div`
     flex-direction: column;
     height: auto;
     min-height: 100vh;
-    overflow: hidden;
+    /* overflow: hidden; */
     width: 90vw;
   }
 `;
