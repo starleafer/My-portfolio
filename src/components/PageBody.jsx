@@ -282,6 +282,7 @@ const ContentGroup = styled.div`
   @media (max-width: 768px) and (min-width: 321px) {
     flex-direction: column;
     margin-left: 0;
+    gap: 0;
   }
 `;
 

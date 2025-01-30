@@ -150,7 +150,7 @@ const ImageContainer = styled.div`
   background-color: ${(props) => props.backgroundColor};
 
   @media (max-width: 1536px) {
-    width: ${(props) => (props.isNative ? "60%" : "80%")};
+    width: ${(props) => (props.isNative ? "60%" : "55%")};
     height: ${(props) => (props.isNative ? "auto" : "400px")};
   }
 `;
@@ -165,12 +165,12 @@ const PopoverImage = styled(m.img)`
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
 
   @media (max-width: 1536px) {
-    width: ${(props) => (props.isNative ? "100%" : "auto")};
+    width: ${(props) => (props.isNative ? "100%" : "100%")};
     height: ${(props) => (props.isNative ? "auto" : "100%")};
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: ${(props) => (props.isNative ? "70%" : "auto")};
+    width: ${(props) => (props.isNative ? "100%" : "auto")};
     height: ${(props) => (props.isNative ? "auto" : "100%")};
   }
 `;
@@ -197,7 +197,7 @@ const ClosButtonContainer = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     top: ${(props) => props.isNative ? "2em" : props.doubleRepo ? "-5em" : "1em"};
-    right: 4em;
+    right: .5em;
   }
 `;
 

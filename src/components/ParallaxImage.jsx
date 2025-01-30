@@ -194,13 +194,13 @@ const Container = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     right: 3vw;
+    padding: 0;
   }
   
 
 `;
 
 const CardWrapper = styled(motion.div)`
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -230,7 +230,8 @@ const CardWrapper = styled(motion.div)`
     left: ${(props) => (props.isNative ? "25vw" : "15vw")};
     justify-content: flex-start;
     margin-left: 1em;
-
+    flex-direction: column-reverse;
+    gap: ${(props) => (props.isNative ? "0" : "3em")};
   }
 
 `;
@@ -248,13 +249,18 @@ const InfoContainer = styled.div`
   @media (max-width: 1536px) and (min-width: 769px) {
     margin: 0 0 10px 10px;
   }
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    margin: 0 0 10px 10px;
+    width: 90%;
+  }
 `;
 
 const Info = styled.p`
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 10px;
-  font-family: 'Lato', sans-serif;   /* Roboto Flex; */
+  font-family: 'Lato', sans-serif;   
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
@@ -274,8 +280,9 @@ const ImageContainer = styled.div`
   border-radius: 20px;
 
   @media (max-width: 1536px) {
-    height: ${(props) => (props.isNative ? "300px" : "200px")};
-    width: ${(props) => (props.isNative ? "50%" : "60%")};
+    height: ${(props) => (props.isNative ? "350px" : "250px")};
+    width: ${(props) => (props.isNative ? "50%" : "100%")};
+    margin-top: ${(props) => (props.isNative ? "0" : "25px")};
   }
 `;
 

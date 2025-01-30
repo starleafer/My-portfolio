@@ -102,7 +102,6 @@ const DescriptionContainer = styled.div`
     justify-content: center;
     margin: 0 3em;
     width: 75vw;
-    
   }
 `;
 
@@ -128,7 +127,7 @@ const Description = styled.p`
 const LinkGroup = styled.div`
   display: flex;
   flex-direction: row;
-  z-index: 90;
+  z-index: 90; 
 `;
 
 const LinkInner = styled.div`
@@ -144,7 +143,7 @@ const LinkInner = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     gap: 1em;
-    padding: 0.5em;
+    padding: 1em;
     border: none;
   }
 `;
