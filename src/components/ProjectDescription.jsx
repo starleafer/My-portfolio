@@ -26,10 +26,7 @@ function ProjectDescription({
   showViewSwitch,
   onSwitchView,
   isSwitchActive,
-
 }) {
-
-
   return (
     <DescriptionContainer>
       {descriptions.primary && (
@@ -72,18 +69,20 @@ function ProjectDescription({
           </LinkInner>
         </LinkGroup>
         {showViewSwitch && (
-          <ViewSwitchButton>
-            <CustomButton
-              onClick={onSwitchView}
-              color={color}
-              border
-              pulse
-              backgroundColor={backgroundColor}
-              label={isSwitchActive ? "Show Native" : "Show Browser"}   
-              invertedColors={true}
-              showViewSwitch={showViewSwitch}
-            />
-          </ViewSwitchButton>
+          <SwitchButtonContainer>
+            <ViewSwitchButton>
+              <CustomButton
+                onClick={onSwitchView}
+                color={color}
+                border
+                pulse
+                backgroundColor={backgroundColor}
+                label={isSwitchActive ? "Show Native" : "Show Browser"}
+                invertedColors={true}
+                showViewSwitch={showViewSwitch}
+              />
+            </ViewSwitchButton>
+          </SwitchButtonContainer>
         )}
       </ButtonGroup>
     </DescriptionContainer>
@@ -115,19 +114,15 @@ const Description = styled.p`
     font-size: 1.2vw;
   }
 
-
-
-
   @media (max-width: 768px) and (min-width: 321px) {
     font-size: 1em;
   }
-
 `;
 
 const LinkGroup = styled.div`
   display: flex;
   flex-direction: row;
-  z-index: 90; 
+  z-index: 90;
 `;
 
 const LinkInner = styled.div`
@@ -152,20 +147,38 @@ const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: ${props => props.showViewSwitch ? "center" : "flex-start"};
+  justify-content: ${(props) =>
+    props.showViewSwitch ? "center" : "flex-start"};
   gap: 2em;
   min-height: 3em;
- 
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 2em;
+  }
+`;
+
+const SwitchButtonContainer = styled.div`
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    height: 3em;
+    width: 100%;
+  }
 `;
 
 const ViewSwitchButton = styled.div`
-
   display: flex;
   justify-content: flex-start;
   z-index: 90;
   height: 3em;
   min-width: 160px;
-  
+
   & > button {
     width: 100%;
     min-width: 160px;
@@ -175,8 +188,8 @@ const ViewSwitchButton = styled.div`
   @media (max-width: 768px) and (min-width: 321px) {
     width: 100%;
     min-width: 20%;
-    justify-content: flex-start;  
-    font-size: .8em;
+    justify-content: center;
+    font-size: 0.8em;
   }
 `;
 

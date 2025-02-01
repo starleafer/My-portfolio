@@ -231,7 +231,7 @@ const ClosButtonContainer = styled.div`
   position: absolute;
   height: 100vh;
   margin-top: 0;
-  z-index: 110;
+  z-index: 135;
   top: 1vw;
   right: ${(props) => (props.isNative ? "5vw" : "3vw")};
 
