@@ -1279,7 +1279,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   -webkit-text-stroke-color: var(--dark);
 `,T4=R.span`
   display: inline-block; 
-  font-size: clamp(2vw, 10vw, 204px);
+  font-size: clamp(3.5rem, calc(10vw + 1rem), 13rem);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
@@ -1835,7 +1835,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   align-items: center;
   gap: 2.5vh;
   padding: 3vh 2vw;
-  z-index: 102;
+  z-index: 100;
   opacity: ${e=>e.fadeIn?1:0};
   transition: opacity 1s;
 
@@ -1845,7 +1845,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     margin-left: 30px;
     position: absolute;
     background-color: ${e=>e.backgroundColor};
-    z-index: 0;
+    z-index: 100;
   }
 `,wR=R.div`
   position: relative;
