@@ -152,7 +152,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   gap: 2.5vh;
   padding: 3vh 2vw;
-  z-index: 102;
+  z-index: 100;
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
 
@@ -162,7 +162,7 @@ const ButtonContainer = styled.div`
     margin-left: 30px;
     position: absolute;
     background-color: ${(props) => props.backgroundColor};
-    z-index: 0;
+    z-index: 100;
   }
 `;
 
