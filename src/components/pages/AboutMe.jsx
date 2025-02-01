@@ -18,10 +18,8 @@ function AboutMe() {
       "(max-width: 768px) and (min-width: 321px)"
     ).matches;
 
-    if (isMobile && bodyRef.current) {
+    if (isMobile) {
       const lenis = new Lenis({
-        wrapper: bodyRef.current,
-        content: contentRef.current,
         duration: 1.2,
         orientation: "vertical",
         smooth: true,
@@ -43,20 +41,6 @@ function AboutMe() {
       };
     }
   }, []);
-
-  const handleButtonClick = (repo, index) => {
-    if (Object.keys(repo)[0] === "email") {
-      navigator.clipboard.writeText("emil.stjernlof@gmail.com");
-      setCopySuccessMessage("Email copied!");
-      setIsContactActive(true);
-      setTimeout(() => {
-        setIsContactActive(false);
-        setCopySuccessMessage("");
-      }, 2000);
-    } else {
-      window.open(Object.values(repo)[0], "_blank");
-    }
-  };
 
   return (
     <Body ref={bodyRef}>
@@ -147,11 +131,11 @@ const Body = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     height: auto;
-    min-height: 100vh;
-    padding: 5vh 0 5vh 0;
+    overflow: unset; 
     overflow-y: auto; 
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
+    padding: 5vh 0;
   }
 `;
 
@@ -166,7 +150,9 @@ const Content = styled.div`
   @media (max-width: 768px) and (min-width: 321px) {
     width: 90%;
     flex-direction: column;
+    gap: 6em;
     margin: 8vh 0;
+    height: 100vh;
     
   }
 `;
@@ -222,9 +208,12 @@ const Image = styled.img`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    max-width: 60%;
+    /* position: absolute; */
+    /* width: 35%; */
+    height: auto;
     border-radius: 10%;
     margin-top: 0;
+    /* bottom: 60px; */
   }
 `;
 
@@ -249,7 +238,7 @@ const ContactLinksContainer = styled.div`
 
   @media (max-width: 768px) and (min-width: 321px) {
     position: relative;
-    bottom: auto;
+    bottom: -140px;
     left: auto;
     width: 90%;
     margin-top: 2vh;
