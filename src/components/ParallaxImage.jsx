@@ -226,7 +226,7 @@ const CardWrapper = styled(motion.div)`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    width: ${(props) => (props.isNative ? "60vw" : "75vw")};
+    width: ${(props) => (props.isNative ? "60vw" : "72vw")};
     left: ${(props) => (props.isNative ? "25vw" : "15vw")};
     justify-content: flex-start;
     margin-left: 1em;
@@ -281,7 +281,7 @@ const ImageContainer = styled.div`
 
   @media (max-width: 1536px) {
     height: ${(props) => (props.isNative ? "350px" : "250px")};
-    width: ${(props) => (props.isNative ? "50%" : "100%")};
+    width: ${(props) => (props.isNative ? "80%" : "100%")};
     margin-top: ${(props) => (props.isNative ? "0" : "25px")};
   }
 `;

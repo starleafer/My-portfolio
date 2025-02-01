@@ -14,7 +14,6 @@ function Card({
   backgroundColor,
   setCursorHoverColor,
   setIsHoveringCards,
-
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
@@ -38,7 +37,6 @@ function Card({
       clearTimeout(circleAnimationTimeout);
     };
   };
-
 
   return (
     <Body>
@@ -83,7 +81,9 @@ function Card({
           >
             {label}
           </Label>
-          <AnimatedCard isVisible={isHovered === id} id={id} delay="0.3s" />
+          {window.innerWidth > 480 && (
+            <AnimatedCard isVisible={isHovered === id} id={id} delay="0.3s" />
+          )}{" "}
         </StyledCard>
       </CardContainer>
     </Body>
@@ -217,14 +217,17 @@ const StyledCard = styled.div.attrs({
     padding: 10px;
 
     &:active {
-      background-color: ${props => props.backgroundColor};
-      color: ${props => props.color};
+      background-color: ${(props) => props.cursorHoverColor};
+      color: white;
+      transition: all 0.3s ease;
     }
 
     &:hover {
-      color: var(--dark) !important;
-      background-color: transparent !important;
+      color: var(--dark);
+      background-color: transparent;
       transform: none;
+      animation: none;
+      box-shadow: none;
     }
   }
 `;
