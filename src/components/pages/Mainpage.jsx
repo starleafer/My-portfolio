@@ -175,6 +175,7 @@ const TitleLetters = styled.span`
   &:not(:hover) {
     animation: ${fadeOutShadow} 0.8s  forwards;
   }
+
 `;
 
 export default Mainpage;

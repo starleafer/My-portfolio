@@ -21,14 +21,12 @@ const CustomButton = ({
   copyMessage,
   showViewSwitch,
 }) => {
-
   return (
     <ButtonContainer>
       <Button
         onClick={onClick}
         color={color}
         backgroundColor={backgroundColor}
-        // shadowColor={shadowColor}
         padding={padding}
         cleaning={cleaning}
         width={width}
@@ -257,18 +255,57 @@ const Button = styled.button`
     font-size: 1rem;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
-    width: ${(props) => (props.small ? "4rem" : "auto")};
+ @media (max-width: 768px) and (min-width: 321px) {
+    width: ${(props) =>
+      props.small ? "3rem" : props.width ? props.width : "auto"};
+    height: ${(props) =>
+      props.small ? "3rem" : props.height ? props.height : "auto"};
     padding: 1.3vw;
     text-wrap: nowrap;
-    border: 1px solid
-      ${(props) =>
+    border: 1px solid ${(props) =>
+      props.invertedColors
+        ? props.backgroundColor
+        : props.color || "var(--dark)"};
+    transform: none;
+    box-shadow: none;
+    animation: none;
+
+    &:hover {
+      transform: none;
+      animation: none;
+      border: 1px solid ${(props) =>
         props.invertedColors
           ? props.backgroundColor
           : props.color || "var(--dark)"};
+    }
+
+    &:focus {
+      transform: none;
+      animation: none;
+      border: 1px solid ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
+    }
+
+    &:focus:not(:hover) {
+      transform: none;
+      animation: none;
+      border: 1px solid ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
+    }
+
+    &:not(:hover) {
+      animation: none;
+      border: 1px solid ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
+    }
   }
 `;
-
 const CopyAlert = styled.div`
   position: absolute;
   left: 6vw;
@@ -299,8 +336,7 @@ const CopyAlert = styled.div`
       padding: 4px;
       left: 100%;
       margin-left: 1em;
-      font-size: .8rem;
-
+      font-size: 0.8rem;
     }
 
     &::before {

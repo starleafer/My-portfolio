@@ -212,17 +212,17 @@ const AppContainer = styled.div`
   position: relative;
   overflow: hidden;
   background-color: ${(props) => props.color};
+
+
 `;
 
 const Content = styled.div`
   flex-grow: 1;
-  /* height: 100%; */
 `;
 
 const ScrollContainer = styled.div`
   display: flex;
   flex-direction: row;
-  /* height: 100%; */
   overflow-y: auto;
   overflow-x: hidden;
 

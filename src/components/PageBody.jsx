@@ -244,6 +244,7 @@ const Body = styled.div`
     overflow-y: auto; 
     -webkit-overflow-scrolling: touch; 
   }
+
 `;
 
 const Content = styled.div`
