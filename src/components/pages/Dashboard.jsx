@@ -22,7 +22,9 @@ function Dashboard() {
           <Message>
             Currently under development. Please check back soon!
           </Message>
-          <PageNavigationButton />
+          <NavigationContainer>
+            <PageNavigationButton />
+          </NavigationContainer>
         </Content>
       </Body>
       {runTransition === true ? <TransitionScreen /> : ""}
@@ -48,6 +50,22 @@ const Content = styled.div`
   justify-content: center;
   height: 100%;
   width: 30%;
+
+  @media (max-width: 768px) and (min-width: 321px) {
+    width: 70vw;
+    height: auto;
+    min-height: 100vh;
+    position: relative;
+  }
+`;
+
+const NavigationContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4em;
+  width: 90vw;
 `;
 
 const Title = styled.h1`
@@ -59,7 +77,7 @@ const Text = styled.p`
 `;
 
 const Message = styled.h3`
-  color: var(--silver-light);
+  color: var(--yellowish);
   text-decoration: underline;
 `;
 
