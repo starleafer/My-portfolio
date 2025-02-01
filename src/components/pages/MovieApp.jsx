@@ -1,6 +1,4 @@
-import React, { useState } from 'react'
-import styled, { keyframes } from "styled-components";
-import { motion as m } from 'framer-motion';
+import React from 'react'
 import PageBody from '../PageBody';
 import TransitionScreen from '../TransitionScreen';
 import { useTransitionContext } from '../../context/TransitionContext';

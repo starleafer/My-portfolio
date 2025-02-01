@@ -222,7 +222,7 @@ export const CardProvider = ({ children }) => {
         browserImage: [
           {
             id: "1",
-            src: "pageimages/movieapp/browserSearcher.png",
+            src: "pageimages/movieapp/browserSearch.png",
             info: "Time for a movie night! Search for your favorite movie!",
             alt: "browser search",
           },
