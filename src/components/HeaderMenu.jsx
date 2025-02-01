@@ -161,7 +161,7 @@ const ButtonContainer = styled.div`
     justify-content: flex-start;
     margin-left: 30px;
     position: absolute;
-    background-color: ${(props) => props.backgroundColor};
+    background-color: ${(props) => props.color};
     z-index: 100;
   }
 `;

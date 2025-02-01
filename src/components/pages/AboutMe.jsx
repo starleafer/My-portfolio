@@ -18,7 +18,6 @@ function AboutMe() {
       "(max-width: 768px) and (min-width: 321px)"
     ).matches;
 
-    // Only initialize Lenis for mobile
     if (isMobile && bodyRef.current) {
       const lenis = new Lenis({
         wrapper: bodyRef.current,
@@ -150,7 +149,7 @@ const Body = styled.div`
     height: auto;
     min-height: 100vh;
     padding: 5vh 0 5vh 0;
-    overflow-y: auto; // Enable scrolling for mobile
+    overflow-y: auto; 
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
   }
@@ -184,6 +183,7 @@ const Text = styled.div`
     margin-right: 0;
     margin-bottom: 4vh;
     max-width: 100%;
+
   }
 `;
 
@@ -202,7 +202,7 @@ const CascadingText = styled.div`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    font-size: 2.4vw;
+    font-size: 3.4vw;
   }
 `;
 
