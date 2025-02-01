@@ -240,7 +240,6 @@ const Body = styled.div`
     flex-direction: column;
     height: auto;
     min-height: 100vh;
-    width: 90vw;
     overflow-y: auto; 
     -webkit-overflow-scrolling: touch; 
   }
