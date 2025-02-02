@@ -842,7 +842,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 768px) {
     /* border-radius: 15px; */
   }
-`;var Vb={prefix:"fab",iconName:"spotify",icon:[496,512,[],"f1bc","M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"]},$b={prefix:"fab",iconName:"linkedin",icon:[448,512,[],"f08c","M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"]},Un={prefix:"fab",iconName:"github",icon:[496,512,[],"f09b","M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"]},Bb={prefix:"fas",iconName:"arrow-up-right-from-square",icon:[512,512,["external-link"],"f08e","M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"]},Ub={prefix:"fas",iconName:"arrow-right",icon:[448,512,[8594],"f061","M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"]},Wb={prefix:"fas",iconName:"arrow-left",icon:[448,512,[8592],"f060","M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"]},Hb={prefix:"fas",iconName:"envelope",icon:[512,512,[128386,9993,61443],"f0e0","M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"]};const l1=w.createContext(),al=({children:e})=>{const t=[{id:1,title:"Dust Busters",path:"cleaning",type:"Cleaning service",label:"React.js",color:"var(--dark)",backgroundColor:"var(--yellowish)",shadow:"var(--shadow-yellowish)",descriptions:{primary:"Embark on a journey with Dust Busters, an exceptional online platform meticulously hosted on Firebase. This website combines innovative front-end design with a robust back-end infrastructure, complemented by CRUD logic.",secondary:"Envision a React-based front-end that simplifies your experience, whether you're navigating bookings, securely logging in, or leaving insightful reviews. It's akin to having a highly efficient superhero dedicated to cleaning services, right at your fingertips.",tertiary:"Benefiting from Firebase's enchanting hosting capabilities, our site operates with unparalleled efficiency. Swift, secure, and poised for action, Dust Busters stands as your premier destination for a dynamic and reliable online experience. Streamlined cleanup, tailored to perfection!"},images:{browserImage:[{id:"1",src:"pageimages/dustbusters/1.png",info:"Welcome to the home of Dust Busters! Here you can find...",alt:"browser search"},{id:"2",src:"pageimages/dustbusters/2.png",info:"...our booking page..",alt:"browser pager"},{id:"3",src:"pageimages/dustbusters/dbBook.png",info:"...our booking form..",alt:"browser series"},{id:"4",src:"pageimages/dustbusters/dbLogin.png",info:"...and our login page!",alt:"browser series"},{id:"5",src:"pageimages/dustbusters/dbReviews.png",info:"Checkout our reviews!",alt:"browser series"}]},repos:[{browser:"https://github.com/jonaelghid3y/DustBusters",icon:v.jsx(De,{icon:Un})},{website:"https://dustbusters-207c6.web.app/",icon:v.jsx(De,{icon:Bb})}]},{id:2,title:"Sole Soul",path:"webbshop",type:"Web store",label:"React.js",color:"var(--bisque)",backgroundColor:"var(--greenish)",shadow:"var(--shadow-bisuqe)",descriptions:{primary:"Greetings, shoe enthusiasts! Step into Sole Soul, where our dynamic webshop, built on the powerful CRUD (Create, Read, Update, Delete) API, transforms the admin and customer experience. This React-based app, fueled by Railway's magic, smoothly empowers our webshop, ensuring effortless product management. Welcome to a new era of streamlined and efficient online shopping!",secondary:"Adding new styles, updating our collection, retrieving your favorite picks, and removing items—all done seamlessly. It's like having a reliable assistant for our admins, boosting the project's scalability and making maintenance a walk in the park. At Sole Soul, we're all about making your shoe-shopping journey simple and stylish!"},images:{browserImage:[{id:"1",src:"pageimages/webbshop/products.png",info:"Have a look at our products!",alt:"browser search"},{id:"2",src:"pageimages/webbshop/description.png",info:"And feel free to read more about them!",alt:"browser pager"},{id:"3",src:"pageimages/webbshop/cart.png",info:"Did you find something you like? Great! Add it to your cart!",alt:"browser series"},{id:"4",src:"pageimages/webbshop/create.png",info:"Are you an admin? Cool! You can create new products here!",alt:"browser series"},{id:"5",src:"pageimages/webbshop/admin.png",info:"And you can also manage your products here!",alt:"browser pager"}]},repos:[{browser:"https://github.com/tobionesies/gruppuppgift-webshop-let",icon:v.jsx(De,{icon:Un})}]},{id:3,title:"Class Chat",path:"chatapp",type:"Chat app",label:"React Native",color:"var(--neon-green)",backgroundColor:"var(--light-purple)",shadow:"var(--shadow-neon-green)",descriptions:{primary:"Class Chat serves as a dedicated platform for group communication, meticulously designed to facilitate smooth interaction within your class or group. Leveraging CRUD logic (Create, Read, Update, Delete), it efficiently manages users and messages, ensuring easy collaboration. Security is paramount, with the implementation of a secure access token mechanism, allowing only authorized individuals to join the conversation.",secondary:"Whether you're in a classroom setting or simply spending time with your friends, Class Chat provides a comprehensive solution for your communication needs. The platform empowers you to create a dynamic and engaging space for your group, giving you control over participants and content. Here's to hassle-free communication!"},images:{nativeImage:[{id:"1",src:"pageimages/chatapp/login.jpg",info:"Welcome to Class Chat! Login to get started!",alt:"browser search"},{id:"2",src:"pageimages/chatapp/registeruser.jpg",info:"Register a new user!",alt:"browser pager"},{id:"3",src:"pageimages/chatapp/chat.jpg",info:"Start chatting with your friends!",alt:"browser series"},{id:"4",src:"pageimages/chatapp/drawer.jpg",info:"And you can also manage your profile here!",alt:"browser series"},{id:"5",src:"pageimages/chatapp/profile.jpg",info:"Check out your profile!",alt:"browser series"},{id:"6",src:"pageimages/chatapp/photo.jpg",info:"Upload a profile picture!",alt:"browser series"},{id:"7",src:"pageimages/chatapp/profilephoto.jpg",info:"And you can also upload a profile picture!",alt:"browser series"},{id:"8",src:"pageimages/chatapp/chatphoto.jpg",info:"Cool!",alt:"browser series"}]},repos:[{browser:"https://github.com/starleafer/ClassChat",icon:v.jsx(De,{icon:Un})}]},{id:4,title:"Movie Night",path:"movieapp",type:"Movie browser",label:"React.js / React Native",color:"var(--redish)",backgroundColor:"var(--darker)",shadow:"var(--shadow-redish)",descriptions:{primary:"Welcome to Movie Night, where we've got your movie cravings covered effortlessly with the OMDb API. Dive into a treasure trove of movie details, spanning from classic gems to the latest blockbusters. Get the info on titles, release dates, genres, casts, runtimes, ratings, and more.",secondary:"The magic doesn't stop there! With the power-packed combo of React and React Native, Movie Night ensures a seamless experience across different platforms. Whether you're chilling on the web version (courtesy of React) or enjoying the mobile app (crafted with React Native) on your smartphones and tablets, movie exploration has never been this effortless. Time to let the movie marathon begin!"},images:{browserImage:[{id:"1",src:"pageimages/movieapp/browserSearch.png",info:"Time for a movie night! Search for your favorite movie!",alt:"browser search"},{id:"2",src:"pageimages/movieapp/browserPager.png",info:"We have a wide range of movies to choose from!",alt:"browser pager"},{id:"3",src:"pageimages/movieapp/browserSerier.png",info:"Or is it a series you're looking for? We've got you covered!",alt:"browser series"}],nativeImage:[{id:"1",src:"pageimages/movieapp/login.jpg",info:"Welcome to Movie Night! Login to get started!",alt:"browser search"},{id:"2",src:"pageimages/movieapp/movielist.jpg",info:"We have a wide range of movies to choose from!",alt:"browser pager"},{id:"3",src:"pageimages/movieapp/movieinfo.jpg",info:"Check out the details of your favorite movie!",alt:"browser series"},{id:"4",src:"pageimages/movieapp/search.jpg",info:"Search for your favorite movie!",alt:"browser series"},{id:"5",src:"pageimages/movieapp/drawer.jpg",info:"And you can also manage your profile here!",alt:"browser series"},{id:"6",src:"pageimages/movieapp/mypage.jpg",info:"Check out your profile!",alt:"browser series"}]},repos:[{browser:"https://github.com/starleafer/The-movie-app",icon:v.jsx(De,{icon:Un})},{native:"https://github.com/starleafer/The-Movie-App-Native",icon:v.jsx(De,{icon:Un})}]},{id:5,title:"Daily Helper",path:"dashboard",type:"Dashboard",label:"Typescript, Next.js",color:"var(--silver-light)",backgroundColor:"var(--shadow-blueish)",shadow:"var(--shadow-blueish)",descriptions:{primary:"Daily Helper is a web application that helps you manage your daily tasks and schedule.",secondary:"It is built with React and Typescript."},images:{browserImage:[{id:"1",alt:"browser search"}]},repos:[{browser:"https://github.com/starleafer/Daily-Helper",icon:v.jsx(De,{icon:Un})}]}],n={id:1,title:"About Emil",path:"about",color:"white",backgroundColor:"var(--dark)",shadow:"var(--shadow-dark)",descriptions:{primary:v.jsxs(v.Fragment,{children:["Well hello there! Nice to see you here.",v.jsx("br",{}),"I'm Emil Stjernlöf, a newly graduated Frontend Developer based in Uppsala, Sweden. As a 30-something former health care worker, I decided to broaden my views and pursue a career change. Scary, I know!",v.jsx("br",{}),v.jsx("br",{}),"From 2022 to 2024, I studied frontend development at Jensen Yrkeshögskola in Kista, where I honed my skills in building engaging and user-friendly web experiences using"," ",v.jsx("b",{style:{color:"var(--neon-green)"},children:"JavaScript"}),",",v.jsx("b",{style:{color:"var(--neon-green)"},children:" React"}),", and",v.jsx("b",{style:{color:"var(--neon-green)"},children:" React Native"}),"."]}),secondary:v.jsx(v.Fragment,{children:"I enjoy working on dynamic and interactive applications that respond to users' needs. For me, great frontend development is about more than just writing code—it's about designing intuitive and visually appealing experiences that make people's lives easier."}),tertiary:v.jsxs(v.Fragment,{children:["During my time at Jensen, I also had the opportunity to gain hands-on experience through a work placement (LIA) at Sigholm. There, I developed my skills in"," ",v.jsx("b",{style:{color:"var(--neon-green)"},children:"TypeScript"})," and agile methodologies, gaining valuable insight into real-world development workflows. This experience also taught me how to quickly adapt to new technologies and work efficiently in a dynamic environment."]}),quaternary:v.jsx(v.Fragment,{children:"I’m excited about the opportunity to pursue this new path. Outside of coding, I love exploring new technologies and keeping up with the latest trends in frontend development. I’m always looking for ways to push my skills further and create digital experiences that are both impactful and memorable."})},images:{profilePic:"pageimages/aboutme/profilepic1.jpg",profilePic2:"pageimages/aboutme/profilepic2.jpg",profilePic3:"pageimages/aboutme/profilepic3.jpg",profilePic4:"pageimages/aboutme/profilepic4.jpg",profilePic5:"pageimages/aboutme/profilepic5.jpg",profilePic6:"pageimages/aboutme/profilepic6.jpg",profilePic7:"pageimages/aboutme/profilepic7.jpg"},repos:[{browser:"https://github.com/starleafer",icon:v.jsx(De,{icon:Un})},{linkedin:"https://www.linkedin.com/in/emil-stjernlof/",icon:v.jsx(De,{icon:$b})},{email:"mailto:emil.stjernlof@gmail.com",icon:v.jsx(De,{icon:Hb})}],music:[{song:"https://open.spotify.com/track/1A6u3ufwPK5apJlpmXjOK8?si=6707a186001f4f8b",songtitle:"Jonathan Johansson - På Boulevarden"},{song:"https://open.spotify.com/track/7j3KGtoP432CcQLA9zLrAo?si=ae7dc7e146734b27",songtitle:"Drab Majesty - Ellipsis"},{song:"https://open.spotify.com/track/3xKsf9qdS1CyvXSMEid6g8?si=d6f658457e794997",songtitle:"Frank Ocean - Pink + White"},{song:"https://open.spotify.com/track/2cGlzTR9gC93lc12cZ8afB?si=66362dab1fa94d5d",songtitle:"Moonica Mac - 80´s"},{song:"https://open.spotify.com/track/413CBplTN03RNZD8H34B6q?si=a5a98e900ac14884",songtitle:"The War On Drugs - Strangest Thing"}],musicIcon:v.jsx(De,{icon:Vb,style:{width:"1em",height:"1em"}})};return v.jsx(l1.Provider,{value:{card:t,main:n},children:e})};al.propTypes={children:M.node.isRequired};const Bt=()=>w.useContext(l1),gd=w.createContext({});function Si(e){const t=w.useRef(null);return t.current===null&&(t.current=e()),t.current}const ll=w.createContext(null),Wo=w.createContext({transformPagePoint:e=>e,isStatic:!1,reducedMotion:"never"});class Yb extends w.Component{getSnapshotBeforeUpdate(t){const n=this.props.childRef.current;if(n&&t.isPresent&&!this.props.isPresent){const r=n.offsetParent,i=r instanceof HTMLElement&&r.offsetWidth||0,o=this.props.sizeRef.current;o.height=n.offsetHeight||0,o.width=n.offsetWidth||0,o.top=n.offsetTop,o.left=n.offsetLeft,o.right=i-o.width-o.left}return null}componentDidUpdate(){}render(){return this.props.children}}function Kb({children:e,isPresent:t,anchorX:n}){const r=w.useId(),i=w.useRef(null),o=w.useRef({width:0,height:0,top:0,left:0,right:0}),{nonce:s}=w.useContext(Wo);return w.useInsertionEffect(()=>{const{width:a,height:l,top:u,left:c,right:f}=o.current;if(t||!i.current||!a||!l)return;const d=n==="left"?`left: ${c}`:`right: ${f}`;i.current.dataset.motionPopId=r;const m=document.createElement("style");return s&&(m.nonce=s),document.head.appendChild(m),m.sheet&&m.sheet.insertRule(`
+`;var Vb={prefix:"fab",iconName:"spotify",icon:[496,512,[],"f1bc","M248 8C111.1 8 0 119.1 0 256s111.1 248 248 248 248-111.1 248-248S384.9 8 248 8zm100.7 364.9c-4.2 0-6.8-1.3-10.7-3.6-62.4-37.6-135-39.2-206.7-24.5-3.9 1-9 2.6-11.9 2.6-9.7 0-15.8-7.7-15.8-15.8 0-10.3 6.1-15.2 13.6-16.8 81.9-18.1 165.6-16.5 237 26.2 6.1 3.9 9.7 7.4 9.7 16.5s-7.1 15.4-15.2 15.4zm26.9-65.6c-5.2 0-8.7-2.3-12.3-4.2-62.5-37-155.7-51.9-238.6-29.4-4.8 1.3-7.4 2.6-11.9 2.6-10.7 0-19.4-8.7-19.4-19.4s5.2-17.8 15.5-20.7c27.8-7.8 56.2-13.6 97.8-13.6 64.9 0 127.6 16.1 177 45.5 8.1 4.8 11.3 11 11.3 19.7-.1 10.8-8.5 19.5-19.4 19.5zm31-76.2c-5.2 0-8.4-1.3-12.9-3.9-71.2-42.5-198.5-52.7-280.9-29.7-3.6 1-8.1 2.6-12.9 2.6-13.2 0-23.3-10.3-23.3-23.6 0-13.6 8.4-21.3 17.4-23.9 35.2-10.3 74.6-15.2 117.5-15.2 73 0 149.5 15.2 205.4 47.8 7.8 4.5 12.9 10.7 12.9 22.6 0 13.6-11 23.3-23.2 23.3z"]},$b={prefix:"fab",iconName:"linkedin",icon:[448,512,[],"f08c","M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"]},Un={prefix:"fab",iconName:"github",icon:[496,512,[],"f09b","M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"]},Bb={prefix:"fas",iconName:"arrow-up-right-from-square",icon:[512,512,["external-link"],"f08e","M320 0c-17.7 0-32 14.3-32 32s14.3 32 32 32h82.7L201.4 265.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L448 109.3V192c0 17.7 14.3 32 32 32s32-14.3 32-32V32c0-17.7-14.3-32-32-32H320zM80 32C35.8 32 0 67.8 0 112V432c0 44.2 35.8 80 80 80H400c44.2 0 80-35.8 80-80V320c0-17.7-14.3-32-32-32s-32 14.3-32 32V432c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16V112c0-8.8 7.2-16 16-16H192c17.7 0 32-14.3 32-32s-14.3-32-32-32H80z"]},Ub={prefix:"fas",iconName:"arrow-right",icon:[448,512,[8594],"f061","M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"]},Wb={prefix:"fas",iconName:"arrow-left",icon:[448,512,[8592],"f060","M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"]},Hb={prefix:"fas",iconName:"envelope",icon:[512,512,[128386,9993,61443],"f0e0","M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"]};const l1=w.createContext(),al=({children:e})=>{const t=[{id:1,title:"Dust Busters",path:"cleaning",type:"Cleaning service",label:"React.js",color:"var(--dark)",backgroundColor:"var(--yellowish)",shadow:"var(--shadow-yellowish)",descriptions:{primary:"Embark on a journey with Dust Busters, an exceptional online platform meticulously hosted on Firebase. This website combines innovative front-end design with a robust back-end infrastructure, complemented by CRUD logic.",secondary:"Envision a React-based front-end that simplifies your experience, whether you're navigating bookings, securely logging in, or leaving insightful reviews. It's akin to having a highly efficient superhero dedicated to cleaning services, right at your fingertips.",tertiary:"Powered by Firebase's seamless hosting, Dust Busters delivers a fast, secure, and reliable online experience. Effortless cleanup, perfected for you!"},images:{browserImage:[{id:"1",src:"pageimages/dustbusters/1.png",info:"Welcome to the home of Dust Busters! Here you can find...",alt:"browser search"},{id:"2",src:"pageimages/dustbusters/2.png",info:"...our booking page..",alt:"browser pager"},{id:"3",src:"pageimages/dustbusters/dbBook.png",info:"...our booking form..",alt:"browser series"},{id:"4",src:"pageimages/dustbusters/dbLogin.png",info:"...and our login page!",alt:"browser series"},{id:"5",src:"pageimages/dustbusters/dbReviews.png",info:"Checkout our reviews!",alt:"browser series"}]},repos:[{browser:"https://github.com/jonaelghid3y/DustBusters",icon:v.jsx(De,{icon:Un})},{website:"https://dustbusters-207c6.web.app/",icon:v.jsx(De,{icon:Bb})}]},{id:2,title:"Sole Soul",path:"webbshop",type:"Web store",label:"React.js",color:"var(--bisque)",backgroundColor:"var(--greenish)",shadow:"var(--shadow-bisuqe)",descriptions:{primary:"Greetings, shoe enthusiasts! Step into Sole Soul, where our dynamic webshop, built on the powerful CRUD (Create, Read, Update, Delete) API, transforms the admin and customer experience. This React-based app, fueled by Railway's magic, smoothly empowers our webshop, ensuring effortless product management. Welcome to a new era of streamlined and efficient online shopping!",secondary:"Adding new styles, updating our collection, retrieving your favorite picks, and removing items—all done seamlessly. It's like having a reliable assistant for our admins, boosting the project's scalability and making maintenance a walk in the park. At Sole Soul, we're all about making your shoe-shopping journey simple and stylish!"},images:{browserImage:[{id:"1",src:"pageimages/webbshop/products.png",info:"Have a look at our products!",alt:"browser search"},{id:"2",src:"pageimages/webbshop/description.png",info:"And feel free to read more about them!",alt:"browser pager"},{id:"3",src:"pageimages/webbshop/cart.png",info:"Did you find something you like? Great! Add it to your cart!",alt:"browser series"},{id:"4",src:"pageimages/webbshop/create.png",info:"Are you an admin? Cool! You can create new products here!",alt:"browser series"},{id:"5",src:"pageimages/webbshop/admin.png",info:"And you can also manage your products here!",alt:"browser pager"}]},repos:[{browser:"https://github.com/tobionesies/gruppuppgift-webshop-let",icon:v.jsx(De,{icon:Un})}]},{id:3,title:"Class Chat",path:"chatapp",type:"Chat app",label:"React Native",color:"var(--neon-green)",backgroundColor:"var(--light-purple)",shadow:"var(--shadow-neon-green)",descriptions:{primary:"Class Chat serves as a dedicated platform for group communication, meticulously designed to facilitate smooth interaction within your class or group. Leveraging CRUD logic (Create, Read, Update, Delete), it efficiently manages users and messages, ensuring easy collaboration. Security is paramount, with the implementation of a secure access token mechanism, allowing only authorized individuals to join the conversation.",secondary:"Whether you're in a classroom setting or simply spending time with your friends, Class Chat provides a comprehensive solution for your communication needs. The platform empowers you to create a dynamic and engaging space for your group, giving you control over participants and content. Here's to hassle-free communication!"},images:{nativeImage:[{id:"1",src:"pageimages/chatapp/login.jpg",info:"Welcome to Class Chat! Login to get started!",alt:"browser search"},{id:"2",src:"pageimages/chatapp/registeruser.jpg",info:"Register a new user!",alt:"browser pager"},{id:"3",src:"pageimages/chatapp/chat.jpg",info:"Start chatting with your friends!",alt:"browser series"},{id:"4",src:"pageimages/chatapp/drawer.jpg",info:"And you can also manage your profile here!",alt:"browser series"},{id:"5",src:"pageimages/chatapp/profile.jpg",info:"Check out your profile!",alt:"browser series"},{id:"6",src:"pageimages/chatapp/photo.jpg",info:"Upload a profile picture!",alt:"browser series"},{id:"7",src:"pageimages/chatapp/profilephoto.jpg",info:"And you can also upload a profile picture!",alt:"browser series"},{id:"8",src:"pageimages/chatapp/chatphoto.jpg",info:"Cool!",alt:"browser series"}]},repos:[{browser:"https://github.com/starleafer/ClassChat",icon:v.jsx(De,{icon:Un})}]},{id:4,title:"Movie Night",path:"movieapp",type:"Movie browser",label:"React.js / React Native",color:"var(--redish)",backgroundColor:"var(--darker)",shadow:"var(--shadow-redish)",descriptions:{primary:"Welcome to Movie Night, where we've got your movie cravings covered effortlessly with the OMDb API. Dive into a treasure trove of movie details, spanning from classic gems to the latest blockbusters. Get the info on titles, release dates, genres, casts, runtimes, ratings, and more.",secondary:"The magic doesn't stop there! With the power-packed combo of React and React Native, Movie Night ensures a seamless experience across different platforms. Whether you're chilling on the web version (courtesy of React) or enjoying the mobile app (crafted with React Native) on your smartphones and tablets, movie exploration has never been this effortless. Time to let the movie marathon begin!"},images:{browserImage:[{id:"1",src:"pageimages/movieapp/browserSearch.png",info:"Time for a movie night! Search for your favorite movie!",alt:"browser search"},{id:"2",src:"pageimages/movieapp/browserPager.png",info:"We have a wide range of movies to choose from!",alt:"browser pager"},{id:"3",src:"pageimages/movieapp/browserSerier.png",info:"Or is it a series you're looking for? We've got you covered!",alt:"browser series"}],nativeImage:[{id:"1",src:"pageimages/movieapp/login.jpg",info:"Welcome to Movie Night! Login to get started!",alt:"browser search"},{id:"2",src:"pageimages/movieapp/movielist.jpg",info:"We have a wide range of movies to choose from!",alt:"browser pager"},{id:"3",src:"pageimages/movieapp/movieinfo.jpg",info:"Check out the details of your favorite movie!",alt:"browser series"},{id:"4",src:"pageimages/movieapp/search.jpg",info:"Search for your favorite movie!",alt:"browser series"},{id:"5",src:"pageimages/movieapp/drawer.jpg",info:"And you can also manage your profile here!",alt:"browser series"},{id:"6",src:"pageimages/movieapp/mypage.jpg",info:"Check out your profile!",alt:"browser series"}]},repos:[{browser:"https://github.com/starleafer/The-movie-app",icon:v.jsx(De,{icon:Un})},{native:"https://github.com/starleafer/The-Movie-App-Native",icon:v.jsx(De,{icon:Un})}]},{id:5,title:"Daily Helper",path:"dashboard",type:"Dashboard",label:"Typescript, Next.js",color:"var(--silver-light)",backgroundColor:"var(--shadow-blueish)",shadow:"var(--shadow-blueish)",descriptions:{primary:"Daily Helper is a web application that helps you manage your daily tasks and schedule.",secondary:"It is built with React and Typescript."},images:{browserImage:[{id:"1",alt:"browser search"}]},repos:[{browser:"https://github.com/starleafer/Daily-Helper",icon:v.jsx(De,{icon:Un})}]}],n={id:1,title:"About Emil",path:"about",color:"white",backgroundColor:"var(--dark)",shadow:"var(--shadow-dark)",descriptions:{primary:v.jsxs(v.Fragment,{children:["Well hello there! Nice to see you here.",v.jsx("br",{}),"I'm Emil Stjernlöf, a newly graduated Frontend Developer based in Uppsala, Sweden. As a 30-something former health care worker, I decided to broaden my views and pursue a career change. Scary, I know!",v.jsx("br",{}),v.jsx("br",{}),"From 2022 to 2024, I studied frontend development at Jensen Yrkeshögskola in Kista, where I honed my skills in building engaging and user-friendly web experiences using"," ",v.jsx("b",{style:{color:"var(--neon-green)"},children:"JavaScript"}),",",v.jsx("b",{style:{color:"var(--neon-green)"},children:" React"}),", and",v.jsx("b",{style:{color:"var(--neon-green)"},children:" React Native"}),"."]}),secondary:v.jsx(v.Fragment,{children:"I enjoy working on dynamic and interactive applications that respond to users' needs. For me, great frontend development is about more than just writing code—it's about designing intuitive and visually appealing experiences that make people's lives easier."}),tertiary:v.jsxs(v.Fragment,{children:["During my time at Jensen, I also had the opportunity to gain hands-on experience through a work placement (LIA) at Sigholm. There, I developed my skills in"," ",v.jsx("b",{style:{color:"var(--neon-green)"},children:"TypeScript"})," and agile methodologies, gaining valuable insight into real-world development workflows. This experience also taught me how to quickly adapt to new technologies and work efficiently in a dynamic environment."]}),quaternary:v.jsx(v.Fragment,{children:"I’m excited about the opportunity to pursue this new path. Outside of coding, I love exploring new technologies and keeping up with the latest trends in frontend development. I’m always looking for ways to push my skills further and create digital experiences that are both impactful and memorable."})},images:{profilePic:"pageimages/aboutme/profilepic1.jpg",profilePic2:"pageimages/aboutme/profilepic2.jpg",profilePic3:"pageimages/aboutme/profilepic3.jpg",profilePic4:"pageimages/aboutme/profilepic4.jpg",profilePic5:"pageimages/aboutme/profilepic5.jpg",profilePic6:"pageimages/aboutme/profilepic6.jpg",profilePic7:"pageimages/aboutme/profilepic7.jpg"},repos:[{browser:"https://github.com/starleafer",icon:v.jsx(De,{icon:Un})},{linkedin:"https://www.linkedin.com/in/emil-stjernlof/",icon:v.jsx(De,{icon:$b})},{email:"mailto:emil.stjernlof@gmail.com",icon:v.jsx(De,{icon:Hb})}],music:[{song:"https://open.spotify.com/track/1A6u3ufwPK5apJlpmXjOK8?si=6707a186001f4f8b",songtitle:"Jonathan Johansson - På Boulevarden"},{song:"https://open.spotify.com/track/7j3KGtoP432CcQLA9zLrAo?si=ae7dc7e146734b27",songtitle:"Drab Majesty - Ellipsis"},{song:"https://open.spotify.com/track/3xKsf9qdS1CyvXSMEid6g8?si=d6f658457e794997",songtitle:"Frank Ocean - Pink + White"},{song:"https://open.spotify.com/track/2cGlzTR9gC93lc12cZ8afB?si=66362dab1fa94d5d",songtitle:"Moonica Mac - 80´s"},{song:"https://open.spotify.com/track/413CBplTN03RNZD8H34B6q?si=a5a98e900ac14884",songtitle:"The War On Drugs - Strangest Thing"}],musicIcon:v.jsx(De,{icon:Vb,style:{width:"1em",height:"1em"}})};return v.jsx(l1.Provider,{value:{card:t,main:n},children:e})};al.propTypes={children:M.node.isRequired};const Bt=()=>w.useContext(l1),gd=w.createContext({});function Si(e){const t=w.useRef(null);return t.current===null&&(t.current=e()),t.current}const ll=w.createContext(null),Wo=w.createContext({transformPagePoint:e=>e,isStatic:!1,reducedMotion:"never"});class Yb extends w.Component{getSnapshotBeforeUpdate(t){const n=this.props.childRef.current;if(n&&t.isPresent&&!this.props.isPresent){const r=n.offsetParent,i=r instanceof HTMLElement&&r.offsetWidth||0,o=this.props.sizeRef.current;o.height=n.offsetHeight||0,o.width=n.offsetWidth||0,o.top=n.offsetTop,o.left=n.offsetLeft,o.right=i-o.width-o.left}return null}componentDidUpdate(){}render(){return this.props.children}}function Kb({children:e,isPresent:t,anchorX:n}){const r=w.useId(),i=w.useRef(null),o=w.useRef({width:0,height:0,top:0,left:0,right:0}),{nonce:s}=w.useContext(Wo);return w.useInsertionEffect(()=>{const{width:a,height:l,top:u,left:c,right:f}=o.current;if(t||!i.current||!a||!l)return;const d=n==="left"?`left: ${c}`:`right: ${f}`;i.current.dataset.motionPopId=r;const m=document.createElement("style");return s&&(m.nonce=s),document.head.appendChild(m),m.sheet&&m.sheet.insertRule(`
           [data-motion-pop-id="${r}"] {
             position: absolute !important;
             width: ${a}px !important;
@@ -1171,6 +1171,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   overflow-y: auto;
   position: relative;
 
+  @media (max-width: 1536px) and (min-width: 768px) {
+    height: auto;
+    margin-top: 5vh;
+    overflow-y: hidden;
+    padding-left: 10vw;
+    align-items: flex-start;
+  }
+
   @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     justify-content: flex-start;
@@ -1201,6 +1209,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   max-width: 500px;
   min-width: 320px;
 
+  @media (max-width: 1536px) and (min-width: 768px) {
+    min-width: 500px;
+  }
+
   @media (max-width: 768px) and (min-width: 320px) {
     margin-right: 0;
     margin-bottom: 4vh;
@@ -1208,7 +1220,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,Ss=A.div`
   margin: 1em 0;
-  font-size: clamp(1rem, calc(0.1vw + 1rem), 13rem);
+  font-size: clamp(1rem, calc(0.1vw + .5rem), 13rem);
 
   p {
     opacity: 0;
@@ -1216,6 +1228,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     animation-delay: ${e=>e.delay||"0s"};
     margin: 0;
   }
+
+
 
   @media (max-width: 768px) and (min-width: 320px) {
     max-height: 70%;
@@ -1237,6 +1251,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   display: flex;
   gap: 3em;
   padding: 1em;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    padding: 0;
+  }
 
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
@@ -1276,6 +1294,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,kA=A.div`
   width: 280px;
   border-radius: 15px;
+  padding: .5em 1em;
  
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -1287,6 +1306,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   align-items: flex-start;
   justify-content: center;
   padding: 1em 0;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    padding: 0;
+  }
 `,bA=A.h4`
   font-family: "Lato", sans-serif;
   font-weight: 800;
@@ -1295,6 +1318,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin: 0;
   padding: 0 0 0.5em 0;
   width: 80%;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    padding: 0;
+  }
 `,PA=A.div`
   margin: 1.5em auto;
   width: calc(100% - 2em);
@@ -1353,6 +1380,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   opacity: 0;
   animation: ${Hx} 2s forwards, ${Yx} 1s forwards;
   animation-delay: 0.7s;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    margin-top: 0;
+  }
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 100%;
@@ -1488,7 +1519,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    margin-top: 8vh;
+    margin-top: 2vh;
   }
 
 
@@ -1510,25 +1541,31 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
  }
 
 
-`;Qx.propTypes={descriptions:M.shape({primary:M.string,secondary:M.string,tertiary:M.string,quaternary:M.string}).isRequired,repos:M.array.isRequired,color:M.string.isRequired,backgroundColor:M.string.isRequired,showViewSwitch:M.bool.isRequired,onSwitchView:M.func.isRequired,isSwitchActive:M.bool.isRequired};function Qx({descriptions:e,repos:t,color:n,backgroundColor:r,showViewSwitch:i,onSwitchView:o,isSwitchActive:s}){return v.jsxs(BA,{children:[e.primary&&v.jsxs(mu,{children:[e.primary.charAt(0)&&v.jsx("span",{style:{fontSize:"1.25em",fontWeight:"bold"},children:e.primary.charAt(0)}),e.primary.slice(1)]}),e.secondary&&v.jsx(mu,{children:e.secondary}),e.tertiary&&v.jsx(mu,{children:e.tertiary}),v.jsx("br",{}),v.jsxs(HA,{showViewSwitch:i,children:[v.jsx(UA,{children:v.jsx(WA,{color:n,children:t.map((a,l)=>v.jsx(tt,{color:n,backgroundColor:r,onClick:()=>window.open(Object.values(a)[0],"_blank"),label:v.jsxs(v.Fragment,{children:[a.icon,Object.keys(a)[0]==="browser"&&"Browser code",Object.keys(a)[0]==="native"&&"Native code",Object.keys(a)[0]==="website"&&"Website"]})},l))})}),i&&v.jsx(YA,{children:v.jsx(KA,{children:v.jsx(tt,{onClick:o,color:n,border:!0,pulse:!0,backgroundColor:r,label:s?"Show Native":"Show Browser",invertedColors:!0,showViewSwitch:i})})})]})]})}const BA=A.div`
+`;Qx.propTypes={descriptions:M.shape({primary:M.string,secondary:M.string,tertiary:M.string,quaternary:M.string}).isRequired,repos:M.array.isRequired,color:M.string.isRequired,backgroundColor:M.string.isRequired,showViewSwitch:M.bool.isRequired,onSwitchView:M.func.isRequired,isSwitchActive:M.bool.isRequired};function Qx({descriptions:e,repos:t,color:n,backgroundColor:r,showViewSwitch:i,onSwitchView:o,isSwitchActive:s}){return v.jsxs(BA,{children:[e.primary&&v.jsxs(mu,{children:[e.primary.charAt(0)&&v.jsx("span",{style:{fontSize:"1.25em",fontWeight:"bold"},children:e.primary.charAt(0)}),e.primary.slice(1)]}),e.secondary&&v.jsx(mu,{children:e.secondary}),e.tertiary&&v.jsx(mu,{children:e.tertiary}),v.jsxs(HA,{showViewSwitch:i,children:[v.jsx(UA,{children:v.jsx(WA,{color:n,children:t.map((a,l)=>v.jsx(tt,{color:n,backgroundColor:r,onClick:()=>window.open(Object.values(a)[0],"_blank"),label:v.jsxs(v.Fragment,{children:[a.icon,Object.keys(a)[0]==="browser"&&"Browser code",Object.keys(a)[0]==="native"&&"Native code",Object.keys(a)[0]==="website"&&"Website"]})},l))})}),i&&v.jsx(YA,{children:v.jsx(KA,{children:v.jsx(tt,{onClick:o,color:n,border:!0,pulse:!0,backgroundColor:r,label:s?"Show Native":"Show Browser",invertedColors:!0,showViewSwitch:i})})})]})]})}const BA=A.div`
   display: flex;
   flex-direction: column;
   gap: 1.1em;
   margin: 2em 0;
   width: 30vw;
 
+  @media (max-width: 1536px) and (min-width: 769px) {
+    margin: 0 ;
+  }
+
+
   @media (max-width: 768px) and (min-width: 320px) {
     align-items: center;
     justify-content: center;
     margin: 0 3em;
     width: 75vw;
+
   }
 `,mu=A.p`
   font-family: "Lato", sans-serif;
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
-  font-size: clamp(1rem, calc(.1vw + 1rem), 13rem);
+  font-size: clamp(1rem, .5vw, 13rem);
 `,UA=A.div`
   display: flex;
   flex-direction: row;
@@ -1544,11 +1581,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   border-radius: 15px;
   border: 4px dotted ${e=>e.color};
 
+  @media (max-width: 1536px) and (min-width: 769px) {
+    padding: .5em;
+  }
+
   @media (max-width: 768px) and (min-width: 320px) {
     gap: 1em;
     padding: 1em;
     border: none;
   }
+
 `,HA=A.div`
   display: flex;
   flex-direction: row;
@@ -1556,6 +1598,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   justify-content: ${e=>e.showViewSwitch?"center":"flex-start"};
   gap: 2em;
   min-height: 3em;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    width: 35vw;
+    margin-top: 10px;
+    justify-content: flex-start;
+
+  }
 
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
@@ -1614,14 +1663,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   animation: ${XA} 0.5s ease-in-out forwards;
   animation-delay: 0.5s;
 
-  @media (max-width: 768px) and (min-width: 320px) {
-    display: none;
-    /* position: relative;
-    height: 20vh;
-    top: 50vh; */
-
+  @media (max-width: 1536px) and (min-width: 769px) {
+    bottom: 0;
+    right: ${e=>e.isNative?"5vw":"4vw"};
   }
 
+  @media (max-width: 768px) and (min-width: 320px) {
+    display: none;
+  }
 `,qA=A.div`
   display: flex;
   flex-direction: column;
@@ -1693,9 +1742,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   background-color: ${e=>e.backgroundColor};
   position: relative;
 
-  @media (max-width: 1536px) and (min-width: 320px) {
-    width: ${e=>e.isNative?"60%":"55%"};
-    height: ${e=>e.isNative?"auto":"400px"};
+  @media (max-width: 1536px) and (min-width: 768px) {
+    width: ${e=>e.isNative?"20%":"80%"};
+    height: ${e=>e.isNative?"80vh":"600px"};
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -1723,8 +1772,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   right: 0;
   margin: auto;
 
-  @media (max-width: 1536px) {
-    width: ${e=>(e.isNative,"100%")};
+  @media (max-width: 1536px) and (min-width: 769px) {
+    width: ${e=>e.isNative?"80%":"100%"};
     height: ${e=>e.isNative?"auto":"100%"};
   }
 
@@ -1856,7 +1905,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: 1.2vw;
+    font-size: 1vw;
   }
 `,d6=A.div`
 
@@ -1869,10 +1918,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   overflow: hidden;
   border-radius: 20px;
 
-  @media (max-width: 1536px) {
-    height: ${e=>e.isNative?"350px":"250px"};
+  @media (max-width: 1536px) and (min-width: 769px) {
+    height: ${e=>e.isNative?"300px":"250px"};
     width: ${e=>e.isNative?"80%":"100%"};
-    margin-top: ${e=>e.isNative?"0":"25px"};
+    margin-top: ${e=>e.isNative?"0":"5px"};
   }
 `,h6=A(Ee.img)`
   height: 100%;
@@ -1953,6 +2002,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin-left: 10vw;
   gap: 2em;
   z-index: 105;
+
 
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
