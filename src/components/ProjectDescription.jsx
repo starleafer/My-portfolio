@@ -158,6 +158,9 @@ const ButtonGroup = styled.div`
 
   @media (max-width: 1536px) and (min-width: 768px) {
     width: 35vw;
+    margin-top: 10px;
+    justify-content: flex-start;
+
   }
 
   @media (max-width: 768px) and (min-width: 320px) {

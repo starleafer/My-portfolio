@@ -236,6 +236,14 @@ const Body = styled.div`
   overflow-y: auto;
   position: relative;
 
+  @media (max-width: 1536px) and (min-width: 768px) {
+    height: auto;
+    margin-top: 5vh;
+    overflow-y: hidden;
+    padding-left: 10vw;
+    align-items: flex-start;
+  }
+
   @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     justify-content: flex-start;
@@ -270,6 +278,10 @@ const Text = styled.div`
   max-width: 500px;
   min-width: 320px;
 
+  @media (max-width: 1536px) and (min-width: 768px) {
+    min-width: 500px;
+  }
+
   @media (max-width: 768px) and (min-width: 320px) {
     margin-right: 0;
     margin-bottom: 4vh;
@@ -279,7 +291,7 @@ const Text = styled.div`
 
 const CascadingText = styled.div`
   margin: 1em 0;
-  font-size: clamp(1rem, calc(0.1vw + 1rem), 13rem);
+  font-size: clamp(1rem, calc(0.1vw + .5rem), 13rem);
 
   p {
     opacity: 0;
@@ -287,6 +299,8 @@ const CascadingText = styled.div`
     animation-delay: ${(props) => props.delay || "0s"};
     margin: 0;
   }
+
+
 
   @media (max-width: 768px) and (min-width: 320px) {
     max-height: 70%;
@@ -312,6 +326,10 @@ const CardContainer = styled.div`
   display: flex;
   gap: 3em;
   padding: 1em;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    padding: 0;
+  }
 
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
@@ -357,6 +375,7 @@ const Image = styled.img`
 const MusicWrapper = styled.div`
   width: 280px;
   border-radius: 15px;
+  padding: .5em 1em;
  
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -370,6 +389,10 @@ const MusicHeaderWrapper = styled.div`
   align-items: flex-start;
   justify-content: center;
   padding: 1em 0;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const MusicHeader = styled.h4`
@@ -380,6 +403,10 @@ const MusicHeader = styled.h4`
   margin: 0;
   padding: 0 0 0.5em 0;
   width: 80%;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const SongWrapper = styled.div`
@@ -450,6 +477,10 @@ const ContactLinksContainer = styled.div`
   opacity: 0;
   animation: ${fadeInAnimation} 2s forwards, ${slideInAnimation} 1s forwards;
   animation-delay: 0.7s;
+
+  @media (max-width: 1536px) and (min-width: 768px) {
+    margin-top: 0;
+  }
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 100%;

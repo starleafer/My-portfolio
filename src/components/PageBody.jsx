@@ -279,6 +279,7 @@ const ContentGroup = styled.div`
   gap: 2em;
   z-index: 105;
 
+
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
     margin-left: 0;
