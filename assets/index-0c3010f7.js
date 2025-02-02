@@ -1326,6 +1326,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     justify-content: center;
     margin: 2em 0;
     padding-bottom: 2em;
+    gap: 1em;
   }
 `,EA=A.div`
   width: 5rem;
@@ -1413,9 +1414,13 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   color: white;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark);
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    margin-top: 2.5em;
+  }
 `,DA=A.span`
   display: inline-block;
-  font-size: clamp(4rem, 12vw, 13rem);
+  font-size: clamp(3rem, 12vw, 13rem);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
@@ -1438,9 +1443,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     animation: ${MA} 0.8s forwards;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
-    margin-top: 0.5em;
-  }
 `,Gw=x.createContext(),Kw=({children:e})=>{const[t,n]=x.useState(!1),[r,i]=x.useState(""),o=s=>{n(!0),i(s)};return x.useEffect(()=>{if(t){const s=setTimeout(()=>{n(!1)},800);return()=>clearTimeout(s)}},[t]),v.jsx(Gw.Provider,{value:{runTransition:t,setRunTransition:n,transitionDirection:r,setTransitionDirection:i,triggerTransition:o},children:e})},kr=()=>x.useContext(Gw);function Xw({title:e,shadowColor:t}){const{card:n}=Bt(),r=Qa(),{setRunTransition:i,triggerTransition:o}=kr(),s=window.location.pathname.replace("/My-portfolio/","").replace("/",""),a=n.find(m=>m.path===s)||n[0],l=n.findIndex(m=>m.path===s),u=a.color,c=a.backgroundColor,f=()=>{i(!0),o("previous");const m=(l-1+n.length)%n.length,y=n[m].path,w=setTimeout(()=>{i(!1),r(`/${y}`)},800);return()=>{clearTimeout(w)}},d=()=>{i(!0),o("next");const m=(l+1)%n.length,y=n[m].path,w=setTimeout(()=>{i(!1),r(`/${y}`)},800);return()=>{clearTimeout(w)}};return v.jsxs(_A,{children:[v.jsx(jg,{className:"navigation-buttons",style:{marginRight:"3em"},children:v.jsx(tt,{onClick:f,style:{color:u},color:u,shadowColor:t,backgroundColor:c,label:"Previous Project",previous:!0,width:"10em"})}),v.jsx(zA,{children:e}),v.jsx(jg,{className:"navigation-buttons",children:v.jsx(tt,{onClick:d,style:{color:u},color:u,shadowColor:t,backgroundColor:c,label:"Next Project",next:!0,width:"10em"})})]})}const _A=A.div`
   display: flex;
   flex-direction: row;  
