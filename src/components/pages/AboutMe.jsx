@@ -114,27 +114,30 @@ function AboutMe() {
               </MusicHeaderWrapper>
               {main.music.map((song, index) => (
                 <SongWrapper key={index}>
-                  <CustomButton
-                    key={index}
-                    color={main.color}
-                    backgroundColor={main.backgroundColor}
-                    onClick={() => handleMusicClick(song)}
-                    width="10em"
-                    border
-                    label={
-                      <IconWrapper>
-                        {main.musicIcon}
-                        <SongTitleContainer>
-                          <SongTitle
-                            shouldScroll={song.songtitle.length > 10}
-                            duration={`${song.songtitle.length * 0.6}s`}
-                          >
-                            {song.songtitle}{" "}
-                          </SongTitle>
-                        </SongTitleContainer>
-                      </IconWrapper>
-                    }
-                  />
+                  <CustomButtonContainer>
+                    <CustomButton
+                      key={index}
+                      color={main.color}
+                      backgroundColor={main.backgroundColor}
+                      onClick={() => handleMusicClick(song)}
+                      width="100%"
+                      height="100%"
+                      border
+                      label={
+                        <IconWrapper>
+                          {main.musicIcon}
+                          <SongTitleContainer>
+                            <SongTitle
+                              shouldScroll={song.songtitle.length > 10}
+                              duration={`${song.songtitle.length * 0.6}s`}
+                            >
+                              {song.songtitle}{" "}
+                            </SongTitle>
+                          </SongTitleContainer>
+                        </IconWrapper>
+                      }
+                    />
+                  </CustomButtonContainer>
                 </SongWrapper>
               ))}
             </MusicWrapper>
@@ -330,7 +333,7 @@ const Image = styled.img`
 const MusicWrapper = styled.div`
   width: 280px;
   border-radius: 15px;
-  padding: 1.5em 0;
+  padding: 2em 0;
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 320px;
@@ -356,17 +359,28 @@ const MusicHeader = styled.h4`
 `;
 
 const SongWrapper = styled.div`
-  margin: 1em auto;
+  margin: 1.5em auto;
   width: calc(100% - 2em);
   overflow: visible;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   @media (max-width: 768px) and (min-width: 320px) {
-    margin: 0.5em auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 1em auto;
     width: 90%;
+    height: 35px;
   }
+`;
+
+const CustomButtonContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
 `;
 
 const SongTitleContainer = styled.div`
@@ -433,7 +447,7 @@ const ButtonWrapper = styled.div`
     width: 4rem;
     height: 2rem;
   }
-`;
+  `;
 
 const IconWrapper = styled.div`
   display: flex;
@@ -441,8 +455,9 @@ const IconWrapper = styled.div`
   transform: translateZ(0);
   will-change: transform;
   max-width: 100%;
-
+  
   @media (max-width: 768px) and (min-width: 320px) {
+    gap: 1em;
     font-size: 0.9rem;
   }
 
