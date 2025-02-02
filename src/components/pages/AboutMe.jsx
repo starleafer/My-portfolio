@@ -69,7 +69,9 @@ function AboutMe() {
   };
 
   const handleMusicClick = (song) => {
-    window.open();
+    if (song.song) {
+      window.open(song.song, "_blank");
+    }
   };
 
   return (
@@ -116,7 +118,7 @@ function AboutMe() {
                     key={index}
                     color={main.color}
                     backgroundColor={main.backgroundColor}
-                    onClick={() => handleButtonClick(song)}
+                    onClick={() => handleMusicClick(song)}
                     width="10em"
                     border
                     label={
@@ -143,7 +145,7 @@ function AboutMe() {
                 <CustomButton
                   color={main.color}
                   backgroundColor={main.backgroundColor}
-                  onClick={handleMusicClick}
+                  onClick={() => handleButtonClick(repo)}
                   label={<IconWrapper>{repo.icon}</IconWrapper>}
                   showCopyAlert={
                     Object.keys(repo)[0] === "email" && copySuccessMessage
@@ -331,7 +333,7 @@ const MusicWrapper = styled.div`
   padding: 1.5em 0;
 
   @media (max-width: 768px) and (min-width: 320px) {
-    max-width: 320px;
+    width: 320px;
   }
 `;
 
