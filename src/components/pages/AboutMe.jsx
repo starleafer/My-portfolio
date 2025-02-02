@@ -71,7 +71,9 @@ function AboutMe() {
             <p>{main.descriptions.quaternary}</p>
           </CascadingText>
         </Text>
-        <Image src={main.images.profilePic} alt="profile picture" />
+        <ImageContainer>
+          <Image src={main.images.profilePic} alt="profile picture" />
+        </ImageContainer>
       </Content>
       <ContactLinksContainer>
         {main.repos.map((repo, index) => (
@@ -191,6 +193,9 @@ const CascadingText = styled.div`
   }
 `;
 
+const ImageContainer = styled.div`
+`;
+
 const Image = styled.img`
   position: relative;
   height: auto;
@@ -205,7 +210,7 @@ const Image = styled.img`
   @media (max-width: 768px) and (min-width: 320px) {
     max-width: 70%;
     border-radius: 10%;
-    margin: 2em 0;
+    margin: 2em 0 2em 1em;
   }
 `;
 
@@ -223,8 +228,8 @@ const ContactLinksContainer = styled.div`
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 90%;
-    justify-content: center;
-    margin: 2em 0;
+    justify-content: flex-start;
+    margin: 2em 0 2em 1em;
     padding-bottom: 4em;
   }
 `;
