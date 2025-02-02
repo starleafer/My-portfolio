@@ -129,7 +129,7 @@ const CardContainer = styled.div`
   position: sticky;
   top: 150px;
   margin: 0 0 25vh 40vw;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 `;
 
 const Card = styled(motion.div)`

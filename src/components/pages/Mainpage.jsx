@@ -154,7 +154,6 @@ const Title = styled.h1`
 
 const TitleLetters = styled.span`
   display: inline-block; 
-  margin-top: .5em;
   font-size: clamp(3.5rem, calc(10vw + 1.7rem), 13rem);
   font-weight: 500;
   color: white;
@@ -162,7 +161,7 @@ const TitleLetters = styled.span`
   -webkit-text-stroke-color: var(--dark); 
   background-color: transparent; 
   transition: color 0.2s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.1s , transform 0.3s; 
-
+  
   &:hover {
     color: ${props => props.hovercolor || 'white'};
     transform: translateY(-0.7vw) translateX(-0.7vw);
@@ -172,9 +171,13 @@ const TitleLetters = styled.span`
       color: white;
     }
   }
-
+  
   &:not(:hover) {
     animation: ${fadeOutShadow} 0.8s  forwards;
+  }
+  
+  @media (max-width: 768px) and (min-width: 321px) {
+    margin-top: .5em;
   }
 
 `;

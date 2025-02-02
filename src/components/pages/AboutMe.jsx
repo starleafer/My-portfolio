@@ -42,6 +42,14 @@ function AboutMe() {
     }
   }, []);
 
+  const handleButtonClick = (repo, index) => {
+    if (Object.keys(repo)[0] === "email") {
+      setCopySuccessMessage("Email copied!");
+      navigator.clipboard.writeText(repo.email);
+    }
+  };
+
+
   return (
     <Body ref={bodyRef}>
       <Content ref={contentRef}>
@@ -130,14 +138,13 @@ const Body = styled.div`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    height: auto;
     overflow: unset; 
-    overflow-y: auto; 
+    overflow-y: scroll; 
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
     padding: 5vh 0;
   }
-`;
+  `;
 
 const Content = styled.div`
   display: flex;
@@ -146,8 +153,9 @@ const Content = styled.div`
   color: white;
   animation: ${fadeInAnimation} 2s, ${slideInAnimation} 1s;
   margin-bottom: 15vh;
-
+  
   @media (max-width: 768px) and (min-width: 321px) {
+    height: 200vh;
     width: 90%;
     flex-direction: column;
     gap: 6em;
@@ -175,21 +183,19 @@ const Text = styled.div`
 
 const CascadingText = styled.div`
   margin: 1em 0;
-
+  
   p {
     opacity: 0;
     animation: ${cascadingFadeIn} 1s forwards;
     animation-delay: ${(props) => props.delay || "0s"};
     margin: 0;
   }
-
+  
   @media (max-width: 768px) and (min-width: 321px) {
     font-size: 2.4vw;
+    max-height: 70%;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
-    font-size: 3.4vw;
-  }
 `;
 
 const Image = styled.img`
@@ -208,12 +214,10 @@ const Image = styled.img`
   }
 
   @media (max-width: 768px) and (min-width: 321px) {
-    /* position: absolute; */
-    /* width: 35%; */
+
     height: auto;
     border-radius: 10%;
     margin-top: 0;
-    /* bottom: 60px; */
   }
 `;
 
@@ -229,13 +233,13 @@ const ContactLinksContainer = styled.div`
   opacity: 0;
   animation: ${fadeInAnimation} 2s forwards, ${slideInAnimation} 1s forwards;
   animation-delay: 0.7s;
-  bottom: 20vh;
-
+  bottom: 15vh;
+  
   @media (max-width: 1536px) {
-    bottom: 10vh;
-    left: 20%;
+    bottom: 20vh;
+    left: 55vw;
   }
-
+  
   @media (max-width: 768px) and (min-width: 321px) {
     position: relative;
     bottom: -140px;
@@ -244,7 +248,7 @@ const ContactLinksContainer = styled.div`
     margin-top: 2vh;
     justify-content: center;
   }
-`;
+  `;
 
 const ButtonWrapper = styled.div`
   width: 5rem;

@@ -75,7 +75,7 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
                     }}
                     style={{ paddingRight: '4em', paddingTop: '8em' }}
                 >
-                    {location.pathname === '/' && (
+                    {location.pathname === '/My-portfolio/' && (
                         <Message
                             onMouseEnter={() => { setIsHovered(true) }}
                             onMouseLeave={() => { setIsHovered(false) }}
@@ -114,8 +114,8 @@ const MaskedSecret = styled(m.div)`
     background: var(--dark);
     color: white;
     display: flex;
-    align-items: start;
     justify-content: end;
+    align-items: start;
     width: 100vw;
     height: 100vh;
     pointer-events: none;
