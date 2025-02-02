@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import styled, { css, keyframes } from "styled-components";
-import { motion as m } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
+import styled, { keyframes } from "styled-components";
 import { useCardContext } from "../context/CardContext";
 import CustomButton from "./CustomButton";
+import { usePopover } from "../context/PopoverContext";
 
 function HeaderMenu({ about, setIsHoverButton }) {
   const [copySuccessMessage, setCopySuccessMessage] = useState("");
@@ -15,6 +15,7 @@ function HeaderMenu({ about, setIsHoverButton }) {
   const [fadeIn, setFadeIn] = useState(false);
   const { card, main } = useCardContext();
   const navigate = useNavigate();
+  const { isPopoverOpen } = usePopover();
 
   const currentPath = window.location.pathname
     .replace("/My-portfolio/", "")
@@ -85,6 +86,7 @@ function HeaderMenu({ about, setIsHoverButton }) {
     <>
       {showCircle && <Circle color={isClicked ? circleColor : ""} />}
       <ButtonContainer
+        isPopoverOpen={isPopoverOpen}
         path={currentPath}
         color={color}
         backgroundColor={backgroundColor}
@@ -159,8 +161,9 @@ const ButtonContainer = styled.div`
   gap: 2.5vh;
   padding: 3vh 2vw;
   z-index: 102;
-  opacity: ${(props) => (props.fadeIn ? 1 : 0)};
-  transition: opacity 1s;
+  opacity: ${(props) => (props.isPopoverOpen ? 0 : 1)};
+  visibility: ${(props) => (props.isPopoverOpen ? 'hidden' : 'visible')};
+  transition: opacity 0.3s, visibility 0.3s;
   background-color: ${(props) =>
     props.about ? "var(--dark)" : props.backgroundColor};
 
@@ -190,7 +193,7 @@ const ButtonContainer = styled.div`
       props.about ? "var(--dark)" : props.backgroundColor};
     align-items: center;
     justify-content: flex-start;
-    z-index: 120;
+    z-index: 102;
   }
 `;
 

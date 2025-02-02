@@ -19,6 +19,7 @@ import "./index.css";
 import Splash from "./components/Splash";
 import MasksAndCursor from "./components/MasksAndCursor";
 import HeaderMenu from "./components/HeaderMenu";
+import { PopoverProvider } from './context/PopoverContext';
 
 function App() {
   const { runTransition } = useTransitionContext();
@@ -103,104 +104,106 @@ function App() {
         <Splash />
       ) : (
         <CardProvider>
-          <MasksAndCursor
-            isHoverButton={isHoverButton}
-            isHoveringCards={isHoveringCards}
-            cursorColor={cursorColor}
-            cursorHoverColor={cursorHoverColor}
-          />
-          <AppContainer color={bgColor}>
-            <TransitionProvider>
-              <Content>
-                <Routes>
-                  <Route
-                    path={home}
-                    element={
-                      <ScrollContainer>
-                        <HeaderMenu
-                          path={home}
-                          setIsHoverButton={setIsHoverButton}
-                        />
-                        <Mainpage
-                          setCursorHoverColor={setCursorHoverColor}
-                          setIsHoveringCards={setIsHoveringCards}
-                        />
-                      </ScrollContainer>
-                    }
-                  />
-                  <Route
-                    path={cleaning}
-                    element={
-                      <ScrollContainer className="scrollCleaning">
-                        <HeaderMenu
-                          path={cleaning}
-                          setIsHoverButton={setIsHoverButton}
-                        />
-                        <Cleaning />
-                      </ScrollContainer>
-                    }
-                  />
-                  <Route
-                    path={chatapp}
-                    element={
-                      <ScrollContainer className="scrollChatApp">
-                        <HeaderMenu
-                          path={chatapp}
-                          setIsHoverButton={setIsHoverButton}
-                        />
-                        <ChatApp />
-                      </ScrollContainer>
-                    }
-                  />
-                  <Route
-                    path={webbshop}
-                    element={
-                      <ScrollContainer className="scrollWebbShop">
-                        <HeaderMenu
-                          path={webbshop}
-                          setIsHoverButton={setIsHoverButton}
-                        />
-                        <WebbShop />
-                      </ScrollContainer>
-                    }
-                  />
-                  <Route
-                    path={movieapp}
-                    element={
-                      <ScrollContainer className="scrollMovies">
-                        <HeaderMenu
-                          path={movieapp}
-                          setIsHoverButton={setIsHoverButton}
-                        />
-                        <MovieApp />
-                      </ScrollContainer>
-                    }
-                  />
-                  <Route
-                    path={dashboard}
-                    element={
-                      <ScrollContainer>
-                        <HeaderMenu
-                          path={dashboard}
-                          setIsHoverButton={setIsHoverButton}
-                        />
-                        <Dashboard />
-                      </ScrollContainer>
-                    }
-                  />
-                  <Route
-                    path="/about"
-                    element={
-                      <ScrollContainer>
-                        <HeaderMenu path="/about" about />
-                        <AboutMe />
-                      </ScrollContainer>
-                    }
-                  />
-                </Routes>
-              </Content>
-            </TransitionProvider>
-          </AppContainer>
+          <PopoverProvider>
+            <MasksAndCursor
+              isHoverButton={isHoverButton}
+              isHoveringCards={isHoveringCards}
+              cursorColor={cursorColor}
+              cursorHoverColor={cursorHoverColor}
+            />
+            <AppContainer color={bgColor}>
+              <TransitionProvider>
+                <Content>
+                  <Routes>
+                    <Route
+                      path={home}
+                      element={
+                        <ScrollContainer>
+                          <HeaderMenu
+                            path={home}
+                            setIsHoverButton={setIsHoverButton}
+                          />
+                          <Mainpage
+                            setCursorHoverColor={setCursorHoverColor}
+                            setIsHoveringCards={setIsHoveringCards}
+                          />
+                        </ScrollContainer>
+                      }
+                    />
+                    <Route
+                      path={cleaning}
+                      element={
+                        <ScrollContainer className="scrollCleaning">
+                          <HeaderMenu
+                            path={cleaning}
+                            setIsHoverButton={setIsHoverButton}
+                          />
+                          <Cleaning />
+                        </ScrollContainer>
+                      }
+                    />
+                    <Route
+                      path={chatapp}
+                      element={
+                        <ScrollContainer className="scrollChatApp">
+                          <HeaderMenu
+                            path={chatapp}
+                            setIsHoverButton={setIsHoverButton}
+                          />
+                          <ChatApp />
+                        </ScrollContainer>
+                      }
+                    />
+                    <Route
+                      path={webbshop}
+                      element={
+                        <ScrollContainer className="scrollWebbShop">
+                          <HeaderMenu
+                            path={webbshop}
+                            setIsHoverButton={setIsHoverButton}
+                          />
+                          <WebbShop />
+                        </ScrollContainer>
+                      }
+                    />
+                    <Route
+                      path={movieapp}
+                      element={
+                        <ScrollContainer className="scrollMovies">
+                          <HeaderMenu
+                            path={movieapp}
+                            setIsHoverButton={setIsHoverButton}
+                          />
+                          <MovieApp />
+                        </ScrollContainer>
+                      }
+                    />
+                    <Route
+                      path={dashboard}
+                      element={
+                        <ScrollContainer>
+                          <HeaderMenu
+                            path={dashboard}
+                            setIsHoverButton={setIsHoverButton}
+                          />
+                          <Dashboard />
+                        </ScrollContainer>
+                      }
+                    />
+                    <Route
+                      path="/about"
+                      element={
+                        <ScrollContainer>
+                          <HeaderMenu path="/about" about />
+                          <AboutMe />
+                        </ScrollContainer>
+                      }
+                    />
+                  </Routes>
+                </Content>
+              </TransitionProvider>
+            </AppContainer>
+          </PopoverProvider>
         </CardProvider>
       )}
     </>
@@ -213,8 +216,6 @@ const AppContainer = styled.div`
   position: relative;
   overflow: hidden;
   background-color: ${(props) => props.color};
-
-
 `;
 
 const Content = styled.div`
@@ -232,7 +233,5 @@ const ScrollContainer = styled.div`
     align-items: flex-start;
   }
 `;
-
-
 
 export default App;

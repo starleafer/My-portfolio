@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { motion as m, AnimatePresence } from "framer-motion";
 import CustomButton from "./CustomButton";
+import { usePopover } from "../context/PopoverContext";
 
 const GalleryImagePopover = ({
   image,
@@ -14,6 +15,7 @@ const GalleryImagePopover = ({
   shadowColor,
   isNative,
 }) => {
+  const { setIsPopoverOpen } = usePopover();
   const [currentIndex, setCurrentIndex] = useState(images.indexOf(image));
   const [direction, setDirection] = useState(0);
 
@@ -24,6 +26,11 @@ const GalleryImagePopover = ({
       setCurrentIndex(images.indexOf(image));
     }
   }, [image, images]);
+
+  useEffect(() => {
+    setIsPopoverOpen(!!image);  
+    return () => setIsPopoverOpen(false);  
+  }, [image, setIsPopoverOpen]);
 
   const handleNext = () => {
     setDirection(1);
@@ -182,7 +189,9 @@ const Overlay = styled(m.div)`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 130;
+  z-index: 9999;  
+  isolation: isolate; 
+
 
   @media (max-width: 768px) and (min-width: 320px) {
     justify-content: flex-start;
@@ -197,6 +206,8 @@ const Overlay = styled(m.div)`
 `;
 
 const PopoverContent = styled(m.div)`
+  position: relative;  // Creates stacking context
+  z-index: 10000; 
   border-radius: 10px;
   object-fit: cover;
   display: flex;
