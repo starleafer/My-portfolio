@@ -265,7 +265,7 @@ const Info = styled.p`
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: 1.2vw;
+    font-size: 1vw;
   }
 `;
 
@@ -280,10 +280,10 @@ const ImageContainer = styled.div`
   overflow: hidden;
   border-radius: 20px;
 
-  @media (max-width: 1536px) {
-    height: ${(props) => (props.isNative ? "350px" : "250px")};
+  @media (max-width: 1536px) and (min-width: 769px) {
+    height: ${(props) => (props.isNative ? "300px" : "250px")};
     width: ${(props) => (props.isNative ? "80%" : "100%")};
-    margin-top: ${(props) => (props.isNative ? "0" : "25px")};
+    margin-top: ${(props) => (props.isNative ? "0" : "5px")};
   }
 `;
 

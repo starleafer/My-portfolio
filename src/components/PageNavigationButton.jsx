@@ -99,7 +99,7 @@ const Container = styled.div`
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    margin-top: 8vh;
+    margin-top: 2vh;
   }
 
 

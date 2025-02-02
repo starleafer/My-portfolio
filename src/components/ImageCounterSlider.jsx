@@ -87,14 +87,14 @@ const Container = styled.div`
   animation: ${fadeIn} 0.5s ease-in-out forwards;
   animation-delay: 0.5s;
 
-  @media (max-width: 768px) and (min-width: 320px) {
-    display: none;
-    /* position: relative;
-    height: 20vh;
-    top: 50vh; */
-
+  @media (max-width: 1536px) and (min-width: 769px) {
+    bottom: 0;
+    right: ${(props) => props.isNative ? "5vw" : "4vw"};
   }
 
+  @media (max-width: 768px) and (min-width: 320px) {
+    display: none;
+  }
 `;
 
 const CounterContainer = styled.div`
