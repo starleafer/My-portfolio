@@ -154,11 +154,15 @@ const Title = styled.h1`
   color: white;
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: var(--dark);
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    margin-top: 2.5em;
+  }
 `;
 
 const TitleLetters = styled.span`
   display: inline-block;
-  font-size: clamp(4rem, 12vw, 13rem);
+  font-size: clamp(3rem, 12vw, 13rem);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
@@ -181,9 +185,6 @@ const TitleLetters = styled.span`
     animation: ${fadeOutShadow} 0.8s forwards;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
-    margin-top: 0.5em;
-  }
 `;
 
 export default Mainpage;

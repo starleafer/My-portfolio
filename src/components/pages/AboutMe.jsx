@@ -418,6 +418,7 @@ const ContactLinksContainer = styled.div`
     justify-content: center;
     margin: 2em 0;
     padding-bottom: 2em;
+    gap: 1em;
   }
 `;
 
