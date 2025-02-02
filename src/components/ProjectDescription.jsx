@@ -109,14 +109,7 @@ const Description = styled.p`
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
-
-  @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: 1.2vw;
-  }
-
-  @media (max-width: 768px) and (min-width: 320px) {
-    font-size: 1em;
-  }
+  font-size: clamp(1rem, calc(.1vw + 1rem), 13rem);
 `;
 
 const LinkGroup = styled.div`

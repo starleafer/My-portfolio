@@ -177,12 +177,15 @@ const Text = styled.div`
     margin-right: 0;
     margin-bottom: 4vh;
     max-width: 100%;
+    
 
   }
 `;
 
 const CascadingText = styled.div`
   margin: 1em 0;
+  font-size: clamp(1rem, calc(.1vw + 1rem), 13rem);
+
   
   p {
     opacity: 0;
@@ -192,7 +195,6 @@ const CascadingText = styled.div`
   }
   
   @media (max-width: 768px) and (min-width: 320px) {
-    font-size: 2.4vw;
     max-height: 70%;
   }
 
