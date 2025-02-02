@@ -155,7 +155,7 @@ const Content = styled.div`
     width: 90%;
     flex-direction: column;
     gap: 2em;
-    margin: 4vh 0;
+    margin: 10vh 0 4vh 0;
     height: auto;
   }
 `;

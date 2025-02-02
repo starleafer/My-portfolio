@@ -1,30 +1,31 @@
-import React, { useRef, useState, useEffect } from 'react';
-import Projectlist from '../Projectlist';
-import { motion as m } from 'framer-motion'
-import styled, { keyframes } from 'styled-components';
-import AboutMe from './AboutMe';
-import useMousePosition from '../../utils/useMousePosition';
+import React, { useRef, useState, useEffect } from "react";
+import Projectlist from "../Projectlist";
+import { motion as m } from "framer-motion";
+import styled, { keyframes } from "styled-components";
+import AboutMe from "./AboutMe";
+import useMousePosition from "../../utils/useMousePosition";
 
 function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
-  const [hoverColor, setHoverColor] = useState('');
+  const [hoverColor, setHoverColor] = useState("");
   const aboutMeRef = useRef(null);
 
   const colors = [
-    '--dark: #1b1f2e',
-    '--greenish: #497770',
-    '--yellowish: #f5ca80',
-    '--ocean: #00a6a6',
-    '--redish: #eeb7b7',
-    '--creamy: #f3b88474',
-    '--blueish: #12398d',
-    '--neon-green: #0ac753',
-    '--light-purple: #564d8d',
-    '--silver-light: #f7f7f7e8',
-    '--test: #c2b8f5',
-    '--more-red: #eb7d7d',
-  ].map(color => color.split(': ')[1]);
+    "--dark: #1b1f2e",
+    "--greenish: #497770",
+    "--yellowish: #f5ca80",
+    "--ocean: #00a6a6",
+    "--redish: #eeb7b7",
+    "--creamy: #f3b88474",
+    "--blueish: #12398d",
+    "--neon-green: #0ac753",
+    "--light-purple: #564d8d",
+    "--silver-light: #f7f7f7e8",
+    "--test: #c2b8f5",
+    "--more-red: #eb7d7d",
+  ].map((color) => color.split(": ")[1]);
 
-  const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+  const getRandomColor = () =>
+    colors[Math.floor(Math.random() * colors.length)];
 
   const name = "Emil Stjernlöf";
 
@@ -32,12 +33,12 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          console.log('AboutMe section is in view');
+          console.log("AboutMe section is in view");
         }
       },
       {
         root: null,
-        rootMargin: '0px',
+        rootMargin: "0px",
         threshold: 0.1,
       }
     );
@@ -53,21 +54,21 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
     };
   }, []);
 
-
   return (
     <>
-      <MainContainer style={{fontFamily: 'Poiret One'}}>
+      <MainContainer style={{ fontFamily: "Poiret One" }}>
         <Section>
           <TitlesContainer
-            initial={{ x: '10%', opacity: 0 }}
-            animate={{ x: '0%', opacity: 1 }}
+            initial={{ x: "10%", opacity: 0 }}
+            animate={{ x: "0%", opacity: 1 }}
             transition={{ duration: 0.75, ease: "easeOut" }}
             exit={{ opacity: 1 }}
           >
             <Title>
-              {name.split('').map((letter, index) =>
-                letter === ' ' ?
-                  <span key={index}> </span> :
+              {name.split("").map((letter, index) =>
+                letter === " " ? (
+                  <span key={index}> </span>
+                ) : (
                   <TitleLetters
                     key={index}
                     hovercolor={hoverColor}
@@ -75,13 +76,16 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
                   >
                     {letter}
                   </TitleLetters>
+                )
               )}
             </Title>
           </TitlesContainer>
-          <Projectlist setCursorHoverColor={setCursorHoverColor} setIsHoveringCards={setIsHoveringCards} />
+          <Projectlist
+            setCursorHoverColor={setCursorHoverColor}
+            setIsHoveringCards={setIsHoveringCards}
+          />
         </Section>
       </MainContainer>
-
     </>
   );
 }
@@ -128,7 +132,7 @@ const Section = styled.section`
   box-sizing: border-box;
   padding: 20px 20px 20px 5vw;
   scroll-snap-align: start;
-  background-color: ${props => props.dark ? 'var(--dark)' : '#fff'};
+  background-color: ${(props) => (props.dark ? "var(--dark)" : "#fff")};
 `;
 
 const TitlesContainer = styled(m.div)`
@@ -153,33 +157,33 @@ const Title = styled.h1`
 `;
 
 const TitleLetters = styled.span`
-  display: inline-block; 
-  font-size: clamp(3rem, calc(5vw + 1.7rem), 13rem);
+  display: inline-block;
+  font-size: clamp(4rem, 12vw, 13rem);
   font-weight: 500;
   color: white;
   -webkit-text-stroke-width: 2px;
-  -webkit-text-stroke-color: var(--dark); 
-  background-color: transparent; 
-  transition: color 0.2s cubic-bezier(.27,-0.32,.7,1.37), background-color 0.1s , transform 0.3s; 
-  
+  -webkit-text-stroke-color: var(--dark);
+  background-color: transparent;
+  transition: color 0.2s cubic-bezier(0.27, -0.32, 0.7, 1.37),
+    background-color 0.1s, transform 0.3s;
+
   &:hover {
-    color: ${props => props.hovercolor || 'white'};
+    color: ${(props) => props.hovercolor || "white"};
     transform: translateY(-0.7vw) translateX(-0.7vw);
-    animation: ${fadeInShadow} 0.5s  forwards;
-    
+    animation: ${fadeInShadow} 0.5s forwards;
+
     .hovered {
       color: white;
     }
   }
-  
+
   &:not(:hover) {
-    animation: ${fadeOutShadow} 0.8s  forwards;
-  }
-  
-  @media (max-width: 768px) and (min-width: 321px) {
-    margin-top: .5em;
+    animation: ${fadeOutShadow} 0.8s forwards;
   }
 
+  @media (max-width: 768px) and (min-width: 321px) {
+    margin-top: 0.5em;
+  }
 `;
 
 export default Mainpage;
