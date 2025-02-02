@@ -158,7 +158,7 @@ const ButtonContainer = styled.div`
   align-items: center;
   gap: 2.5vh;
   padding: 3vh 2vw;
-  z-index: 115;
+  z-index: 102;
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
   background-color: ${(props) =>
@@ -190,12 +190,11 @@ const ButtonContainer = styled.div`
       props.about ? "var(--dark)" : props.backgroundColor};
     align-items: center;
     justify-content: flex-start;
-    z-index: 100;
+    z-index: 120;
   }
 `;
 
-const Contact = styled.div`
-  position: relative;
+const Contact = styled.div`  position: relative;
   display: flex;
   min-width: 5vw;
   flex-direction: row;
@@ -236,3 +235,4 @@ const Circle = styled.div`
 `;
 
 export default HeaderMenu;
+

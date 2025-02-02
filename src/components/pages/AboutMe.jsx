@@ -403,6 +403,7 @@ const SongTitle = styled.div`
   white-space: nowrap;
   font-size: 1rem;
   line-height: 1.2em;
+  font-family: "Lato", sans-serif;
   ${(props) =>
     props.shouldScroll &&
     css`

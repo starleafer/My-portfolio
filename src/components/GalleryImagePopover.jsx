@@ -32,7 +32,9 @@ const GalleryImagePopover = ({
 
   const handlePrevious = () => {
     setDirection(-1);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
+    );
   };
 
   const currentImage = images[currentIndex];
@@ -42,22 +44,22 @@ const GalleryImagePopover = ({
       x: direction > 0 ? 300 : -300,
       opacity: 0,
       scale: 0.98,
-      filter: 'blur(4px)'
+      filter: "blur(4px)",
     }),
     center: {
       zIndex: 1,
       x: 0,
       opacity: 1,
       scale: 1,
-      filter: 'blur(0px)'
+      filter: "blur(0px)",
     },
     exit: (direction) => ({
       zIndex: 0,
       x: direction < 0 ? 300 : -300,
       opacity: 0,
       scale: 0.98,
-      filter: 'blur(4px)'
-    })
+      filter: "blur(4px)",
+    }),
   };
 
   return (
@@ -72,6 +74,7 @@ const GalleryImagePopover = ({
           onClick={onClose}
         >
           <PopoverContent
+            isNative={isNative}
             as={m.div}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -93,25 +96,25 @@ const GalleryImagePopover = ({
                     animate="center"
                     exit="exit"
                     transition={{
-                      x: { 
-                        type: "spring", 
+                      x: {
+                        type: "spring",
                         stiffness: 200,
                         damping: 18,
                         mass: 0.4,
-                        restSpeed: 0.5
+                        restSpeed: 0.5,
                       },
-                      opacity: { 
+                      opacity: {
                         duration: 0.2,
-                        ease: "easeInOut"
+                        ease: "easeInOut",
                       },
                       scale: {
                         duration: 0.2,
-                        ease: "easeOut"
+                        ease: "easeOut",
                       },
                       filter: {
                         duration: 0.15,
-                        ease: "easeOut"
-                      }
+                        ease: "easeOut",
+                      },
                     }}
                     onClick={onClose}
                     isNative={isNative}
@@ -207,7 +210,7 @@ const PopoverContent = styled(m.div)`
   @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     width: auto;
-    margin-left: 2.5vw;
+    margin-left: ${(props) => (props.isNative ? "17vw" : "8vw")};
   }
 
   @media (max-width: 768px) and (orientation: landscape) {
@@ -228,13 +231,15 @@ const ImageContainer = styled.div`
   background-color: ${(props) => props.backgroundColor};
   position: relative;
 
-  @media (max-width: 1536px) {
+  @media (max-width: 1536px) and (min-width: 320px) {
     width: ${(props) => (props.isNative ? "60%" : "55%")};
     height: ${(props) => (props.isNative ? "auto" : "400px")};
   }
+
   @media (max-width: 768px) and (min-width: 320px) {
-    width: 85vw;
+    width: ${(props) => (props.isNative ? "55vw" : "85vw")};
     height: ${(props) => (props.isNative ? "auto" : "60vh")};
+    max-height: 70vh;
   }
 
   @media (max-width: 768px) and (orientation: landscape) {
@@ -263,9 +268,12 @@ const PopoverImage = styled(m.img)`
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
-    width: 100%;
+    width: ${(props) => (props.isNative ? "100%" : "100%")};
     height: auto;
-    max-height: 60vh;
+    max-height: ${(props) => (props.isNative ? "70vh" : "60vh")};
+    min-height: 200px;
+    display: block;
+    position: relative;
   }
 
   @media (max-width: 768px) and (orientation: landscape) {
@@ -274,6 +282,7 @@ const PopoverImage = styled(m.img)`
     max-width: 70vw;
   }
 `;
+
 const ImageGroup = styled.div`
   display: flex;
   width: 100%;
