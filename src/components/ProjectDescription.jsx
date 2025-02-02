@@ -156,6 +156,10 @@ const ButtonGroup = styled.div`
   gap: 2em;
   min-height: 3em;
 
+  @media (max-width: 1536px) and (min-width: 768px) {
+    width: 35vw;
+  }
+
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
     gap: 1em;

@@ -243,9 +243,9 @@ const ImageContainer = styled.div`
   background-color: ${(props) => props.backgroundColor};
   position: relative;
 
-  @media (max-width: 1536px) and (min-width: 320px) {
-    width: ${(props) => (props.isNative ? "60%" : "55%")};
-    height: ${(props) => (props.isNative ? "auto" : "400px")};
+  @media (max-width: 1536px) and (min-width: 768px) {
+    width: ${(props) => (props.isNative ? "20%" : "80%")};
+    height: ${(props) => (props.isNative ? "80vh" : "600px")};
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -275,8 +275,8 @@ const PopoverImage = styled(m.img)`
   right: 0;
   margin: auto;
 
-  @media (max-width: 1536px) {
-    width: ${(props) => (props.isNative ? "100%" : "100%")};
+  @media (max-width: 1536px) and (min-width: 769px) {
+    width: ${(props) => (props.isNative ? "80%" : "100%")};
     height: ${(props) => (props.isNative ? "auto" : "100%")};
   }
 
