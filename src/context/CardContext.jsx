@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowUpRightFromSquare,
   faEnvelope,
@@ -306,7 +306,7 @@ export const CardProvider = ({ children }) => {
       images: {
         browserImage: [
           {
-            id: "1",          
+            id: "1",
             alt: "browser search",
           },
         ],
@@ -323,23 +323,66 @@ export const CardProvider = ({ children }) => {
 
   const main = {
     id: 1,
-    title: "About me",
+    title: "About Emil",
     path: "about",
     color: "white",
     backgroundColor: "var(--dark)",
     shadow: "var(--shadow-dark)",
     descriptions: {
-      primary:
-        "Hi there! I'm Emil Stjernlöf, a dedicated Frontend Developer based in Stockholm, Sweden. Currently pursuing my education at Jensen Yrkeshögskola in Kista, I am deeply passionate about creating seamless user experiences.",
-      secondary:
-        "Proficient in JavaScript and specialized in React, I thrive on the challenge of crafting dynamic and interactive web applications. With a keen eye for design and functionality, I believe in the power of technology to enhance the way we interact with the digital world.",
-      tertiary:
-        "My journey as a developer has exposed me to a diverse range of projects, allowing me to adapt swiftly to new technologies and frameworks. I am a strong advocate for collaboration and effective communication, valuing the insights and contributions of fellow developers and stakeholders alike.",
-      quaternary:
-        "Outside of coding, I find inspiration in exploring emerging technologies and trends in the ever-evolving field of frontend development. I am excited to continue pushing boundaries and creating compelling digital experiences that leave a lasting impression.",
+      primary: (
+        <>
+          Well hello there! Nice to see you here.
+          <br />
+          I'm Emil Stjernlöf, a newly graduated Frontend Developer based in
+          Uppsala, Sweden. As a 30-something former health care worker, I
+          decided to broaden my views and pursue a career change. Scary, I know!
+          <br />
+          <br />
+          From 2022 to 2024, I studied frontend development at Jensen
+          Yrkeshögskola in Kista, where I honed my skills in building engaging
+          and user-friendly web experiences using{" "}
+          <b style={{ color: "var(--neon-green)" }}>JavaScript</b>,
+          <b style={{ color: "var(--neon-green)" }}> React</b>, and
+          <b style={{ color: "var(--neon-green)" }}> React Native</b>.
+        </>
+      ),
+      secondary: (
+        <>
+          I enjoy working on dynamic and interactive applications that respond
+          to users' needs. For me, great frontend development is about more than
+          just writing code—it's about designing intuitive and visually
+          appealing experiences that make people's lives easier.
+        </>
+      ),
+      tertiary: (
+        <>
+          During my time at Jensen, I also had the opportunity to gain hands-on
+          experience through a work placement (LIA) at Sigholm. There, I
+          developed my skills in{" "}
+          <b style={{ color: "var(--neon-green)" }}>TypeScript</b> and agile
+          methodologies, gaining valuable insight into real-world development
+          workflows. This experience also taught me how to quickly adapt to new
+          technologies and work efficiently in a dynamic environment.
+        </>
+      ),
+      quaternary: (
+        <>
+          I’m excited about the opportunity to pursue this new path. Outside of
+          coding, I love exploring new technologies and keeping up with the
+          latest trends in frontend development. I’m always looking for ways to
+          push my skills further and create digital experiences that are both
+          impactful and memorable.
+        </>
+      ),
     },
     images: {
       profilePic: "pageimages/aboutme/profilepic1.jpg",
+      profilePic2: "pageimages/aboutme/profilepic2.jpg",
+      profilePic3: "pageimages/aboutme/profilepic3.jpg",
+      profilePic4: "pageimages/aboutme/profilepic4.jpg",
+      profilePic5: "pageimages/aboutme/profilepic5.jpg",
+      profilePic6: "pageimages/aboutme/profilepic6.jpg",
+      profilePic7: "pageimages/aboutme/profilepic7.jpg",
     },
     repos: [
       {
@@ -355,6 +398,31 @@ export const CardProvider = ({ children }) => {
         icon: <FontAwesomeIcon icon={faEnvelope} />,
       },
     ],
+
+    music: [
+      {
+        song: "https://www.youtube.com/watch?v=BrDWkvERrO8",
+        songtitle: "Jonathan Johansson - På Boulevarden",
+      },
+      {
+        song: "https://www.youtube.com/watch?v=LjBo82hQXFA",
+        songtitle: "Drab Majesty - Ellipsis",
+      },
+      {
+        song: "https://www.youtube.com/watch?v=uzS3WG6__G4",
+        songtitle: "Frank Ocean - Pink + White",
+      },
+      {
+        song: "https://www.youtube.com/watch?v=RpNehYjKGRY",
+        songtitle: "Moonica Mac - 80´s",
+      },
+      {
+        song: "https://www.youtube.com/watch?v=bvmEYgFsgyg",
+        songtitle: "The War On Drugs - Strangest Thing",
+      },
+    ],
+
+    musicIcon: <FontAwesomeIcon icon={faYoutube} style={{ width: "1em", height: "1em" }} />,
   };
 
   return (
