@@ -339,7 +339,7 @@ export const CardProvider = ({ children }) => {
         "Outside of coding, I find inspiration in exploring emerging technologies and trends in the ever-evolving field of frontend development. I am excited to continue pushing boundaries and creating compelling digital experiences that leave a lasting impression.",
     },
     images: {
-      profilePic: "src/assets/profilepic1.jpg",
+      profilePic: "pageimages/aboutme/profilepic1.jpg",
     },
     repos: [
       {

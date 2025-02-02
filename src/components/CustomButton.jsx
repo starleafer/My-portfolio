@@ -299,6 +299,7 @@ const Button = styled.button`
 
     &:not(:hover) {
       animation: none;
+      padding: .5em;
       border: 1px solid ${(props) =>
         props.invertedColors
           ? props.backgroundColor

@@ -223,8 +223,8 @@ const Content = styled.div`
 const ScrollContainer = styled.div`
   display: flex;
   flex-direction: row;
-  overflow-y: auto;
-  overflow-x: hidden;
+  height: 100vh;
+  overflow: hidden;
 
   @media (max-width: 768px) {
     flex-direction: column;

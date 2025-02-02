@@ -49,7 +49,6 @@ function AboutMe() {
     }
   };
 
-
   return (
     <Body ref={bodyRef}>
       <Content ref={contentRef}>
@@ -125,26 +124,24 @@ const cascadingFadeIn = keyframes`
 `;
 
 const Body = styled.div`
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--dark);
-  overflow: hidden;
-
-  @media (max-width: 1536px) {
-  }
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
 
   @media (max-width: 768px) and (min-width: 320px) {
-    overflow: unset; 
-    overflow-y: scroll; 
+    height: auto;
     justify-content: flex-start;
     -webkit-overflow-scrolling: touch;
-    padding: 5vh 0;
+    padding: 2vh 0;
   }
-  `;
+`;
 
 const Content = styled.div`
   display: flex;
@@ -152,16 +149,14 @@ const Content = styled.div`
   width: 60%;
   color: white;
   animation: ${fadeInAnimation} 2s, ${slideInAnimation} 1s;
-  margin-bottom: 15vh;
-  
+  margin-bottom: 5vh;
+
   @media (max-width: 768px) and (min-width: 320px) {
-    height: 200vh;
     width: 90%;
     flex-direction: column;
-    gap: 6em;
-    margin: 8vh 0;
-    height: 100vh;
-    
+    gap: 2em;
+    margin: 4vh 0;
+    height: auto;
   }
 `;
 
@@ -177,27 +172,23 @@ const Text = styled.div`
     margin-right: 0;
     margin-bottom: 4vh;
     max-width: 100%;
-    
-
   }
 `;
 
 const CascadingText = styled.div`
   margin: 1em 0;
-  font-size: clamp(1rem, calc(.1vw + 1rem), 13rem);
+  font-size: clamp(1rem, calc(0.1vw + 1rem), 13rem);
 
-  
   p {
     opacity: 0;
     animation: ${cascadingFadeIn} 1s forwards;
     animation-delay: ${(props) => props.delay || "0s"};
     margin: 0;
   }
-  
+
   @media (max-width: 768px) and (min-width: 320px) {
     max-height: 70%;
   }
-
 `;
 
 const Image = styled.img`
@@ -211,46 +202,32 @@ const Image = styled.img`
   filter: grayscale(100%);
   z-index: 1;
 
-  @media (max-width: 1536px) {
-    max-width: 15em;
-  }
-
   @media (max-width: 768px) and (min-width: 320px) {
-
-    height: auto;
+    max-width: 70%;
     border-radius: 10%;
-    margin-top: 0;
+    margin: 2em 0;
   }
 `;
 
 const ContactLinksContainer = styled.div`
-  position: fixed;
   display: flex;
   width: 60%;
   height: 5rem;
   justify-content: flex-start;
   align-items: center;
   gap: 2em;
-  margin-top: 3em;
+  margin-top: 2em;
   opacity: 0;
   animation: ${fadeInAnimation} 2s forwards, ${slideInAnimation} 1s forwards;
   animation-delay: 0.7s;
-  bottom: 15vh;
-  
-  @media (max-width: 1536px) {
-    bottom: 20vh;
-    left: 55vw;
-  }
-  
+
   @media (max-width: 768px) and (min-width: 320px) {
-    position: relative;
-    bottom: -140px;
-    left: auto;
     width: 90%;
-    margin-top: 2vh;
     justify-content: center;
+    margin: 2em 0;
+    padding-bottom: 4em;
   }
-  `;
+`;
 
 const ButtonWrapper = styled.div`
   width: 5rem;
