@@ -165,6 +165,19 @@ const shineEffect = keyframes`
   }
   `;
 
+const StyledIcon = styled(FontAwesomeIcon)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 0.5em;
+  height: 0.5em;
+  font-size: 1.5em;
+  color: ${(props) =>
+    props.invertedColors
+      ? props.backgroundColor
+      : props.color || "var(--dark)"};
+`;
+
 const Button = styled.button`
   display: flex;
   justify-content: space-evenly;
@@ -255,17 +268,18 @@ const Button = styled.button`
     font-size: 1rem;
   }
 
- @media (max-width: 768px) and (min-width: 320px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: ${(props) =>
       props.small ? "3rem" : props.width ? props.width : "auto"};
     height: ${(props) =>
       props.small ? "3rem" : props.height ? props.height : "auto"};
     padding: 1.3vw;
     text-wrap: nowrap;
-    border: 1px solid ${(props) =>
-      props.invertedColors
-        ? props.backgroundColor
-        : props.color || "var(--dark)"};
+    border: 1px solid
+      ${(props) =>
+        props.invertedColors
+          ? props.backgroundColor
+          : props.color || "var(--dark)"};
     transform: none;
     box-shadow: none;
     animation: none;
@@ -273,37 +287,60 @@ const Button = styled.button`
     &:hover {
       transform: none;
       animation: none;
-      border: 1px solid ${(props) =>
-        props.invertedColors
-          ? props.backgroundColor
-          : props.color || "var(--dark)"};
+      border: 1px solid
+        ${(props) =>
+          props.invertedColors
+            ? props.backgroundColor
+            : props.color || "var(--dark)"};
     }
 
     &:focus {
       transform: none;
       animation: none;
-      border: 1px solid ${(props) =>
-        props.invertedColors
-          ? props.backgroundColor
-          : props.color || "var(--dark)"};
+      border: 1px solid
+        ${(props) =>
+          props.invertedColors
+            ? props.backgroundColor
+            : props.color || "var(--dark)"};
     }
 
     &:focus:not(:hover) {
       transform: none;
       animation: none;
-      border: 1px solid ${(props) =>
-        props.invertedColors
-          ? props.backgroundColor
-          : props.color || "var(--dark)"};
+      border: 1px solid
+        ${(props) =>
+          props.invertedColors
+            ? props.backgroundColor
+            : props.color || "var(--dark)"};
     }
 
     &:not(:hover) {
       animation: none;
-      padding: .7em;
-      border: 1px solid ${(props) =>
+      padding: 0.7em;
+      border: 1px solid
+        ${(props) =>
+          props.invertedColors
+            ? props.backgroundColor
+            : props.color || "var(--dark)"};
+    }
+
+    &:active {
+      color: ${(props) =>
+        props.invertedColors
+          ? props.color
+          : props.backgroundColor || "transparent"};
+      background-color: ${(props) =>
         props.invertedColors
           ? props.backgroundColor
           : props.color || "var(--dark)"};
+      transition: color 0.1s, background-color 0.1s;
+
+      ${StyledIcon} {
+        color: ${(props) =>
+          props.invertedColors
+            ? props.color
+            : props.backgroundColor || "var(--dark)"};
+      }
     }
   }
 `;
@@ -353,19 +390,6 @@ const CopyAlert = styled.div`
       animation-delay: 0.3s;
     }
   }
-`;
-
-const StyledIcon = styled(FontAwesomeIcon)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 0.5em;
-  height: 0.5em;
-  font-size: 1.5em;
-  color: ${(props) =>
-    props.invertedColors
-      ? props.backgroundColor
-      : props.color || "var(--dark)"};
 `;
 
 export default CustomButton;

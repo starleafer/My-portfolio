@@ -42,10 +42,21 @@ function AboutMe() {
     }
   }, []);
 
-  const handleButtonClick = (repo, index) => {
+  const handleButtonClick = (repo) => {
     if (Object.keys(repo)[0] === "email") {
       setCopySuccessMessage("Email copied!");
-      navigator.clipboard.writeText(repo.email);
+      navigator.clipboard.writeText("emil.stjernlof@gmail.com");
+      
+
+      setTimeout(() => {
+        setCopySuccessMessage("");
+      }, 3000);
+    } 
+    else if (Object.keys(repo)[0] === "browser") {
+      window.open(repo.browser, "_blank");
+    }
+    else if (Object.keys(repo)[0] === "linkedin") {
+      window.open(repo.linkedin, "_blank");
     }
   };
 
@@ -81,11 +92,9 @@ function AboutMe() {
             <CustomButton
               color={main.color}
               backgroundColor={main.backgroundColor}
-              onClick={() => handleButtonClick(repo, index)}
+              onClick={() => handleButtonClick(repo)}
               label={<IconWrapper>{repo.icon}</IconWrapper>}
-              showCopyAlert={
-                Object.keys(repo)[0] === "email" && copySuccessMessage
-              }
+              showCopyAlert={Object.keys(repo)[0] === "email" && copySuccessMessage}
               copyMessage={copySuccessMessage}
               small
             />
@@ -156,7 +165,7 @@ const Content = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     width: 90%;
     flex-direction: column;
-    gap: 2em;
+    gap: 100px;
     margin: 10vh 0 4vh 0;
     height: auto;
   }
