@@ -18,6 +18,7 @@ import {
 import "./index.css";
 import Splash from "./components/Splash";
 import MasksAndCursor from "./components/MasksAndCursor";
+import HeaderMenu from "./components/HeaderMenu";
 
 function App() {
   const { runTransition } = useTransitionContext();
@@ -116,7 +117,7 @@ function App() {
                     path={home}
                     element={
                       <ScrollContainer>
-                        <Buttons
+                        <HeaderMenu
                           path={home}
                           setIsHoverButton={setIsHoverButton}
                         />
@@ -131,7 +132,7 @@ function App() {
                     path={cleaning}
                     element={
                       <ScrollContainer className="scrollCleaning">
-                        <Buttons
+                        <HeaderMenu
                           path={cleaning}
                           setIsHoverButton={setIsHoverButton}
                         />
@@ -143,7 +144,7 @@ function App() {
                     path={chatapp}
                     element={
                       <ScrollContainer className="scrollChatApp">
-                        <Buttons
+                        <HeaderMenu
                           path={chatapp}
                           setIsHoverButton={setIsHoverButton}
                         />
@@ -155,7 +156,7 @@ function App() {
                     path={webbshop}
                     element={
                       <ScrollContainer className="scrollWebbShop">
-                        <Buttons
+                        <HeaderMenu
                           path={webbshop}
                           setIsHoverButton={setIsHoverButton}
                         />
@@ -167,7 +168,7 @@ function App() {
                     path={movieapp}
                     element={
                       <ScrollContainer className="scrollMovies">
-                        <Buttons
+                        <HeaderMenu
                           path={movieapp}
                           setIsHoverButton={setIsHoverButton}
                         />
@@ -179,7 +180,7 @@ function App() {
                     path={dashboard}
                     element={
                       <ScrollContainer>
-                        <Buttons
+                        <HeaderMenu
                           path={dashboard}
                           setIsHoverButton={setIsHoverButton}
                         />
@@ -191,7 +192,7 @@ function App() {
                     path="/about"
                     element={
                       <ScrollContainer>
-                        <Buttons path="/about" about />
+                        <HeaderMenu path="/about" about />
                         <AboutMe />
                       </ScrollContainer>
                     }

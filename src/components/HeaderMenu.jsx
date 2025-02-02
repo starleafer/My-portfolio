@@ -16,11 +16,15 @@ function HeaderMenu({ about, setIsHoverButton }) {
   const { card, main } = useCardContext();
   const navigate = useNavigate();
 
-  const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
+  const currentPath = window.location.pathname
+    .replace("/My-portfolio/", "")
+    .replace("/", "");
   const currentCard = card.find((item) => item.path === currentPath) || card[0];
   let color = currentCard.color;
   let backgroundColor = currentCard.backgroundColor;
   let shadow = currentCard.shadow;
+
+  console.log(about);
 
   if (currentPath === "about") {
     color = main.backgroundColor;
@@ -82,9 +86,11 @@ function HeaderMenu({ about, setIsHoverButton }) {
       {showCircle && <Circle color={isClicked ? circleColor : ""} />}
       <ButtonContainer
         path={currentPath}
+        color={color}
         backgroundColor={backgroundColor}
         shadow={shadow}
         fadeIn={fadeIn}
+        about={about}
       >
         {location.pathname !== "/" ? (
           <CustomButton
@@ -152,16 +158,38 @@ const ButtonContainer = styled.div`
   align-items: center;
   gap: 2.5vh;
   padding: 3vh 2vw;
-  z-index: 100;
+  z-index: 115;
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
+  background-color: ${(props) =>
+    props.about ? "var(--dark)" : props.backgroundColor};
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(
+      to bottom,
+      ${(props) => (props.about ? "var(--dark)" : props.backgroundColor)} 0%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  &::after {
+    bottom: -30px;
+    height: 30px;
+  }
 
   @media (max-width: 768px) and (min-width: 320px) {
+    background-color: ${(props) =>
+      props.about ? "var(--dark)" : props.backgroundColor};
     align-items: center;
     justify-content: flex-start;
-    margin-left: 30px;
-    position: absolute;
-    background-color: ${(props) => props.color};
     z-index: 100;
   }
 `;

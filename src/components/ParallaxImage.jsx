@@ -195,6 +195,7 @@ const Container = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     right: 3vw;
     padding: 0;
+    margin-top: 5vh;
   }
   
 
