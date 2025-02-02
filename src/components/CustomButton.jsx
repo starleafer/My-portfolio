@@ -255,7 +255,7 @@ const Button = styled.button`
     font-size: 1rem;
   }
 
- @media (max-width: 768px) and (min-width: 321px) {
+ @media (max-width: 768px) and (min-width: 320px) {
     width: ${(props) =>
       props.small ? "3rem" : props.width ? props.width : "auto"};
     height: ${(props) =>
@@ -329,7 +329,7 @@ const CopyAlert = styled.div`
   &.clicked {
     animation: ${slideAndFadeOut} 2s forwards;
 
-    @media (max-width: 768px) and (min-width: 321px) {
+    @media (max-width: 768px) and (min-width: 320px) {
       animation: ${slideAndFadeOutMobile} 1.5s forwards;
       width: 80px;
       height: 25px;

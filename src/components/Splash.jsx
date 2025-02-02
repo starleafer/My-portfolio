@@ -27,7 +27,7 @@ const Container = styled.div`
     opacity: 0;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     margin: 25vh 0 0 5vw;
     align-items: flex-start;
   }

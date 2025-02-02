@@ -103,7 +103,7 @@ const Container = styled.div`
   }
 
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     gap: 2em;
     width: 100vw;
     margin-top: 1vh;
@@ -120,7 +120,7 @@ const Title = styled.h1`
  font-size: clamp(45px, 5vw, 100px);
  font-family: 'Poiret One';
 
- @media (max-width: 768px) and (min-width: 321px) {
+ @media (max-width: 768px) and (min-width: 320px) {
   margin-top: 1em;
  }
 

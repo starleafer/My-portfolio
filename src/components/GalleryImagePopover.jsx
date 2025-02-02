@@ -15,6 +15,7 @@ const GalleryImagePopover = ({
   isNative,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(images.indexOf(image));
+  const [direction, setDirection] = useState(0);
 
   useEffect(() => {
     if (images.indexOf(image) === -1) {
@@ -25,16 +26,39 @@ const GalleryImagePopover = ({
   }, [image, images]);
 
   const handleNext = () => {
+    setDirection(1);
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
   };
 
   const handlePrevious = () => {
-    setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setDirection(-1);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   const currentImage = images[currentIndex];
+
+  const slideVariants = {
+    enter: (direction) => ({
+      x: direction > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.98,
+      filter: 'blur(4px)'
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      filter: 'blur(0px)'
+    },
+    exit: (direction) => ({
+      zIndex: 0,
+      x: direction < 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.98,
+      filter: 'blur(4px)'
+    })
+  };
 
   return (
     <AnimatePresence>
@@ -57,13 +81,43 @@ const GalleryImagePopover = ({
           >
             <ImageGroup isNative={isNative}>
               <ImageContainer isNative={isNative}>
-                <PopoverImage
-                  src={currentImage.src}
-                  alt={currentImage.alt || "Image"}
-                  onClick={onClose}
-                  isNative={isNative}
-                  backgroundColor={backgroundColor}
-                />
+                <AnimatePresence mode="wait" custom={direction} initial={false}>
+                  <PopoverImage
+                    key={currentImage.src}
+                    as={m.img}
+                    src={currentImage.src}
+                    alt={currentImage.alt || "Image"}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      x: { 
+                        type: "spring", 
+                        stiffness: 200,
+                        damping: 18,
+                        mass: 0.4,
+                        restSpeed: 0.5
+                      },
+                      opacity: { 
+                        duration: 0.2,
+                        ease: "easeInOut"
+                      },
+                      scale: {
+                        duration: 0.2,
+                        ease: "easeOut"
+                      },
+                      filter: {
+                        duration: 0.15,
+                        ease: "easeOut"
+                      }
+                    }}
+                    onClick={onClose}
+                    isNative={isNative}
+                    backgroundColor={backgroundColor}
+                  />
+                </AnimatePresence>
               </ImageContainer>
               <ClosButtonContainer>
                 <CustomButton
@@ -127,7 +181,7 @@ const Overlay = styled(m.div)`
   align-items: center;
   z-index: 130;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     justify-content: flex-start;
   }
 
@@ -150,7 +204,7 @@ const PopoverContent = styled(m.div)`
   width: 100%;
   height: 100%;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     width: auto;
     margin-left: 2.5vw;
@@ -172,12 +226,13 @@ const ImageContainer = styled.div`
   border-radius: 20px;
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
+  position: relative;
 
   @media (max-width: 1536px) {
     width: ${(props) => (props.isNative ? "60%" : "55%")};
     height: ${(props) => (props.isNative ? "auto" : "400px")};
   }
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: 85vw;
     height: ${(props) => (props.isNative ? "auto" : "60vh")};
   }
@@ -197,13 +252,17 @@ const PopoverImage = styled(m.img)`
   background-color: ${(props) => props.backgroundColor};
   border-radius: 20px;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
 
   @media (max-width: 1536px) {
     width: ${(props) => (props.isNative ? "100%" : "100%")};
     height: ${(props) => (props.isNative ? "auto" : "100%")};
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: 100%;
     height: auto;
     max-height: 60vh;
@@ -235,7 +294,7 @@ const ClosButtonContainer = styled.div`
   top: 1vw;
   right: ${(props) => (props.isNative ? "5vw" : "3vw")};
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     top: ${(props) =>
       props.isNative ? "2em" : props.doubleRepo ? "-5em" : "-5em"};
     right: 1.9em;

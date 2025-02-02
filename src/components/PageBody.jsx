@@ -232,7 +232,7 @@ const Body = styled.div`
   overflow: hidden;
   padding: 0;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     margin: 0;
     padding: 20px 0;
     justify-content: flex-start;
@@ -257,7 +257,7 @@ const Content = styled.div`
   position: relative;
   color: ${(props) => props.color};
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     min-height: 100vh;
     width: 100%;
@@ -279,7 +279,7 @@ const ContentGroup = styled.div`
   gap: 2em;
   z-index: 105;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
     margin-left: 0;
     gap: 0;
@@ -297,7 +297,7 @@ const TitleContainer = styled.div`
   background-color: ${(props) => props.backgroundColor};
   padding: 20px 0;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     position: relative;
     z-index: 0;
     .navigation-buttons {
@@ -332,7 +332,7 @@ const ImageContainer = styled(motion.div)`
     pointer-events: auto;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: 90vw;
     height: auto;
     min-height: 100vh;
@@ -343,7 +343,7 @@ const ImageContainer = styled(motion.div)`
 const ScrollTopButton = styled.button`
   display: none;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     display: ${(props) => (props.show ? "flex" : "none")};
     position: fixed;
     bottom: 2em;

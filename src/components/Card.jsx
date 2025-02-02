@@ -196,7 +196,7 @@ const StyledCard = styled.div.attrs({
     animation: ${fadeInShadow} 0.5s ease forwards;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     border-width: 1px;
     height: 5vh;
     width: 70vw;
@@ -211,7 +211,7 @@ const StyledCard = styled.div.attrs({
     }
   }
 
-  @media (max-width: 480px) and (min-width: 321px) {
+  @media (max-width: 480px) and (min-width: 320px) {
     width: 70vw;
     font-size: 1.2em;
     padding: 10px;
@@ -237,7 +237,7 @@ const Title = styled.div`
   margin: 5px;
   margin-left: 10px;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     color: ${(props) => props.backgroundColor};
   }
 

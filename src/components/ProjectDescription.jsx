@@ -96,7 +96,7 @@ const DescriptionContainer = styled.div`
   margin: 2em 0;
   width: 30vw;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     align-items: center;
     justify-content: center;
     margin: 0 3em;
@@ -114,7 +114,7 @@ const Description = styled.p`
     font-size: 1.2vw;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     font-size: 1em;
   }
 `;
@@ -136,7 +136,7 @@ const LinkInner = styled.div`
   border-radius: 15px;
   border: 4px dotted ${(props) => props.color};
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     gap: 1em;
     padding: 1em;
     border: none;
@@ -152,7 +152,7 @@ const ButtonGroup = styled.div`
   gap: 2em;
   min-height: 3em;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
     gap: 1em;
     margin-bottom: 2em;
@@ -161,7 +161,7 @@ const ButtonGroup = styled.div`
 
 const SwitchButtonContainer = styled.div`
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -185,7 +185,7 @@ const ViewSwitchButton = styled.div`
     height: 100%;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: 100%;
     min-width: 20%;
     justify-content: center;

@@ -99,7 +99,7 @@ const MaskedGroup = styled.div`
     z-index: 110;
     pointer-events: none; 
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     display: none;
   }
 `;

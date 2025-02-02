@@ -156,7 +156,7 @@ const ButtonContainer = styled.div`
   opacity: ${(props) => (props.fadeIn ? 1 : 0)};
   transition: opacity 1s;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     align-items: center;
     justify-content: flex-start;
     margin-left: 30px;
@@ -196,7 +196,7 @@ const Circle = styled.div`
   z-index: 9999;
   opacity: 1;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     position: fixed;
     width: 20px;
     height: 20px;

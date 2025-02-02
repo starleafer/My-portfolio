@@ -87,7 +87,7 @@ const Container = styled.div`
   animation: ${fadeIn} 0.5s ease-in-out forwards;
   animation-delay: 0.5s;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     display: none;
     /* position: relative;
     height: 20vh;

@@ -15,7 +15,7 @@ function AboutMe() {
 
   useEffect(() => {
     const isMobile = window.matchMedia(
-      "(max-width: 768px) and (min-width: 321px)"
+      "(max-width: 768px) and (min-width: 320px)"
     ).matches;
 
     if (isMobile) {
@@ -137,7 +137,7 @@ const Body = styled.div`
   @media (max-width: 1536px) {
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     overflow: unset; 
     overflow-y: scroll; 
     justify-content: flex-start;
@@ -154,7 +154,7 @@ const Content = styled.div`
   animation: ${fadeInAnimation} 2s, ${slideInAnimation} 1s;
   margin-bottom: 15vh;
   
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     height: 200vh;
     width: 90%;
     flex-direction: column;
@@ -173,7 +173,7 @@ const Text = styled.div`
   max-height: 500px;
   max-width: 500px;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     margin-right: 0;
     margin-bottom: 4vh;
     max-width: 100%;
@@ -191,7 +191,7 @@ const CascadingText = styled.div`
     margin: 0;
   }
   
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     font-size: 2.4vw;
     max-height: 70%;
   }
@@ -213,7 +213,7 @@ const Image = styled.img`
     max-width: 15em;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
 
     height: auto;
     border-radius: 10%;
@@ -240,7 +240,7 @@ const ContactLinksContainer = styled.div`
     left: 55vw;
   }
   
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     position: relative;
     bottom: -140px;
     left: auto;
@@ -257,7 +257,7 @@ const ButtonWrapper = styled.div`
   justify-content: center;
   align-items: center;
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: 4rem;
     height: 2rem;
   }
@@ -271,7 +271,7 @@ const IconWrapper = styled.div`
     width: 2em;
     height: 2em;
 
-    @media (max-width: 768px) and (min-width: 321px) {
+    @media (max-width: 768px) and (min-width: 320px) {
       width: 1.5em;
       height: 1.5em;
     }

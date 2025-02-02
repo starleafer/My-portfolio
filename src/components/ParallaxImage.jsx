@@ -192,7 +192,7 @@ const Container = styled.div`
   padding-top: 3vh;
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     right: 3vw;
     padding: 0;
   }
@@ -225,7 +225,7 @@ const CardWrapper = styled(motion.div)`
     padding: 0 20px;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     width: ${(props) => (props.isNative ? "60vw" : "72vw")};
     left: ${(props) => (props.isNative ? "25vw" : "15vw")};
     justify-content: flex-start;
@@ -250,7 +250,7 @@ const InfoContainer = styled.div`
     margin: 0 0 10px 10px;
   }
 
-  @media (max-width: 768px) and (min-width: 321px) {
+  @media (max-width: 768px) and (min-width: 320px) {
     margin: 0 0 10px 10px;
     width: 90%;
   }
