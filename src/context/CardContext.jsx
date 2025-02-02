@@ -1,7 +1,7 @@
 import React, { createContext, useContext } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faGithub, faLinkedin, faSpotify } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowUpRightFromSquare,
   faEnvelope,
@@ -401,28 +401,28 @@ export const CardProvider = ({ children }) => {
 
     music: [
       {
-        song: "https://www.youtube.com/watch?v=BrDWkvERrO8",
+        song: "https://open.spotify.com/track/1A6u3ufwPK5apJlpmXjOK8?si=6707a186001f4f8b",
         songtitle: "Jonathan Johansson - På Boulevarden",
       },
       {
-        song: "https://www.youtube.com/watch?v=LjBo82hQXFA",
+        song: "https://open.spotify.com/track/7j3KGtoP432CcQLA9zLrAo?si=ae7dc7e146734b27",
         songtitle: "Drab Majesty - Ellipsis",
       },
       {
-        song: "https://www.youtube.com/watch?v=uzS3WG6__G4",
+        song: "https://open.spotify.com/track/3xKsf9qdS1CyvXSMEid6g8?si=d6f658457e794997",
         songtitle: "Frank Ocean - Pink + White",
       },
       {
-        song: "https://www.youtube.com/watch?v=RpNehYjKGRY",
+        song: "https://open.spotify.com/track/2cGlzTR9gC93lc12cZ8afB?si=66362dab1fa94d5d",
         songtitle: "Moonica Mac - 80´s",
       },
       {
-        song: "https://www.youtube.com/watch?v=bvmEYgFsgyg",
+        song: "https://open.spotify.com/track/413CBplTN03RNZD8H34B6q?si=a5a98e900ac14884",
         songtitle: "The War On Drugs - Strangest Thing",
       },
     ],
 
-    musicIcon: <FontAwesomeIcon icon={faYoutube} style={{ width: "1em", height: "1em" }} />,
+    musicIcon: <FontAwesomeIcon icon={faSpotify} style={{ width: "1em", height: "1em" }} />,
   };
 
   return (

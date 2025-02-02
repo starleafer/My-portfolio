@@ -129,7 +129,7 @@ const GalleryImagePopover = ({
                   />
                 </AnimatePresence>
               </ImageContainer>
-              <ClosButtonContainer>
+              <ClosButtonContainer isNative={isNative}>
                 <CustomButton
                   color={color}
                   backgroundColor={backgroundColor}
@@ -144,7 +144,7 @@ const GalleryImagePopover = ({
                 />
               </ClosButtonContainer>
             </ImageGroup>
-            <NavigationGroup>
+            <NavigationGroup isNative={isNative}>
               <CustomButton
                 color={color}
                 backgroundColor={backgroundColor}
@@ -206,7 +206,7 @@ const Overlay = styled(m.div)`
 `;
 
 const PopoverContent = styled(m.div)`
-  position: relative;  // Creates stacking context
+  position: relative; 
   z-index: 10000; 
   border-radius: 10px;
   object-fit: cover;
@@ -221,7 +221,8 @@ const PopoverContent = styled(m.div)`
   @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     width: auto;
-    margin-left: ${(props) => (props.isNative ? "17vw" : "8vw")};
+    margin-left: ${(props) => (props.isNative ? "23vw" : "8vw")};
+
   }
 
   @media (max-width: 768px) and (orientation: landscape) {
@@ -251,6 +252,7 @@ const ImageContainer = styled.div`
     width: ${(props) => (props.isNative ? "55vw" : "85vw")};
     height: ${(props) => (props.isNative ? "auto" : "60vh")};
     max-height: 70vh;
+
   }
 
   @media (max-width: 768px) and (orientation: landscape) {
@@ -317,7 +319,7 @@ const ClosButtonContainer = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     top: ${(props) =>
       props.isNative ? "2em" : props.doubleRepo ? "-5em" : "-5em"};
-    right: 1.9em;
+    right: ${(props) => (props.isNative ? "-4em" : "1.9em")};
   }
 `;
 
@@ -326,9 +328,14 @@ const NavigationGroup = styled.div`
   justify-content: center;
   gap: 4em;
   height: 4em;
-  width: 25em;
+  width: 100%;
   margin-top: auto;
   padding-bottom: 2em;
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    left: 20px;
+
+  }
 `;
 
 export default GalleryImagePopover;

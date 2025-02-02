@@ -195,9 +195,33 @@ const cascadingFadeIn = keyframes`
 `;
 
 const scrollText = keyframes`
-  0%, 10% { transform: translateX(0); } 
-  45%, 55% { transform: translateX(-50%); }
-  90%, 100% { transform: translateX(0); }
+  0% { 
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  5% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  45% { 
+    transform: translateX(-50%);
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  50% {
+    transform: translateX(-50%);
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  85% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  95% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  }
+  100% { 
+    transform: translateX(0);
+  }
 `;
 
 const Body = styled.div`
@@ -333,7 +357,7 @@ const Image = styled.img`
 const MusicWrapper = styled.div`
   width: 280px;
   border-radius: 15px;
-  padding: 2em 0;
+ 
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 320px;
@@ -343,7 +367,7 @@ const MusicWrapper = styled.div`
 const MusicHeaderWrapper = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 1em 0;
 `;
@@ -407,8 +431,7 @@ const SongTitle = styled.div`
   ${(props) =>
     props.shouldScroll &&
     css`
-      animation: ${scrollText} ${(props) => props.duration || "5s"} linear
-        infinite;
+      animation: ${scrollText} ${(props) => props.duration || "8s"} infinite;
       padding-right: 2em;
     `}
 

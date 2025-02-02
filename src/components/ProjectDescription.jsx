@@ -153,7 +153,8 @@ const ButtonGroup = styled.div`
 `;
 
 const SwitchButtonContainer = styled.div`
-
+   z-index: 90;
+   
   @media (max-width: 768px) and (min-width: 320px) {
     display: flex;
     flex-direction: row;

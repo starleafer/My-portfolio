@@ -66,6 +66,10 @@ const NavigationContainer = styled.div`
   justify-content: center;
   margin-left: 4em;
   width: 90vw;
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    margin-left: 0;
+  }
 `;
 
 const Title = styled.h1`
