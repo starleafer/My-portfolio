@@ -1567,7 +1567,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin: 0;
   font-size: clamp(1rem, 1vw, 13rem);
 
-  @media (max-width: 768px) and (min-width: 320px) {
+  @media (max-width: 1536px) and (min-width: 769px) {
     font-size: .5vw;
   }
 `,UA=A.div`
