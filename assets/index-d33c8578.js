@@ -1565,7 +1565,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
-  font-size: clamp(1rem, .5vw, 13rem);
+  font-size: clamp(1rem, 1vw, 13rem);
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    font-size: .5vw;
+  }
 `,UA=A.div`
   display: flex;
   flex-direction: row;
@@ -1580,9 +1584,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   padding: 1em;
   border-radius: 15px;
   border: 4px dotted ${e=>e.color};
+  margin-top: 1em;
 
   @media (max-width: 1536px) and (min-width: 769px) {
     padding: .5em;
+    margin-top: 0;
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -2351,7 +2357,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   width: 20em;
   pointer-events: auto; 
 
- `;function q6(){const{runTransition:e}=kr(),t=Xa(),[n,r]=w.useState(""),[i,o]=w.useState(!1),[s,a]=w.useState(!1),[l,u]=w.useState(!1),[c,f]=w.useState(""),[d,m]=w.useState(""),[y,x]=w.useState(!0),[C,p]=w.useState(1),h="/",g="/cleaning",k="/chatapp",S="/webbshop",b="/movieapp",P="/dashboard";return w.useEffect(()=>{let T="",L="";switch(t.pathname){case h:L="var(--dark)";break;case g:T="var(--yellowish)",L="var(--dark)";break;case S:T="var(--greenish)",L="var(--bisque)";break;case k:T="var(--light-purple)",L="var(--neon-green)";break;case b:T="var(--darker)",L="var(--redish)";break;case P:T="var(--blueish)",L="var(--silver-light)";break;case"/about":T="white",L="white";break;default:T=""}p(0),setTimeout(()=>{r(T),p(1),m()},300),f(L)},[t.pathname]),w.useEffect(()=>{const T=setTimeout(()=>o(!1),3200);return()=>clearTimeout(T)},[]),w.useEffect(()=>{e&&(x(!1),setTimeout(()=>x(!0)))},[e]),v.jsx(v.Fragment,{children:i?v.jsx(W6,{}):v.jsx(al,{children:v.jsxs(JA,{children:[v.jsx(K6,{isHoverButton:l,isHoveringCards:s,cursorColor:c,cursorHoverColor:d}),v.jsx(Z6,{color:n,children:v.jsx(Gx,{children:v.jsx(J6,{children:v.jsxs(mk,{children:[v.jsx(dn,{path:h,element:v.jsxs(Yn,{children:[v.jsx(Hn,{path:h,setIsHoverButton:u}),v.jsx(IA,{setCursorHoverColor:m,setIsHoveringCards:a})]})}),v.jsx(dn,{path:g,element:v.jsxs(Yn,{className:"scrollCleaning",children:[v.jsx(Hn,{path:g,setIsHoverButton:u}),v.jsx(M6,{})]})}),v.jsx(dn,{path:k,element:v.jsxs(Yn,{className:"scrollChatApp",children:[v.jsx(Hn,{path:k,setIsHoverButton:u}),v.jsx(A6,{})]})}),v.jsx(dn,{path:S,element:v.jsxs(Yn,{className:"scrollWebbShop",children:[v.jsx(Hn,{path:S,setIsHoverButton:u}),v.jsx(j6,{})]})}),v.jsx(dn,{path:b,element:v.jsxs(Yn,{className:"scrollMovies",children:[v.jsx(Hn,{path:b,setIsHoverButton:u}),v.jsx(R6,{})]})}),v.jsx(dn,{path:P,element:v.jsxs(Yn,{children:[v.jsx(Hn,{path:P,setIsHoverButton:u}),v.jsx(_6,{})]})}),v.jsx(dn,{path:"/about",element:v.jsxs(Yn,{children:[v.jsx(Hn,{path:"/about",about:!0}),v.jsx(dA,{})]})})]})})})})]})})})}const Z6=A.div`
+ `;function q6(){const{runTransition:e}=kr(),t=Xa(),[n,r]=w.useState(""),[i,o]=w.useState(!0),[s,a]=w.useState(!1),[l,u]=w.useState(!1),[c,f]=w.useState(""),[d,m]=w.useState(""),[y,x]=w.useState(!0),[C,p]=w.useState(1),h="/",g="/cleaning",k="/chatapp",S="/webbshop",b="/movieapp",P="/dashboard";return w.useEffect(()=>{let T="",L="";switch(t.pathname){case h:L="var(--dark)";break;case g:T="var(--yellowish)",L="var(--dark)";break;case S:T="var(--greenish)",L="var(--bisque)";break;case k:T="var(--light-purple)",L="var(--neon-green)";break;case b:T="var(--darker)",L="var(--redish)";break;case P:T="var(--blueish)",L="var(--silver-light)";break;case"/about":T="white",L="white";break;default:T=""}p(0),setTimeout(()=>{r(T),p(1),m()},300),f(L)},[t.pathname]),w.useEffect(()=>{const T=setTimeout(()=>o(!1),3200);return()=>clearTimeout(T)},[]),w.useEffect(()=>{e&&(x(!1),setTimeout(()=>x(!0)))},[e]),v.jsx(v.Fragment,{children:i?v.jsx(W6,{}):v.jsx(al,{children:v.jsxs(JA,{children:[v.jsx(K6,{isHoverButton:l,isHoveringCards:s,cursorColor:c,cursorHoverColor:d}),v.jsx(Z6,{color:n,children:v.jsx(Gx,{children:v.jsx(J6,{children:v.jsxs(mk,{children:[v.jsx(dn,{path:h,element:v.jsxs(Yn,{children:[v.jsx(Hn,{path:h,setIsHoverButton:u}),v.jsx(IA,{setCursorHoverColor:m,setIsHoveringCards:a})]})}),v.jsx(dn,{path:g,element:v.jsxs(Yn,{className:"scrollCleaning",children:[v.jsx(Hn,{path:g,setIsHoverButton:u}),v.jsx(M6,{})]})}),v.jsx(dn,{path:k,element:v.jsxs(Yn,{className:"scrollChatApp",children:[v.jsx(Hn,{path:k,setIsHoverButton:u}),v.jsx(A6,{})]})}),v.jsx(dn,{path:S,element:v.jsxs(Yn,{className:"scrollWebbShop",children:[v.jsx(Hn,{path:S,setIsHoverButton:u}),v.jsx(j6,{})]})}),v.jsx(dn,{path:b,element:v.jsxs(Yn,{className:"scrollMovies",children:[v.jsx(Hn,{path:b,setIsHoverButton:u}),v.jsx(R6,{})]})}),v.jsx(dn,{path:P,element:v.jsxs(Yn,{children:[v.jsx(Hn,{path:P,setIsHoverButton:u}),v.jsx(_6,{})]})}),v.jsx(dn,{path:"/about",element:v.jsxs(Yn,{children:[v.jsx(Hn,{path:"/about",about:!0}),v.jsx(dA,{})]})})]})})})})]})})})}const Z6=A.div`
   display: flex;
   height: 100vh;
   position: relative;
