@@ -1565,11 +1565,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
-  font-size: clamp(1rem, 1vw, 13rem);
 
-  @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: .5vw;
-  }
 `,UA=A.div`
   display: flex;
   flex-direction: row;
