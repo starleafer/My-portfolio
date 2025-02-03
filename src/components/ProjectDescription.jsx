@@ -114,7 +114,11 @@ const Description = styled.p`
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
-  font-size: clamp(1rem, .5vw, 13rem);
+  font-size: clamp(1rem, 1vw, 13rem);
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    font-size: .5vw;
+  }
 `;
 
 
@@ -134,9 +138,11 @@ const LinkInner = styled.div`
   padding: 1em;
   border-radius: 15px;
   border: 4px dotted ${(props) => props.color};
+  margin-top: 1em;
 
   @media (max-width: 1536px) and (min-width: 769px) {
     padding: .5em;
+    margin-top: 0;
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
