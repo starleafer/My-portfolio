@@ -1,7 +1,11 @@
 import React, { createContext, useContext } from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub, faLinkedin, faSpotify } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGithub,
+  faLinkedin,
+  faSpotify,
+} from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowUpRightFromSquare,
   faEnvelope,
@@ -75,6 +79,63 @@ export const CardProvider = ({ children }) => {
     },
     {
       id: 2,
+      title: "Daily Helper",
+      path: "dashboard",
+      type: "Dashboard",
+      label: "Typescript, Next.js",
+      color: "var(--light-blueish)",
+      backgroundColor: "var(--shadow-blueish)",
+      shadow: "var(--shadow-blueish)",
+      descriptions: {
+        primary:
+          "This modern dashboard application is a comprehensive financial and productivity tool built with TypeScript and Next.js. It implements secure authentication using NextAuth.js for protected user access and data privacy. The app leverages React Aria's headless components for accessible, customizable UI elements, combining real-time stock tracking (Alpha Vantage API), weather updates, and news feeds with a task management system.",
+        secondary:
+          "Built with TypeScript for type safety and Tailwind CSS for styling, it offers a responsive interface with dark/light themes. The integration of NextAuth.js, React Aria components, and multiple APIs creates a secure, accessible platform for managing financial portfolios and daily tasks.",
+      },
+      images: {
+        browserImage: [
+          {
+            id: "1",
+            src: "pageimages/dashboard/dashboardFullCalendar.png",
+            info: "Full calendar view with drag and drop functionality on the task management system.",
+            alt: "browser search",
+          },
+          {
+            id: "2",
+            src: "pageimages/dashboard/dashboardNewsCategories.png",
+            info: "News categories from the Public News API.",
+            alt: "browser search",
+          },
+          {
+            id: "3",
+            src: "pageimages/dashboard/dashboardNewsArticles.png",
+            info: "Choose your favorite news articles from the Public News API.",
+            alt: "browser search",
+          },
+          {
+            id: "4",
+            src: "pageimages/dashboard/dashboardArticle.png",
+            info: "Read the full article from the Public News API.",
+            alt: "browser search",
+          },
+          {
+            id: "5",
+            src: "pageimages/dashboard/dashboardProfile.png",
+            info: "Authenticated users can manage their own tasks and calendar.",
+            alt: "browser search",
+          },
+        ],
+      },
+
+      repos: [
+        {
+          browser: "https://github.com/starleafer/Daily-Helper",
+          icon: <FontAwesomeIcon icon={faGithub} />,
+        },
+      ],
+    },
+    {
+      id: 3,
       title: "Sole Soul",
       path: "webbshop",
       type: "Web store",
@@ -130,7 +191,7 @@ export const CardProvider = ({ children }) => {
       ],
     },
     {
-      id: 3,
+      id: 4,
       title: "Class Chat",
       path: "chatapp",
       type: "Chat app",
@@ -204,7 +265,7 @@ export const CardProvider = ({ children }) => {
       ],
     },
     {
-      id: 4,
+      id: 5,
       title: "Movie Night",
       path: "movieapp",
       type: "Movie browser",
@@ -285,36 +346,6 @@ export const CardProvider = ({ children }) => {
         },
         {
           native: "https://github.com/starleafer/The-Movie-App-Native",
-          icon: <FontAwesomeIcon icon={faGithub} />,
-        },
-      ],
-    },
-    {
-      id: 5,
-      title: "Daily Helper",
-      path: "dashboard",
-      type: "Dashboard",
-      label: "Typescript, Next.js",
-      color: "var(--silver-light)",
-      backgroundColor: "var(--shadow-blueish)",
-      shadow: "var(--shadow-blueish)",
-      descriptions: {
-        primary:
-          "Daily Helper is a web application that helps you manage your daily tasks and schedule.",
-        secondary: "It is built with React and Typescript.",
-      },
-      images: {
-        browserImage: [
-          {
-            id: "1",
-            alt: "browser search",
-          },
-        ],
-      },
-
-      repos: [
-        {
-          browser: "https://github.com/starleafer/Daily-Helper",
           icon: <FontAwesomeIcon icon={faGithub} />,
         },
       ],
@@ -422,7 +453,12 @@ export const CardProvider = ({ children }) => {
       },
     ],
 
-    musicIcon: <FontAwesomeIcon icon={faSpotify} style={{ width: "1em", height: "1em" }} />,
+    musicIcon: (
+      <FontAwesomeIcon
+        icon={faSpotify}
+        style={{ width: "1em", height: "1em" }}
+      />
+    ),
   };
 
   return (

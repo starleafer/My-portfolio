@@ -19,6 +19,7 @@ function PageBody({
   isNative,
   isBrowser,
   invertedColors,
+  textColor,
 }) {
   const [doubleRepo, setDoubleRepo] = useState(false);
   const [isSwitchActive, setIsSwitchActive] = useState(false);
@@ -185,6 +186,7 @@ function PageBody({
                   browserImages={browserImages}
                   backgroundColor={backgroundColor}
                   color={color}
+                  textColor={textColor}
                   invertedColors={invertedColors}
                   doubleRepo={doubleRepo}
                   isSwitchActive={isSwitchActive}
@@ -195,6 +197,7 @@ function PageBody({
                 images={isNative ? nativeImages : browserImages}
                 backgroundColor={backgroundColor}
                 color={color}
+                textColor={textColor}
                 invertedColors={invertedColors}
                 isNative={isNative}
               />
@@ -278,12 +281,14 @@ const ContentGroup = styled.div`
   margin-left: 10vw;
   gap: 2em;
   z-index: 105;
+  overflow: hidden;
 
 
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
     margin-left: 0;
     gap: 0;
+    overflow: visible;
   }
 `;
 
@@ -328,6 +333,7 @@ const ImageContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 
   & > * {
     pointer-events: auto;
@@ -338,6 +344,7 @@ const ImageContainer = styled(motion.div)`
     height: auto;
     min-height: 100vh;
     position: relative;
+    overflow: visible;
   }
 `;
 

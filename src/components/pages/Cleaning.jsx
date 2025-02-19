@@ -5,7 +5,7 @@ import PageBody from "../PageBody";
 
 function Cleaning() {
   const { card } = useCardContext();
-  const cardData = card.find(item => item.path === 'cleaning');
+  const cardData = card.find((item) => item.path === "cleaning");
 
   return (
     <>

@@ -67,7 +67,7 @@ function App() {
         break;
       case dashboard:
         pathColor = "var(--blueish)";
-        secondaryColor = "var(--silver-light)";
+        secondaryColor = "var(--light-blueish)";
         break;
       case "/about":
         pathColor = "white";

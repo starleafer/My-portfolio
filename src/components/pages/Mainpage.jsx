@@ -2,8 +2,6 @@ import React, { useRef, useState, useEffect } from "react";
 import Projectlist from "../Projectlist";
 import { motion as m } from "framer-motion";
 import styled, { keyframes } from "styled-components";
-import AboutMe from "./AboutMe";
-import useMousePosition from "../../utils/useMousePosition";
 
 function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
   const [hoverColor, setHoverColor] = useState("");

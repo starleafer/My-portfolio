@@ -25,8 +25,6 @@ function HeaderMenu({ about, setIsHoverButton }) {
   let backgroundColor = currentCard.backgroundColor;
   let shadow = currentCard.shadow;
 
-  console.log(about);
-
   if (currentPath === "about") {
     color = main.backgroundColor;
     backgroundColor = main.color;

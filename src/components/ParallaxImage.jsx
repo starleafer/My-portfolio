@@ -19,6 +19,7 @@ export default function ParallaxImage({
   isNative,
   doubleRepo,
   isSwitchActive,
+  textColor,
 }) {
   const containerRef = useRef(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -130,6 +131,7 @@ export default function ParallaxImage({
             isFirst={index === 0}
             isLast={index === images.length - 1}
             isNative={isNative}
+            textColor={textColor}
             style={{
               backgroundColor: adjustBackgroundColor(
                 index,
@@ -188,7 +190,7 @@ const Container = styled.div`
   justify-content: flex-start;
   height: 100vh;
   width: 100vw;
-  overflow-y: scroll;
+  overflow-y: hidden;
   padding-top: 3vh;
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
 
@@ -270,7 +272,6 @@ const Info = styled.p`
 `;
 
 const ImageContainer = styled.div`
-
   position: relative;
   display: flex;
   justify-content: center;
@@ -292,3 +293,4 @@ const Image = styled(motion.img)`
   object-fit: cover;
   border-radius: 20px;
 `;
+

@@ -82,10 +82,23 @@ const ES = styled.div`
     @starting-style {
       left: -22vw;
     }
+
+    @media (max-width: 768px) and (min-width: 320px) {
+      height: 300px;
+      font-size: 200px;
+      height: 48vh;
+      
+      @starting-style {
+        left: -30vw;
+      }
+    }
   }
 
   &:after {
     width: 3vw;
   }
+
+
+
 `
   
