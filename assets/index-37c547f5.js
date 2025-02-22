@@ -1233,6 +1233,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   @media (max-width: 1536px) and (min-width: 769px) {
     margin: 0 ;
+    gap: 0.8em;
   }
 
 
@@ -1241,13 +1242,17 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     justify-content: center;
     margin: 0 3em;
     width: 75vw;
-
   }
 `,mu=A.p`
   font-family: "Lato", sans-serif;
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
+
+    @media (max-width: 1536px) and (min-width: 769px) {
+    font-size: 1em; 
+    line-height: 1.5;
+  }
 
 `,kA=A.div`
   display: flex;
@@ -1266,8 +1271,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin-top: 1em;
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    padding: .5em;
+    padding: 0.3em; 
     margin-top: 0;
+    height: 2.5em; 
+    gap: 1em; 
+    border-width: 3px; 
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -1286,9 +1294,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   @media (max-width: 1536px) and (min-width: 768px) {
     width: 35vw;
-    margin-top: 10px;
+    margin-top: 5px; 
     justify-content: flex-start;
-
+    min-height: 2.5em;
+    gap: 1em; 
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -1511,7 +1520,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     left: 20px;
 
   }
-`;function ef({images:e=[],backgroundColor:t,color:n,invertedColors:r,isNative:i,doubleRepo:o,isSwitchActive:s,textColor:a}){const l=w.useRef(null),[u,c]=w.useState(0),[f,d]=w.useState(null),[m,y]=w.useState(null),{scrollYProgress:x}=Cg({container:l,offset:["start start","end end"]});w.useEffect(()=>{const g=new qd({wrapper:l.current,content:l.current,duration:1.2,orientation:"vertical",smooth:!0,smoothWheel:!0,touchMultiplier:2});y(g);function S(k){g.raf(k),requestAnimationFrame(S)}return requestAnimationFrame(S),()=>{g.destroy()}},[]);const C=(g,S)=>{const k=S===0?.1:.3;g>(S===0?.3:.5)?c(S):g<k&&S>0&&c(S-1)};if(!e||e.length===0)return null;const p=g=>{d(g),m==null||m.stop()},h=()=>{d(null),m==null||m.start()};return v.jsxs($A,{ref:l,isNative:i,children:[e.map((g,S)=>{const k=w.useRef(null),{scrollYProgress:b}=Cg({target:k,container:l,offset:["start 60%","center center"]}),P=Ys(x,[0,1],[1,1-(e.length-S)*.05]);p4(b,"change",vt=>{C(vt,S)});const T=Ys(b,[0,.5,1],[0,1,1]),N=Ys(b,[0,.5,1],[1.5,1,1]),M=Jc(T,{stiffness:100,damping:20}),B=Jc(N,{stiffness:100,damping:20}),Te=g.src||g,he=g.alt||`Image ${S+1}`,st=(vt,at,U)=>{const R=75/(at-1),O=15+vt*R,D=Math.min(O,90);return`color-mix(in srgb, ${U} ${D}%, black)`};return v.jsxs(BA,{onClick:()=>p(g),ref:k,isFirst:S===0,isLast:S===e.length-1,isNative:i,textColor:a,style:{backgroundColor:st(S,e.length,r?n:t),color:r?t:n,top:i?`${S*10}px`:`${S*35}px`,marginBottom:S===e.length-1?"40vh":"0",scale:P},children:[v.jsx(UA,{children:v.jsx(WA,{children:g.info})}),v.jsx(HA,{isNative:i,children:v.jsx(YA,{src:Te,alt:he,style:{opacity:M,scale:B}})})]},g.id||S)}),v.jsx(LA,{image:f,images:e,onClose:h,color:n,backgroundColor:t,invertedColors:r,isNative:i,doubleRepo:o}),v.jsx(EA,{color:n,images:e,scrollProgress:x,isNative:i,doubleRepo:o,isSwitchActive:s})]})}const $A=A.div`
+`;function ef({images:e=[],backgroundColor:t,color:n,invertedColors:r,isNative:i,doubleRepo:o,isSwitchActive:s,textColor:a}){const l=w.useRef(null),[u,c]=w.useState(0),[f,d]=w.useState(null),[m,y]=w.useState(null),{scrollYProgress:x}=Cg({container:l,offset:["start start","end end"]});w.useEffect(()=>{const g=new qd({wrapper:l.current,content:l.current,duration:1.2,orientation:"vertical",smooth:!0,smoothWheel:!0,touchMultiplier:2});y(g);function S(k){g.raf(k),requestAnimationFrame(S)}return requestAnimationFrame(S),()=>{g.destroy()}},[]);const C=(g,S)=>{const k=S===0?.1:.3;g>(S===0?.3:.5)?c(S):g<k&&S>0&&c(S-1)};if(!e||e.length===0)return null;const p=g=>{d(g),m==null||m.stop()},h=()=>{d(null),m==null||m.start()};return v.jsxs($A,{ref:l,isNative:i,children:[e.map((g,S)=>{const k=w.useRef(null),{scrollYProgress:b}=Cg({target:k,container:l,offset:["start 60%","center center"]}),P=Ys(x,[0,1],[1,1-(e.length-S)*.05]);p4(b,"change",vt=>{C(vt,S)});const T=Ys(b,[0,.5,1],[0,1,1]),N=Ys(b,[0,.5,1],[1.5,1,1]),M=Jc(T,{stiffness:100,damping:20}),B=Jc(N,{stiffness:100,damping:20}),Te=g.src||g,he=g.alt||`Image ${S+1}`,st=(vt,at,U)=>{const R=75/(at-1),O=15+vt*R,D=Math.min(O,90);return`color-mix(in srgb, ${U} ${D}%, black)`};return v.jsxs(BA,{onClick:()=>p(g),ref:k,isFirst:S===0,isLast:S===e.length-1,isNative:i,textColor:a,style:{backgroundColor:st(S,e.length,r?n:t),color:r?t:n,top:i?`${S*10}px`:`${S*20}px`,marginBottom:S===e.length-1?"40vh":"0",scale:P},children:[v.jsx(UA,{children:v.jsx(WA,{children:g.info})}),v.jsx(HA,{isNative:i,children:v.jsx(YA,{src:Te,alt:he,style:{opacity:M,scale:B}})})]},g.id||S)}),v.jsx(LA,{image:f,images:e,onClose:h,color:n,backgroundColor:t,invertedColors:r,isNative:i,doubleRepo:o}),v.jsx(EA,{color:n,images:e,scrollProgress:x,isNative:i,doubleRepo:o,isSwitchActive:s})]})}const $A=A.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1520,7 +1529,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
-  padding-top: 3vh;
+  /* padding-top: 3vh; */
   right: ${e=>e.isNative?"3vw":"10vw"};
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -1532,7 +1541,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 `,BA=A(Ne.div)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   position: sticky;
@@ -1549,10 +1558,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   flex-shrink: 0;
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    gap: ${e=>e.isNative?"0":"2em"};
+    gap: ${e=>e.isNative?"0":"1em"};
     width: ${e=>e.isNative?"30vw":"40vw"};
     min-height: ${e=>e.isNative?"330px":"300px"};
-    padding: 0 20px;
+    padding:  20px;
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -1571,7 +1580,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   text-align: start;
   font-size: 1rem;
   margin: 0 0 10px 30px;
-  width: 170px;
   left: 20px;
 
   @media (max-width: 1536px) and (min-width: 769px) {
