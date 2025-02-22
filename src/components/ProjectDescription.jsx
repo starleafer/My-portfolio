@@ -97,6 +97,7 @@ const DescriptionContainer = styled.div`
 
   @media (max-width: 1536px) and (min-width: 769px) {
     margin: 0 ;
+    gap: 0.8em;
   }
 
 
@@ -105,7 +106,6 @@ const DescriptionContainer = styled.div`
     justify-content: center;
     margin: 0 3em;
     width: 75vw;
-
   }
 `;
 
@@ -114,6 +114,11 @@ const Description = styled.p`
   font-size: 1.1em;
   line-height: 1.6;
   margin: 0;
+
+    @media (max-width: 1536px) and (min-width: 769px) {
+    font-size: 1em; 
+    line-height: 1.5;
+  }
 
 `;
 
@@ -137,8 +142,11 @@ const LinkInner = styled.div`
   margin-top: 1em;
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    padding: .5em;
+    padding: 0.3em; 
     margin-top: 0;
+    height: 2.5em; 
+    gap: 1em; 
+    border-width: 3px; 
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -160,9 +168,10 @@ const ButtonGroup = styled.div`
 
   @media (max-width: 1536px) and (min-width: 768px) {
     width: 35vw;
-    margin-top: 10px;
+    margin-top: 5px; 
     justify-content: flex-start;
-
+    min-height: 2.5em;
+    gap: 1em; 
   }
 
   @media (max-width: 768px) and (min-width: 320px) {

@@ -139,7 +139,7 @@ export default function ParallaxImage({
                 invertedColors ? color : backgroundColor
               ),
               color: invertedColors ? backgroundColor : color,
-              top: isNative ? `${index * 10}px` : `${index * 35}px`,
+              top: isNative ? `${index * 10}px` : `${index * 20}px`,
               marginBottom: index === images.length - 1 ? "40vh" : "0",
               scale,
             }}
@@ -191,7 +191,7 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
-  padding-top: 3vh;
+  /* padding-top: 3vh; */
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -205,7 +205,7 @@ const Container = styled.div`
 
 const CardWrapper = styled(motion.div)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column-reverse;
   justify-content: center;
   align-items: center;
   position: sticky;
@@ -222,10 +222,10 @@ const CardWrapper = styled(motion.div)`
   flex-shrink: 0;
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    gap: ${(props) => (props.isNative ? "0" : "2em")};
+    gap: ${(props) => (props.isNative ? "0" : "1em")};
     width: ${(props) => (props.isNative ? "30vw" : "40vw")};
     min-height: ${(props) => (props.isNative ? "330px" : "300px")};
-    padding: 0 20px;
+    padding:  20px;
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -246,7 +246,6 @@ const InfoContainer = styled.div`
   text-align: start;
   font-size: 1rem;
   margin: 0 0 10px 30px;
-  width: 170px;
   left: 20px;
 
   @media (max-width: 1536px) and (min-width: 769px) {
