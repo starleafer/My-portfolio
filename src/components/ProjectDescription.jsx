@@ -98,6 +98,7 @@ const DescriptionContainer = styled.div`
   @media (max-width: 1536px) and (min-width: 769px) {
     margin: 0 ;
     gap: 0.8em;
+    margin-top: 2em;
   }
 
 

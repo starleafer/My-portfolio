@@ -97,8 +97,9 @@ const Container = styled.div`
   margin-top: 4vh;
   z-index: 99;
 
+
   @media (max-width: 1536px) and (min-width: 769px) {
-    margin-top: 2vh;
+    margin-top: 5vh;
   }
 
 
