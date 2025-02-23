@@ -1529,13 +1529,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
-  /* padding-top: 3vh; */
   right: ${e=>e.isNative?"3vw":"10vw"};
 
   @media (max-width: 768px) and (min-width: 320px) {
     right: 3vw;
     padding: 0;
     margin-top: 5vh;
+    height: auto;  
+    overflow-y: auto;  
+    -webkit-overflow-scrolling: touch; 
   }
   
 
@@ -1548,7 +1550,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   gap: ${e=>e.isNative?"0":"5em"};
   left: 50vw;
   margin-top: ${e=>e.isFirst?"0":"80vh"};
-  min-height: ${e=>e.isNative?"450px":"400px"};
+  min-height: ${e=>e.isNative?"450px":"360px"};
   width: ${e=>e.isNative?"25vw":"40vw"};
   padding: 10px 20px;
   border-radius: 20px;
@@ -1567,10 +1569,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 768px) and (min-width: 320px) {
     width: ${e=>e.isNative?"60vw":"72vw"};
     left: ${e=>e.isNative?"25vw":"15vw"};
-    justify-content: flex-start;
     margin-left: 1em;
     flex-direction: column-reverse;
-    gap: ${e=>e.isNative?"0":"3em"};
+    gap: 0;
+    padding: 20px;
   }
 
 `,UA=A.div`
@@ -1598,7 +1600,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: 1vw;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    font-size: 1rem;
   }
 `,HA=A.div`
   position: relative;
@@ -1615,6 +1621,11 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     width: ${e=>e.isNative?"80%":"100%"};
     margin-top: ${e=>e.isNative?"0":"5px"};
   }
+
+ @media (max-width: 768px) and (min-width: 320px) {
+  width: 100%;
+  /* height: 100%; */
+}
 `,YA=A(Ne.img)`
   height: 100%;
   object-fit: cover;
