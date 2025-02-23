@@ -1196,8 +1196,9 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   margin-top: 4vh;
   z-index: 99;
 
+
   @media (max-width: 1536px) and (min-width: 769px) {
-    margin-top: 2vh;
+    margin-top: 5vh;
   }
 
 
@@ -1229,6 +1230,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 1536px) and (min-width: 769px) {
     margin: 0 ;
     gap: 0.8em;
+    margin-top: 2em;
   }
 
 
