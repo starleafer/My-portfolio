@@ -191,13 +191,15 @@ const Container = styled.div`
   height: 100vh;
   width: 100vw;
   overflow-y: hidden;
-  /* padding-top: 3vh; */
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
 
   @media (max-width: 768px) and (min-width: 320px) {
     right: 3vw;
     padding: 0;
     margin-top: 5vh;
+    height: auto;  
+    overflow-y: auto;  
+    -webkit-overflow-scrolling: touch; 
   }
   
 
@@ -212,7 +214,7 @@ const CardWrapper = styled(motion.div)`
   gap: ${(props) => (props.isNative ? "0" : "5em")};
   left: 50vw;
   margin-top: ${(props) => (props.isFirst ? "0" : "80vh")};
-  min-height: ${(props) => (props.isNative ? "450px" : "400px")};
+  min-height: ${(props) => (props.isNative ? "450px" : "360px")};
   width: ${(props) => (props.isNative ? "25vw" : "40vw")};
   padding: 10px 20px;
   border-radius: 20px;
@@ -231,10 +233,10 @@ const CardWrapper = styled(motion.div)`
   @media (max-width: 768px) and (min-width: 320px) {
     width: ${(props) => (props.isNative ? "60vw" : "72vw")};
     left: ${(props) => (props.isNative ? "25vw" : "15vw")};
-    justify-content: flex-start;
     margin-left: 1em;
     flex-direction: column-reverse;
-    gap: ${(props) => (props.isNative ? "0" : "3em")};
+    gap: 0;
+    padding: 20px;
   }
 
 `;
@@ -266,7 +268,11 @@ const Info = styled.p`
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: 1vw;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    font-size: 1rem;
   }
 `;
 
@@ -285,6 +291,11 @@ const ImageContainer = styled.div`
     width: ${(props) => (props.isNative ? "80%" : "100%")};
     margin-top: ${(props) => (props.isNative ? "0" : "5px")};
   }
+
+ @media (max-width: 768px) and (min-width: 320px) {
+  width: 100%;
+  /* height: 100%; */
+}
 `;
 
 const Image = styled(motion.img)`
