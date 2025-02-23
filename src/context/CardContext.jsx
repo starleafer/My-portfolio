@@ -96,30 +96,48 @@ export const CardProvider = ({ children }) => {
         browserImage: [
           {
             id: "1",
+            src: "pageimages/dashboard/dashboardDark.png",
+            info: "The dashboards homepage with integrated weather update, stock tracking and task tracking calendar.",
+            alt: "browser search",
+          },
+          {
+            id: "2",
+            src: "pageimages/dashboard/dashboardLight.png",
+            info: "Light mode version of the dashboard homepage.",
+            alt: "browser search",
+          },
+          {
+            id: "3",
             src: "pageimages/dashboard/dashboardFullCalendar.png",
             info: "Full calendar view with drag and drop functionality on the task management system.",
             alt: "browser search",
           },
           {
-            id: "2",
+            id: "4",
             src: "pageimages/dashboard/dashboardNewsCategories.png",
             info: "News categories from the Public News API.",
             alt: "browser search",
           },
           {
-            id: "3",
+            id: "5",
             src: "pageimages/dashboard/dashboardNewsArticles.png",
             info: "Choose your favorite news articles from the Public News API.",
             alt: "browser search",
           },
           {
-            id: "4",
+            id: "6",
             src: "pageimages/dashboard/dashboardArticle.png",
             info: "Read the full article from the Public News API.",
             alt: "browser search",
           },
           {
-            id: "5",
+            id: "7",
+            src: "pageimages/dashboard/dashboardStocks.png",
+            info: "Track your stocks with the Alpha Vantage API.",
+            alt: "browser search",
+          },
+          {
+            id: "8",
             src: "pageimages/dashboard/dashboardProfile.png",
             info: "Authenticated users can manage their own tasks and calendar.",
             alt: "browser search",

@@ -234,12 +234,12 @@ const CardWrapper = styled(motion.div)`
   justify-content: center;
   align-items: center;
   position: sticky;
-  gap: ${(props) => (props.isNative ? "0" : "5em")};
+  gap: 0;
   left: 50vw;
   margin-top: ${(props) => (props.isFirst ? "0" : "80vh")};
   min-height: ${(props) => (props.isNative ? "450px" : "360px")};
   width: ${(props) => (props.isNative ? "25vw" : "40vw")};
-  padding: 10px 20px;
+  padding: 30px 20px;
   border-radius: 20px;
   overflow: hidden;
   background-color: ${(props) => props.backgroundColor};
@@ -304,7 +304,7 @@ const ImageContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props) => (props.isNative ? "60%" : "60%")};
+  width: ${(props) => (props.isNative ? "60%" : "100%")};
   height: ${(props) => (props.isNative ? "400px" : "300px")};
   overflow: hidden;
   border-radius: 20px;
