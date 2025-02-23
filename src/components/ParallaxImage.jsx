@@ -25,6 +25,7 @@ export default function ParallaxImage({
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [selectedImage, setSelectedImage] = useState(null);
   const [lenisInstance, setLenisInstance] = useState(null);
+  const [hasScrolled, setHasScrolled] = useState(false);
 
   const { scrollYProgress: containerScrollProgress } = useScroll({
     container: containerRef,
@@ -81,8 +82,25 @@ export default function ParallaxImage({
     lenisInstance?.start();
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasScrolled && containerRef.current?.scrollTop > 20) {
+        setHasScrolled(true);
+      }
+    };
+
+    const isMobile = window.innerWidth <= 768 && window.innerWidth >= 321;
+    if (isMobile) {
+      containerRef.current?.addEventListener('scroll', handleScroll);
+      return () => containerRef.current?.removeEventListener('scroll', handleScroll);
+    }
+  }, [hasScrolled]);
+
   return (
     <Container ref={containerRef} isNative={isNative}>
+      {window.innerWidth <= 768 && window.innerWidth >= 321 && !hasScrolled && (
+        <ScrollArrow color={color} />
+      )}
       {images.map((image, index) => {
         const itemRef = useRef(null);
         const { scrollYProgress } = useScroll({
@@ -198,12 +216,17 @@ const Container = styled.div`
     padding: 0;
     margin-top: 5vh;
     height: auto;  
-    overflow-y: auto;  
-    -webkit-overflow-scrolling: touch; 
+    overflow-y: scroll;  
+    -webkit-overflow-scrolling: touch;
+    
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
   }
-  
-
-`;
+`; 
 
 const CardWrapper = styled(motion.div)`
   display: flex;
@@ -294,7 +317,6 @@ const ImageContainer = styled.div`
 
  @media (max-width: 768px) and (min-width: 320px) {
   width: 100%;
-  /* height: 100%; */
 }
 `;
 
@@ -302,5 +324,34 @@ const Image = styled(motion.img)`
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
+`;
+
+const ScrollArrow = styled.div`
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 105;
+  pointer-events: none;
+  opacity: 0.8;
+  width: 15px;
+  height: 15px;
+  border-right: 2px solid ${props => props.color || 'var(--dark)'};
+  border-bottom: 2px solid ${props => props.color || 'var(--dark)'};
+  transform: rotate(45deg);
+  animation: bounce 1.5s infinite;
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: rotate(45deg) translate(-3px, -3px);
+    }
+    50% {
+      transform: rotate(45deg) translate(0, 0);
+    }
+  }
+
+  @media (min-width: 769px) {
+    display: none;
+  }
 `;
 
