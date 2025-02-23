@@ -27,6 +27,21 @@ function ProjectDescription({
   onSwitchView,
   isSwitchActive,
 }) {
+
+  const handleRepoClick = () => {
+    if (showViewSwitch) {
+      const repo = isSwitchActive 
+        ? repos.find(r => r.browser) 
+        : repos.find(r => r.native);
+        
+      if (repo) {
+        window.open(isSwitchActive ? repo.browser : repo.native, "_blank");
+      }
+    } else {
+      window.open(Object.values(repos[0])[0], "_blank");
+    }
+  };
+
   return (
     <DescriptionContainer>
       {descriptions.primary && (
@@ -45,26 +60,21 @@ function ProjectDescription({
       {descriptions.tertiary && (
         <Description>{descriptions.tertiary}</Description>
       )}
-      
+
       <ButtonGroup showViewSwitch={showViewSwitch}>
         <LinkGroup>
           <LinkInner color={color}>
-            {repos.map((repo, index) => (
-              <CustomButton
-                key={index}
-                color={color}
-                backgroundColor={backgroundColor}
-                onClick={() => window.open(Object.values(repo)[0], "_blank")}
-                label={
-                  <>
-                    {repo.icon}
-                    {Object.keys(repo)[0] === "browser" && "Browser code"}
-                    {Object.keys(repo)[0] === "native" && "Native code"}
-                    {Object.keys(repo)[0] === "website" && "Website"}
-                  </>
-                }
-              />
-            ))}
+            <CustomButton
+              color={color}
+              backgroundColor={backgroundColor}
+              small
+              onClick={handleRepoClick}
+              label={
+                <div style={{ display: "flex", alignItems: "center", gap: "0.5em" }}>
+                  <IconWrapper>{repos[0].icon}</IconWrapper>           
+                </div>
+              }
+            />
           </LinkInner>
         </LinkGroup>
         {showViewSwitch && (
@@ -76,7 +86,7 @@ function ProjectDescription({
                 border
                 pulse
                 backgroundColor={backgroundColor}
-                label={isSwitchActive ? "Show Native" : "Show Browser"}
+                label={isSwitchActive ? "Show Native" : "Show Website"}
                 invertedColors={true}
                 showViewSwitch={showViewSwitch}
               />
@@ -96,11 +106,10 @@ const DescriptionContainer = styled.div`
   width: 30vw;
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    margin: 0 ;
+    margin: 0;
     gap: 0.8em;
     margin-top: 2em;
   }
-
 
   @media (max-width: 768px) and (min-width: 320px) {
     align-items: center;
@@ -116,17 +125,17 @@ const Description = styled.p`
   line-height: 1.6;
   margin: 0;
 
-    @media (max-width: 1536px) and (min-width: 769px) {
-    font-size: 1em; 
+  @media (max-width: 1536px) and (min-width: 769px) {
+    font-size: 1em;
     line-height: 1.5;
   }
-
 `;
-
 
 const LinkGroup = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   z-index: 90;
 `;
 
@@ -135,19 +144,17 @@ const LinkInner = styled.div`
   flex-direction: row;
   height: 3em;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1.5em;
-  padding: 1em;
+  padding: 1em 0;
   border-radius: 15px;
-  border: 4px dotted ${(props) => props.color};
-  margin-top: 1em;
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    padding: 0.3em; 
+    padding: 0.3em;
     margin-top: 0;
-    height: 2.5em; 
-    gap: 1em; 
-    border-width: 3px; 
+    height: 2.5em;
+    gap: 1em;
+    border-width: 3px;
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -155,24 +162,23 @@ const LinkInner = styled.div`
     padding: 1em;
     border: none;
   }
-
 `;
 
 const ButtonGroup = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: ${(props) =>
-    props.showViewSwitch ? "center" : "flex-start"};
+  justify-content: flex-start;
   gap: 2em;
   min-height: 3em;
+  /* border: 1px solid red; */
 
   @media (max-width: 1536px) and (min-width: 768px) {
     width: 35vw;
-    margin-top: 5px; 
+    margin-top: 5px;
     justify-content: flex-start;
     min-height: 2.5em;
-    gap: 1em; 
+    gap: 1em;
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
@@ -182,9 +188,33 @@ const ButtonGroup = styled.div`
   }
 `;
 
+const IconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  transform: translateZ(0);
+  will-change: transform;
+  max-width: 100%;
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    gap: 1em;
+    font-size: 0.9rem;
+  }
+
+  svg {
+    width: 2em;
+    height: 2em;
+    flex-shrink: 0;
+
+    @media (max-width: 768px) and (min-width: 320px) {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+`;
+
 const SwitchButtonContainer = styled.div`
-   z-index: 90;
-   
+  z-index: 90;
+
   @media (max-width: 768px) and (min-width: 320px) {
     display: flex;
     flex-direction: row;

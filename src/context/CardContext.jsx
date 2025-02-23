@@ -7,8 +7,8 @@ import {
   faSpotify,
 } from "@fortawesome/free-brands-svg-icons";
 import {
-  faArrowUpRightFromSquare,
   faEnvelope,
+  faGlobe,
 } from "@fortawesome/free-solid-svg-icons";
 
 const CardContext = createContext();
@@ -73,7 +73,7 @@ export const CardProvider = ({ children }) => {
         },
         {
           website: "https://dustbusters-207c6.web.app/",
-          icon: <FontAwesomeIcon icon={faArrowUpRightFromSquare} />,
+          icon: <FontAwesomeIcon icon={faGlobe} />,
         },
       ],
     },
@@ -147,7 +147,7 @@ export const CardProvider = ({ children }) => {
 
       repos: [
         {
-          browser: "https://github.com/starleafer/Daily-Helper",
+          browser: "https://github.com/starleafer/Dashboard",
           icon: <FontAwesomeIcon icon={faGithub} />,
         },
       ],

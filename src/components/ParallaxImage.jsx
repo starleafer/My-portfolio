@@ -97,7 +97,7 @@ export default function ParallaxImage({
   }, [hasScrolled]);
 
   return (
-    <Container ref={containerRef} isNative={isNative}>
+    <Container ref={containerRef} isNative={isNative} doubleRepo={doubleRepo}>
       {window.innerWidth <= 768 && window.innerWidth >= 321 && !hasScrolled && (
         <ScrollArrow color={color} />
       )}
@@ -224,8 +224,8 @@ const Container = styled.div`
     right: 3vw;
     padding-top: 40px;
     margin-top: 5vh;
-    height: auto;  
-    overflow-y: scroll;  
+    height: ${props => props.doubleRepo ? '100%' : 'auto'}; 
+    overflow-y: ${props => props.doubleRepo ? 'scroll' : 'scroll'}; 
     -webkit-overflow-scrolling: touch;
     
     &::-webkit-scrollbar {

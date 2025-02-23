@@ -16,6 +16,7 @@ function Dashboard() {
         browserImages={cardData.images.browserImage}
         isBrowser={true} 
         invertedColors={false} 
+        
       />
       <TransitionScreen />
     </>

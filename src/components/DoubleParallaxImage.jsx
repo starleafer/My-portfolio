@@ -11,7 +11,6 @@ const DoubleParallaxImage = ({
   invertedColors,
   doubleRepo,
   isSwitchActive,
-  onSwitchView,
 }) => {
   const slideVariants = {
     nativeView: {
@@ -46,11 +45,10 @@ const DoubleParallaxImage = ({
   return (
     <ViewContainer>
       <ParallaxWrapper>
-        <motion.div
+        <MotionWrapper
           variants={slideVariants}
           animate={isSwitchActive ? "browserView" : "nativeView"}
           initial="nativeView"
-          style={{ position: "absolute", width: "100%", height: "100%" }}
         >
           <ParallaxImage
             images={nativeImages}
@@ -61,12 +59,18 @@ const DoubleParallaxImage = ({
             isSwitchActive={isSwitchActive}
             doubleRepo={doubleRepo}
           />
-        </motion.div>
-        <motion.div
+        </MotionWrapper>
+        <MotionWrapper
           variants={browserSlideVariants}
           animate={isSwitchActive ? "browserView" : "nativeView"}
           initial="hidden"
-          style={{ position: "absolute", width: "100%", height: "100%" }}
+          isSwitchActive={isSwitchActive}
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            right: isSwitchActive ? "5em" : "0",
+          }}
         >
           <ParallaxImage
             images={browserImages}
@@ -77,7 +81,7 @@ const DoubleParallaxImage = ({
             isSwitchActive={isSwitchActive}
             doubleRepo={doubleRepo}
           />
-        </motion.div>
+        </MotionWrapper>
       </ParallaxWrapper>
     </ViewContainer>
   );
@@ -93,16 +97,25 @@ const ViewContainer = styled.div`
   width: 100vw;
   overflow: hidden;
   padding-top: 1vh;
+`;
 
-  
-  `;
+const MotionWrapper = styled(motion.div)`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: ${(props) => (props.isSwitchActive ? "5em" : "0")};
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    right: ${(props) => (props.isSwitchActive ? "0" : "3em")};
+    left: -2.5em;
+  }
+`;
 
 const ParallaxWrapper = styled.div`
   position: relative;
   width: 100%;
   height: calc(100% - 15vh);
   overflow: hidden;
-  `;
-
+`;
 
 export default DoubleParallaxImage;
