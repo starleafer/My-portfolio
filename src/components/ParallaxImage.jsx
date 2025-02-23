@@ -107,12 +107,19 @@ export default function ParallaxImage({
           target: itemRef,
           container: containerRef,
           offset: ["start 60%", "center center"],
+          default: 0
         });
 
         const scale = useTransform(
-          containerScrollProgress,
+          containerScrollProgress || 0,
           [0, 1],
           [1, 1 - ((images.length - index) * 0.05)]
+        );
+
+        const yPos = useTransform(
+          containerScrollProgress || 0,
+          [0, 1],
+          [0, -((images.length - index) * 15)]
         );
 
         useMotionValueEvent(scrollYProgress, "change", (latest) => {
@@ -157,9 +164,10 @@ export default function ParallaxImage({
                 invertedColors ? color : backgroundColor
               ),
               color: invertedColors ? backgroundColor : color,
-              top: isNative ? `${index * 10}px` : `${index * 20}px`,
+              top: isNative ? `${index * 10}px` : `${index * 10}px`,
               marginBottom: index === images.length - 1 ? "40vh" : "0",
               scale,
+              y: yPos,
             }}
           >
             <InfoContainer>
@@ -210,10 +218,11 @@ const Container = styled.div`
   width: 100vw;
   overflow-y: hidden;
   right: ${(props) => (props.isNative ? "3vw" : "10vw")};
+  padding: 40px;
 
   @media (max-width: 768px) and (min-width: 320px) {
     right: 3vw;
-    padding: 0;
+    padding-top: 40px;
     margin-top: 5vh;
     height: auto;  
     overflow-y: scroll;  
@@ -222,6 +231,7 @@ const Container = styled.div`
     &::-webkit-scrollbar {
       display: none;
     }
+    
     
     -ms-overflow-style: none;  
     scrollbar-width: none;  

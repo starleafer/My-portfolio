@@ -286,10 +286,6 @@ const Circle = styled.div`
   transform-origin: center;
   z-index: 110;
   opacity: 1;
-
-  @media (max-width: 768px) {
-    /* border-radius: 15px; */
-  }
 `;
 
 export default Card;

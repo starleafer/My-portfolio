@@ -301,7 +301,6 @@ const TitleContainer = styled.div`
   top: 0;
   z-index: 101;
   background-color: ${(props) => props.backgroundColor};
-  padding: 20px 0;
 
   @media (max-width: 768px) and (min-width: 320px) {
     position: relative;
