@@ -1198,14 +1198,14 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
 
   @media (max-width: 1536px) and (min-width: 769px) {
-    margin-top: 5vh;
+    margin-top: 5em;
   }
 
 
   @media (max-width: 768px) and (min-width: 320px) {
     gap: 2em;
     width: 100vw;
-    margin-top: 1vh;
+    margin-top: 10vh;
     justify-content: flex-start;
     padding-left: 4em;
   }
