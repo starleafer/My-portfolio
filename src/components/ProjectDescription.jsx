@@ -86,7 +86,7 @@ function ProjectDescription({
                 border
                 pulse
                 backgroundColor={backgroundColor}
-                label={isSwitchActive ? "Show Native" : "Show Website"}
+                label={isSwitchActive ? "Show Native" : "Show Browser"}
                 invertedColors={true}
                 showViewSwitch={showViewSwitch}
               />
