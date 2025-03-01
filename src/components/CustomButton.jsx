@@ -387,7 +387,7 @@ const Button = styled.button`
 const CopyAlert = styled.div`
   position: absolute;
   left: ${(props) => props.animationY ? "-2vw" : "6vw"};
-  top: ${(props) => props.animationY ? "5rem" : "0"};
+  top: ${(props) => props.animationY ? "6rem" : "0"};
   margin-left: 1em;
   width: 110px;
   height: 40px;
@@ -399,8 +399,8 @@ const CopyAlert = styled.div`
   font-size: 1.1em;
   font-family: "Lato", sans-serif;
   border-radius: 10px;
-  background-color: ${(props) => props.color};
-  color: ${(props) => props.backgroundColor};
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
   transform: translateX(-50%);
   transition: transform 0.3s, color 0.3s, background-color 0.3s;
   overflow: hidden;

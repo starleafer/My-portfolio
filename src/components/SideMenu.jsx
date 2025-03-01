@@ -61,15 +61,7 @@ const SideMenu = ({ color, backgroundColor, isOpen, onNavigate }) => {
             <Curve color={color} />
             <SideMenuContent>
               <ContentWrapper>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "2rem",
-                    alignItems: "center",
-                    padding: "2rem 0",
-                  }}
-                >
+ 
                   <motion.div
                     custom={0}
                     variants={slide}
@@ -84,7 +76,6 @@ const SideMenu = ({ color, backgroundColor, isOpen, onNavigate }) => {
                         color={color}
                         backgroundColor={backgroundColor}
                         onClick={(e) => onNavigate("/about", "var(--dark)", e)}
-                        small
                       />
                     </ButtonWrapper>
                   </motion.div>
@@ -110,12 +101,11 @@ const SideMenu = ({ color, backgroundColor, isOpen, onNavigate }) => {
                           }
                           copyMessage={copySuccessMessage}
                           animationY={true}
-                          small
                         />
                       </ButtonWrapper>
                     </motion.div>
                   ))}
-                </div>
+             
               </ContentWrapper>
             </SideMenuContent>
           </SideMenuContainer>
@@ -169,7 +159,7 @@ const ESWrapper = styled.div`
   justify-content: center;
   width: 2.4rem;
   height: 2.4rem;
-  font-size: clamp(1.4rem, 1.8vw, 2rem);
+  font-size: clamp(1.8rem, 1.8vw, 2rem);
   font-weight: bold;
   padding-right: 0.1rem;
 `;
@@ -180,10 +170,11 @@ const IconWrapper = styled.div`
   transform: translateZ(0);
   will-change: transform;
   max-width: 100%;
+  
 
   @media (max-width: 768px) and (min-width: 320px) {
     gap: 1em;
-    font-size: 0.9rem;
+    font-size: 1.4rem;
   }
 
   svg {
@@ -200,8 +191,16 @@ const IconWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
   width: 100%;
-  gap: 1rem;
-`;
+  gap: 3rem;
 
+  @media (max-width: 768px) and (min-width: 320px) {
+    gap: 1rem;
+    height: 40vh;
+    justify-content: space-around;
+    align-items: center;
+  }
+`;

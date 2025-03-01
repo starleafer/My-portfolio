@@ -372,7 +372,7 @@ export const CardProvider = ({ children }) => {
 
   const main = {
     id: 1,
-    title: "About Emil",
+    title: "About me",
     path: "about",
     color: "white",
     backgroundColor: "var(--dark)",
