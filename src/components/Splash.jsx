@@ -35,7 +35,6 @@ const Container = styled.div`
 
 const ES = styled.div`
   display: flex;
-  /* width: 16vw; */
   width: 320px;
   height: 48vh;
   position: relative;
@@ -52,18 +51,22 @@ const ES = styled.div`
   padding: 0 1vw;
   z-index: 999;
   border: 3px solid var(--dark);
-
   border-radius: 15px;
-  transform: translateY(-1.5vw);
+  transform: translate(0, 0);
   transition: 0.5s 1.2s;
-  box-shadow: 1vw 1vw var(--dark);
+  box-shadow: 1rem 1rem var(--dark);
 
-  @starting-style {
-    box-shadow: 0 0 0 var(--dark);
+  @media (max-width: 768px) and (min-width: 374px) {
+    width: 180px;
+    height: 30vh;
+    font-size: 200px;
+    box-shadow: 1rem 1rem var(--dark);
   }
 
-
-
+  @starting-style {
+    transform: translate(0.5rem, 0.5rem);
+    box-shadow: 0 0 0 var(--dark);
+  }
 
   &::before,
   &::after {
@@ -75,30 +78,29 @@ const ES = styled.div`
     height: 40vw;
     width: 10vw;
     transform: skewX(-30deg);
-    opacity: 0; 
-    transition: 0.6s 0.5s; 
     opacity: 1; 
+    transition: 0.6s 0.5s; 
+
+    @media (max-width: 768px) and (min-width: 374px) {
+      height: 60vw;
+      width: 15vw;
+    }
 
     @starting-style {
       left: -22vw;
-    }
-
-    @media (max-width: 768px) and (min-width: 320px) {
-      height: 300px;
-      font-size: 200px;
-      height: 48vh;
-      
-      @starting-style {
-        left: -30vw;
-      }
     }
   }
 
   &:after {
     width: 3vw;
+    
+    @media (max-width: 768px) and (min-width: 374px) {
+      width: 5vw;
+    }
   }
 
-
-
-`
+  @starting-style {
+    box-shadow: 0 0 0 var(--dark);
+  }
+`;
   
