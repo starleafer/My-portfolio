@@ -208,7 +208,19 @@ const StyledCard = styled.div.attrs({
 
     &:hover {
       transform: none;
+      animation: none;
     }
+
+    
+  &:not(:hover) {
+    animation: none;
+
+    .title {
+      animation: none;
+    }
+  }
+
+
   }
 
   @media (max-width: 480px) and (min-width: 320px) {
