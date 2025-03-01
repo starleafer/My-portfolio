@@ -221,7 +221,7 @@ const PopoverContent = styled(m.div)`
   @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     width: auto;
-    margin-left: ${(props) => (props.isNative ? "23vw" : "8vw")};
+    margin-left: ${(props) => (props.isNative ? "10vw" : "8vw")};
 
   }
 
@@ -319,7 +319,7 @@ const ClosButtonContainer = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     top: ${(props) =>
       props.isNative ? "2em" : props.doubleRepo ? "-5em" : "-5em"};
-    right: ${(props) => (props.isNative ? "-4em" : "1.9em")};
+    right: ${(props) => (props.isNative ? "-2em" : "1.9em")};
   }
 `;
 
