@@ -1481,7 +1481,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 768px) and (min-width: 320px) {
     height: auto;
     width: auto;
-    margin-left: ${e=>e.isNative?"23vw":"8vw"};
+    margin-left: ${e=>e.isNative?"10vw":"8vw"};
 
   }
 
@@ -1570,7 +1570,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
   @media (max-width: 768px) and (min-width: 320px) {
     top: ${e=>e.isNative?"2em":(e.doubleRepo,"-5em")};
-    right: ${e=>e.isNative?"-4em":"1.9em"};
+    right: ${e=>e.isNative?"-2em":"1.9em"};
   }
 `,G6=E.div`
   display: flex;
