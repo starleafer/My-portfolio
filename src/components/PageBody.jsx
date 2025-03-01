@@ -20,6 +20,7 @@ function PageBody({
   isBrowser,
   invertedColors,
   textColor,
+  isOpen,
 }) {
   const [doubleRepo, setDoubleRepo] = useState(false);
   const [isSwitchActive, setIsSwitchActive] = useState(false);
@@ -166,7 +167,7 @@ function PageBody({
     >
       <Content ref={contentRef} color={color}>
         <TitleContainer backgroundColor={backgroundColor}>
-          <PageNavigationButton title={title} shadowColor={shadowColor} />
+          <PageNavigationButton title={title} shadowColor={shadowColor} isOpen={isOpen} />
         </TitleContainer>
         <ContentGroup>
           <ProjectDescription
@@ -280,9 +281,8 @@ const ContentGroup = styled.div`
   flex-direction: row;
   margin-left: 10vw;
   gap: 2em;
-  z-index: 105;
+  z-index: 85;
   overflow: hidden;
-
 
   @media (max-width: 768px) and (min-width: 320px) {
     flex-direction: column;
@@ -299,7 +299,7 @@ const TitleContainer = styled.div`
   justify-content: center;
   position: sticky;
   top: 0;
-  z-index: 101;
+  z-index: 90;
   background-color: ${(props) => props.backgroundColor};
 
   @media (max-width: 768px) and (min-width: 320px) {

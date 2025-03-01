@@ -92,35 +92,13 @@ function HeaderMenu({ about, setIsHoverButton }) {
         fadeIn={fadeIn}
         about={about}
       >
-        {location.pathname !== "/" ? (
-          <CustomButton
-            color={color}
-            backgroundColor={backgroundColor}
-            invertedColors={about}
-            onClick={() => handleClick("/", "white")}
-            label="Home"
-          />
-        ) : null}
-        {location.pathname !== "/about" ? (
-          <CustomButton
-            color={color}
-            backgroundColor={backgroundColor}
-            invertedColors={about}
-            onClick={() => handleClick("/about", "var(--dark)")}
-            label="About me"
-          />
-        ) : null}
-        <Contact className={isContactActive ? "active" : ""}>
-          <CustomButton
-            color={color}
-            backgroundColor={backgroundColor}
-            invertedColors={about}
-            onClick={copyEmail}
-            label="Contact"
-            copyMessage={copySuccessMessage}
-            showCopyAlert={true}
-          />
-        </Contact>
+        <CustomButton
+          color={color}
+          backgroundColor={backgroundColor}
+          invertedColors={about}
+          onClick={() => handleClick("/", "white")}
+          label="Home"
+        />
       </ButtonContainer>
     </>
   );
@@ -160,11 +138,10 @@ const ButtonContainer = styled.div`
   padding: 3vh 2vw;
   z-index: 102;
   opacity: ${(props) => (props.isPopoverOpen ? 0 : 1)};
-  visibility: ${(props) => (props.isPopoverOpen ? 'hidden' : 'visible')};
+  visibility: ${(props) => (props.isPopoverOpen ? "hidden" : "visible")};
   transition: opacity 0.3s, visibility 0.3s;
   background-color: ${(props) =>
     props.about ? "var(--dark)" : props.backgroundColor};
-
 
   &::after {
     bottom: -30px;
@@ -178,11 +155,11 @@ const ButtonContainer = styled.div`
     justify-content: flex-start;
     z-index: 102;
     padding: 4vh 9vw;
-
   }
 `;
 
-const Contact = styled.div`  position: relative;
+const Contact = styled.div`
+  position: relative;
   display: flex;
   min-width: 5vw;
   flex-direction: row;
@@ -223,4 +200,3 @@ const Circle = styled.div`
 `;
 
 export default HeaderMenu;
-

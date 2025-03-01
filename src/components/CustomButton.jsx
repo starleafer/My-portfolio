@@ -20,6 +20,7 @@ const CustomButton = ({
   showCopyAlert,
   copyMessage,
   showViewSwitch,
+  animationY,
 }) => {
   return (
     <ButtonContainer>
@@ -69,6 +70,7 @@ const CustomButton = ({
           color={color}
           backgroundColor={backgroundColor}
           className="clicked"
+          animationY={animationY}
         >
           {copyMessage}
         </CopyAlert>
@@ -116,7 +118,7 @@ const fadeOutShadow = () => keyframes`
   }
 `;
 
-const slideAndFadeOut = keyframes`
+const animationX = keyframes`
   0% {
     opacity: 0;
     transform: translateX(-50%);
@@ -135,7 +137,27 @@ const slideAndFadeOut = keyframes`
   }
 `;
 
-const slideAndFadeOutMobile = keyframes`
+const animationY = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+`;
+
+
+const animationXOutMobile = keyframes`
   0% {
     opacity: 0;
     transform: translateX(-50%);
@@ -151,6 +173,25 @@ const slideAndFadeOutMobile = keyframes`
   100% {
     opacity: 0;
     transform: translateX(50%);
+  }
+`;
+
+const animationYOutMobile = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(50%);
   }
 `;
 
@@ -345,7 +386,8 @@ const Button = styled.button`
 `;
 const CopyAlert = styled.div`
   position: absolute;
-  left: 6vw;
+  left: ${(props) => props.animationY ? "-2vw" : "6vw"};
+  top: ${(props) => props.animationY ? "5rem" : "0"};
   margin-left: 1em;
   width: 110px;
   height: 40px;
@@ -364,14 +406,14 @@ const CopyAlert = styled.div`
   overflow: hidden;
 
   &.clicked {
-    animation: ${slideAndFadeOut} 2s forwards;
+    animation: ${(props) => (props.animationY ? animationY : animationX)} 2s forwards;
 
     @media (max-width: 768px) and (min-width: 320px) {
-      animation: ${slideAndFadeOutMobile} 1.5s forwards;
+      animation: ${(props) => (props.animationY ? animationYOutMobile : animationXOutMobile)} 1.5s forwards;
       width: 80px;
       height: 25px;
       padding: 4px;
-      left: 100%;
+      left: ${(props) => props.animationY ? "-60%" : "100%"};
       margin-left: 1em;
       font-size: 0.8rem;
     }

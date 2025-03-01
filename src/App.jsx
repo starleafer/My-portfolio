@@ -20,6 +20,7 @@ import Splash from "./components/Splash";
 import MasksAndCursor from "./components/MasksAndCursor";
 import HeaderMenu from "./components/HeaderMenu";
 import { PopoverProvider } from './context/PopoverContext';
+import HamburgerMenu from "./components/HamburgerMenu";
 
 function App() {
   const { runTransition } = useTransitionContext();
@@ -33,6 +34,7 @@ function App() {
   const [cursorHoverColor, setCursorHoverColor] = useState("");
   const [cursorVisible, setCursorVisible] = useState(true);
   const [cursorOpacity, setCursorOpacity] = useState(1);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const home = "/";
   const cleaning = "/cleaning";
@@ -47,6 +49,7 @@ function App() {
 
     switch (location.pathname) {
       case home:
+        pathColor = "white";
         secondaryColor = "var(--dark)";
         break;
       case cleaning:
@@ -110,6 +113,8 @@ function App() {
               isHoveringCards={isHoveringCards}
               cursorColor={cursorColor}
               cursorHoverColor={cursorHoverColor}
+              isOpen={isMenuOpen}
+              backgroundColor={bgColor}
             />
             <AppContainer color={bgColor}>
               <TransitionProvider>
@@ -119,13 +124,16 @@ function App() {
                       path={home}
                       element={
                         <ScrollContainer>
-                          <HeaderMenu
-                            path={home}
-                            setIsHoverButton={setIsHoverButton}
+                          <HamburgerMenu 
+                            color={cursorColor} 
+                            backgroundColor={bgColor}
+                            isOpen={isMenuOpen}
+                            setIsOpen={setIsMenuOpen}
                           />
                           <Mainpage
                             setCursorHoverColor={setCursorHoverColor}
                             setIsHoveringCards={setIsHoveringCards}
+                            isOpen={isMenuOpen}
                           />
                         </ScrollContainer>
                       }
@@ -134,9 +142,15 @@ function App() {
                       path={cleaning}
                       element={
                         <ScrollContainer className="scrollCleaning">
-                          <HeaderMenu
+                          {/* <HeaderMenu
                             path={cleaning}
                             setIsHoverButton={setIsHoverButton}
+                          /> */}
+                          <HamburgerMenu 
+                            color={cursorColor} 
+                            backgroundColor={bgColor}
+                            isOpen={isMenuOpen}
+                            setIsOpen={setIsMenuOpen}
                           />
                           <Cleaning />
                         </ScrollContainer>
@@ -146,11 +160,13 @@ function App() {
                       path={chatapp}
                       element={
                         <ScrollContainer className="scrollChatApp">
-                          <HeaderMenu
-                            path={chatapp}
-                            setIsHoverButton={setIsHoverButton}
+                          <HamburgerMenu 
+                            color={cursorColor} 
+                            backgroundColor={bgColor}
+                            isOpen={isMenuOpen}
+                            setIsOpen={setIsMenuOpen}
                           />
-                          <ChatApp />
+                          <ChatApp isOpen={isMenuOpen} />
                         </ScrollContainer>
                       }
                     />
@@ -158,11 +174,13 @@ function App() {
                       path={webbshop}
                       element={
                         <ScrollContainer className="scrollWebbShop">
-                          <HeaderMenu
-                            path={webbshop}
-                            setIsHoverButton={setIsHoverButton}
+                          <HamburgerMenu 
+                            color={cursorColor} 
+                            backgroundColor={bgColor}
+                            isOpen={isMenuOpen}
+                            setIsOpen={setIsMenuOpen}
                           />
-                          <WebbShop />
+                          <WebbShop isOpen={isMenuOpen} />
                         </ScrollContainer>
                       }
                     />
@@ -170,11 +188,13 @@ function App() {
                       path={movieapp}
                       element={
                         <ScrollContainer className="scrollMovies">
-                          <HeaderMenu
-                            path={movieapp}
-                            setIsHoverButton={setIsHoverButton}
+                          <HamburgerMenu 
+                            color={cursorColor} 
+                            backgroundColor={bgColor}
+                            isOpen={isMenuOpen}
+                            setIsOpen={setIsMenuOpen}
                           />
-                          <MovieApp />
+                          <MovieApp isOpen={isMenuOpen} />
                         </ScrollContainer>
                       }
                     />
@@ -182,11 +202,13 @@ function App() {
                       path={dashboard}
                       element={
                         <ScrollContainer>
-                          <HeaderMenu
-                            path={dashboard}
-                            setIsHoverButton={setIsHoverButton}
+                          <HamburgerMenu 
+                            color={cursorColor} 
+                            backgroundColor={bgColor}
+                            isOpen={isMenuOpen}
+                            setIsOpen={setIsMenuOpen}
                           />
-                          <Dashboard />
+                          <Dashboard isOpen={isMenuOpen} />
                         </ScrollContainer>
                       }
                     />

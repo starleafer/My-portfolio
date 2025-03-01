@@ -3,7 +3,7 @@ import { motion as m } from 'framer-motion'
 import styled, { keyframes } from 'styled-components';
 import useMousePosition from '../utils/useMousePosition';
 
-const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHoverColor, }) => {
+const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHoverColor, isOpen, backgroundColor }) => {
     const [isHovered, setIsHovered] = useState(false);
     const [isMouseDown, setIsMouseDown] = useState(false);
 
@@ -62,7 +62,13 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
                     animate={{
                         WebkitMaskPosition: `${x - size - offsetX}px ${y - size - offsetY}px`,
                         WebkitMaskSize: `${size}px`,
-                        backgroundColor: isHoveringCards && isMouseDown ? cursorHoverColor : isHoveringCards ? cursorHoverColor : cursorColor,
+                        backgroundColor: isOpen && x > window.innerWidth - 240 
+                            ? backgroundColor 
+                            : isHoveringCards && isMouseDown 
+                                ? cursorHoverColor 
+                                : isHoveringCards 
+                                    ? cursorHoverColor 
+                                    : cursorColor,
                     }}
                     transition={{
                         type: 'tween',
@@ -74,8 +80,11 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
                         height: { type: 'tween', ease: 'backOut', duration: 0.4 },
                     }}
                     style={{ paddingRight: '4em', paddingTop: '8em' }}
+                    isOpen={isOpen}
+                    cursorColor={cursorColor}
+                    backgroundColor={backgroundColor}
                 >
-                    {location.pathname === '/My-portfolio/' && (
+                    {location.pathname === '/My-portfolio/' && !isOpen && (
                         <Message
                             onMouseEnter={() => { setIsHovered(true) }}
                             onMouseLeave={() => { setIsHovered(false) }}
@@ -97,7 +106,7 @@ const MaskedGroup = styled.div`
     width: 100%;
     height: 100vh;
     z-index: 110;
-    pointer-events: none; 
+    pointer-events: none;
 
   @media (max-width: 768px) and (min-width: 320px) {
     display: none;
@@ -111,7 +120,8 @@ const MaskedSecret = styled(m.div)`
     font-family: "Poiret One", sans-serif;
     mask-repeat: no-repeat;
     mask-size: 40px;
-    background: var(--dark);
+    background: ${({ isOpen, cursorColor, backgroundColor, x }) => 
+        isOpen && x > window.innerWidth - 240 ? backgroundColor : cursorColor};
     color: white;
     display: flex;
     justify-content: end;
@@ -129,7 +139,7 @@ const MaskedSecret = styled(m.div)`
 const Message = styled.h4`
   width: 20em;
   pointer-events: auto; 
-
+  
  `
 
 export default MasksAndCursor

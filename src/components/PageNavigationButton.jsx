@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useTransitionContext } from '../context/TransitionContext';
 import CustomButton from './CustomButton';
 
-function PageNavigationButton({ title, shadowColor }) {
+function PageNavigationButton({ title, shadowColor, isOpen }) {
   const { card } = useCardContext();
   const navigate = useNavigate();
 
@@ -51,7 +51,7 @@ function PageNavigationButton({ title, shadowColor }) {
   };
 
   return (
-    <Container>
+    <Container isOpen={isOpen}>
       <ButtonContainer className="navigation-buttons" style={{ marginRight: '3em' }}>
         <CustomButton
           onClick={handlePreviousClick}
@@ -96,12 +96,13 @@ const Container = styled.div`
   gap: 6em;
   margin-top: 4vh;
   z-index: 99;
-
+  opacity: ${({ isOpen }) => isOpen ? 0 : 1};
+  visibility: ${({ isOpen }) => isOpen ? 'hidden' : 'visible'};
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 
   @media (max-width: 1536px) and (min-width: 769px) {
     margin-top: 5em;
   }
-
 
   @media (max-width: 768px) and (min-width: 320px) {
     gap: 2em;
