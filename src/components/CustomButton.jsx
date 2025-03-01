@@ -410,12 +410,12 @@ const CopyAlert = styled.div`
 
     @media (max-width: 768px) and (min-width: 320px) {
       animation: ${(props) => (props.animationY ? animationYOutMobile : animationXOutMobile)} 1.5s forwards;
-      width: 80px;
-      height: 25px;
+      width: 100px;
+      height: 35px;
       padding: 4px;
       left: ${(props) => props.animationY ? "-60%" : "100%"};
       margin-left: 1em;
-      font-size: 0.8rem;
+      font-size: 1rem;
     }
 
     &::before {
