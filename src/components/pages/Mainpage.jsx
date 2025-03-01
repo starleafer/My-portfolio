@@ -169,20 +169,21 @@ const TitleLetters = styled.span`
   transition: color 0.2s cubic-bezier(0.27, -0.32, 0.7, 1.37),
     background-color 0.1s, transform 0.3s;
 
-  &:hover {
-    color: ${(props) => props.hovercolor || "white"};
-    transform: translateY(-0.7vw) translateX(-0.7vw);
-    animation: ${fadeInShadow} 0.5s forwards;
+  @media (min-width: 769px) {
+    &:hover {
+      color: ${(props) => props.hovercolor || "white"};
+      transform: translateY(-0.7vw) translateX(-0.7vw);
+      animation: ${fadeInShadow} 0.5s forwards;
 
-    .hovered {
-      color: white;
+      .hovered {
+        color: white;
+      }
+    }
+
+    &:not(:hover) {
+      animation: ${fadeOutShadow} 0.8s forwards;
     }
   }
-
-  &:not(:hover) {
-    animation: ${fadeOutShadow} 0.8s forwards;
-  }
-
 `;
 
 export default Mainpage;

@@ -261,9 +261,9 @@ const Content = styled.div`
   margin: 5vh;
 
   @media (max-width: 768px) and (min-width: 320px) {
-    width: 90%;
+    width: 80%;
     flex-direction: column;
-    gap: 100px;
+    gap: 0;
     margin: 10vh 0 4vh 0;
     height: auto;
   }
@@ -319,6 +319,7 @@ const ImageAndLinksContainer = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     max-width: 100%;
     align-items: center;
+    margin-top: 0;
   }
 `;
 

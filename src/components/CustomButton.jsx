@@ -273,7 +273,7 @@ const Button = styled.button`
       props.small ? "3rem" : props.width ? props.width : "auto"};
     height: ${(props) =>
       props.small ? "3rem" : props.height ? props.height : "auto"};
-    padding: 1.3vw;
+    padding: 0.7em;
     text-wrap: nowrap;
     border: 1px solid
       ${(props) =>
@@ -316,7 +316,6 @@ const Button = styled.button`
 
     &:not(:hover) {
       animation: none;
-      padding: 0.7em;
       border: 1px solid
         ${(props) =>
           props.invertedColors

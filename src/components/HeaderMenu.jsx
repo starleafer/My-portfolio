@@ -165,21 +165,6 @@ const ButtonContainer = styled.div`
   background-color: ${(props) =>
     props.about ? "var(--dark)" : props.backgroundColor};
 
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -50px;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: linear-gradient(
-      to bottom,
-      ${(props) => (props.about ? "var(--dark)" : props.backgroundColor)} 0%,
-      transparent 100%
-    );
-    pointer-events: none;
-    z-index: -1;
-  }
 
   &::after {
     bottom: -30px;
@@ -192,6 +177,8 @@ const ButtonContainer = styled.div`
     align-items: center;
     justify-content: flex-start;
     z-index: 102;
+    padding: 4vh 9vw;
+
   }
 `;
 
