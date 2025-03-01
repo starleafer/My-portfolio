@@ -30,6 +30,7 @@ const Container = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     margin: 25vh 0 0 5vw;
     align-items: flex-start;
+    margin-left: 0;
   }
   `
 
@@ -83,7 +84,7 @@ const ES = styled.div`
 
     @media (max-width: 768px) and (min-width: 374px) {
       height: 60vw;
-      width: 15vw;
+      width: 18vw;
     }
 
     @starting-style {
