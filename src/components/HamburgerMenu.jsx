@@ -3,10 +3,12 @@ import styled, { keyframes } from "styled-components";
 import SideMenu from "./SideMenu";
 import { useLocation, useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
+import { usePopover } from "../context/PopoverContext";
 
 const HamburgerMenu = ({ color, backgroundColor, isOpen, setIsOpen }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const { isPopoverOpen } = usePopover();
   const [showCircle, setShowCircle] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
   const [circleColor, setCircleColor] = useState("");
@@ -50,7 +52,7 @@ const HamburgerMenu = ({ color, backgroundColor, isOpen, setIsOpen }) => {
   return (
     <>
       {showCircle && <Circle color={circleColor} position={clickPosition} />}
-      <HamburgerContainer location={location}>
+      <HamburgerContainer location={location} isPopoverOpen={isPopoverOpen}>
         {location.pathname !== "/" && (
           <CustomButton
             label="Home"
@@ -86,8 +88,11 @@ const HamburgerContainer = styled.div`
   justify-content: ${({ location }) =>
     location.pathname === "/" ? "flex-end" : "space-between"};
   align-items: center;
-  z-index: 100;
+  z-index: ${({ isPopoverOpen }) => isPopoverOpen ? 0 : 100};
   padding: 2rem;
+  opacity: ${({ isPopoverOpen }) => isPopoverOpen ? 0 : 1};
+  visibility: ${({ isPopoverOpen }) => isPopoverOpen ? 'hidden' : 'visible'};
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 `;
 
 const fadeIn = keyframes`

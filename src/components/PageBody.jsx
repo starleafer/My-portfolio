@@ -5,6 +5,7 @@ import Lenis from "lenis";
 import { useCardContext } from "../context/CardContext";
 import { useNavigate } from "react-router-dom";
 import { useTransitionContext } from "../context/TransitionContext";
+import { usePopover } from "../context/PopoverContext";
 import PageNavigationButton from "./PageNavigationButton";
 import ProjectDescription from "./ProjectDescription";
 import DoubleParallaxImage from "./DoubleParallaxImage";
@@ -31,6 +32,7 @@ function PageBody({
   const { card } = useCardContext();
   const navigate = useNavigate();
   const { setRunTransition, triggerTransition } = useTransitionContext();
+  const { isPopoverOpen } = usePopover();
 
   const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
   const currentCard = card.find((item) => item.path === currentPath) || card[0];
@@ -166,7 +168,7 @@ function PageBody({
       onTouchEnd={onTouchEnd}
     >
       <Content ref={contentRef} color={color}>
-        <TitleContainer backgroundColor={backgroundColor}>
+        <TitleContainer backgroundColor={backgroundColor} isPopoverOpen={isPopoverOpen}>
           <PageNavigationButton title={title} shadowColor={shadowColor} isOpen={isOpen} />
         </TitleContainer>
         <ContentGroup>
@@ -299,8 +301,6 @@ const TitleContainer = styled.div`
   justify-content: center;
   position: sticky;
   top: 0;
-  z-index: 90;
-  background-color: ${(props) => props.backgroundColor};
 
   @media (max-width: 768px) and (min-width: 320px) {
     position: relative;

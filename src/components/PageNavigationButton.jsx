@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import { useCardContext } from '../context/CardContext';
 import { useNavigate } from 'react-router-dom';
 import { useTransitionContext } from '../context/TransitionContext';
+import { usePopover } from '../context/PopoverContext';
 import CustomButton from './CustomButton';
 
 function PageNavigationButton({ title, shadowColor, isOpen }) {
   const { card } = useCardContext();
   const navigate = useNavigate();
-
+  const { isPopoverOpen } = usePopover();
   const { setRunTransition, triggerTransition } = useTransitionContext();
-
 
   const currentPath = window.location.pathname.replace('/My-portfolio/', '').replace('/', '');
   const currentCard = card.find(item => item.path === currentPath) || card[0];
@@ -51,7 +51,7 @@ function PageNavigationButton({ title, shadowColor, isOpen }) {
   };
 
   return (
-    <Container isOpen={isOpen}>
+    <Container isOpen={isOpen} isPopoverOpen={isPopoverOpen}>
       <ButtonContainer className="navigation-buttons" style={{ marginRight: '3em' }}>
         <CustomButton
           onClick={handlePreviousClick}
@@ -95,9 +95,9 @@ const Container = styled.div`
   justify-content: center;
   gap: 6em;
   margin-top: 4vh;
-  z-index: 99;
-  opacity: ${({ isOpen }) => isOpen ? 0 : 1};
-  visibility: ${({ isOpen }) => isOpen ? 'hidden' : 'visible'};
+  z-index: ${({ isPopoverOpen }) => isPopoverOpen ? 0 : 99};
+  opacity: ${({ isOpen, isPopoverOpen }) => (isOpen || isPopoverOpen) ? 0 : 1};
+  visibility: ${({ isOpen, isPopoverOpen }) => (isOpen || isPopoverOpen) ? 'hidden' : 'visible'};
   transition: opacity 0.3s ease, visibility 0.3s ease;
 
   @media (max-width: 1536px) and (min-width: 769px) {
