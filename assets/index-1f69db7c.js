@@ -766,7 +766,19 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
     &:hover {
       transform: none;
+      animation: none;
     }
+
+    
+  &:not(:hover) {
+    animation: none;
+
+    .title {
+      animation: none;
+    }
+  }
+
+
   }
 
   @media (max-width: 480px) and (min-width: 320px) {
