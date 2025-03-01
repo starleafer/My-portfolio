@@ -2298,6 +2298,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 768px) and (min-width: 320px) {
     margin: 25vh 0 0 5vw;
     align-items: flex-start;
+    margin-left: 0;
   }
   `,VA=A.div`
   display: flex;
@@ -2349,7 +2350,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 
     @media (max-width: 768px) and (min-width: 374px) {
       height: 60vw;
-      width: 15vw;
+      width: 18vw;
     }
 
     @starting-style {
