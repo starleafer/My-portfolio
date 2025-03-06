@@ -311,9 +311,9 @@ const Button = styled.button`
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: ${(props) =>
-      props.small ? "3rem" : props.width ? props.width : "auto"};
+      props.small ? "4rem" : props.width ? props.width : "auto"};
     height: ${(props) =>
-      props.small ? "3rem" : props.height ? props.height : "auto"};
+      props.small ? "4rem" : props.height ? props.height : "auto"};
     padding: 0.7em;
     text-wrap: nowrap;
     border: 1px solid
@@ -384,6 +384,7 @@ const Button = styled.button`
     }
   }
 `;
+
 const CopyAlert = styled.div`
   position: absolute;
   left: ${(props) => props.animationY ? "-2vw" : "6vw"};

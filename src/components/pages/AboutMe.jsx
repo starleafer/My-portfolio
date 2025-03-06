@@ -263,7 +263,6 @@ const Content = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     width: 80%;
     flex-direction: column;
-    gap: 0;
     margin: 10vh 0 4vh 0;
     height: auto;
   }
@@ -291,7 +290,7 @@ const Text = styled.div`
 
 const CascadingText = styled.div`
   margin: 1em 0;
-  font-size: clamp(1rem, calc(0.1vw + .5rem), 13rem);
+  font-size: clamp(1rem, calc(0.1vw + 0.5rem), 13rem);
 
   p {
     opacity: 0;
@@ -299,8 +298,6 @@ const CascadingText = styled.div`
     animation-delay: ${(props) => props.delay || "0s"};
     margin: 0;
   }
-
-
 
   @media (max-width: 768px) and (min-width: 320px) {
     max-height: 70%;
@@ -319,7 +316,15 @@ const ImageAndLinksContainer = styled.div`
   @media (max-width: 768px) and (min-width: 320px) {
     max-width: 100%;
     align-items: center;
-    margin-top: 0;
+    margin-top: 18vh;
+  }
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    margin-top: 5vh;
+  }
+
+  @media (max-width: 480px) and (min-width: 320px) {
+    margin-top: 20vh;
   }
 `;
 
@@ -376,8 +381,7 @@ const Image = styled.img`
 const MusicWrapper = styled.div`
   width: 280px;
   border-radius: 15px;
-  padding: .5em 1em;
- 
+  padding: 0.5em 1em;
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 320px;
@@ -432,7 +436,6 @@ const CustomButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
 
 const SongTitleContainer = styled.div`
@@ -500,10 +503,10 @@ const ButtonWrapper = styled.div`
   align-items: center;
 
   @media (max-width: 768px) and (min-width: 320px) {
-    width: 4rem;
+    width: 6rem;
     height: 2rem;
   }
-  `;
+`;
 
 const IconWrapper = styled.div`
   display: flex;
@@ -511,7 +514,7 @@ const IconWrapper = styled.div`
   transform: translateZ(0);
   will-change: transform;
   max-width: 100%;
-  
+
   @media (max-width: 768px) and (min-width: 320px) {
     gap: 1em;
     font-size: 0.9rem;
@@ -523,8 +526,8 @@ const IconWrapper = styled.div`
     flex-shrink: 0;
 
     @media (max-width: 768px) and (min-width: 320px) {
-      width: 1.5em;
-      height: 1.5em;
+      width: 2em;
+      height: 2em;
     }
   }
 `;
