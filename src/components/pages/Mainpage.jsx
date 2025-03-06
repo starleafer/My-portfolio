@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Projectlist from "../Projectlist";
 import { motion as m } from "framer-motion";
 import styled, { keyframes } from "styled-components";
+import FramerMagnetic from "../FramerMagnetic";
 
 function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
   const [hoverColor, setHoverColor] = useState("");
@@ -67,13 +68,15 @@ function Mainpage({ setCursorHoverColor, setIsHoveringCards }) {
                 letter === " " ? (
                   <span key={index}> </span>
                 ) : (
-                  <TitleLetters
-                    key={index}
-                    hovercolor={hoverColor}
-                    onMouseEnter={() => setHoverColor(getRandomColor())}
+                  <FramerMagnetic>
+                    <TitleLetters
+                      key={index}
+                      hovercolor={hoverColor}
+                      onMouseEnter={() => setHoverColor(getRandomColor())}
                   >
                     {letter}
                   </TitleLetters>
+                  </FramerMagnetic>
                 )
               )}
             </Title>
@@ -172,8 +175,8 @@ const TitleLetters = styled.span`
   @media (min-width: 769px) {
     &:hover {
       color: ${(props) => props.hovercolor || "white"};
-      transform: translateY(-0.7vw) translateX(-0.7vw);
-      animation: ${fadeInShadow} 0.5s forwards;
+      /* transform: translateY(-0.7vw) translateX(-0.7vw); */
+      /* animation: ${fadeInShadow} 0.5s forwards; */
 
       .hovered {
         color: white;
@@ -181,7 +184,7 @@ const TitleLetters = styled.span`
     }
 
     &:not(:hover) {
-      animation: ${fadeOutShadow} 0.8s forwards;
+      /* animation: ${fadeOutShadow} 0.8s forwards; */
     }
   }
 `;

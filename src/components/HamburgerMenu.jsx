@@ -4,6 +4,7 @@ import SideMenu from "./SideMenu";
 import { useLocation, useNavigate } from "react-router-dom";
 import CustomButton from "./CustomButton";
 import { usePopover } from "../context/PopoverContext";
+import FramerMagnetic from "./FramerMagnetic";
 
 const HamburgerMenu = ({ color, backgroundColor, isOpen, setIsOpen }) => {
   const location = useLocation();
@@ -61,12 +62,14 @@ const HamburgerMenu = ({ color, backgroundColor, isOpen, setIsOpen }) => {
             onClick={(e) => handleNavigation("/", "white", e)}
           />
         )}
-        <HamburgerButton
-          color={color}
-          backgroundColor={backgroundColor}
-          isOpen={isOpen}
-          onClick={toggleMenu}
-        />
+        <FramerMagnetic isOpen={isOpen}>
+          <HamburgerButton
+            color={color}
+            backgroundColor={backgroundColor}
+            isOpen={isOpen}
+            onClick={toggleMenu}
+          />
+        </FramerMagnetic>
         <SideMenu
           color={color}
           backgroundColor={backgroundColor}
@@ -105,7 +108,7 @@ const fadeIn = keyframes`
 `;
 
 const HamburgerButton = styled.button`
-  position: fixed;
+  position: relative;
   background: none;
   border: none;
   padding: 0;
@@ -115,12 +118,11 @@ const HamburgerButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   background-color: ${({ color, isOpen, backgroundColor }) =>
     isOpen ? backgroundColor : color};
   z-index: 1000;
   opacity: 0;
-  animation: ${fadeIn} 0.8s ease-in-out forwards ;
+  animation: ${fadeIn} 0.8s ease-in-out forwards;
   animation-delay: 0.2s;
 
   &:before,

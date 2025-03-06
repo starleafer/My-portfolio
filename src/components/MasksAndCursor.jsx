@@ -79,7 +79,7 @@ const MasksAndCursor = ({ isHoverButton, isHoveringCards, cursorColor, cursorHov
                         width: { type: 'tween', ease: 'backOut', duration: 0.4 },
                         height: { type: 'tween', ease: 'backOut', duration: 0.4 },
                     }}
-                    style={{ paddingRight: '4em', paddingTop: '8em' }}
+                    style={{ paddingRight: '4em', paddingTop: '9em' }}
                     isOpen={isOpen}
                     cursorColor={cursorColor}
                     backgroundColor={backgroundColor}
