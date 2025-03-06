@@ -1140,8 +1140,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 
   @media (max-width: 768px) and (min-width: 320px) {
-    width: ${e=>e.small?"3rem":e.width?e.width:"auto"};
-    height: ${e=>e.small?"3rem":e.height?e.height:"auto"};
+    width: ${e=>e.small?"4rem":e.width?e.width:"auto"};
+    height: ${e=>e.small?"4rem":e.height?e.height:"auto"};
     padding: 0.7em;
     text-wrap: nowrap;
     border: 1px solid
@@ -2000,7 +2000,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 768px) and (min-width: 320px) {
     width: 80%;
     flex-direction: column;
-    gap: 0;
     margin: 10vh 0 4vh 0;
     height: auto;
   }
@@ -2024,7 +2023,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   }
 `,Ts=E.div`
   margin: 1em 0;
-  font-size: clamp(1rem, calc(0.1vw + .5rem), 13rem);
+  font-size: clamp(1rem, calc(0.1vw + 0.5rem), 13rem);
 
   p {
     opacity: 0;
@@ -2032,8 +2031,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     animation-delay: ${e=>e.delay||"0s"};
     margin: 0;
   }
-
-
 
   @media (max-width: 768px) and (min-width: 320px) {
     max-height: 70%;
@@ -2050,7 +2047,15 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   @media (max-width: 768px) and (min-width: 320px) {
     max-width: 100%;
     align-items: center;
-    margin-top: 0;
+    margin-top: 18vh;
+  }
+
+  @media (max-width: 768px) and (min-width: 320px) {
+    margin-top: 5vh;
+  }
+
+  @media (max-width: 480px) and (min-width: 320px) {
+    margin-top: 20vh;
   }
 `,TA=E.div`
   display: flex;
@@ -2099,8 +2104,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
 `,jA=E.div`
   width: 280px;
   border-radius: 15px;
-  padding: .5em 1em;
- 
+  padding: 0.5em 1em;
 
   @media (max-width: 768px) and (min-width: 320px) {
     width: 320px;
@@ -2147,7 +2151,6 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   display: flex;
   justify-content: center;
   align-items: center;
-
 `,OA=E.div`
   overflow: hidden;
   width: 150px;
@@ -2205,16 +2208,16 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
   align-items: center;
 
   @media (max-width: 768px) and (min-width: 320px) {
-    width: 4rem;
+    width: 6rem;
     height: 2rem;
   }
-  `,Lg=E.div`
+`,Lg=E.div`
   display: flex;
   align-items: center;
   transform: translateZ(0);
   will-change: transform;
   max-width: 100%;
-  
+
   @media (max-width: 768px) and (min-width: 320px) {
     gap: 1em;
     font-size: 0.9rem;
@@ -2226,8 +2229,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
     flex-shrink: 0;
 
     @media (max-width: 768px) and (min-width: 320px) {
-      width: 1.5em;
-      height: 1.5em;
+      width: 2em;
+      height: 2em;
     }
   }
 `;function zA({about:e,setIsHoverButton:t}){const[n,r]=w.useState("");w.useState(!1);const[i,o]=w.useState(!1),[s,a]=w.useState(!1),[l,u]=w.useState(""),[c,f]=w.useState(!1),{card:d,main:m}=xt(),y=Wo(),{isPopoverOpen:x}=es(),k=window.location.pathname.replace("/My-portfolio/","").replace("/",""),p=d.find(P=>P.path===k)||d[0];let h=p.color,g=p.backgroundColor,C=p.shadow;(k==="about"||k==="")&&(h=m.backgroundColor,g=m.color,C=m.shadow);const S=Uo();w.useEffect(()=>{f(!0);const P=setTimeout(()=>{r("")},3e3);return()=>clearTimeout(P)},[n]),w.useEffect(()=>{f(!1);const P=setTimeout(()=>{f(!0)},100);return()=>clearTimeout(P)},[S.pathname]);const b=(P,T)=>{o(!0),a(!0),u(T);const _=setTimeout(()=>{o(!1),y(P),a(!1)},800);return()=>{clearTimeout(_)}};return v.jsxs(v.Fragment,{children:[s&&v.jsx(BA,{color:i?l:""}),v.jsx(VA,{isPopoverOpen:x,path:k,color:h,backgroundColor:g,shadow:C,fadeIn:c,about:e,children:v.jsx(Ge,{color:h,backgroundColor:g,invertedColors:e,onClick:()=>b("/","white"),label:"Home"})})]})}const $A=K`
